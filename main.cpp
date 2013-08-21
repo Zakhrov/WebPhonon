@@ -1,6 +1,5 @@
 #include <QtGui/QApplication>
 #include "mainwindow.h"
-#include "webform.h"
 #include <QCoreApplication>
 int main(int argc, char *argv[])
 {
