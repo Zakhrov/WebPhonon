@@ -42,6 +42,8 @@ private slots:
     void on_actionFull_Screen_triggered();
 
 
+    void on_actionExit_triggered();
+
 private:
     Ui::MainWindow *ui;
     Phonon::MediaObject *med;

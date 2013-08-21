@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>753</width>
-    <height>350</height>
+    <width>749</width>
+    <height>346</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,9 +15,6 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout_2">
-    <item row="0" column="0">
-     <widget class="QPlainTextEdit" name="plainTextEdit"/>
-    </item>
     <item row="1" column="0">
      <layout class="QGridLayout" name="gridLayout">
       <item row="1" column="0">
@@ -35,6 +32,9 @@
     <item row="2" column="0">
      <widget class="Phonon::SeekSlider" name="seekSlider"/>
     </item>
+    <item row="0" column="0">
+     <widget class="QLineEdit" name="lineEdit"/>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -42,7 +42,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>753</width>
+     <width>749</width>
      <height>22</height>
     </rect>
    </property>
@@ -58,6 +58,7 @@
      <addaction name="actionHttp_Stream"/>
     </widget>
     <addaction name="menuOpen"/>
+    <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuPlayer">
     <property name="title">
@@ -85,6 +86,7 @@
    <addaction name="actionPause"/>
    <addaction name="actionStop"/>
    <addaction name="actionFull_Screen"/>
+   <addaction name="actionExit"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionLocal_File">
@@ -151,6 +153,15 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+F</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/Icons/application-exit.png</normaloff>:/Icons/application-exit.png</iconset>
+   </property>
+   <property name="text">
+    <string>Exit</string>
    </property>
   </action>
  </widget>

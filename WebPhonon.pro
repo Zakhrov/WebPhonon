@@ -17,8 +17,8 @@ SOURCES += main.cpp\
 
 HEADERS  += mainwindow.h
 
-FORMS    += mainwindow.ui \
-    webform.ui
+FORMS    += mainwindow.ui
 
 RESOURCES += \
     Icons.qrc
+

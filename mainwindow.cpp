@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "webform.h"
 #include <Phonon/AudioOutput>
 #include <Phonon/MediaObject>
 #include <QFileDialog>
@@ -18,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     Phonon::createPath(med,sndout);
     ui->seekSlider->setMediaObject(med);
     ui->volumeSlider->setAudioOutput(sndout);
-    ui->plainTextEdit->hide();
+    ui->lineEdit->hide();
 
 }
 
@@ -42,16 +41,16 @@ void MainWindow::on_actionLocal_File_triggered()
 
 void MainWindow::on_actionHttp_Stream_triggered()
 {
-    ui->plainTextEdit->show();
+    ui->lineEdit->show();
     QString uname;
-    uname.insert(0,ui->plainTextEdit->toPlainText());
+    uname.insert(0,ui->lineEdit->text());
     med->setCurrentSource(Phonon::MediaSource(QUrl(uname)));
 }
 
 void MainWindow::on_actionPlay_triggered()
 {
     med->play();
-    ui->plainTextEdit->hide();
+    ui->lineEdit->hide();
 }
 
 void MainWindow::on_actionPause_triggered()
@@ -86,4 +85,9 @@ void MainWindow::on_actionFull_Screen_triggered()
    }
 
        //ui->VideoWidget->setFullScreen(setscreen);
+}
+
+void MainWindow::on_actionExit_triggered()
+{
+    this->close();
 }

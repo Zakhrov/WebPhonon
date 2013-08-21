@@ -8,5 +8,9 @@
         <file>applications-internet.png</file>
         <file>internet-web-browser.png</file>
         <file>video-television.png</file>
+        <file>application-exit.png</file>
+    </qresource>
+    <qresource prefix="/splash">
+        <file>WebPhonon-Master-text2.png</file>
     </qresource>
 </RCC>
