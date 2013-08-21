@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     QSplashScreen spl;
     spl.setPixmap(img);
     spl.show();
-    w.show();
+    w.showMaximized();
     //spl.close();
 
     
