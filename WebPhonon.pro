@@ -22,3 +22,15 @@ FORMS    += mainwindow.ui
 RESOURCES += \
     Icons.qrc
 
+OTHER_FILES += \
+    WebPhonon-Master-text2.png \
+    video-television.png \
+    media-playback-stop.png \
+    media-playback-start.png \
+    media-playback-pause.png \
+    internet-web-browser.png \
+    document-open.png \
+    document-open-remote.png \
+    applications-internet.png \
+    application-exit.png
+
