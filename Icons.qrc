@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/Icons">
+        <file>document-open.png</file>
+        <file>media-playback-start.png</file>
+        <file>media-playback-pause.png</file>
+        <file>media-playback-stop.png</file>
+        <file>document-open-remote.png</file>
+        <file>applications-internet.png</file>
+        <file>internet-web-browser.png</file>
+        <file>video-television.png</file>
+    </qresource>
+</RCC>

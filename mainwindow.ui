@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>753</width>
+    <height>350</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>NetPlayer</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <widget class="QPlainTextEdit" name="plainTextEdit"/>
+    </item>
+    <item row="1" column="0">
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="1" column="0">
+       <widget class="Phonon::VideoWidget" name="VideoWidget"/>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="1">
+     <widget class="Phonon::VolumeSlider" name="volumeSlider">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="Phonon::SeekSlider" name="seekSlider"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>753</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <widget class="QMenu" name="menuOpen">
+     <property name="title">
+      <string>Open</string>
+     </property>
+     <addaction name="actionLocal_File"/>
+     <addaction name="actionHttp_Stream"/>
+    </widget>
+    <addaction name="menuOpen"/>
+   </widget>
+   <widget class="QMenu" name="menuPlayer">
+    <property name="title">
+     <string>Player</string>
+    </property>
+    <addaction name="actionPlay"/>
+    <addaction name="actionPause"/>
+    <addaction name="actionStop"/>
+    <addaction name="actionFull_Screen"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuPlayer"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionLocal_File"/>
+   <addaction name="actionHttp_Stream"/>
+   <addaction name="separator"/>
+   <addaction name="actionPlay"/>
+   <addaction name="actionPause"/>
+   <addaction name="actionStop"/>
+   <addaction name="actionFull_Screen"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionLocal_File">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/Icons/document-open.png</normaloff>:/Icons/document-open.png</iconset>
+   </property>
+   <property name="text">
+    <string>Local File</string>
+   </property>
+  </action>
+  <action name="actionHttp_Stream">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/Icons/applications-internet.png</normaloff>:/Icons/applications-internet.png</iconset>
+   </property>
+   <property name="text">
+    <string>Http Stream</string>
+   </property>
+  </action>
+  <action name="actionPlay">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/Icons/media-playback-start.png</normaloff>:/Icons/media-playback-start.png</iconset>
+   </property>
+   <property name="text">
+    <string>Play</string>
+   </property>
+   <property name="shortcut">
+    <string>Media Play</string>
+   </property>
+  </action>
+  <action name="actionPause">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/Icons/media-playback-pause.png</normaloff>:/Icons/media-playback-pause.png</iconset>
+   </property>
+   <property name="text">
+    <string>Pause</string>
+   </property>
+   <property name="shortcut">
+    <string>Space</string>
+   </property>
+  </action>
+  <action name="actionStop">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/Icons/media-playback-stop.png</normaloff>:/Icons/media-playback-stop.png</iconset>
+   </property>
+   <property name="text">
+    <string>Stop</string>
+   </property>
+   <property name="shortcut">
+    <string>Media Stop</string>
+   </property>
+  </action>
+  <action name="actionFull_Screen">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/Icons/video-television.png</normaloff>:/Icons/video-television.png</iconset>
+   </property>
+   <property name="text">
+    <string>Full Screen</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+F</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>Phonon::SeekSlider</class>
+   <extends>QWidget</extends>
+   <header location="global">phonon/seekslider.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Phonon::VideoWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">phonon/videowidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Phonon::VolumeSlider</class>
+   <extends>QWidget</extends>
+   <header location="global">phonon/volumeslider.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="Icons.qrc"/>
+ </resources>
+ <connections/>
+</ui>
