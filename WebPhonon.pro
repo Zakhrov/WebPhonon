@@ -13,9 +13,11 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    qrc_Icons.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    ui_mainwindow.h
 
 FORMS    += mainwindow.ui
 
@@ -32,5 +34,6 @@ OTHER_FILES += \
     document-open.png \
     document-open-remote.png \
     applications-internet.png \
-    application-exit.png
+    application-exit.png \
+    CMakeLists.txt
 
