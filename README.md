@@ -21,6 +21,6 @@ make
 
 
 execute using
-./WebPhonon-Qt5
+./WebPhonon
 
 or alternatively use sudo make install for system wide installation
