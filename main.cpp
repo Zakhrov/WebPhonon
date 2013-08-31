@@ -15,8 +15,7 @@ int main(int argc, char *argv[])
     spl.setPixmap(img);
     spl.show();
     w.showMaximized();
-    spl.finish(&w);
-    //spl.close();
+
 
     
     return a.exec();

@@ -33,11 +33,6 @@ void MainWindow::on_actionLocal_File_triggered()
     med->setCurrentSource(Phonon::MediaSource(QUrl(fname)));
 }
 
-/*void MainWindow::on_actionSamba_Share_triggered()
-{
-
-    QDesktopServices::openUrl(QUrl("smb://"));
-}*/
 
 void MainWindow::on_actionHttp_Stream_triggered()
 {
@@ -84,7 +79,7 @@ void MainWindow::on_actionFull_Screen_triggered()
       ui->VideoWidget->setFullScreen(false);
    }
 
-       //ui->VideoWidget->setFullScreen(setscreen);
+
 }
 
 void MainWindow::on_actionExit_triggered()

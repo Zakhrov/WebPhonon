@@ -2,9 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QNetworkAccessManager>
-#include <QNetworkReply>
-#include <QNetworkRequest>
 #include <phonon/phonon>
 #include <Phonon/MediaObject>
 #include <QPlainTextEdit>
@@ -29,8 +26,6 @@ private slots:
 
     void on_actionLocal_File_triggered();
 
-    //void on_actionSamba_Share_triggered();
-
     void on_actionHttp_Stream_triggered();
 
     void on_actionPlay_triggered();
@@ -40,7 +35,6 @@ private slots:
     void on_actionStop_triggered();
 
     void on_actionFull_Screen_triggered();
-
 
     void on_actionExit_triggered();
 

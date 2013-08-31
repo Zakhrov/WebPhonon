@@ -5,9 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
-QT       += network
 QT       += phonon
-QT       += webkit
 TARGET = WebPhonon
 TEMPLATE = app
 
