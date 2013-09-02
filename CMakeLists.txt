@@ -1,8 +1,0 @@
-project (WebPhonon)
-find_package(KDE4 REQUIRED)
-include (KDE4Defaults)
-include_directories(${KDE4_INCLUDES})
-set(WebPhonon_SRCS main.cpp mainwindow.cpp qrc_Icons.cpp)
-kde4_add_executable(WebPhonon ${WebPhonon_SRCS})
-target_link_libraries(WebPhonon ${KDE4_KDEUI_LIBS} ${PHONON_LIBS})
-install(TARGETS WebPhonon ${INSTALL_TARGETS_DEFAULT_ARGS})
