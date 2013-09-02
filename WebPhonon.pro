@@ -31,5 +31,4 @@ OTHER_FILES += \
     document-open-remote.png \
     applications-internet.png \
     application-exit.png \
-    CMakeLists.txt
 

@@ -31,6 +31,8 @@ void MainWindow::on_actionLocal_File_triggered()
 {
     QString fname=QFileDialog::getOpenFileName(this,tr("Choose Files"));
     med->setCurrentSource(Phonon::MediaSource(QUrl(fname)));
+    if(med->state()!=Phonon::PlayingState)
+    med->play();
 }
 
 
@@ -69,8 +71,8 @@ void MainWindow::on_actionFull_Screen_triggered()
 {
 
    if(ui->VideoWidget->isFullScreen()==false)
-   {
-        ui->VideoWidget->setFullScreen(true);
+   { 
+       ui->VideoWidget->setFullScreen(true);
 
    }
    else
