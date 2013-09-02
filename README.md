@@ -12,14 +12,6 @@ cd build
 qmake ..
 make
 
-
-Alternative build instructions:
-mkdir build
-cd build
-cmake ..
-make
-
-
 execute using
 ./WebPhonon
 
