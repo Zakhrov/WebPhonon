@@ -32,7 +32,7 @@ OTHER_FILES += \
     applications-internet.png \
     application-exit.png \
 
-target.path = /usr/local/bin
+target.path = /usr/bin
 
 INSTALLS +=target
 
