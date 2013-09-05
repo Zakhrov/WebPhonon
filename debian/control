@@ -1,0 +1,12 @@
+Source: webphonon
+Maintainer: Aaron Zakhrov <aaron.zakhrov@gmail.com>
+Section: misc
+Priority: optional
+Standards-Version: 3.9.2
+Build-Depends: debhelper (>= 8)
+
+Package: webphonon
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: media player
+ webphonon is a simple media player written in Qt

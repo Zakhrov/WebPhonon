@@ -1,0 +1,10 @@
+Package: webphonon
+Version: 1.1-1
+Architecture: amd64
+Maintainer: Aaron Zakhrov <aaron.zakhrov@gmail.com>
+Installed-Size: 560
+Depends: libc6 (>= 2.2.5), libgcc1 (>= 1:4.1.1), libphonon4 (>= 4:4.2.0), libqtcore4 (>= 4:4.5.3), libqtgui4 (>= 4:4.5.3), libstdc++6 (>= 4.1.1), phonon
+Section: misc
+Priority: optional
+Description: media player
+ webphonon is a simple media player written in Qt
