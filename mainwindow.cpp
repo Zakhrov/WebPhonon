@@ -22,6 +22,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->seekSlider->setMediaObject(med);
     ui->volumeSlider->setAudioOutput(sndout);
     ui->lineEdit->hide();
+    urls.clear();
+    connect(med,SIGNAL(aboutToFinish()),this,SLOT(on_actionNext_triggered()));
+
 
 }
 
@@ -102,6 +105,7 @@ void MainWindow::on_actionSet_Database_triggered()
 
 void MainWindow::on_actionFrom_Database_triggered()
 {
+
     HostName=d->host;
     DBName=d->dbname;
     UName=d->uname;
@@ -113,9 +117,20 @@ void MainWindow::on_actionFrom_Database_triggered()
     MyDB.open(UName,Passwd);
     QSqlQuery request("SELECT url FROM testtab");
     while(request.next()){
-        QString val=request.value(0).toString();
-        med->setCurrentSource(Phonon::MediaSource(QUrl(val)));
+      urls.append(QUrl(request.value(0).toString()));
     }
+    med->enqueue(urls);
     med->play();
     MyDB.close();
+}
+
+void MainWindow::on_actionPrevious_triggered()
+{
+
+}
+
+void MainWindow::on_actionNext_triggered()
+{
+
+    med->play();
 }

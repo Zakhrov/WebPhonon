@@ -11,6 +11,8 @@
         <file>application-exit.png</file>
         <file>document-export-table.png</file>
         <file>application-vnd.oasis.opendocument.database.png</file>
+        <file>media-skip-backward.png</file>
+        <file>media-skip-forward.png</file>
     </qresource>
     <qresource prefix="/splash">
         <file>WebPhonon-Master-text2.png</file>

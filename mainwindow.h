@@ -43,6 +43,10 @@ private slots:
 
     void on_actionFrom_Database_triggered();
 
+    void on_actionPrevious_triggered();
+
+    void on_actionNext_triggered();
+
 private:
     Ui::MainWindow *ui;
     Phonon::MediaObject *med;
@@ -50,6 +54,7 @@ private:
     Dialog *d;
     QSqlDatabase MyDB;
     QString HostName,DBName,UName,Passwd;
+    QList<QUrl> urls;
 
 
 

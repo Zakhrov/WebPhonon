@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>745</width>
-    <height>342</height>
+    <width>741</width>
+    <height>338</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -42,7 +42,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>745</width>
+     <width>741</width>
      <height>22</height>
     </rect>
    </property>
@@ -68,6 +68,8 @@
     <addaction name="actionPlay"/>
     <addaction name="actionPause"/>
     <addaction name="actionStop"/>
+    <addaction name="actionPrevious"/>
+    <addaction name="actionNext"/>
     <addaction name="actionFull_Screen"/>
    </widget>
    <widget class="QMenu" name="menuDatabase">
@@ -91,9 +93,11 @@
    <addaction name="actionHttp_Stream"/>
    <addaction name="actionFrom_Database"/>
    <addaction name="separator"/>
+   <addaction name="actionPrevious"/>
    <addaction name="actionPlay"/>
    <addaction name="actionPause"/>
    <addaction name="actionStop"/>
+   <addaction name="actionNext"/>
    <addaction name="actionFull_Screen"/>
    <addaction name="actionSet_Database"/>
    <addaction name="actionExit"/>
@@ -190,6 +194,24 @@
    </property>
    <property name="text">
     <string>From Database</string>
+   </property>
+  </action>
+  <action name="actionPrevious">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/Icons/media-skip-backward.png</normaloff>:/Icons/media-skip-backward.png</iconset>
+   </property>
+   <property name="text">
+    <string>Previous</string>
+   </property>
+  </action>
+  <action name="actionNext">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/Icons/media-skip-forward.png</normaloff>:/Icons/media-skip-forward.png</iconset>
+   </property>
+   <property name="text">
+    <string>Next</string>
    </property>
   </action>
  </widget>
