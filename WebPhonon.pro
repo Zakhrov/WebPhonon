@@ -4,18 +4,20 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
-QT       += phonon
+QT       += core gui phonon sql
 TARGET = WebPhonon
 TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    dialog.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    dialog.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    dialog.ui
 
 RESOURCES += \
     Icons.qrc
@@ -31,6 +33,8 @@ OTHER_FILES += \
     document-open-remote.png \
     applications-internet.png \
     application-exit.png \
+    document-export-table.png \
+    application-vnd.oasis.opendocument.database.png
 
 target.path = /usr/bin
 

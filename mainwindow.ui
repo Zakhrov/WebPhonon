@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>747</width>
-    <height>344</height>
+    <width>745</width>
+    <height>342</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -42,7 +42,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>747</width>
+     <width>745</width>
      <height>22</height>
     </rect>
    </property>
@@ -56,6 +56,7 @@
      </property>
      <addaction name="actionLocal_File"/>
      <addaction name="actionHttp_Stream"/>
+     <addaction name="actionFrom_Database"/>
     </widget>
     <addaction name="menuOpen"/>
     <addaction name="actionExit"/>
@@ -69,8 +70,15 @@
     <addaction name="actionStop"/>
     <addaction name="actionFull_Screen"/>
    </widget>
+   <widget class="QMenu" name="menuDatabase">
+    <property name="title">
+     <string>Database</string>
+    </property>
+    <addaction name="actionSet_Database"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuPlayer"/>
+   <addaction name="menuDatabase"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -81,11 +89,13 @@
    </attribute>
    <addaction name="actionLocal_File"/>
    <addaction name="actionHttp_Stream"/>
+   <addaction name="actionFrom_Database"/>
    <addaction name="separator"/>
    <addaction name="actionPlay"/>
    <addaction name="actionPause"/>
    <addaction name="actionStop"/>
    <addaction name="actionFull_Screen"/>
+   <addaction name="actionSet_Database"/>
    <addaction name="actionExit"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
@@ -162,6 +172,24 @@
    </property>
    <property name="text">
     <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionSet_Database">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/Icons/document-export-table.png</normaloff>:/Icons/document-export-table.png</iconset>
+   </property>
+   <property name="text">
+    <string>Set Database</string>
+   </property>
+  </action>
+  <action name="actionFrom_Database">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/Icons/application-vnd.oasis.opendocument.database.png</normaloff>:/Icons/application-vnd.oasis.opendocument.database.png</iconset>
+   </property>
+   <property name="text">
+    <string>From Database</string>
    </property>
   </action>
  </widget>
