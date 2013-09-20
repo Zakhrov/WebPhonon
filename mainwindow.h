@@ -9,6 +9,7 @@
 #include "dialog2.h"
 #include <QSqlDatabase>
 #include <QWebView>
+#include <QTableWidgetItem>
 
 namespace Ui {
 class MainWindow;
@@ -51,15 +52,20 @@ private slots:
 
     void on_actionManage_Databases_triggered();
 
+
+
+    void on_tableWidget_cellClicked(int row, int column);
+
 private:
     Ui::MainWindow *ui;
     Phonon::MediaObject *med;
-    Phonon::MediaSource *src;
+    QList<Phonon::MediaSource> *src;
     Dialog *d;
     QSqlDatabase MyDB;
     QString HostName,DBName,UName,Passwd;
     QList<QUrl> urls;
     Dialog2 *d2;
+    QTableWidgetItem *item;
 
 
 

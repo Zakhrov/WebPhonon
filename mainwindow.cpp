@@ -8,6 +8,7 @@
 #include "dialog.h"
 #include "dialog2.h"
 #include <QSqlDatabase>
+#include <QTableWidgetItem>
 #include <QSqlQuery>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -26,6 +27,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lineEdit->hide();
     urls.clear();
     connect(med,SIGNAL(aboutToFinish()),this,SLOT(on_actionNext_triggered()));
+    ui->tableWidget->hide();
 
 
 }
@@ -108,19 +110,34 @@ void MainWindow::on_actionSet_Database_triggered()
 void MainWindow::on_actionFrom_Database_triggered()
 {
 
+    QString tabindex,titleindex;
+    int i=0;
     HostName=d->host;
     DBName=d->dbname;
     UName=d->uname;
     Passwd=d->passwd;
-
+    ui->tableWidget->setColumnCount(2);
     MyDB=QSqlDatabase::addDatabase("QMYSQL");
     MyDB.setHostName(HostName);
     MyDB.setDatabaseName(DBName);
     MyDB.open(UName,Passwd);
-    QSqlQuery request("SELECT url FROM testtab");
+    QSqlQuery request("SELECT url, name FROM testtab");
     while(request.next()){
-      urls.append(QUrl(request.value(0).toString()));
+      ui->tableWidget->insertRow(i);
+        urls.append(QUrl(request.value(0).toString()));
+      tabindex=request.value(0).toString();
+      titleindex=request.value(1).toString();
+      QTableWidgetItem *titletab=new QTableWidgetItem(titleindex,1);
+      item=new QTableWidgetItem(tabindex,1);
+      ui->tableWidget->setItem(i,1,titletab);
+      ui->tableWidget->setItem(i,0,item);
+      i++;
     }
+
+    titleindex=request.value(0).toString();
+
+
+     ui->tableWidget->show();
     med->enqueue(urls);
     med->play();
     MyDB.close();
@@ -139,5 +156,17 @@ void MainWindow::on_actionNext_triggered()
 
 void MainWindow::on_actionManage_Databases_triggered()
 {
+
     d2->show();
+}
+
+
+void MainWindow::on_tableWidget_cellClicked(int row, int column)
+{
+    if(column==0)
+    {
+        QTableWidgetItem *itab=ui->tableWidget->item(row,column);
+        med->setCurrentSource(Phonon::MediaSource(itab->text()));
+        med->play();
+    }
 }
