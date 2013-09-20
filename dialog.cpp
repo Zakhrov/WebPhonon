@@ -19,6 +19,7 @@ void Dialog::on_pushButton_clicked()
     dbname=ui->lineEdit_2->text();
     uname=ui->lineEdit_3->text();
     passwd=ui->lineEdit_4->text();
+    tabname=ui->lineEdit_5->text();
     this->close();
 }
 

@@ -13,7 +13,7 @@ class Dialog : public QDialog
     
 public:
     explicit Dialog(QWidget *parent = 0);
-    QString host,dbname,uname,passwd;
+    QString host,dbname,uname,passwd,tabname;
     ~Dialog();
     
 private slots:

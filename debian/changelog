@@ -1,5 +1,5 @@
 webphonon (1.1-1) Precise; urgency=low
 
-  * Initial release. (Closes: #XXXXXX)
+  * Add Mysql database connectivity
 
  -- Aaron Zakhrov <aaron.zakhrov@gmail.com>  Thu, 05 Sep 2013 16:48:27 +0530

@@ -22,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     med=new Phonon::MediaObject(this);
     Phonon::createPath(med,ui->VideoWidget);
     Phonon::createPath(med,sndout);
+    //Phonon::createPath(Phonon::BackendCapabilities::isMimeTypeAvailable(),ui->VideoWidget);
     ui->seekSlider->setMediaObject(med);
     ui->volumeSlider->setAudioOutput(sndout);
     ui->lineEdit->hide();
@@ -91,6 +92,7 @@ void MainWindow::on_actionStop_triggered()
 
 
 
+
 }
 
 void MainWindow::on_actionFull_Screen_triggered()
@@ -130,12 +132,13 @@ void MainWindow::on_actionFrom_Database_triggered()
     DBName=d->dbname;
     UName=d->uname;
     Passwd=d->passwd;
+    TabName=d->tabname;
 
     MyDB=QSqlDatabase::addDatabase("QMYSQL");
     MyDB.setHostName(HostName);
     MyDB.setDatabaseName(DBName);
     MyDB.open(UName,Passwd);
-    QSqlQuery request("SELECT url, name FROM testtab");
+    QSqlQuery request("SELECT url, name FROM "+TabName);
     while(request.next()){
       ui->tableWidget->insertRow(i);
       urls.append(QUrl(request.value(0).toString()));
@@ -182,5 +185,7 @@ void MainWindow::on_actionHide_Table_triggered()
 }
 void MainWindow::next()
 {
-    med->play();
+    int index=med->queue().indexOf(med->currentSource())+1;
+    if(med->queue().size()>index)
+        med->enqueue(med->queue().at(index));
 }
