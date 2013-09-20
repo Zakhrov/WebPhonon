@@ -39,7 +39,9 @@ OTHER_FILES += \
     document-export-table.png \
     application-vnd.oasis.opendocument.database.png \
     media-skip-forward.png \
-    media-skip-backward.png
+    media-skip-backward.png \
+    view-close.png \
+    server-database.png
 
 target.path = /usr/bin
 

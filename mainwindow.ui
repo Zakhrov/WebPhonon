@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>735</width>
-    <height>332</height>
+    <width>731</width>
+    <height>328</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -45,7 +45,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>735</width>
+     <width>731</width>
      <height>22</height>
     </rect>
    </property>
@@ -81,6 +81,7 @@
     </property>
     <addaction name="actionSet_Database"/>
     <addaction name="actionManage_Databases"/>
+    <addaction name="actionHide_Table"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuPlayer"/>
@@ -104,6 +105,7 @@
    <addaction name="actionNext"/>
    <addaction name="actionFull_Screen"/>
    <addaction name="actionSet_Database"/>
+   <addaction name="actionHide_Table"/>
    <addaction name="actionManage_Databases"/>
    <addaction name="actionExit"/>
   </widget>
@@ -220,8 +222,21 @@
    </property>
   </action>
   <action name="actionManage_Databases">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/Icons/server-database.png</normaloff>:/Icons/server-database.png</iconset>
+   </property>
    <property name="text">
     <string>Manage Databases</string>
+   </property>
+  </action>
+  <action name="actionHide_Table">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/Icons/view-close.png</normaloff>:/Icons/view-close.png</iconset>
+   </property>
+   <property name="text">
+    <string>Hide Table</string>
    </property>
   </action>
  </widget>
