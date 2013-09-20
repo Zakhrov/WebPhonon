@@ -6,6 +6,7 @@
 #include <Phonon/BackendCapabilities>
 #include <QDesktopServices>
 #include "dialog.h"
+#include "dialog2.h"
 #include <QSqlDatabase>
 #include <QSqlQuery>
 
@@ -15,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     d=new Dialog(this);
+    d2=new Dialog2(this);
     Phonon::AudioOutput *sndout=new Phonon::AudioOutput(Phonon::VideoCategory,this);
     med=new Phonon::MediaObject(this);
     Phonon::createPath(med,ui->VideoWidget);
@@ -133,4 +135,9 @@ void MainWindow::on_actionNext_triggered()
 {
 
     med->play();
+}
+
+void MainWindow::on_actionManage_Databases_triggered()
+{
+    d2->show();
 }

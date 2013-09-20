@@ -6,7 +6,9 @@
 #include <Phonon/MediaObject>
 #include <QPlainTextEdit>
 #include "dialog.h"
+#include "dialog2.h"
 #include <QSqlDatabase>
+#include <QWebView>
 
 namespace Ui {
 class MainWindow;
@@ -47,6 +49,8 @@ private slots:
 
     void on_actionNext_triggered();
 
+    void on_actionManage_Databases_triggered();
+
 private:
     Ui::MainWindow *ui;
     Phonon::MediaObject *med;
@@ -55,6 +59,7 @@ private:
     QSqlDatabase MyDB;
     QString HostName,DBName,UName,Passwd;
     QList<QUrl> urls;
+    Dialog2 *d2;
 
 
 
