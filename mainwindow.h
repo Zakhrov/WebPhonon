@@ -46,20 +46,17 @@ private slots:
 
     void on_actionFrom_Database_triggered();
 
-    void on_actionPrevious_triggered();
-
-    void on_actionNext_triggered();
-
     void on_actionManage_Databases_triggered();
 
-
+    void next();
 
     void on_tableWidget_cellClicked(int row, int column);
+
+    void on_actionHide_Table_triggered();
 
 private:
     Ui::MainWindow *ui;
     Phonon::MediaObject *med;
-    QList<Phonon::MediaSource> *src;
     Dialog *d;
     QSqlDatabase MyDB;
     QString HostName,DBName,UName,Passwd;
