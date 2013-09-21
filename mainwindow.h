@@ -54,6 +54,8 @@ private slots:
 
     void on_actionHide_Table_triggered();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     Phonon::MediaObject *med;

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>729</width>
-    <height>326</height>
+    <width>727</width>
+    <height>324</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,11 +15,22 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout_2">
-    <item row="3" column="0">
-     <widget class="Phonon::SeekSlider" name="seekSlider"/>
-    </item>
     <item row="0" column="0">
-     <widget class="QLineEdit" name="lineEdit"/>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLineEdit" name="lineEdit"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton">
+        <property name="text">
+         <string>launch</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="0">
+     <widget class="QTableWidget" name="tableWidget"/>
     </item>
     <item row="2" column="0">
      <layout class="QGridLayout" name="gridLayout">
@@ -35,8 +46,8 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="0">
-     <widget class="QTableWidget" name="tableWidget"/>
+    <item row="3" column="0">
+     <widget class="Phonon::SeekSlider" name="seekSlider"/>
     </item>
    </layout>
   </widget>
@@ -45,7 +56,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>729</width>
+     <width>727</width>
      <height>22</height>
     </rect>
    </property>

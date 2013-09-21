@@ -30,6 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(med,SIGNAL(aboutToFinish()),this,SLOT(next()));
     ui->tableWidget->hide();
      ui->tableWidget->setColumnCount(2);
+     ui->pushButton->hide();
 
 
 
@@ -59,16 +60,10 @@ void MainWindow::on_actionLocal_File_triggered()
 
 void MainWindow::on_actionHttp_Stream_triggered()
 {
-    int i;
+
     ui->lineEdit->show();
-    QString uname;
-    uname.insert(0,ui->lineEdit->text());
-    med->enqueue(Phonon::MediaSource(QUrl(uname)));
-    QTableWidgetItem *uitem=new QTableWidgetItem(uname,1);
-    i=ui->tableWidget->currentRow();
-    ui->tableWidget->insertRow(i+1);
-    ui->tableWidget->setItem(i+1,0,uitem);
-     ui->tableWidget->resizeColumnsToContents();
+    ui->pushButton->show();
+
 }
 
 void MainWindow::on_actionPlay_triggered()
@@ -153,6 +148,7 @@ void MainWindow::on_actionFrom_Database_triggered()
     ui->tableWidget->resizeColumnsToContents();
     ui->tableWidget->show();
     med->enqueue(urls);
+    if(med->state()!=Phonon::PlayingState)
     med->play();
     MyDB.close();
 }
@@ -188,4 +184,21 @@ void MainWindow::next()
     int index=med->queue().indexOf(med->currentSource())+1;
     if(med->queue().size()>index)
         med->enqueue(med->queue().at(index));
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    int i;
+    QString uname;
+    uname.insert(0,ui->lineEdit->text());
+    med->enqueue(Phonon::MediaSource(QUrl(uname)));
+    QTableWidgetItem *uitem=new QTableWidgetItem(uname,1);
+    i=ui->tableWidget->currentRow();
+    ui->tableWidget->insertRow(i+1);
+    ui->tableWidget->setItem(i+1,0,uitem);
+     ui->tableWidget->resizeColumnsToContents();
+     ui->lineEdit->hide();
+     ui->pushButton->hide();
+     if(med->state()!=Phonon::PlayingState)
+     med->play();
 }
