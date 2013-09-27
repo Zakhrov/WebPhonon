@@ -44,7 +44,14 @@ OTHER_FILES += \
     media-skip-forward.png \
     media-skip-backward.png \
     view-close.png \
-    server-database.png
+    server-database.png \
+    debian/copyright \
+    debian/control \
+    debian/compat \
+    debian/changelog \
+    debian/rules \
+    debian/source/format \
+    usr/bin
 
 target.path = /usr/bin
 
