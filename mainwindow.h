@@ -7,6 +7,7 @@
 #include <QPlainTextEdit>
 #include "dialog.h"
 #include "dialog2.h"
+#include "backenddialog.h"
 #include <QSqlDatabase>
 #include <QWebView>
 #include <QTableWidgetItem>
@@ -56,6 +57,8 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_actionAvailable_Formats_triggered();
+
 private:
     Ui::MainWindow *ui;
     Phonon::MediaObject *med;
@@ -65,6 +68,7 @@ private:
     QList<QUrl> urls;
     Dialog2 *d2;
     QTableWidgetItem *item;
+    BackendDialog *bkdiag;
 
 
 

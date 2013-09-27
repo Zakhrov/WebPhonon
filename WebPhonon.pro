@@ -12,15 +12,18 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     dialog.cpp \
-    dialog2.cpp
+    dialog2.cpp \
+    backenddialog.cpp
 
 HEADERS  += mainwindow.h \
     dialog.h \
-    dialog2.h
+    dialog2.h \
+    backenddialog.h
 
 FORMS    += mainwindow.ui \
     dialog.ui \
-    dialog2.ui
+    dialog2.ui \
+    backenddialog.ui
 
 RESOURCES += \
     Icons.qrc

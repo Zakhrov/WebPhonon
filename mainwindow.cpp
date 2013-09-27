@@ -1,3 +1,6 @@
+#include "dialog.h"
+#include "dialog2.h"
+#include "backenddialog.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <Phonon/AudioOutput>
@@ -5,8 +8,6 @@
 #include <QFileDialog>
 #include <Phonon/BackendCapabilities>
 #include <QDesktopServices>
-#include "dialog.h"
-#include "dialog2.h"
 #include <QSqlDatabase>
 #include <QTableWidgetItem>
 #include <QSqlQuery>
@@ -18,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     d=new Dialog(this);
     d2=new Dialog2(this);
+    bkdiag=new BackendDialog(this);
     Phonon::AudioOutput *sndout=new Phonon::AudioOutput(Phonon::VideoCategory,this);
     med=new Phonon::MediaObject(this);
     Phonon::createPath(med,ui->VideoWidget);
@@ -201,4 +203,9 @@ void MainWindow::on_pushButton_clicked()
      ui->pushButton->hide();
      if(med->state()!=Phonon::PlayingState)
      med->play();
+}
+
+void MainWindow::on_actionAvailable_Formats_triggered()
+{
+    bkdiag->show();
 }
