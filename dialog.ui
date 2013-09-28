@@ -6,12 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>396</width>
-    <height>296</height>
+    <width>392</width>
+    <height>292</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Connect to Database</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="Icons.qrc">
+    <normaloff>:/Icons/WebPhononIcon.png</normaloff>:/Icons/WebPhononIcon.png</iconset>
   </property>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
@@ -39,7 +43,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>6</x>
@@ -125,12 +129,9 @@
     </item>
    </layout>
   </widget>
-  <zorder>layoutWidget</zorder>
-  <zorder>layoutWidget</zorder>
-  <zorder>lineEdit_5</zorder>
-  <zorder>label_5</zorder>
-  <zorder>pushButton_2</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="Icons.qrc"/>
+ </resources>
  <connections/>
 </ui>

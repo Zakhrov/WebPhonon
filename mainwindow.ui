@@ -6,12 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>723</width>
-    <height>320</height>
+    <width>721</width>
+    <height>318</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>WebPhonon</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="Icons.qrc">
+    <normaloff>:/Icons/WebPhononIcon.png</normaloff>:/Icons/WebPhononIcon.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout_2">
@@ -56,7 +60,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>723</width>
+     <width>721</width>
      <height>22</height>
     </rect>
    </property>

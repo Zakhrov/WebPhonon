@@ -51,6 +51,7 @@ OTHER_FILES += \
     debian/changelog \
     debian/rules \
     debian/source/format \
+    WebPhononIcon.png
 
 target.path = /usr/bin
 

@@ -16,6 +16,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+
+    this->setWindowIcon(QIcon(":/icons/WebPhononIcon.png"));
     ui->setupUi(this);
     d=new Dialog(this);
     d2=new Dialog2(this);
