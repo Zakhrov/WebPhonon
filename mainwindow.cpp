@@ -24,16 +24,19 @@ MainWindow::MainWindow(QWidget *parent) :
     med=new Phonon::MediaObject(this);
     Phonon::createPath(med,ui->VideoWidget);
     Phonon::createPath(med,sndout);
+    QStringList collabel;
+    collabel.append("URL");
+    collabel.append("Name");
     //Phonon::createPath(Phonon::BackendCapabilities::isMimeTypeAvailable(),ui->VideoWidget);
     ui->seekSlider->setMediaObject(med);
     ui->volumeSlider->setAudioOutput(sndout);
     ui->lineEdit->hide();
     urls.clear();
-    connect(med,SIGNAL(aboutToFinish()),this,SLOT(next()));
+    connect(med,SIGNAL(finished()),this,SLOT(next()));
     ui->tableWidget->hide();
      ui->tableWidget->setColumnCount(2);
+     ui->tableWidget->setHorizontalHeaderLabels(collabel);
      ui->pushButton->hide();
-
 
 
 }
