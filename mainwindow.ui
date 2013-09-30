@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>721</width>
-    <height>318</height>
+    <width>717</width>
+    <height>314</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -60,7 +60,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>721</width>
+     <width>717</width>
      <height>22</height>
     </rect>
    </property>
@@ -136,6 +136,9 @@
    <property name="text">
     <string>&amp;Local File</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
   </action>
   <action name="actionHttp_Stream">
    <property name="icon">
@@ -144,6 +147,9 @@
    </property>
    <property name="text">
     <string>&amp;Http Stream</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+U</string>
    </property>
   </action>
   <action name="actionPlay">
@@ -223,6 +229,9 @@
    <property name="text">
     <string>From &amp;Database</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
+   </property>
   </action>
   <action name="actionManage_Databases">
    <property name="icon">
@@ -245,6 +254,9 @@
   <action name="actionAvailable_Formats">
    <property name="text">
     <string>Available Formats</string>
+   </property>
+   <property name="shortcut">
+    <string>F1</string>
    </property>
   </action>
  </widget>

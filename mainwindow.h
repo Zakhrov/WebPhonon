@@ -57,6 +57,8 @@ private slots:
 
     void on_actionAvailable_Formats_triggered();
 
+
+
 private:
     Ui::MainWindow *ui;
     Phonon::MediaObject *med;
