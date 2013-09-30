@@ -34,7 +34,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->volumeSlider->setAudioOutput(sndout);
     ui->lineEdit->hide();
     urls.clear();
-    connect(med,SIGNAL(finished()),this,SLOT(next()));
     ui->tableWidget->hide();
      ui->tableWidget->setColumnCount(2);
      ui->tableWidget->setHorizontalHeaderLabels(collabel);
@@ -186,13 +185,6 @@ void MainWindow::on_actionHide_Table_triggered()
     ui->lineEdit->hide();
 
 }
-void MainWindow::next()
-{
-    int index=med->queue().indexOf(med->currentSource())+1;
-    if(med->queue().size()>index)
-        med->enqueue(med->queue().at(index));
-}
-
 void MainWindow::on_pushButton_clicked()
 {
     int i;

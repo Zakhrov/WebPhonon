@@ -49,8 +49,6 @@ private slots:
 
     void on_actionManage_Databases_triggered();
 
-    void next();
-
     void on_tableWidget_cellClicked(int row, int column);
 
     void on_actionHide_Table_triggered();
