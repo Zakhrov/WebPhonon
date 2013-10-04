@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>398</width>
-    <height>298</height>
+    <width>396</width>
+    <height>296</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -61,7 +61,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Energon Oblique, serif';&quot;&gt;Playing local media files:&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'DejaVu Serif, serif';&quot;&gt;To play a media file stored locally on the hard drive, either click the &lt;/span&gt;&lt;img src=&quot;:/help/helpimages/image03.png&quot; /&gt; &lt;span style=&quot; font-family:'DejaVu Serif, serif';&quot;&gt;icon or go to File-&amp;gt;Open-&amp;gt;local file in the File menu. A new dialog box will pop up where you can select the media file. WebPhonon will only let you open one file at a time.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'DejaVu Serif, serif';&quot;&gt;To play a media file stored locally on the hard drive, either click the &lt;/span&gt;&lt;img src=&quot;:/help/helpimages/image03.png&quot; /&gt; &lt;span style=&quot; font-family:'DejaVu Serif, serif';&quot;&gt;icon or go to File-&amp;gt;Open-&amp;gt;local file in the File menu. A new dialog box will pop up where you can select the media file. WebPhonon will let you open more than one file at a time.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'DejaVu Serif, serif';&quot;&gt;This is the open file dialog:&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/help/helpimages/image04.png&quot; /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'DejaVu Serif, serif';&quot;&gt;Once the file is selected, you can either press the “Enter” key or click on Open and the file will play automatically. Depending on the video resolution, WebPhonon will scale the video to the maximum size it can within the confines of the main window.&lt;/span&gt;&lt;/p&gt;

@@ -23,7 +23,6 @@ class MainWindow : public QMainWindow
     
 public:
     explicit MainWindow(QWidget *parent = 0);
-    void cmdopen(QString filename);
 
     ~MainWindow();
 protected:
@@ -59,7 +58,7 @@ private slots:
 
     void on_actionAvailable_Formats_triggered();
 
-
+    void next();
 
     void on_actionUser_Manual_triggered();
 
@@ -70,6 +69,7 @@ private:
     QSqlDatabase MyDB;
     QString HostName,DBName,UName,Passwd,TabName;
     QList<QUrl> urls;
+    QList <Phonon::MediaSource> sources;
     Dialog2 *d2;
     QTableWidgetItem *item;
     BackendDialog *bkdiag;

@@ -40,24 +40,10 @@ MainWindow::MainWindow(QWidget *parent) :
      ui->tableWidget->setColumnCount(2);
      ui->tableWidget->setHorizontalHeaderLabels(collabel);
      ui->pushButton->hide();
+     connect(med,SIGNAL(aboutToFinish()),this,SLOT(next()));
 
 
 }
-
-void MainWindow::cmdopen(QString filename)
-{
-    int i;
-    med->enqueue(Phonon::MediaSource(QUrl(filename)));
-    QTableWidgetItem *fitem=new QTableWidgetItem(filename,1);
-    i=ui->tableWidget->currentRow();
-    ui->tableWidget->insertRow(i+1);
-    ui->tableWidget->setItem(i+1,0,fitem);
-     ui->tableWidget->resizeColumnsToContents();
-    if(med->state()!=Phonon::PlayingState)
-    med->play();
-}
-
-
 MainWindow::~MainWindow()
 {
     MyDB.close();
@@ -67,15 +53,25 @@ MainWindow::~MainWindow()
 void MainWindow::on_actionLocal_File_triggered()
 {
     int i;
-    QString fname=QFileDialog::getOpenFileName(this,tr("Choose Files"));
-    med->enqueue(Phonon::MediaSource(QUrl(fname)));
-    QTableWidgetItem *fitem=new QTableWidgetItem(fname,1);
-    i=ui->tableWidget->currentRow();
-    ui->tableWidget->insertRow(i+1);
-    ui->tableWidget->setItem(i+1,0,fitem);
+    int index=sources.size();
+    QStringList fnames=QFileDialog::getOpenFileNames(this,tr("Choose Files"),QDesktopServices::storageLocation(QDesktopServices::MoviesLocation));
+    foreach (QString fname, fnames) {
+        sources.append(Phonon::MediaSource(fname));
+        QTableWidgetItem *fitem=new QTableWidgetItem(fname,1);
+        i=ui->tableWidget->rowCount();
+        ui->tableWidget->insertRow(i);
+        ui->tableWidget->setItem(i,0,fitem);
+    }
+
      ui->tableWidget->resizeColumnsToContents();
-    if(med->state()!=Phonon::PlayingState)
-    med->play();
+
+     if(med->state()!=Phonon::PlayingState)
+     {
+
+         if(!sources.isEmpty())
+        med->setCurrentSource(sources.at(index));
+        med->play();
+     }
 }
 
 
@@ -144,34 +140,42 @@ void MainWindow::on_actionFrom_Database_triggered()
 {
 
     QString tabindex,titleindex;
-    int i=0;
+    int i;
+    int index=sources.size();
     HostName=d->host;
     DBName=d->dbname;
     UName=d->uname;
     Passwd=d->passwd;
     TabName=d->tabname;
-
+   // QStringList dnames;
     MyDB=QSqlDatabase::addDatabase("QMYSQL");
     MyDB.setHostName(HostName);
     MyDB.setDatabaseName(DBName);
     MyDB.open(UName,Passwd);
     QSqlQuery request("SELECT url, name FROM "+TabName);
     while(request.next()){
+
+      //dnames.append(request.value(0).toString());
+        tabindex=request.value(0).toString();
+        titleindex=request.value(1).toString();
+      sources.append(Phonon::MediaSource(QUrl(request.value(0).toString())));
+      QTableWidgetItem *item1=new QTableWidgetItem(tabindex,1);
+      QTableWidgetItem *item2=new QTableWidgetItem(titleindex,1);
+      i=ui->tableWidget->rowCount();
       ui->tableWidget->insertRow(i);
-      urls.append(QUrl(request.value(0).toString()));
-      tabindex=request.value(0).toString();
-      titleindex=request.value(1).toString();
-      QTableWidgetItem *titletab=new QTableWidgetItem(titleindex,1);
-      item=new QTableWidgetItem(tabindex,1);
-      ui->tableWidget->setItem(i,1,titletab);
-      ui->tableWidget->setItem(i,0,item);
-      i++;
+      ui->tableWidget->setItem(i,0,item1);
+      ui->tableWidget->setItem(i,1,item2);
     }
     ui->tableWidget->resizeColumnsToContents();
     ui->tableWidget->show();
-    med->enqueue(urls);
     if(med->state()!=Phonon::PlayingState)
-    med->play();
+    {
+        if(!sources.isEmpty())
+            med->setCurrentSource(sources.at(index));
+
+        med->play();
+    }
+
     MyDB.close();
 }
 
@@ -186,9 +190,15 @@ void MainWindow::on_tableWidget_cellClicked(int row, int column)
 {
     if(column==0)
     {
-        QTableWidgetItem *itab=ui->tableWidget->item(row,column);
-        med->setCurrentSource(Phonon::MediaSource(itab->text()));
+
+        med->stop();
+        med->clearQueue();
+        if(row>=sources.size())
+            return;
+        med->setCurrentSource(sources[row]);
         med->play();
+
+
     }
 }
 
@@ -207,7 +217,8 @@ void MainWindow::on_pushButton_clicked()
     int i;
     QString uname;
     uname.insert(0,ui->lineEdit->text());
-    med->enqueue(Phonon::MediaSource(QUrl(uname)));
+    int index=sources.size();
+    sources.append(Phonon::MediaSource(QUrl(uname)));
     QTableWidgetItem *uitem=new QTableWidgetItem(uname,1);
     i=ui->tableWidget->currentRow();
     ui->tableWidget->insertRow(i+1);
@@ -216,12 +227,26 @@ void MainWindow::on_pushButton_clicked()
      ui->lineEdit->hide();
      ui->pushButton->hide();
      if(med->state()!=Phonon::PlayingState)
-     med->play();
+     {
+         if(!sources.isEmpty())
+             med->setCurrentSource(sources.at(index));
+
+         med->play();
+     }
+
 }
 
 void MainWindow::on_actionAvailable_Formats_triggered()
 {
     bkdiag->show();
+}
+
+void MainWindow::next()
+{
+    int index=sources.indexOf(med->currentSource())+1;
+    //if(med->state()!=Phonon::PlayingState)
+    if(sources.size()>index)
+        med->enqueue(sources.at(index));
 }
 
 void MainWindow::on_actionUser_Manual_triggered()
