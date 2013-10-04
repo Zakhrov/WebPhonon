@@ -5,6 +5,8 @@
 #-------------------------------------------------
 
 QT       += core gui phonon sql webkit
+
+
 TARGET = WebPhonon
 TEMPLATE = app
 
@@ -13,17 +15,20 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     dialog.cpp \
     dialog2.cpp \
-    backenddialog.cpp
+    backenddialog.cpp \
+    helpdialog.cpp
 
 HEADERS  += mainwindow.h \
     dialog.h \
     dialog2.h \
-    backenddialog.h
+    backenddialog.h \
+    helpdialog.h
 
 FORMS    += mainwindow.ui \
     dialog.ui \
     dialog2.ui \
-    backenddialog.ui
+    backenddialog.ui \
+    helpdialog.ui
 
 RESOURCES += \
     Icons.qrc
@@ -59,7 +64,19 @@ OTHER_FILES += \
     icons/128x128/WebPhononIcon.png \
     icons/256x256/WebPhononIcon.png \
     icons/512x512/WebPhononIcon.png \
-    icons/48x48/WebPhononIcon.png
+    icons/48x48/WebPhononIcon.png \
+    WebPhonon_Documentation.html \
+    helpimages/menu.png \
+    helpimages/image10.png \
+    helpimages/image09.png \
+    helpimages/image08.png \
+    helpimages/image07.png \
+    helpimages/image06.png \
+    helpimages/image05.png \
+    helpimages/image04.png \
+    helpimages/image03.png \
+    helpimages/image02.png \
+    helpimages/image00.png
 
     target.path = /usr/bin
     desktop.path= /usr/share/applications

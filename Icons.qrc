@@ -20,4 +20,17 @@
     <qresource prefix="/splash">
         <file>WebPhonon-Master-text2.png</file>
     </qresource>
+    <qresource prefix="/help">
+        <file>helpimages/menu.png</file>
+        <file>helpimages/image00.png</file>
+        <file>helpimages/image02.png</file>
+        <file>helpimages/image03.png</file>
+        <file>helpimages/image04.png</file>
+        <file>helpimages/image05.png</file>
+        <file>helpimages/image06.png</file>
+        <file>helpimages/image07.png</file>
+        <file>helpimages/image08.png</file>
+        <file>helpimages/image09.png</file>
+        <file>helpimages/image10.png</file>
+    </qresource>
 </RCC>

@@ -15,7 +15,13 @@ int main(int argc, char *argv[])
     spl.setPixmap(img);
     spl.show();
     w.showMaximized();
-
+   /* QStringList cmd=a.arguments();
+    if(!cmd.isEmpty())
+    {
+        w.cmdopen(cmd[1]);
+    }*/
+    //if(argv[0]!='\0')
+    //w.cmdopen(argv[0]);
 
     
     return a.exec();

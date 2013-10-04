@@ -8,6 +8,7 @@
 #include "dialog.h"
 #include "dialog2.h"
 #include "backenddialog.h"
+#include "helpdialog.h"
 #include <QSqlDatabase>
 #include <QWebView>
 #include <QTableWidgetItem>
@@ -22,6 +23,7 @@ class MainWindow : public QMainWindow
     
 public:
     explicit MainWindow(QWidget *parent = 0);
+    void cmdopen(QString filename);
 
     ~MainWindow();
 protected:
@@ -59,6 +61,8 @@ private slots:
 
 
 
+    void on_actionUser_Manual_triggered();
+
 private:
     Ui::MainWindow *ui;
     Phonon::MediaObject *med;
@@ -69,6 +73,7 @@ private:
     Dialog2 *d2;
     QTableWidgetItem *item;
     BackendDialog *bkdiag;
+    HelpDialog *hdiag;
 
 
 

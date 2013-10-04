@@ -3,6 +3,7 @@
 #include "backenddialog.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "helpdialog.h"
 #include <Phonon/AudioOutput>
 #include <Phonon/MediaObject>
 #include <QFileDialog>
@@ -22,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
     d=new Dialog(this);
     d2=new Dialog2(this);
     bkdiag=new BackendDialog(this);
+    hdiag=new HelpDialog(this);
     Phonon::AudioOutput *sndout=new Phonon::AudioOutput(Phonon::VideoCategory,this);
     med=new Phonon::MediaObject(this);
     Phonon::createPath(med,ui->VideoWidget);
@@ -40,6 +42,19 @@ MainWindow::MainWindow(QWidget *parent) :
      ui->pushButton->hide();
 
 
+}
+
+void MainWindow::cmdopen(QString filename)
+{
+    int i;
+    med->enqueue(Phonon::MediaSource(QUrl(filename)));
+    QTableWidgetItem *fitem=new QTableWidgetItem(filename,1);
+    i=ui->tableWidget->currentRow();
+    ui->tableWidget->insertRow(i+1);
+    ui->tableWidget->setItem(i+1,0,fitem);
+     ui->tableWidget->resizeColumnsToContents();
+    if(med->state()!=Phonon::PlayingState)
+    med->play();
 }
 
 
@@ -62,6 +77,7 @@ void MainWindow::on_actionLocal_File_triggered()
     if(med->state()!=Phonon::PlayingState)
     med->play();
 }
+
 
 
 void MainWindow::on_actionHttp_Stream_triggered()
@@ -183,6 +199,7 @@ void MainWindow::on_actionHide_Table_triggered()
     else
         ui->tableWidget->hide();
     ui->lineEdit->hide();
+    ui->pushButton->hide();
 
 }
 void MainWindow::on_pushButton_clicked()
@@ -205,4 +222,9 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::on_actionAvailable_Formats_triggered()
 {
     bkdiag->show();
+}
+
+void MainWindow::on_actionUser_Manual_triggered()
+{
+    hdiag->showMaximized();
 }

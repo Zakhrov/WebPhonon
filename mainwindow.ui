@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>717</width>
-    <height>314</height>
+    <width>715</width>
+    <height>312</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -60,7 +60,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>717</width>
+     <width>715</width>
      <height>22</height>
     </rect>
    </property>
@@ -101,6 +101,7 @@
      <string>&amp;Help</string>
     </property>
     <addaction name="actionAvailable_Formats"/>
+    <addaction name="actionUser_Manual"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuPlayer"/>
@@ -254,6 +255,11 @@
   <action name="actionAvailable_Formats">
    <property name="text">
     <string>Available Formats</string>
+   </property>
+  </action>
+  <action name="actionUser_Manual">
+   <property name="text">
+    <string>User Manual</string>
    </property>
    <property name="shortcut">
     <string>F1</string>
