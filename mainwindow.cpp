@@ -40,7 +40,7 @@ MainWindow::MainWindow(QWidget *parent) :
      ui->tableWidget->setColumnCount(2);
      ui->tableWidget->setHorizontalHeaderLabels(collabel);
      ui->pushButton->hide();
-     connect(med,SIGNAL(aboutToFinish()),this,SLOT(next()));
+   connect(med,SIGNAL(aboutToFinish()),this,SLOT(next()));
 
 
 }
@@ -72,6 +72,7 @@ void MainWindow::on_actionLocal_File_triggered()
         med->setCurrentSource(sources.at(index));
         med->play();
      }
+
 }
 
 
@@ -100,12 +101,7 @@ void MainWindow::on_actionPause_triggered()
 
 void MainWindow::on_actionStop_triggered()
 {
-    med->clearQueue();
     med->stop();
-
-
-
-
 }
 
 void MainWindow::on_actionFull_Screen_triggered()
@@ -244,9 +240,13 @@ void MainWindow::on_actionAvailable_Formats_triggered()
 void MainWindow::next()
 {
     int index=sources.indexOf(med->currentSource())+1;
-    //if(med->state()!=Phonon::PlayingState)
-    if(sources.size()>index)
-        med->enqueue(sources.at(index));
+
+        if(sources.size()>index)
+            med->setCurrentSource(sources.at(index));
+        if(med->state()==Phonon::StoppedState)
+        med->play();
+
+
 }
 
 void MainWindow::on_actionUser_Manual_triggered()
