@@ -67,7 +67,7 @@ private:
     Phonon::MediaObject *med;
     Dialog *d;
     QSqlDatabase MyDB;
-    QString HostName,DBName,UName,Passwd,TabName;
+    QString HostName,DBName,UName,Passwd,TabName,DBType;
     QList<QUrl> urls;
     QList <Phonon::MediaSource> sources;
     Dialog2 *d2;

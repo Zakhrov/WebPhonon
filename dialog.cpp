@@ -6,6 +6,7 @@ Dialog::Dialog(QWidget *parent) :
     ui(new Ui::Dialog)
 {
     ui->setupUi(this);
+    dbtype="QMYSQL";
 }
 
 Dialog::~Dialog()
@@ -26,5 +27,18 @@ void Dialog::on_pushButton_clicked()
 void Dialog::on_pushButton_2_clicked()
 {
     this->close();
+
+}
+
+void Dialog::on_comboBox_activated(const QString &arg1)
+{
+    if(arg1=="MySQL")
+        dbtype="QMYSQL";
+    else if(arg1=="Microsoft SQL Server (ODBC)")
+        dbtype="QODBC";
+     else if(arg1=="Oracle OCI")
+        dbtype="QOCI";
+    else
+        dbtype="QMYSQL";
 
 }

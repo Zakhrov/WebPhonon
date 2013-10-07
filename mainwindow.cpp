@@ -12,6 +12,7 @@
 #include <QSqlDatabase>
 #include <QTableWidgetItem>
 #include <QSqlQuery>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -143,36 +144,48 @@ void MainWindow::on_actionFrom_Database_triggered()
     UName=d->uname;
     Passwd=d->passwd;
     TabName=d->tabname;
+    DBType=d->dbtype;
+    QMessageBox msg;
    // QStringList dnames;
-    MyDB=QSqlDatabase::addDatabase("QMYSQL");
-    MyDB.setHostName(HostName);
-    MyDB.setDatabaseName(DBName);
-    MyDB.open(UName,Passwd);
-    QSqlQuery request("SELECT url, name FROM "+TabName);
-    while(request.next()){
-
-      //dnames.append(request.value(0).toString());
-        tabindex=request.value(0).toString();
-        titleindex=request.value(1).toString();
-      sources.append(Phonon::MediaSource(QUrl(request.value(0).toString())));
-      QTableWidgetItem *item1=new QTableWidgetItem(tabindex,1);
-      QTableWidgetItem *item2=new QTableWidgetItem(titleindex,1);
-      i=ui->tableWidget->rowCount();
-      ui->tableWidget->insertRow(i);
-      ui->tableWidget->setItem(i,0,item1);
-      ui->tableWidget->setItem(i,1,item2);
-    }
-    ui->tableWidget->resizeColumnsToContents();
-    ui->tableWidget->show();
-    if(med->state()!=Phonon::PlayingState)
+    MyDB=QSqlDatabase::addDatabase(DBType);
+    if(MyDB.isDriverAvailable(DBType)==true)
     {
-        if(!sources.isEmpty())
-            med->setCurrentSource(sources.at(index));
 
-        med->play();
+        MyDB.setHostName(HostName);
+        MyDB.setDatabaseName(DBName);
+        MyDB.open(UName,Passwd);
+        QSqlQuery request("SELECT url, name FROM "+TabName);
+        while(request.next())
+        {
+
+            tabindex=request.value(0).toString();
+            titleindex=request.value(1).toString();
+            sources.append(Phonon::MediaSource(QUrl(request.value(0).toString())));
+            QTableWidgetItem *item1=new QTableWidgetItem(tabindex,1);
+            QTableWidgetItem *item2=new QTableWidgetItem(titleindex,1);
+            i=ui->tableWidget->rowCount();
+            ui->tableWidget->insertRow(i);
+            ui->tableWidget->setItem(i,0,item1);
+            ui->tableWidget->setItem(i,1,item2);
+        }
+        ui->tableWidget->resizeColumnsToContents();
+        ui->tableWidget->show();
+        if(med->state()!=Phonon::PlayingState)
+        {
+            if(!sources.isEmpty())
+                med->setCurrentSource(sources.at(index));
+
+            med->play();
+        }
+
+        MyDB.close();
+    }
+    else
+    {
+        msg.setText("Database Driver not Loaded");
+        msg.exec();
     }
 
-    MyDB.close();
 }
 
 void MainWindow::on_actionManage_Databases_triggered()
