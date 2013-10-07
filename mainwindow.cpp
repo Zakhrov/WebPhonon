@@ -27,6 +27,7 @@ MainWindow::MainWindow(QWidget *parent) :
     hdiag=new HelpDialog(this);
     Phonon::AudioOutput *sndout=new Phonon::AudioOutput(Phonon::VideoCategory,this);
     med=new Phonon::MediaObject(this);
+    med->setTransitionTime(2000);
     Phonon::createPath(med,ui->VideoWidget);
     Phonon::createPath(med,sndout);
     QStringList collabel;
@@ -154,6 +155,11 @@ void MainWindow::on_actionFrom_Database_triggered()
         MyDB.setHostName(HostName);
         MyDB.setDatabaseName(DBName);
         MyDB.open(UName,Passwd);
+        if(MyDB.isOpen()==true)
+        {
+              msg.setText(MyDB.driverName()+" Database "+DBName+" Open");
+              msg.exec();
+        }
         QSqlQuery request("SELECT url, name FROM "+TabName);
         while(request.next())
         {
@@ -254,11 +260,8 @@ void MainWindow::next()
 {
     int index=sources.indexOf(med->currentSource())+1;
 
-        if(sources.size()>index)
-            med->setCurrentSource(sources.at(index));
-        if(med->state()==Phonon::StoppedState)
-        med->play();
-
+       if(sources.size()>index)
+           med->enqueue(sources.at(index));
 
 }
 
