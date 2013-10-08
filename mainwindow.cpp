@@ -161,15 +161,15 @@ void MainWindow::on_actionFrom_Database_triggered()
         {
             QString dsn= QString("DRIVER={SQL Server};SERVER=%1;DATABASE=%2;Trusted_Connection=Yes;").arg(HostName).arg(DBName);
            MyDB.setDatabaseName(dsn);
-           //MyDB.open();
+           MyDB.open();
         }
         else
         {
-           /* MyDB.setHostName(HostName);
+           MyDB.setHostName(HostName);
             MyDB.setDatabaseName(DBName);
-            */
+             MyDB.open(UName,Passwd);
         }
-        MyDB.open(UName,Passwd);
+
         if(MyDB.isOpen()==true)
         {
               msg.setText(MyDB.driverName()+" Database "+DBName+" Open");
