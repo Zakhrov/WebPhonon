@@ -146,8 +146,19 @@ void MainWindow::on_actionFrom_Database_triggered()
     Passwd=d->passwd;
     TabName=d->tabname;
     DBType=d->dbtype;
+    QPixmap img1,img2;
+    img1.load(":/Icons/WebPhononIcon.png");
+    img2=img1.scaled(32,32);
     QMessageBox msg;
+    msg.setIconPixmap(img2);
+    msg.setWindowTitle("Database Module");
    // QStringList dnames;
+    if(DBType=="QODBC")
+    {
+        QString dsn= QString("DRIVER={SQL Native Client};SERVER=%1;DATABASE=%2;Trusted_Connection=Yes;").arg(HostName).arg(DBName);
+        MyDB=QSqlDatabase::addDatabase(dsn);
+    }
+    else
     MyDB=QSqlDatabase::addDatabase(DBType);
     if(MyDB.isDriverAvailable(DBType)==true)
     {
