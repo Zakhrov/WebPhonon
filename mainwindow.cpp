@@ -1,5 +1,5 @@
 #include "dialog.h"
-#include "dialog2.h"
+#include "dbmainwindow.h"
 #include "backenddialog.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setWindowIcon(QIcon(":/icons/WebPhononIcon.png"));
     ui->setupUi(this);
     d=new Dialog(this);
-    d2=new Dialog2(this);
+    dm2=new DBMainWindow(this);
     bkdiag=new BackendDialog(this);
     hdiag=new HelpDialog(this);
     Phonon::AudioOutput *sndout=new Phonon::AudioOutput(Phonon::VideoCategory,this);
@@ -212,7 +212,7 @@ void MainWindow::on_actionFrom_Database_triggered()
 void MainWindow::on_actionManage_Databases_triggered()
 {
 
-    d2->show();
+    dm2->show();
 }
 
 

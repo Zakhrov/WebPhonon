@@ -6,7 +6,7 @@
 #include <Phonon/MediaObject>
 #include <QPlainTextEdit>
 #include "dialog.h"
-#include "dialog2.h"
+#include "dbmainwindow.h"
 #include "backenddialog.h"
 #include "helpdialog.h"
 #include <QSqlDatabase>
@@ -70,7 +70,7 @@ private:
     QString HostName,DBName,UName,Passwd,TabName,DBType;
     QList<QUrl> urls;
     QList <Phonon::MediaSource> sources;
-    Dialog2 *d2;
+    DBMainWindow *dm2;
     QTableWidgetItem *item;
     BackendDialog *bkdiag;
     HelpDialog *hdiag;

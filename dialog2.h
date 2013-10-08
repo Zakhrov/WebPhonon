@@ -13,6 +13,7 @@ class Dialog2 : public QDialog
     
 public:
     explicit Dialog2(QWidget *parent = 0);
+    QString dbhost,dbtype,dbname,uname,passwd;
     ~Dialog2();
     
 private slots:
@@ -20,8 +21,12 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_comboBox_activated(const QString &arg1);
+
 private:
     Ui::Dialog2 *ui;
+
+
 };
 
 #endif // DIALOG2_H
