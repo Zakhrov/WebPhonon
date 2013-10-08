@@ -153,18 +153,22 @@ void MainWindow::on_actionFrom_Database_triggered()
     msg.setIconPixmap(img2);
     msg.setWindowTitle("Database Module");
    // QStringList dnames;
-    if(DBType=="QODBC")
-    {
-        QString dsn= QString("DRIVER={SQL Native Client};SERVER=%1;DATABASE=%2;Trusted_Connection=Yes;").arg(HostName).arg(DBName);
-        MyDB=QSqlDatabase::addDatabase(dsn);
-    }
-    else
     MyDB=QSqlDatabase::addDatabase(DBType);
+    MyDB.setConnectOptions();
     if(MyDB.isDriverAvailable(DBType)==true)
     {
-
-        MyDB.setHostName(HostName);
-        MyDB.setDatabaseName(DBName);
+        if(DBType=="QODBC")
+        {
+            QString dsn= QString("DRIVER={SQL Server};SERVER=%1;DATABASE=%2;Trusted_Connection=Yes;").arg(HostName).arg(DBName);
+           MyDB.setDatabaseName(dsn);
+           //MyDB.open();
+        }
+        else
+        {
+           /* MyDB.setHostName(HostName);
+            MyDB.setDatabaseName(DBName);
+            */
+        }
         MyDB.open(UName,Passwd);
         if(MyDB.isOpen()==true)
         {
