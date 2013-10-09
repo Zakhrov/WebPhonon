@@ -16,6 +16,7 @@ DBMainWindow::DBMainWindow(QWidget *parent) :
 
 DBMainWindow::~DBMainWindow()
 {
+   MyDB.close();
     delete ui;
 }
 
@@ -49,7 +50,6 @@ void DBMainWindow::on_actionConnect_triggered()
             MyDB.setDatabaseName(DBName);
              MyDB.open(UName,Passwd);
         }
-
         if(MyDB.isOpen()==true)
         {
               msg.setText(MyDB.driverName()+" Database "+DBName+" Open");

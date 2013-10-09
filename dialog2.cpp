@@ -21,6 +21,7 @@ void Dialog2::on_pushButton_clicked()
     dbname=ui->lineEdit_2->text();
     uname=ui->lineEdit_3->text();
     passwd=ui->lineEdit_4->text();
+    this->close();
 
 
 }
