@@ -11,7 +11,12 @@ DBMainWindow::DBMainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     d2=new Dialog2(this);
-    ui->tableWidget->setColumnCount(2);
+    //ui->tableWidget->setColumnCount(2);
+    QStringList collabel;
+    collabel.append("URL");
+    collabel.append("Title");
+    //ui->tableWidget->setHorizontalHeaderLabels(collabel);
+
 }
 
 DBMainWindow::~DBMainWindow()
@@ -65,9 +70,10 @@ void DBMainWindow::on_actionConnect_triggered()
 void DBMainWindow::on_listWidget_itemClicked(QListWidgetItem *item)
 {
     TabName=item->text();
-    QString tabindex,titleindex;
-    int i;
-    QSqlQuery request("SELECT url, name FROM "+TabName);
+    model=new QSqlTableModel(this,MyDB);
+    //QString tabindex,titleindex;
+    //int i;
+   /* QSqlQuery request("SELECT url, name FROM "+TabName);
     while(request.next())
     {
 
@@ -80,7 +86,14 @@ void DBMainWindow::on_listWidget_itemClicked(QListWidgetItem *item)
         ui->tableWidget->setItem(i,0,item1);
         ui->tableWidget->setItem(i,1,item2);
     }
-    ui->tableWidget->resizeColumnsToContents();
+    ui->tableWidget->resizeColumnsToContents();*/
+    model->setTable(TabName);
+    model->setEditStrategy(QSqlTableModel::OnFieldChange);
+    model->select();
+    model->setHeaderData(0,Qt::Horizontal,tr("URL"));
+    model->setHeaderData(1,Qt::Horizontal,tr("title"));
+    ui->tableView->setModel(model);
+
 }
 
 void DBMainWindow::on_actionAdd_Database_triggered()

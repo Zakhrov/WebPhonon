@@ -5,6 +5,7 @@
 #include <QMainWindow>
 #include <QSqlDatabase>
 #include <QListWidgetItem>
+#include <QSqlTableModel>
 
 namespace Ui {
 class DBMainWindow;
@@ -25,11 +26,13 @@ private slots:
 
     void on_actionAdd_Database_triggered();
 
+
 private:
     Ui::DBMainWindow *ui;
     Dialog2 *d2;
     QSqlDatabase MyDB;
     QString HostName,DBName,UName,Passwd,TabName,DBType;
+    QSqlTableModel *model;
 };
 
 #endif // DBMAINWINDOW_H
