@@ -1,8 +1,10 @@
 #include "dbmainwindow.h"
 #include "ui_dbmainwindow.h"
 #include "dialog2.h"
+#include "addtabledialog.h"
 #include <QSqlDatabase>
 #include <QMessageBox>
+#include <QSqlQueryModel>
 #include <QSqlQuery>
 
 DBMainWindow::DBMainWindow(QWidget *parent) :
@@ -11,6 +13,7 @@ DBMainWindow::DBMainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     d2=new Dialog2(this);
+    tabdiag=new AddTableDialog(this);
     //ui->tableWidget->setColumnCount(2);
     QStringList collabel;
     collabel.append("URL");
@@ -35,6 +38,7 @@ void DBMainWindow::on_actionConnect_triggered()
     Passwd=d2->passwd;
     MyDB=QSqlDatabase::addDatabase(DBType);
     MyDB.setConnectOptions();
+     model=new QSqlTableModel(this,MyDB);
     QPixmap img1,img2;
     img1.load(":/Icons/WebPhononIcon.png");
     img2=img1.scaled(32,32);
@@ -60,7 +64,7 @@ void DBMainWindow::on_actionConnect_triggered()
               msg.setText(MyDB.driverName()+" Database "+DBName+" Open");
               msg.exec();
         }
-        QStringList tabs= MyDB.tables();
+        tabs= MyDB.tables();
         ui->listWidget->addItems(tabs);
         //QSqlQuery request("SELECT url, name FROM ");
     }
@@ -70,33 +74,75 @@ void DBMainWindow::on_actionConnect_triggered()
 void DBMainWindow::on_listWidget_itemClicked(QListWidgetItem *item)
 {
     TabName=item->text();
-    model=new QSqlTableModel(this,MyDB);
-    //QString tabindex,titleindex;
-    //int i;
-   /* QSqlQuery request("SELECT url, name FROM "+TabName);
-    while(request.next())
-    {
-
-        tabindex=request.value(0).toString();
-        titleindex=request.value(1).toString();
-        QTableWidgetItem *item1=new QTableWidgetItem(tabindex,1);
-        QTableWidgetItem *item2=new QTableWidgetItem(titleindex,1);
-        i=ui->tableWidget->rowCount();
-        ui->tableWidget->insertRow(i);
-        ui->tableWidget->setItem(i,0,item1);
-        ui->tableWidget->setItem(i,1,item2);
-    }
-    ui->tableWidget->resizeColumnsToContents();*/
     model->setTable(TabName);
     model->setEditStrategy(QSqlTableModel::OnFieldChange);
     model->select();
     model->setHeaderData(0,Qt::Horizontal,tr("URL"));
     model->setHeaderData(1,Qt::Horizontal,tr("title"));
     ui->tableView->setModel(model);
+    ui->tableView->resizeColumnsToContents();
 
 }
 
 void DBMainWindow::on_actionAdd_Database_triggered()
 {
     d2->show();
+}
+
+void DBMainWindow::on_actionNew_Table_triggered()
+{
+    tabdiag->showMaximized();
+
+}
+
+void DBMainWindow::on_actionInsert_Values_triggered()
+{
+
+    QSqlQuery ins("INSERT INTO "+TabName+"(url,name) VALUES('path to file','name of file')");
+    ins.exec();
+    model->setTable(TabName);
+    model->setEditStrategy(QSqlTableModel::OnFieldChange);
+    model->select();
+    model->setHeaderData(0,Qt::Horizontal,tr("URL"));
+    model->setHeaderData(1,Qt::Horizontal,tr("title"));
+    ui->tableView->setModel(model);
+    ui->tableView->resizeColumnsToContents();
+
+
+
+}
+
+void DBMainWindow::on_actionDelete_tuple_triggered()
+{
+    //get selections
+    QItemSelection selection = ui->tableView->selectionModel()->selection();
+
+    //find out selected rows
+    QList<int> removeRows;
+    foreach(QModelIndex index, selection.indexes()) {
+    if(!removeRows.contains(index.row())) {
+    removeRows.append(index.row());
+    }
+    }
+
+    //loop through all selected rows
+    for(int i=0;i<removeRows.count();++i)
+    {
+    //decrement all rows after the current - as the row-number will change if we remove the current
+    for(int j=i;j<removeRows.count();++j) {
+    if(removeRows.at(j) > removeRows.at(i)) {
+    removeRows[j]--;
+    }
+    }
+    //remove the selected row
+    model->removeRows(removeRows.at(i), 1);
+    }
+    model->submitAll();
+
+}
+
+void DBMainWindow::on_actionDrop_Table_triggered()
+{
+    QSqlQuery dropqry("DROP TABLE "+TabName);
+    dropqry.exec();
 }

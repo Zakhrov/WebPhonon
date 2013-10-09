@@ -212,7 +212,7 @@ void MainWindow::on_actionFrom_Database_triggered()
 void MainWindow::on_actionManage_Databases_triggered()
 {
 
-    dm2->show();
+    dm2->showMaximized();
 }
 
 

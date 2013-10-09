@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>613</width>
-    <height>285</height>
+    <width>607</width>
+    <height>279</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -36,7 +36,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>613</width>
+     <width>607</width>
      <height>22</height>
     </rect>
    </property>
@@ -47,7 +47,17 @@
     <addaction name="actionAdd_Database"/>
     <addaction name="actionConnect"/>
    </widget>
+   <widget class="QMenu" name="menuTable">
+    <property name="title">
+     <string>Tables</string>
+    </property>
+    <addaction name="actionNew_Table"/>
+    <addaction name="actionDrop_Table"/>
+    <addaction name="actionInsert_Values"/>
+    <addaction name="actionDelete_tuple"/>
+   </widget>
    <addaction name="menuDatabase"/>
+   <addaction name="menuTable"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
@@ -71,6 +81,26 @@
   <action name="actionAdd_Database">
    <property name="text">
     <string>Add Database</string>
+   </property>
+  </action>
+  <action name="actionNew_Table">
+   <property name="text">
+    <string>Open PHPMyAdmin</string>
+   </property>
+  </action>
+  <action name="actionDrop_Table">
+   <property name="text">
+    <string>Drop Table</string>
+   </property>
+  </action>
+  <action name="actionInsert_Values">
+   <property name="text">
+    <string>Insert Values</string>
+   </property>
+  </action>
+  <action name="actionDelete_tuple">
+   <property name="text">
+    <string>Delete tuple</string>
    </property>
   </action>
  </widget>

@@ -17,21 +17,24 @@ SOURCES += main.cpp\
     dialog2.cpp \
     backenddialog.cpp \
     helpdialog.cpp \
-    dbmainwindow.cpp
+    dbmainwindow.cpp \
+    addtabledialog.cpp
 
 HEADERS  += mainwindow.h \
     dialog.h \
     dialog2.h \
     backenddialog.h \
     helpdialog.h \
-    dbmainwindow.h
+    dbmainwindow.h \
+    addtabledialog.h
 
 FORMS    += mainwindow.ui \
     dialog.ui \
     dialog2.ui \
     backenddialog.ui \
     helpdialog.ui \
-    dbmainwindow.ui
+    dbmainwindow.ui \
+    addtabledialog.ui
 
 RESOURCES += \
     Icons.qrc
