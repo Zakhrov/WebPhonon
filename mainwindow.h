@@ -9,9 +9,11 @@
 #include "dbmainwindow.h"
 #include "backenddialog.h"
 #include "helpdialog.h"
+#include "dropwidget.h"
 #include <QSqlDatabase>
 #include <QWebView>
 #include <QTableWidgetItem>
+#include <Phonon/VideoWidget>
 
 namespace Ui {
 class MainWindow;
@@ -25,9 +27,9 @@ public:
     explicit MainWindow(QWidget *parent = 0);
 
     ~MainWindow();
-protected:
 
-    
+public slots:
+    void dropdata(const QMimeData *mimeData);
 private slots:
 
     void on_actionLocal_File_triggered();
@@ -74,6 +76,7 @@ private:
     QTableWidgetItem *item;
     BackendDialog *bkdiag;
     HelpDialog *hdiag;
+    DropWidget *dwidget;
 
 
 

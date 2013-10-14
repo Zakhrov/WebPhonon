@@ -4,6 +4,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "helpdialog.h"
+#include "dropwidget.h"
 #include <Phonon/AudioOutput>
 #include <Phonon/MediaObject>
 #include <QFileDialog>
@@ -13,6 +14,7 @@
 #include <QTableWidgetItem>
 #include <QSqlQuery>
 #include <QMessageBox>
+#include <Phonon/VideoWidget>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -22,13 +24,15 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setWindowIcon(QIcon(":/icons/WebPhononIcon.png"));
     ui->setupUi(this);
     d=new Dialog(this);
+    dwidget=new DropWidget;
     dm2=new DBMainWindow(this);
     bkdiag=new BackendDialog(this);
     hdiag=new HelpDialog(this);
     Phonon::AudioOutput *sndout=new Phonon::AudioOutput(Phonon::VideoCategory,this);
     med=new Phonon::MediaObject(this);
+
     med->setTransitionTime(2000);
-    Phonon::createPath(med,ui->VideoWidget);
+    Phonon::createPath(med,dwidget);
     Phonon::createPath(med,sndout);
     QStringList collabel;
     collabel.append("URL");
@@ -43,6 +47,8 @@ MainWindow::MainWindow(QWidget *parent) :
      ui->tableWidget->setHorizontalHeaderLabels(collabel);
      ui->pushButton->hide();
    connect(med,SIGNAL(aboutToFinish()),this,SLOT(next()));
+   connect(dwidget,SIGNAL(geturls(const QMimeData*)),this,SLOT(dropdata(const QMimeData*)));
+    ui->gridLayout->addWidget(dwidget);
 
 
 }
@@ -51,7 +57,6 @@ MainWindow::~MainWindow()
     MyDB.close();
     delete ui;
 }
-
 void MainWindow::on_actionLocal_File_triggered()
 {
     int i;
@@ -109,15 +114,15 @@ void MainWindow::on_actionStop_triggered()
 void MainWindow::on_actionFull_Screen_triggered()
 {
 
-   if(ui->VideoWidget->isFullScreen()==false)
+   if(dwidget->isFullScreen()==false)
    { 
-       ui->VideoWidget->setFullScreen(true);
+       dwidget->setFullScreen(true);
 
    }
    else
    {
 
-      ui->VideoWidget->setFullScreen(false);
+      dwidget->setFullScreen(false);
    }
 
 
@@ -283,4 +288,28 @@ void MainWindow::next()
 void MainWindow::on_actionUser_Manual_triggered()
 {
     hdiag->showMaximized();
+}
+
+void MainWindow::dropdata(const QMimeData *mimeData)
+{
+    int i;
+    int index=sources.size();
+    if (mimeData->hasUrls()) {
+             foreach (QUrl url, mimeData->urls()) {
+                 sources.append(Phonon::MediaSource(url));
+                QTableWidgetItem *uitem=new QTableWidgetItem(url.toString(),1);
+                i=ui->tableWidget->rowCount();
+                ui->tableWidget->insertRow(i);
+                ui->tableWidget->setItem(i,0,uitem);
+             }
+             ui->tableWidget->resizeColumnsToContents();
+
+             if(med->state()!=Phonon::PlayingState)
+             {
+
+                 if(!sources.isEmpty())
+                med->setCurrentSource(sources.at(index));
+                med->play();
+             }
+         }
 }

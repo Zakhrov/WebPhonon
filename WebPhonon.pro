@@ -18,7 +18,8 @@ SOURCES += main.cpp\
     backenddialog.cpp \
     helpdialog.cpp \
     dbmainwindow.cpp \
-    addtabledialog.cpp
+    addtabledialog.cpp \
+    dropwidget.cpp
 
 HEADERS  += mainwindow.h \
     dialog.h \
@@ -26,7 +27,8 @@ HEADERS  += mainwindow.h \
     backenddialog.h \
     helpdialog.h \
     dbmainwindow.h \
-    addtabledialog.h
+    addtabledialog.h \
+    dropwidget.h
 
 FORMS    += mainwindow.ui \
     dialog.ui \
