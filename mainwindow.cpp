@@ -1,3 +1,12 @@
+/* this is the main player window for WebPhonon. Here, a phonon graph is built that handles the audio and video
+  from the various locations such as local files, http streams and from a database table
+  The current databases supported are MySQL for Linux/Windows and
+  Microsoft SQL Server as a windows only option.
+  MS SQL support is not fully tested.
+  TODO
+  Add media from disks such as CD, DVD and Blu-Ray this means that fututre dependencies may include libdvdcss2 and libbluray
+  Add proper media scanner and tagger for pulling metadata for a video file (like XBMC)
+*/
 #include "dialog.h"
 #include "dbmainwindow.h"
 #include "backenddialog.h"
@@ -20,7 +29,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-
+    //setting window icon and initializing objects
     this->setWindowIcon(QIcon(":/icons/WebPhononIcon.png"));
     ui->setupUi(this);
     d=new Dialog(this);
@@ -37,7 +46,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QStringList collabel;
     collabel.append("URL");
     collabel.append("Name");
-    //Phonon::createPath(Phonon::BackendCapabilities::isMimeTypeAvailable(),ui->VideoWidget);
     ui->seekSlider->setMediaObject(med);
     ui->volumeSlider->setAudioOutput(sndout);
     ui->lineEdit->hide();
@@ -46,8 +54,10 @@ MainWindow::MainWindow(QWidget *parent) :
      ui->tableWidget->setColumnCount(2);
      ui->tableWidget->setHorizontalHeaderLabels(collabel);
      ui->pushButton->hide();
+     //connecting signals and slots for going to next file and for drag n drop
    connect(med,SIGNAL(aboutToFinish()),this,SLOT(next()));
    connect(dwidget,SIGNAL(geturls(const QMimeData*)),this,SLOT(dropdata(const QMimeData*)));
+   //adding custom video widget with drag n drop enabled
     ui->gridLayout->addWidget(dwidget);
 
 
@@ -59,6 +69,7 @@ MainWindow::~MainWindow()
 }
 void MainWindow::on_actionLocal_File_triggered()
 {
+ //this function/slot triggers a dialog box for selecting files and adds files to the tablewidget (playlist)
     int i;
     int index=sources.size();
     QStringList fnames=QFileDialog::getOpenFileNames(this,tr("Choose Files"),QDesktopServices::storageLocation(QDesktopServices::MoviesLocation));
@@ -87,6 +98,7 @@ void MainWindow::on_actionLocal_File_triggered()
 void MainWindow::on_actionHttp_Stream_triggered()
 {
 
+   //shows th url bar for adding http streams
     ui->lineEdit->show();
     ui->pushButton->show();
 
@@ -135,13 +147,14 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::on_actionSet_Database_triggered()
 {
+    //opens the set database dialog
     d->show();
 
 }
 
 void MainWindow::on_actionFrom_Database_triggered()
 {
-
+    //queries the database for media information and urls
     QString tabindex,titleindex;
     int i;
     int index=sources.size();
@@ -157,7 +170,6 @@ void MainWindow::on_actionFrom_Database_triggered()
     QMessageBox msg;
     msg.setIconPixmap(img2);
     msg.setWindowTitle("Database Module");
-   // QStringList dnames;
     MyDB=QSqlDatabase::addDatabase(DBType);
     MyDB.setConnectOptions();
     if(MyDB.isDriverAvailable(DBType)==true)
@@ -216,7 +228,7 @@ void MainWindow::on_actionFrom_Database_triggered()
 
 void MainWindow::on_actionManage_Databases_triggered()
 {
-
+    //shows database manager window
     dm2->showMaximized();
 }
 
@@ -249,6 +261,7 @@ void MainWindow::on_actionHide_Table_triggered()
 }
 void MainWindow::on_pushButton_clicked()
 {
+    //adds url typed in url bar to playlist
     int i;
     QString uname;
     uname.insert(0,ui->lineEdit->text());
@@ -278,6 +291,7 @@ void MainWindow::on_actionAvailable_Formats_triggered()
 
 void MainWindow::next()
 {
+    //activates the next file in the playlist
     int index=sources.indexOf(med->currentSource())+1;
 
        if(sources.size()>index)
@@ -287,11 +301,13 @@ void MainWindow::next()
 
 void MainWindow::on_actionUser_Manual_triggered()
 {
+    //opens user manual
     hdiag->showMaximized();
 }
 
 void MainWindow::dropdata(const QMimeData *mimeData)
 {
+    //activates drag n drop
     int i;
     int index=sources.size();
     if (mimeData->hasUrls()) {
