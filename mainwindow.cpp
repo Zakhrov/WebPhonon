@@ -182,8 +182,17 @@ void MainWindow::on_actionFrom_Database_triggered()
         }
         else
         {
-           MyDB.setHostName(HostName);
-            MyDB.setDatabaseName(DBName);
+            if(HostName=="localhost")
+            {
+                MyDB.setHostName(HostName);
+                MyDB.setPort(3306);
+                MyDB.setDatabaseName(DBName);
+            }
+            else
+            {
+                MyDB.setHostName(HostName);
+                MyDB.setDatabaseName(DBName);
+            }
              MyDB.open(UName,Passwd);
         }
 
@@ -192,7 +201,7 @@ void MainWindow::on_actionFrom_Database_triggered()
               msg.setText(MyDB.driverName()+" Database "+DBName+" Open");
               msg.exec();
         }
-        QSqlQuery request("SELECT url, name FROM "+TabName);
+        QSqlQuery request("SELECT url, Title FROM "+TabName);
         while(request.next())
         {
 
