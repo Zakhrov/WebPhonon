@@ -185,12 +185,12 @@ void MainWindow::on_actionFrom_Database_triggered()
             if(HostName=="localhost")
             {
                 MyDB.setHostName(HostName);
-                MyDB.setPort(3306);
                 MyDB.setDatabaseName(DBName);
             }
             else
             {
                 MyDB.setHostName(HostName);
+                MyDB.setPort(3306);
                 MyDB.setDatabaseName(DBName);
             }
              MyDB.open(UName,Passwd);
