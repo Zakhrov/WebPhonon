@@ -203,14 +203,16 @@ void MainWindow::on_actionFrom_Database_triggered()
         }
         if(TabName=="Movies")
         {
-            ui->tableWidget->setColumnCount(4);
+            ui->tableWidget->setColumnCount(5);
             QStringList Moviecollabel;
+            QString rating;
             Moviecollabel.append("URL");
-            Moviecollabel.append("Name");
+            Moviecollabel.append("Title");
             Moviecollabel.append("Studio");
             Moviecollabel.append("Language");
+            Moviecollabel.append("Rating");
             ui->tableWidget->setHorizontalHeaderLabels(Moviecollabel);
-            QSqlQuery request("SELECT url, Title, Studio, Language FROM "+TabName);
+            QSqlQuery request("SELECT url, Title, Studio, Language, rating FROM "+TabName);
             while(request.next())
             {
 
@@ -218,17 +220,20 @@ void MainWindow::on_actionFrom_Database_triggered()
                 titleindex=request.value(1).toString();
                 studio=request.value(2).toString();
                 language=request.value(3).toString();
+                rating=request.value(4).toString();
                 sources.append(Phonon::MediaSource(QUrl(request.value(0).toString())));
                 QTableWidgetItem *item1=new QTableWidgetItem(tabindex,1);
                 QTableWidgetItem *item2=new QTableWidgetItem(titleindex,1);
                 QTableWidgetItem *item3=new QTableWidgetItem(studio,1);
                 QTableWidgetItem *item4=new QTableWidgetItem(language,1);
+                QTableWidgetItem *item5=new QTableWidgetItem(rating,1);
                 i=ui->tableWidget->rowCount();
                 ui->tableWidget->insertRow(i);
                 ui->tableWidget->setItem(i,0,item1);
                 ui->tableWidget->setItem(i,1,item2);
                 ui->tableWidget->setItem(i,2,item3);
                 ui->tableWidget->setItem(i,3,item4);
+                ui->tableWidget->setItem(i,4,item5);
             }
         }
         else if(TabName=="Music")
@@ -236,7 +241,7 @@ void MainWindow::on_actionFrom_Database_triggered()
             ui->tableWidget->setColumnCount(6);
             QStringList Musiccollabel;
             Musiccollabel.append("URL");
-            Musiccollabel.append("Name");
+            Musiccollabel.append("Title");
             Musiccollabel.append("Artist");
             Musiccollabel.append("Album");
             Musiccollabel.append("Year");
@@ -276,7 +281,7 @@ void MainWindow::on_actionFrom_Database_triggered()
             ui->tableWidget->setColumnCount(5);
             QStringList MVidcollabel;
             MVidcollabel.append("URL");
-            MVidcollabel.append("Name");
+            MVidcollabel.append("Title");
             MVidcollabel.append("Artist");
             MVidcollabel.append("Language");
             MVidcollabel.append("HD");
