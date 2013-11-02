@@ -231,7 +231,7 @@ void MainWindow::on_actionFrom_Database_triggered()
                 ui->tableWidget->setItem(i,3,item4);
             }
         }
-        if(TabName=="Music")
+        else if(TabName=="Music")
         {
             ui->tableWidget->setColumnCount(6);
             QStringList Musiccollabel;
@@ -269,16 +269,19 @@ void MainWindow::on_actionFrom_Database_triggered()
                 ui->tableWidget->setItem(i,5,item6);
             }
         }
-        if(TabName=="Music_Videos")
+        else if(TabName=="Music_Videos")
         {
-            ui->tableWidget->setColumnCount(4);
+            QString ishd;
+            int hd;
+            ui->tableWidget->setColumnCount(5);
             QStringList MVidcollabel;
             MVidcollabel.append("URL");
             MVidcollabel.append("Name");
             MVidcollabel.append("Artist");
             MVidcollabel.append("Language");
+            MVidcollabel.append("HD");
             ui->tableWidget->setHorizontalHeaderLabels(MVidcollabel);
-            QSqlQuery request("SELECT url, Title, artist, language FROM "+TabName);
+            QSqlQuery request("SELECT url, Title, artist, language, HD FROM "+TabName);
             while(request.next())
             {
 
@@ -286,17 +289,24 @@ void MainWindow::on_actionFrom_Database_triggered()
                 titleindex=request.value(1).toString();
                 artist=request.value(2).toString();
                 language=request.value(3).toString();
+                hd=request.value(4).toInt();
+                if(hd==1)
+                    ishd="yes";
+                else
+                    ishd="no";
                 sources.append(Phonon::MediaSource(QUrl(request.value(0).toString())));
                 QTableWidgetItem *item1=new QTableWidgetItem(tabindex,1);
                 QTableWidgetItem *item2=new QTableWidgetItem(titleindex,1);
                 QTableWidgetItem *item3=new QTableWidgetItem(artist,1);
                 QTableWidgetItem *item4=new QTableWidgetItem(language,1);
+                QTableWidgetItem *item5=new QTableWidgetItem(ishd,1);
                 i=ui->tableWidget->rowCount();
                 ui->tableWidget->insertRow(i);
                 ui->tableWidget->setItem(i,0,item1);
                 ui->tableWidget->setItem(i,1,item2);
                 ui->tableWidget->setItem(i,2,item3);
                 ui->tableWidget->setItem(i,3,item4);
+                ui->tableWidget->setItem(i,4,item5);
             }
         }
         else
