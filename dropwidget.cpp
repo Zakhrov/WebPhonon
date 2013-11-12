@@ -7,6 +7,9 @@ DropWidget::DropWidget(QWidget *parent) :
     Phonon::VideoWidget(parent)
 {
     setAcceptDrops(true);
+    //setAttribute(Qt::WA_TransparentForMouseEvents);
+    setCursor(Qt::BlankCursor);
+    setFocus();
 }
 void DropWidget::dragEnterEvent(QDragEnterEvent *event)
 {
@@ -24,6 +27,31 @@ void DropWidget::dragMoveEvent(QDragMoveEvent *event)
 void DropWidget::dropEvent(QDropEvent *event)
 {
     if(event->mimeData()->hasUrls())
-    emit geturls(event->mimeData());
+        emit geturls(event->mimeData());
+}
+
+void DropWidget::mouseDoubleClickEvent(QMouseEvent *event)
+{
+    if(event->type()==QEvent::MouseButtonDblClick)
+    {
+        if(!this->isFullScreen())
+            this->setFullScreen(true);
+        else
+            this->setFullScreen(false);
+    }
+
+}
+
+void DropWidget::mouseMoveEvent(QMouseEvent *event)
+{
+    if(event->type()==QEvent::MouseMove)
+    {
+        if(this->cursor().shape()==Qt::BlankCursor)
+        setCursor(Qt::ArrowCursor);
+        else
+            setCursor(Qt::BlankCursor);
+    }
+    else
+        setCursor(Qt::BlankCursor);
 }
 

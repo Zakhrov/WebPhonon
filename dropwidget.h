@@ -16,6 +16,8 @@ protected:
     void dragEnterEvent(QDragEnterEvent *event);
         void dragMoveEvent(QDragMoveEvent *event);
         void dropEvent(QDropEvent *event);
+        void mouseDoubleClickEvent(QMouseEvent *event);
+        void mouseMoveEvent(QMouseEvent *event);
     
 public slots:
     
