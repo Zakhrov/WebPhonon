@@ -64,6 +64,10 @@ private slots:
 
     void on_actionUser_Manual_triggered();
 
+    void on_actionBack_triggered();
+
+    void on_actionFoward_triggered();
+
 private:
     Ui::MainWindow *ui;
     Phonon::MediaObject *med;

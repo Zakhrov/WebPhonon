@@ -455,3 +455,26 @@ void MainWindow::dropdata(const QMimeData *mimeData)
              }
          }
 }
+
+void MainWindow::on_actionBack_triggered()
+{
+    int index=sources.indexOf(med->currentSource())-1;
+
+       if(sources.size()>index)
+       {
+            med->setCurrentSource(sources.at(index));
+            med->play();
+       }
+
+}
+
+void MainWindow::on_actionFoward_triggered()
+{
+    int index=sources.indexOf(med->currentSource())+1;
+
+       if(sources.size()>index)
+       {
+            med->setCurrentSource(sources.at(index));
+            med->play();
+       }
+}

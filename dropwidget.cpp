@@ -51,7 +51,7 @@ void DropWidget::mouseMoveEvent(QMouseEvent *event)
         else
             setCursor(Qt::BlankCursor);
     }
-    else
+    else if(event->type()==QEvent::MouseButtonPress)
         setCursor(Qt::BlankCursor);
 }
 
