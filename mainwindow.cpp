@@ -418,12 +418,8 @@ void MainWindow::on_actionAvailable_Formats_triggered()
 
 void MainWindow::next()
 {
-    //activates the next file in the playlist
-    int index=sources.indexOf(med->currentSource())+1;
 
-       if(sources.size()>index)
-           med->setCurrentSource(sources.at(index));
-
+    this->on_actionFoward_triggered();
 }
 
 void MainWindow::on_actionUser_Manual_triggered()
