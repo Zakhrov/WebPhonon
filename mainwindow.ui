@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>709</width>
-    <height>306</height>
+    <width>707</width>
+    <height>304</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -56,7 +56,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>709</width>
+     <width>707</width>
      <height>22</height>
     </rect>
    </property>
@@ -273,6 +273,9 @@
    <property name="text">
     <string>Back</string>
    </property>
+   <property name="shortcut">
+    <string>Media Previous</string>
+   </property>
   </action>
   <action name="actionFoward">
    <property name="icon">
@@ -281,6 +284,9 @@
    </property>
    <property name="text">
     <string>Foward</string>
+   </property>
+   <property name="shortcut">
+    <string>Media Next</string>
    </property>
   </action>
  </widget>

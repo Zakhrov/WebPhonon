@@ -12,12 +12,14 @@ public:
     
 signals:
     void geturls(const QMimeData *mimeData = 0);
+    void capturespace(QKeyEvent *event);
 protected:
     void dragEnterEvent(QDragEnterEvent *event);
         void dragMoveEvent(QDragMoveEvent *event);
         void dropEvent(QDropEvent *event);
         void mouseDoubleClickEvent(QMouseEvent *event);
         void mouseMoveEvent(QMouseEvent *event);
+        void keyPressEvent(QKeyEvent *event);
     
 public slots:
     

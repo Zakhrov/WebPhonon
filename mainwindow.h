@@ -67,6 +67,7 @@ private slots:
     void on_actionBack_triggered();
 
     void on_actionFoward_triggered();
+    void widgetpause(QKeyEvent *event);
 
 private:
     Ui::MainWindow *ui;

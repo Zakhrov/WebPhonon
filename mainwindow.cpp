@@ -57,6 +57,7 @@ MainWindow::MainWindow(QWidget *parent) :
      //connecting signals and slots for going to next file and for drag n drop
    connect(med,SIGNAL(aboutToFinish()),this,SLOT(next()));
    connect(dwidget,SIGNAL(geturls(const QMimeData*)),this,SLOT(dropdata(const QMimeData*)));
+   connect(dwidget,SIGNAL(capturespace(QKeyEvent*)),this,SLOT(widgetpause(QKeyEvent*)));
    //adding custom video widget with drag n drop enabled
     ui->gridLayout->addWidget(dwidget);
 
@@ -421,7 +422,7 @@ void MainWindow::next()
     int index=sources.indexOf(med->currentSource())+1;
 
        if(sources.size()>index)
-           med->enqueue(sources.at(index));
+           med->setCurrentSource(sources.at(index));
 
 }
 
@@ -458,13 +459,26 @@ void MainWindow::dropdata(const QMimeData *mimeData)
 
 void MainWindow::on_actionBack_triggered()
 {
-    int index=sources.indexOf(med->currentSource())-1;
-
-       if(sources.size()>index)
-       {
+   // if(sources.size()>0)
+    //{
+        int index=sources.indexOf(med->currentSource());
+//        QString size=QString::number(index);
+//        QMessageBox *sizedisp=new QMessageBox(this);
+//        sizedisp->setText(size);
+//        sizedisp->show();
+        if(index!=0)
+        {
+            med->setCurrentSource(sources.at(index-1));
+            med->play();
+        }
+        else
+        {
             med->setCurrentSource(sources.at(index));
             med->play();
-       }
+         }
+
+    //}
+
 
 }
 
@@ -477,4 +491,30 @@ void MainWindow::on_actionFoward_triggered()
             med->setCurrentSource(sources.at(index));
             med->play();
        }
+}
+
+void MainWindow::widgetpause(QKeyEvent *event)
+{
+    switch(event->key())
+    {
+        case Qt::Key_Space: if(med->state()==Phonon::PlayingState)
+            med->pause();
+        else
+            med->play();
+        break;
+    case Qt::Key_MediaPrevious:this->on_actionBack_triggered();
+        break;
+    case Qt::Key_MediaNext:this->on_actionFoward_triggered();
+        break;
+    case Qt::Key_MediaStop: med->stop();;
+        break;
+    case Qt::Key_F: if(dwidget->isFullScreen())
+            dwidget->setFullScreen(false);
+        else
+            dwidget->setFullScreen(true);
+        break;
+    default: med->play();
+    }
+
+
 }

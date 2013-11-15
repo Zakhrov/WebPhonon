@@ -44,14 +44,24 @@ void DropWidget::mouseDoubleClickEvent(QMouseEvent *event)
 
 void DropWidget::mouseMoveEvent(QMouseEvent *event)
 {
-    if(event->type()==QEvent::MouseMove)
+    if(event->type()==QEvent::MouseMove&&this->isFullScreen())
+    {
+            setCursor(Qt::BlankCursor);
+    }
+    else if(event->type()==QEvent::MouseMove&&!this->isFullScreen())
     {
         if(this->cursor().shape()==Qt::BlankCursor)
         setCursor(Qt::ArrowCursor);
         else
             setCursor(Qt::BlankCursor);
     }
-    else if(event->type()==QEvent::MouseButtonPress)
-        setCursor(Qt::BlankCursor);
+}
+
+void DropWidget::keyPressEvent(QKeyEvent *event)
+{
+
+
+        emit capturespace(event);
+
 }
 
