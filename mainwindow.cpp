@@ -316,6 +316,43 @@ void MainWindow::on_actionFrom_Database_triggered()
                 ui->tableWidget->setItem(i,4,item5);
             }
         }
+        else if(TabName=="TV_Shows")
+        {
+            int season,episode;
+            QString eptitle;
+            ui->tableWidget->setColumnCount(5);
+            QStringList TVcollabel;
+            TVcollabel.append("URL");
+            TVcollabel.append("Title");
+            TVcollabel.append("Season");
+            TVcollabel.append("Episode");
+            TVcollabel.append("Episode Title");
+            ui->tableWidget->setHorizontalHeaderLabels(TVcollabel);
+            QSqlQuery request("SELECT url, Title, Season, Episode, Ep_Title FROM "+TabName);
+            while(request.next())
+            {
+
+                tabindex=request.value(0).toString();
+                titleindex=request.value(1).toString();
+                season=request.value(2).toInt();
+                episode=request.value(3).toInt();
+                eptitle=request.value(4).toString();
+
+                sources.append(Phonon::MediaSource(QUrl(request.value(0).toString())));
+                QTableWidgetItem *item1=new QTableWidgetItem(tabindex,1);
+                QTableWidgetItem *item2=new QTableWidgetItem(titleindex,1);
+                QTableWidgetItem *item3=new QTableWidgetItem(QString::number(season),1);
+                QTableWidgetItem *item4=new QTableWidgetItem(QString::number(episode),1);
+                QTableWidgetItem *item5=new QTableWidgetItem(eptitle,1);
+                i=ui->tableWidget->rowCount();
+                ui->tableWidget->insertRow(i);
+                ui->tableWidget->setItem(i,0,item1);
+                ui->tableWidget->setItem(i,1,item2);
+                ui->tableWidget->setItem(i,2,item3);
+                ui->tableWidget->setItem(i,3,item4);
+                ui->tableWidget->setItem(i,4,item5);
+            }
+        }
         else
         {
             QSqlQuery request("SELECT url, Title FROM "+TabName);
