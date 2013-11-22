@@ -98,7 +98,8 @@ void DBMainWindow::on_actionNew_Table_triggered()
 void DBMainWindow::on_actionInsert_Values_triggered()
 {
 
-    QSqlQuery ins("INSERT INTO "+TabName+"(url,name) VALUES('path to file','name of file')");
+    if(TabName=="Movies")
+    QSqlQuery ins("INSERT INTO "+TabName+"(Title,Language,Studio,url,rating) VALUES('path to file','name of file')");
     ins.exec();
     model->setTable(TabName);
     model->setEditStrategy(QSqlTableModel::OnFieldChange);
