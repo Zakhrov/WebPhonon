@@ -1,12 +1,9 @@
 #ifndef DBMAINWINDOW_H
 #define DBMAINWINDOW_H
 
-#include "dialog2.h"
-#include "addtabledialog.h"
+
+
 #include <QMainWindow>
-#include <QSqlDatabase>
-#include <QListWidgetItem>
-#include <QSqlTableModel>
 
 namespace Ui {
 class DBMainWindow;
@@ -23,28 +20,17 @@ public:
 private slots:
     void on_actionConnect_triggered();
 
-    void on_listWidget_itemClicked(QListWidgetItem *item);
+    void on_actionBack_triggered();
 
-    void on_actionAdd_Database_triggered();
+    void on_actionFoward_triggered();
 
+    void on_pushButton_clicked();
 
-    void on_actionNew_Table_triggered();
-
-    void on_actionInsert_Values_triggered();
-
-    void on_actionDelete_tuple_triggered();
-
-    void on_actionDrop_Table_triggered();
+    void on_actionReload_triggered();
 
 private:
     Ui::DBMainWindow *ui;
-    Dialog2 *d2;
-    AddTableDialog *tabdiag;
-    QSqlDatabase MyDB;
-    QString HostName,DBName,UName,Passwd,TabName,DBType;
-    QSqlTableModel *model;
-    QStringList tabs;
-    void setnewtab();
+     QString url;
 };
 
 #endif // DBMAINWINDOW_H

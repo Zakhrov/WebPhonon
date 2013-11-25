@@ -14,29 +14,23 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     dialog.cpp \
-    dialog2.cpp \
     backenddialog.cpp \
     helpdialog.cpp \
     dbmainwindow.cpp \
-    addtabledialog.cpp \
     dropwidget.cpp
 
 HEADERS  += mainwindow.h \
     dialog.h \
-    dialog2.h \
     backenddialog.h \
     helpdialog.h \
     dbmainwindow.h \
-    addtabledialog.h \
     dropwidget.h
 
 FORMS    += mainwindow.ui \
     dialog.ui \
-    dialog2.ui \
     backenddialog.ui \
     helpdialog.ui \
-    dbmainwindow.ui \
-    addtabledialog.ui
+    dbmainwindow.ui
 
 RESOURCES += \
     Icons.qrc

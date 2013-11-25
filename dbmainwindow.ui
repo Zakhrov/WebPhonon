@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>607</width>
-    <height>279</height>
+    <width>599</width>
+    <height>271</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,12 +20,29 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
-     <layout class="QHBoxLayout" name="horizontalLayout">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="QListWidget" name="listWidget"/>
+       <widget class="QLineEdit" name="lineEdit"/>
       </item>
       <item>
-       <widget class="QTableView" name="tableView"/>
+       <widget class="QPushButton" name="pushButton">
+        <property name="text">
+         <string>Launch</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QWebView" name="webView">
+        <property name="url">
+         <url>
+          <string>about:blank</string>
+         </url>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -36,7 +53,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>607</width>
+     <width>599</width>
      <height>22</height>
     </rect>
    </property>
@@ -44,20 +61,18 @@
     <property name="title">
      <string>Database</string>
     </property>
-    <addaction name="actionAdd_Database"/>
     <addaction name="actionConnect"/>
    </widget>
-   <widget class="QMenu" name="menuTable">
+   <widget class="QMenu" name="menuBrowser">
     <property name="title">
-     <string>Tables</string>
+     <string>Browser</string>
     </property>
-    <addaction name="actionNew_Table"/>
-    <addaction name="actionDrop_Table"/>
-    <addaction name="actionInsert_Values"/>
-    <addaction name="actionDelete_tuple"/>
+    <addaction name="actionBack"/>
+    <addaction name="actionFoward"/>
+    <addaction name="actionReload"/>
    </widget>
    <addaction name="menuDatabase"/>
-   <addaction name="menuTable"/>
+   <addaction name="menuBrowser"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
@@ -70,7 +85,9 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionAdd_Database"/>
+   <addaction name="actionBack"/>
+   <addaction name="actionFoward"/>
+   <addaction name="actionReload"/>
    <addaction name="actionConnect"/>
   </widget>
   <action name="actionConnect">
@@ -78,32 +95,32 @@
     <string>Connect</string>
    </property>
   </action>
-  <action name="actionAdd_Database">
+  <action name="actionBack">
    <property name="text">
-    <string>Add Database</string>
+    <string>Back</string>
    </property>
   </action>
-  <action name="actionNew_Table">
+  <action name="actionFoward">
    <property name="text">
-    <string>Open PHPMyAdmin</string>
+    <string>Forward</string>
    </property>
   </action>
-  <action name="actionDrop_Table">
+  <action name="actionReload">
    <property name="text">
-    <string>Drop Table</string>
+    <string>Reload</string>
    </property>
-  </action>
-  <action name="actionInsert_Values">
-   <property name="text">
-    <string>Insert Values</string>
-   </property>
-  </action>
-  <action name="actionDelete_tuple">
-   <property name="text">
-    <string>Delete tuple</string>
+   <property name="shortcut">
+    <string>F5</string>
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QWebView</class>
+   <extends>QWidget</extends>
+   <header>QtWebKit/QWebView</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="Icons.qrc"/>
  </resources>
