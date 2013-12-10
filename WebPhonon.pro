@@ -1,10 +1,10 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2013-05-22T21:37:22
+# Project created by QtCreator 2013-09-22T21:37:22
 #
 #-------------------------------------------------
 
-QT       += core gui phonon sql webkit
+QT       += core gui phonon sql webkit network
 
 
 TARGET = WebPhonon

@@ -109,6 +109,7 @@ void MainWindow::on_actionPlay_triggered()
 {
     med->play();
     ui->lineEdit->hide();
+    ui->pushButton->hide();
 }
 
 void MainWindow::on_actionPause_triggered()
@@ -510,7 +511,7 @@ void MainWindow::on_actionBack_triggered()
             med->play();
          }
 
-    //}
+
 
 
 }

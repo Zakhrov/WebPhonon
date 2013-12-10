@@ -4,7 +4,9 @@
 
 
 #include <QMainWindow>
-
+#include <QtNetwork/QNetworkReply>
+#include <QtNetwork/QNetworkRequest>
+#include <QtNetwork/QNetworkAccessManager>
 namespace Ui {
 class DBMainWindow;
 }
@@ -27,10 +29,15 @@ private slots:
     void on_pushButton_clicked();
 
     void on_actionReload_triggered();
+    void download(const QNetworkRequest request);
+    void onNetworkReply(QNetworkReply *reply);
+    void unsupportedcontent(QNetworkReply* reply);
+
 
 private:
     Ui::DBMainWindow *ui;
      QString url;
+     QNetworkAccessManager *manager;
 };
 
 #endif // DBMAINWINDOW_H
