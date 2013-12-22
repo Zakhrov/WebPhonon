@@ -78,7 +78,8 @@ OTHER_FILES += \
     helpimages/image04.png \
     helpimages/image03.png \
     helpimages/image02.png \
-    helpimages/image00.png
+    helpimages/image00.png \
+    CMakeLists.txt
 
     target.path = /usr/bin
     desktop.path= /usr/share/applications
