@@ -48,6 +48,7 @@ MainWindow::MainWindow(QWidget *parent) :
     collabel.append("Name");
     ui->seekSlider->setMediaObject(med);
     ui->volumeSlider->setAudioOutput(sndout);
+    ui->volumeSlider->setTracking(true);
     ui->lineEdit->hide();
     urls.clear();
     ui->tableWidget->hide();
@@ -75,7 +76,7 @@ void MainWindow::on_actionLocal_File_triggered()
     int index=sources.size();
     QStringList fnames=QFileDialog::getOpenFileNames(this,tr("Choose Files"),QDesktopServices::storageLocation(QDesktopServices::MoviesLocation));
     foreach (QString fname, fnames) {
-        sources.append(Phonon::MediaSource(fname));
+        sources.append(Phonon::MediaSource(QUrl(fname)));
         QTableWidgetItem *fitem=new QTableWidgetItem(fname,1);
         i=ui->tableWidget->rowCount();
         ui->tableWidget->insertRow(i);
