@@ -530,6 +530,7 @@ void MainWindow::on_actionFoward_triggered()
 
 void MainWindow::widgetpause(QKeyEvent *event)
 {
+    qint64 currenttime=med->currentTime();
     switch(event->key())
     {
         case Qt::Key_Space: if(med->state()==Phonon::PlayingState)
@@ -548,6 +549,13 @@ void MainWindow::widgetpause(QKeyEvent *event)
         else
             dwidget->setFullScreen(true);
         break;
+    case Qt::Key_Right: if(currenttime < med->totalTime()-10000)
+            ui->seekSlider->mediaObject()->seek(currenttime+10000);
+        break;
+    case Qt::Key_Left: if(currenttime > 10000)
+            ui->seekSlider->mediaObject()->seek(currenttime-10000);
+        break;
+
     default: med->play();
     }
 
