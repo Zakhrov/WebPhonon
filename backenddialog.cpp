@@ -1,7 +1,7 @@
 #include "backenddialog.h"
 #include "ui_backenddialog.h"
 #include <Phonon/BackendCapabilities>
-#include <phonon/phonon>
+#include <phonon/phononnamespace.h>
 BackendDialog::BackendDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::BackendDialog)

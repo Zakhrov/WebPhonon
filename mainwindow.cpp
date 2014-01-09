@@ -61,6 +61,7 @@ MainWindow::MainWindow(QWidget *parent) :
    connect(dwidget,SIGNAL(capturespace(QKeyEvent*)),this,SLOT(widgetpause(QKeyEvent*)));
    //adding custom video widget with drag n drop enabled
     ui->gridLayout->addWidget(dwidget);
+    ui->seekSlider->setIconVisible(false);
 
 
 }

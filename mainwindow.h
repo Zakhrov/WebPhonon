@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <phonon/phonon>
+//#include <phonon/phonon>
 #include <Phonon/MediaObject>
 #include <QPlainTextEdit>
 #include "dialog.h"
