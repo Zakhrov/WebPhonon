@@ -24,6 +24,8 @@
 #include <QSqlQuery>
 #include <QMessageBox>
 #include <Phonon/VideoWidget>
+#include <stdlib.h>
+//#include <boost/filesystem/
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -70,6 +72,7 @@ void MainWindow::cmdopen(QString cmdfile)
 {
     int i;
     int index=sources.size();
+
     sources.append(Phonon::MediaSource(QUrl(cmdfile)));
     QTableWidgetItem *fitem=new QTableWidgetItem(cmdfile,1);
     i=ui->tableWidget->rowCount();
