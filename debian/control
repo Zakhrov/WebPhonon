@@ -3,7 +3,7 @@ Maintainer: Aaron Zakhrov <aaron.zakhrov@gmail.com>
 Section: misc
 Priority: optional
 Standards-Version: 3.9.2
-Build-Depends: debhelper (>= 8), cdbs (>=0.4), libqt4-dev (>=4.6), qt4-qmake (>=4.6), libphonon-dev (>=4.7.0really4.6.0), mysql-server (>=5.5), libqt4-sql-mysql (>=4.6), libqtwebkit-dev (>=2.2), kdelibs5-dev (>=4.6)
+Build-Depends: debhelper (>= 8), cdbs (>=0.4), libqt4-dev (>=4.6), qt4-qmake (>=4.6), libphonon-dev (>=4.7.0really4.6.0), libqt4-sql-mysql (>=4.6), libqtwebkit-dev (>=2.2), kdelibs5-dev (>=4.6)
 
 Package: webphonon
 Architecture: any
