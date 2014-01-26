@@ -24,7 +24,7 @@
 #include <QSqlQuery>
 #include <QMessageBox>
 #include <Phonon/VideoWidget>
-#include <stdlib.h>
+//#include <stdlib.h>
 //#include <boost/filesystem/
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -86,7 +86,7 @@ void MainWindow::cmdopen(QString cmdfile)
        med->play();
     }
 
-
+    ui->tableWidget->resizeColumnsToContents();
 
 }
 MainWindow::~MainWindow()
