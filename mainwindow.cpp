@@ -37,7 +37,7 @@ MainWindow::MainWindow(QWidget *parent) :
     dm2=new DBMainWindow(this);
     bkdiag=new BackendDialog(this);
     hdiag=new HelpDialog(this);
-    Phonon::AudioOutput *sndout=new Phonon::AudioOutput(Phonon::VideoCategory,this);
+    sndout=new Phonon::AudioOutput(Phonon::VideoCategory,this);
     med=new Phonon::MediaObject(this);
 
     med->setTransitionTime(2000);
@@ -62,6 +62,27 @@ MainWindow::MainWindow(QWidget *parent) :
    //adding custom video widget with drag n drop enabled
     ui->gridLayout->addWidget(dwidget);
     ui->seekSlider->setIconVisible(false);
+
+
+}
+
+void MainWindow::cmdopen(QString cmdfile)
+{
+    int i;
+    int index=sources.size();
+    sources.append(Phonon::MediaSource(QUrl(cmdfile)));
+    QTableWidgetItem *fitem=new QTableWidgetItem(cmdfile,1);
+    i=ui->tableWidget->rowCount();
+    ui->tableWidget->insertRow(i);
+    ui->tableWidget->setItem(i,0,fitem);
+    if(med->state()!=Phonon::PlayingState)
+    {
+
+        if(!sources.isEmpty())
+       med->setCurrentSource(sources.at(index));
+       med->play();
+    }
+
 
 
 }
@@ -532,6 +553,7 @@ void MainWindow::on_actionFoward_triggered()
 void MainWindow::widgetpause(QKeyEvent *event)
 {
     qint64 currenttime=med->currentTime();
+    qreal volume=sndout->volumeDecibel();
     switch(event->key())
     {
         case Qt::Key_Space: if(med->state()==Phonon::PlayingState)
@@ -555,6 +577,10 @@ void MainWindow::widgetpause(QKeyEvent *event)
         break;
     case Qt::Key_Left: if(currenttime > 10000)
             ui->seekSlider->mediaObject()->seek(currenttime-10000);
+        break;
+    case Qt::Key_Up: ui->volumeSlider->audioOutput()->setVolumeDecibel(volume+0.5);
+        break;
+    case Qt::Key_Down: ui->volumeSlider->audioOutput()->setVolumeDecibel(volume-0.5);
         break;
 
     default: med->play();

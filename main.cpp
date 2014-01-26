@@ -3,9 +3,13 @@
 #include <QCoreApplication>
 #include <QPixmap>
 #include <QSplashScreen>
+#include <QTextStream>
+
 
 int main(int argc, char *argv[])
 {
+
+
     QApplication a(argc, argv);
     QCoreApplication::setApplicationName("WebPhonon");
     MainWindow w;
@@ -14,15 +18,14 @@ int main(int argc, char *argv[])
     QSplashScreen spl;
     spl.setPixmap(img);
     spl.show();
-    w.showMaximized();
-   /* QStringList cmd=a.arguments();
-    if(!cmd.isEmpty())
+
+    QStringList cmd=a.arguments();
+
+    if(!cmd.isEmpty()&&cmd.size()>1)
     {
         w.cmdopen(cmd[1]);
-    }*/
-    //if(argv[0]!='\0')
-    //w.cmdopen(argv[0]);
-
+    }
+    w.showMaximized();
     
     return a.exec();
 }

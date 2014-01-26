@@ -4,6 +4,7 @@
 #include <QMainWindow>
 //#include <phonon/phonon>
 #include <Phonon/MediaObject>
+#include <Phonon/AudioOutput>
 #include <QPlainTextEdit>
 #include "dialog.h"
 #include "dbmainwindow.h"
@@ -25,6 +26,7 @@ class MainWindow : public QMainWindow
     
 public:
     explicit MainWindow(QWidget *parent = 0);
+    void cmdopen(QString cmdfile);
 
     ~MainWindow();
 
@@ -72,6 +74,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     Phonon::MediaObject *med;
+    Phonon::AudioOutput *sndout;
     Dialog *d;
     QSqlDatabase MyDB;
     QString HostName,DBName,UName,Passwd,TabName,DBType;
