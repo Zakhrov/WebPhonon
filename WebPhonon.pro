@@ -59,14 +59,6 @@ OTHER_FILES += \
     debian/rules \
     debian/source/format \
     WebPhononIcon.png \
-    WebPhonon.desktop \
-    icons/16x16/WebPhononIcon.png \
-    icons/32x32/WebPhononIcon.png \
-    icons/64x64/WebPhononIcon.png \
-    icons/128x128/WebPhononIcon.png \
-    icons/256x256/WebPhononIcon.png \
-    icons/512x512/WebPhononIcon.png \
-    icons/48x48/WebPhononIcon.png \
     WebPhonon_Documentation.html \
     helpimages/menu.png \
     helpimages/image10.png \
@@ -78,11 +70,28 @@ OTHER_FILES += \
     helpimages/image04.png \
     helpimages/image03.png \
     helpimages/image02.png \
-    helpimages/image00.png
+    helpimages/image00.png \
+    icons/WebPhonon.desktop \
+    icons/hi512-apps-WebPhonon.png \
+    icons/hi256-apps-WebPhonon.png \
+    icons/hi128-apps-WebPhonon.png \
+    icons/hi64-apps-WebPhonon.png \
+    icons/hi48-apps-WebPhonon.png \
+    icons/hi32-apps-WebPhonon.png \
+    icons/hi16-apps-WebPhonon.png \
+    icons/CMakeLists.txt \
+    icons/16x16/WebPhonon.png \
+    icons/32x32/WebPhonon.png \
+    icons/48x48/WebPhonon.png \
+    icons/64x64/WebPhonon.png \
+    icons/128x128/WebPhonon.png \
+    icons/256x256/WebPhonon.png \
+    icons/512x512/WebPhonon.png \
+    CMakeLists.txt
 
     target.path = /usr/bin
     desktop.path= /usr/share/applications
-    desktop.files += WebPhonon.desktop
+    desktop.files += icons/WebPhonon.desktop
     icon16.path= /usr/share/icons/hicolor/16x16/apps
     icon32.path= /usr/share/icons/hicolor/32x32/apps
     icon48.path= /usr/share/icons/hicolor/48x48/apps
@@ -91,13 +100,24 @@ OTHER_FILES += \
     icon256.path= /usr/share/icons/hicolor/256x256/apps
     icon512.path= /usr/share/icons/hicolor/512x512/apps
 
-    icon16.files +=    icons/16x16/WebPhononIcon.png
-    icon32.files +=    icons/32x32/WebPhononIcon.png
-    icon48.files +=    icons/48x48/WebPhononIcon.png
-    icon64.files +=    icons/64x64/WebPhononIcon.png
-    icon128.files +=    icons/128x128/WebPhononIcon.png
-    icon256.files +=    icons/256x256/WebPhononIcon.png
-    icon512.files +=    icons/512x512/WebPhononIcon.png
+
+
+
+
+
+    icon16.files =    icons/16x16/WebPhonon.png
+
+    icon32.files =    icons/32x32/WebPhonon.png
+
+    icon48.files =    icons/48x48/WebPhonon.png
+
+    icon64.files =    icons/64x64/WebPhonon.png
+
+    icon128.files =   icons/128x128/WebPhonon.png
+
+    icon256.files =   icons/256x256/WebPhonon.png
+
+    icon512.files =   icons/512x512/WebPhonon.png
 
 
 
