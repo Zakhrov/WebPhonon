@@ -1,5 +1,5 @@
-webphonon (1.4-1) Precise; urgency=low
+webphonon (1.5-1) Precise; urgency=low
 
-    * Add help menu functionality improvements
+    * Add cmake build dependency
 
- -- Aaron Zakhrov <aaron.zakhrov@gmail.com>  Fri, 04 Oct 2013 10:54:12 +0530
+ -- Aaron Zakhrov <aaron.zakhrov@gmail.com>  Wed, 29 Jan 2013 16:10:25 +0530
