@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>703</width>
-    <height>300</height>
+    <width>687</width>
+    <height>307</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,11 +33,124 @@
       </item>
      </layout>
     </item>
-    <item row="1" column="0">
+    <item row="1" column="0" colspan="2">
      <widget class="QTableWidget" name="tableWidget"/>
     </item>
     <item row="2" column="0">
      <layout class="QGridLayout" name="gridLayout"/>
+    </item>
+    <item row="3" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="Phonon::SeekSlider" name="seekSlider"/>
+      </item>
+      <item>
+       <widget class="QLabel" name="hourlabel1">
+        <property name="text">
+         <string>HH</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="minlabel1">
+        <property name="text">
+         <string>MM</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_10">
+        <property name="text">
+         <string>:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="slabel1">
+        <property name="text">
+         <string>SS</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>/</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="hourlabel2">
+        <property name="text">
+         <string>HH</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_11">
+        <property name="text">
+         <string>:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="minlabel2">
+        <property name="text">
+         <string>MM</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_12">
+        <property name="text">
+         <string>:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="slabel2">
+        <property name="text">
+         <string>SS</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Amplifier dB Level</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>0</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
     <item row="2" column="1">
      <widget class="Phonon::VolumeSlider" name="volumeSlider">
@@ -46,9 +159,6 @@
       </property>
      </widget>
     </item>
-    <item row="3" column="0">
-     <widget class="Phonon::SeekSlider" name="seekSlider"/>
-    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -56,7 +166,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>703</width>
+     <width>687</width>
      <height>22</height>
     </rect>
    </property>
@@ -85,6 +195,10 @@
     <addaction name="actionFull_Screen"/>
     <addaction name="actionBack"/>
     <addaction name="actionFoward"/>
+    <addaction name="actionVolume_Up"/>
+    <addaction name="actionVolume_Down"/>
+    <addaction name="actionSkip_Foward"/>
+    <addaction name="actionSkip_Backward"/>
    </widget>
    <widget class="QMenu" name="menuDatabase">
     <property name="title">
@@ -198,7 +312,7 @@
     <string>Full Screen</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Shift+F</string>
+    <string>F</string>
    </property>
   </action>
   <action name="actionExit">
@@ -287,6 +401,38 @@
    </property>
    <property name="shortcut">
     <string>Media Next</string>
+   </property>
+  </action>
+  <action name="actionVolume_Up">
+   <property name="text">
+    <string>Volume Up</string>
+   </property>
+   <property name="shortcut">
+    <string>Up</string>
+   </property>
+  </action>
+  <action name="actionVolume_Down">
+   <property name="text">
+    <string>Volume Down</string>
+   </property>
+   <property name="shortcut">
+    <string>Down</string>
+   </property>
+  </action>
+  <action name="actionSkip_Foward">
+   <property name="text">
+    <string>Skip Foward</string>
+   </property>
+   <property name="shortcut">
+    <string>Right</string>
+   </property>
+  </action>
+  <action name="actionSkip_Backward">
+   <property name="text">
+    <string>Skip Backward</string>
+   </property>
+   <property name="shortcut">
+    <string>Left</string>
    </property>
   </action>
  </widget>

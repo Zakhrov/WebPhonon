@@ -71,6 +71,17 @@ private slots:
     void on_actionFoward_triggered();
     void widgetpause(QKeyEvent *event);
 
+    void on_actionVolume_Up_triggered();
+
+    void on_actionVolume_Down_triggered();
+
+    void on_actionSkip_Foward_triggered();
+
+    void on_actionSkip_Backward_triggered();
+    void timechanged(qint64 time);
+    void totalTimeChanged(qint64 newtottime);
+
+
 private:
     Ui::MainWindow *ui;
     Phonon::MediaObject *med;
@@ -85,6 +96,8 @@ private:
     BackendDialog *bkdiag;
     HelpDialog *hdiag;
     DropWidget *dwidget;
+    qreal volume;
+    qint64 currenttime;
 
 
 

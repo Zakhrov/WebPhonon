@@ -41,7 +41,6 @@ MainWindow::MainWindow(QWidget *parent) :
     hdiag=new HelpDialog(this);
     sndout=new Phonon::AudioOutput(Phonon::VideoCategory,this);
     med=new Phonon::MediaObject(this);
-
     med->setTransitionTime(2000);
     Phonon::createPath(med,dwidget);
     Phonon::createPath(med,sndout);
@@ -61,9 +60,14 @@ MainWindow::MainWindow(QWidget *parent) :
    connect(med,SIGNAL(aboutToFinish()),this,SLOT(next()));
    connect(dwidget,SIGNAL(geturls(const QMimeData*)),this,SLOT(dropdata(const QMimeData*)));
    connect(dwidget,SIGNAL(capturespace(QKeyEvent*)),this,SLOT(widgetpause(QKeyEvent*)));
+   connect(med,SIGNAL(tick(qint64)),this,SLOT(timechanged(qint64)));
+   connect(med,SIGNAL(totalTimeChanged(qint64)),this,SLOT(totalTimeChanged(qint64)));
    //adding custom video widget with drag n drop enabled
     ui->gridLayout->addWidget(dwidget);
     ui->seekSlider->setIconVisible(false);
+    volume=sndout->volumeDecibel();
+    ui->label->setText(QString::number(volume));
+
 
 
 }
@@ -555,8 +559,8 @@ void MainWindow::on_actionFoward_triggered()
 
 void MainWindow::widgetpause(QKeyEvent *event)
 {
-    qint64 currenttime=med->currentTime();
-    qreal volume=sndout->volumeDecibel();
+
+
     switch(event->key())
     {
         case Qt::Key_Space: if(med->state()==Phonon::PlayingState)
@@ -575,19 +579,105 @@ void MainWindow::widgetpause(QKeyEvent *event)
         else
             dwidget->setFullScreen(true);
         break;
-    case Qt::Key_Right: if(currenttime < med->totalTime()-10000)
-            ui->seekSlider->mediaObject()->seek(currenttime+10000);
+    case Qt::Key_Right:this->on_actionSkip_Foward_triggered();
         break;
-    case Qt::Key_Left: if(currenttime > 10000)
-            ui->seekSlider->mediaObject()->seek(currenttime-10000);
+    case Qt::Key_Left: this->on_actionSkip_Backward_triggered();
         break;
-    case Qt::Key_Up: ui->volumeSlider->audioOutput()->setVolumeDecibel(volume+0.5);
+    case Qt::Key_Up: this->on_actionVolume_Up_triggered();
         break;
-    case Qt::Key_Down: ui->volumeSlider->audioOutput()->setVolumeDecibel(volume-0.5);
+    case Qt::Key_Down: this->on_actionVolume_Down_triggered();
         break;
 
     default: med->play();
     }
+
+
+}
+
+void MainWindow::on_actionVolume_Up_triggered()
+{
+    if(volume<=50)
+    {
+        volume=volume+0.5;
+        ui->label->setText(QString::number(volume));
+        ui->volumeSlider->audioOutput()->setVolumeDecibel(volume);
+    }
+}
+
+void MainWindow::on_actionVolume_Down_triggered()
+{
+    if(volume>=-50)
+    {
+        volume=volume-0.5;
+        ui->label->setText(QString::number(volume));
+        ui->volumeSlider->audioOutput()->setVolumeDecibel(volume);
+    }
+
+}
+
+void MainWindow::on_actionSkip_Foward_triggered()
+{
+    currenttime=med->currentTime();
+    if(currenttime < med->totalTime()-10000)
+    ui->seekSlider->mediaObject()->seek(currenttime+10000);
+}
+
+void MainWindow::on_actionSkip_Backward_triggered()
+{
+    currenttime=med->currentTime();
+    if(currenttime > 10000)
+        ui->seekSlider->mediaObject()->seek(currenttime-10000);
+
+}
+
+void MainWindow::timechanged(qint64 time)
+{
+   qint64 hour,min,sec,dispsec,dmin;
+    hour=min=dmin=0;
+    time=med->currentTime();
+    sec=time/1000;
+    dispsec=sec;
+    if(sec>59)
+    {
+        min=sec/60;
+        dispsec=sec%60;
+        dmin=min;
+
+    }
+    if(min>59)
+    {
+        hour=min/60;
+        dmin=min%60;
+    }
+    ui->hourlabel1->setText(QString::number(hour));
+    ui->minlabel1->setText(QString::number(dmin));
+    ui->slabel1->setText(QString::number(dispsec));
+
+
+
+}
+
+void MainWindow::totalTimeChanged(qint64 newtottime)
+{
+    qint64 hour,min,sec,dispsec,dmin;
+     hour=min=sec=dispsec=dmin=0;
+     newtottime=med->totalTime();
+     sec=newtottime/1000;
+     dispsec=sec;
+     if(sec>59)
+     {
+         min=sec/60;
+         dispsec=sec%60;
+         dmin=min;
+     }
+     if(min>59)
+     {
+         hour=min/60;
+         dmin=min%60;
+     }
+     ui->hourlabel2->setText(QString::number(hour));
+     ui->minlabel2->setText(QString::number(dmin));
+     ui->slabel2->setText(QString::number(dispsec));
 
 
 }
