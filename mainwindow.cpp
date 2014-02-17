@@ -226,7 +226,7 @@ void MainWindow::on_actionFrom_Database_triggered()
                 MyDB.setPort(3306);
                 MyDB.setDatabaseName(DBName);
             }
-             MyDB.open(UName,Passwd);
+            MyDB.open(UName,Passwd);
         }
 
         if(MyDB.isOpen()==true)
@@ -234,7 +234,12 @@ void MainWindow::on_actionFrom_Database_triggered()
               msg.setText(MyDB.driverName()+" Database "+DBName+" Open");
               msg.exec();
         }
-        if(TabName=="Movies")
+        if(!MyDB.tables().contains(TabName))
+        {
+            msg.setText(TabName+" does not exist");
+            msg.exec();
+        }
+        else if(TabName=="Movies")
         {
             ui->tableWidget->setColumnCount(5);
             QStringList Moviecollabel;
