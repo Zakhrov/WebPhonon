@@ -70,6 +70,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
 
+
 }
 
 void MainWindow::cmdopen(QString cmdfile)
@@ -88,6 +89,7 @@ void MainWindow::cmdopen(QString cmdfile)
         if(!sources.isEmpty())
        med->setCurrentSource(sources.at(index));
        med->play();
+       ui->tableWidget->selectRow(index);
     }
 
     ui->tableWidget->resizeColumnsToContents();
@@ -120,6 +122,7 @@ void MainWindow::on_actionLocal_File_triggered()
          if(!sources.isEmpty())
         med->setCurrentSource(sources.at(index));
         med->play();
+        ui->tableWidget->selectRow(index);
      }
 
 }
@@ -140,6 +143,7 @@ void MainWindow::on_actionPlay_triggered()
     med->play();
     ui->lineEdit->hide();
     ui->pushButton->hide();
+    ui->tableWidget->selectRow(sources.indexOf(med->currentSource()));
 }
 
 void MainWindow::on_actionPause_triggered()
@@ -412,7 +416,7 @@ void MainWindow::on_actionFrom_Database_triggered()
         {
             if(!sources.isEmpty())
                 med->setCurrentSource(sources.at(index));
-
+            ui->tableWidget->selectRow(index);
             med->play();
         }
 
@@ -478,7 +482,7 @@ void MainWindow::on_pushButton_clicked()
      {
          if(!sources.isEmpty())
              med->setCurrentSource(sources.at(index));
-
+            ui->tableWidget->selectRow(index);
          med->play();
      }
 
@@ -521,6 +525,7 @@ void MainWindow::dropdata(const QMimeData *mimeData)
 
                  if(!sources.isEmpty())
                 med->setCurrentSource(sources.at(index));
+                 ui->tableWidget->selectRow(index);
                 med->play();
              }
          }
@@ -538,11 +543,13 @@ void MainWindow::on_actionBack_triggered()
         if(index!=0)
         {
             med->setCurrentSource(sources.at(index-1));
+            ui->tableWidget->selectRow(index-1);
             med->play();
         }
         else
         {
             med->setCurrentSource(sources.at(index));
+            ui->tableWidget->selectRow(index);
             med->play();
          }
 
@@ -558,6 +565,7 @@ void MainWindow::on_actionFoward_triggered()
        if(sources.size()>index)
        {
             med->setCurrentSource(sources.at(index));
+            ui->tableWidget->selectRow(index);
             med->play();
        }
 }

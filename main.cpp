@@ -15,7 +15,7 @@
 int main(int argc, char *argv[])
 {
     KAboutData aboutData( "WebPhonon", "WebPhonon",
-          ki18n("WebPhonon"), "1.4",
+          ki18n("WebPhonon"), "1.5",
           ki18n("Media Player"),
           KAboutData::License_GPL,
           ki18n("Copyright (c) 2013 Zakhrov") );
@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
     spl.setPixmap(img);
     spl.show();
 
-    QStringList cmd=a.arguments();
+   // QStringList cmd=a.arguments();
 //    QTextStream cout(stdout);
 //    cout<<argv[0]<<endl;
 //    cout<<argv[1]<<endl;
