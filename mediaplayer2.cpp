@@ -8,7 +8,7 @@
 
 MediaPlayer2::MediaPlayer2(QObject * parent) : QDBusAbstractAdaptor(parent)
 {
-    connect(MainWindow::med,SIGNAL(hasVideoChanged(bool)),this,SLOT(emitFullscreenChange(bool)));
+    //connect(w->med,SIGNAL(hasVideoChanged(bool)),this,SLOT(emitFullscreenChange(bool)));
 }
 
 bool MediaPlayer2::CanQuit() const
@@ -18,24 +18,24 @@ bool MediaPlayer2::CanQuit() const
 
 bool MediaPlayer2::Fullscreen() const
 {
-    return MainWindow::dwidget->isFullScreen();
+    return w->dwidget->isFullScreen();
 }
 
 void MediaPlayer2::setFullscreen(bool fullscreen) const
 {
-    MainWindow::dwidget->setFullScreen(fullscreen);
+    w->dwidget->setFullScreen(fullscreen);
 }
 
 bool MediaPlayer2::CanSetFullscreen() const
 {
-    return MainWindow::med->hasVideo();
+    return w->med->hasVideo();
 }
 
 
 
 void MediaPlayer2::quit()
 {
-
+    w->close();
 }
 
 void MediaPlayer2::emitFullscreenChange(bool fullscreen) const

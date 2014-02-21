@@ -1,6 +1,7 @@
 #ifndef MEDIAPLAYER2_H
 #define MEDIAPLAYER2_H
 #include "codeine.h"
+#include "mainwindow.h"
 #include<QtDBus/QDBusAbstractAdaptor>
 
 class MediaPlayer2 :QDBusAbstractAdaptor
@@ -22,6 +23,8 @@ public slots:
 private slots:
 
             void emitFullscreenChange(bool fullscreen) const;
+private:
+    MainWindow *w;
 
 };
 

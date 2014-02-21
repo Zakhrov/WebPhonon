@@ -1,6 +1,7 @@
 #ifndef MEDIAPLAYER2PLAYER_H
 #define MEDIAPLAYER2PLAYER_H
 #include "codeine.h"
+#include "mainwindow.h"
 #include<QtDBus/QDBusAbstractAdaptor>
 #include <Phonon/MediaSource>
 #include<QtDBus/QDBusObjectPath>
@@ -34,6 +35,8 @@ public slots:
     void Play() const;
 private slots:
             void currentSourceChanged() const;
+private:
+            MainWindow *w;
 
 
 };

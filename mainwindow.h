@@ -28,11 +28,11 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     void cmdopen(QString cmdfile);
-    static Phonon::MediaObject *med;
-    static DropWidget *dwidget;
+     Phonon::MediaObject *med;
+     DropWidget *dwidget;
     friend QWidget *mwindow();
-          static MainWindow *s_instance;
-          friend class AppWrapper;
+          //static MainWindow *s_instance;
+          //friend class AppWrapper;
 
 
 

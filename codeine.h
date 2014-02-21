@@ -4,7 +4,7 @@ class QWidget;
 
 QWidget *mwindow();
 
-int main(int,char**);
+//int main(int,char**);
 
 #define APP_NAME "WebPhonon"
 #endif // CODEINE_H

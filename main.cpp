@@ -1,7 +1,7 @@
 #include <QtGui/QApplication>
-//#include "mainwindow.h"
+#include "mainwindow.h"
 #include "codeine.h"
-#include "appwrapper.h"
+//#include "appwrapper.h"
 #include <QCoreApplication>
 #include <QPixmap>
 #include <QSplashScreen>
@@ -29,14 +29,17 @@ int main(int argc, char *argv[])
       KCmdLineArgs::addCmdLineOptions(options); //new
     KUniqueApplication::addCmdLineOptions();
 
-    QApplication a(argc, argv);
+   QApplication a(argc, argv);
     QCoreApplication::setApplicationName("WebPhonon");
-    AppWrapper app;
+    //AppWrapper app;
     QPixmap img;
     img.load(":/splash/WebPhonon-Master-text2.png");
     QSplashScreen spl;
     spl.setPixmap(img);
     spl.show();
+    MainWindow w;
+    w.parseArgs();
+    w.showMaximized();
 
    // QStringList cmd=a.arguments();
 //    QTextStream cout(stdout);
@@ -53,7 +56,7 @@ int main(int argc, char *argv[])
          app(args->url(0).url()); //new
      }*/
     //w.showMaximized();
-    a.exec();
-    return app.exec();
+   // a.exec();
+    return a.exec();
 
 }

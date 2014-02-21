@@ -29,10 +29,10 @@
 #include <KDE/KUrl>
 //#include <stdlib.h>
 //#include <boost/filesystem/
-      MainWindow * MainWindow::s_instance=0;
-       QWidget* mwindow() { return MainWindow::s_instance; }
-      DropWidget *MainWindow::dwidget=new DropWidget();
-      Phonon::MediaObject *MainWindow::med=new Phonon::MediaObject();
+     // MainWindow * MainWindow::s_instance=0;
+      QWidget* mwindow() { return 0 ;}
+      //DropWidget *MainWindow::dwidget=new DropWidget();
+      //Phonon::MediaObject *MainWindow::med=new Phonon::MediaObject();
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -46,8 +46,8 @@ MainWindow::MainWindow(QWidget *parent) :
     bkdiag=new BackendDialog(this);
     hdiag=new HelpDialog(this);
     sndout=new Phonon::AudioOutput(Phonon::VideoCategory,this);
-    //MainWindow::med=new Phonon::MediaObject(this);
-    //MainWindow::dwidget=new DropWidget(this);
+    med=new Phonon::MediaObject(this);
+    dwidget=new DropWidget(this);
     med->setTransitionTime(2000);
     Phonon::createPath(med,dwidget);
     Phonon::createPath(med,sndout);
@@ -74,7 +74,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->seekSlider->setIconVisible(false);
     volume=sndout->volumeDecibel();
     ui->label->setText(QString::number(volume));
-    s_instance=this;
+    //s_instance=this;
     Mpris2(this);
 
 

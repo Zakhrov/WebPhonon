@@ -6,17 +6,17 @@
 #include <QtDBus/QDBusAbstractAdaptor>
 #include <QCryptographicHash>
 
-static QByteArray makeTrackId(const QString& source)
+/*static QByteArray makeTrackId(const QString& source)
 
 {
 
     return QByteArray("/org/kde/") + APP_NAME + "/tid_" + QCryptographicHash::hash(source.toLocal8Bit(), QCryptographicHash::Sha1).toHex();
 
-}
+}*/
 
 MediaPlayer2Player::MediaPlayer2Player(QObject *parent): QDBusAbstractAdaptor(parent)
 {
-    connect(MainWindow::med,SIGNAL(currentSourceChanged(Phonon::MediaSource)),this,SLOT(currentSourceChanged()));
+    //connect(w->med,SIGNAL(currentSourceChanged(Phonon::MediaSource)),this,SLOT(currentSourceChanged()));
 }
 
 bool MediaPlayer2Player::CanGoNext() const
@@ -37,19 +37,19 @@ bool MediaPlayer2Player::CanPlay() const
 
 bool MediaPlayer2Player::CanPause() const
 {
-    return MainWindow::med->state()!= Phonon::ErrorState;
+    return w->med->state()!= Phonon::ErrorState;
 }
 
 QVariantMap MediaPlayer2Player::Metadata() const
 {
     QVariantMap metadata;
-    switch(MainWindow::med->currentSource().type())
+    switch(w->med->currentSource().type())
     {
         case Phonon::MediaSource::Invalid:
     case Phonon::MediaSource::Empty:
                   break;
     default:
-        metadata["mpris:length"]=MainWindow::med->totalTime();
+        metadata["mpris:length"]=w->med->totalTime();
 
     }
     return metadata;
@@ -67,17 +67,17 @@ void MediaPlayer2Player::Previous() const
 
 void MediaPlayer2Player::Pause() const
 {
-    MainWindow::med->pause();
+    w->med->pause();
 }
 
 void MediaPlayer2Player::Stop() const
 {
-    MainWindow::med->stop();
+    w->med->stop();
 }
 
 void MediaPlayer2Player::Play() const
 {
-    MainWindow::med->play();
+    w->med->play();
 }
 
 void MediaPlayer2Player::currentSourceChanged() const
