@@ -14,6 +14,7 @@
 #include "ui_mainwindow.h"
 #include "helpdialog.h"
 #include "dropwidget.h"
+#include "mpris2.h"
 #include <Phonon/AudioOutput>
 #include <Phonon/MediaObject>
 #include <QFileDialog>
@@ -24,9 +25,14 @@
 #include <QSqlQuery>
 #include <QMessageBox>
 #include <Phonon/VideoWidget>
+#include <KDE/KCmdLineArgs>
+#include <KDE/KUrl>
 //#include <stdlib.h>
 //#include <boost/filesystem/
-
+      MainWindow * MainWindow::s_instance=0;
+       QWidget* mwindow() { return MainWindow::s_instance; }
+      DropWidget *MainWindow::dwidget=new DropWidget();
+      Phonon::MediaObject *MainWindow::med=new Phonon::MediaObject();
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -35,12 +41,13 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setWindowIcon(QIcon(":/icons/WebPhononIcon.png"));
     ui->setupUi(this);
     d=new Dialog(this);
-    dwidget=new DropWidget;
+
     dm2=new DBMainWindow(this);
     bkdiag=new BackendDialog(this);
     hdiag=new HelpDialog(this);
     sndout=new Phonon::AudioOutput(Phonon::VideoCategory,this);
-    med=new Phonon::MediaObject(this);
+    //MainWindow::med=new Phonon::MediaObject(this);
+    //MainWindow::dwidget=new DropWidget(this);
     med->setTransitionTime(2000);
     Phonon::createPath(med,dwidget);
     Phonon::createPath(med,sndout);
@@ -67,8 +74,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->seekSlider->setIconVisible(false);
     volume=sndout->volumeDecibel();
     ui->label->setText(QString::number(volume));
-
-
+    s_instance=this;
+    Mpris2(this);
 
 
 }
@@ -528,7 +535,14 @@ void MainWindow::dropdata(const QMimeData *mimeData)
                  ui->tableWidget->selectRow(index);
                 med->play();
              }
-         }
+    }
+}
+
+void MainWindow::parseArgs()
+{
+  KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
+  if(args->count()>0)
+      cmdopen(args->url(0).url());
 }
 
 void MainWindow::on_actionBack_triggered()
@@ -692,5 +706,18 @@ void MainWindow::totalTimeChanged(qint64 newtottime)
      ui->minlabel2->setText(QString::number(dmin));
      ui->slabel2->setText(QString::number(dispsec));
 
+
+}
+
+void MainWindow::on_actionClear_Playlist_triggered()
+{
+    sources.clear();
+    int i, rcnt;
+    rcnt=ui->tableWidget->rowCount();
+    ui->tableWidget->clearContents();
+    for(i=0;i<=rcnt;i++)
+    {
+        ui->tableWidget->removeRow(i);
+    }
 
 }

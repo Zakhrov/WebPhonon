@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui phonon sql webkit network
+QT       += core gui phonon sql webkit network dbus
 LIBS += -lkdeui -lkdecore
 
 TARGET = WebPhonon
@@ -17,14 +17,23 @@ SOURCES += main.cpp\
     backenddialog.cpp \
     helpdialog.cpp \
     dbmainwindow.cpp \
-    dropwidget.cpp
+    dropwidget.cpp \
+    mediaplayer2.cpp \
+    mpris2.cpp \
+    mediaplayer2player.cpp \
+    appwrapper.cpp
 
 HEADERS  += mainwindow.h \
     dialog.h \
     backenddialog.h \
     helpdialog.h \
     dbmainwindow.h \
-    dropwidget.h
+    dropwidget.h \
+    mediaplayer2.h \
+    mpris2.h \
+    mediaplayer2player.h \
+    codeine.h \
+    appwrapper.h
 
 FORMS    += mainwindow.ui \
     dialog.ui \

@@ -11,6 +11,7 @@
 #include "backenddialog.h"
 #include "helpdialog.h"
 #include "dropwidget.h"
+#include "codeine.h"
 #include <QSqlDatabase>
 #include <QWebView>
 #include <QTableWidgetItem>
@@ -27,11 +28,19 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     void cmdopen(QString cmdfile);
+    static Phonon::MediaObject *med;
+    static DropWidget *dwidget;
+    friend QWidget *mwindow();
+          static MainWindow *s_instance;
+          friend class AppWrapper;
+
+
 
     ~MainWindow();
 
 public slots:
     void dropdata(const QMimeData *mimeData);
+    void parseArgs();
 private slots:
 
     void on_actionLocal_File_triggered();
@@ -82,9 +91,10 @@ private slots:
     void totalTimeChanged(qint64 newtottime);
 
 
+    void on_actionClear_Playlist_triggered();
+
 private:
     Ui::MainWindow *ui;
-    Phonon::MediaObject *med;
     Phonon::AudioOutput *sndout;
     Dialog *d;
     QSqlDatabase MyDB;
@@ -95,12 +105,13 @@ private:
     QTableWidgetItem *item;
     BackendDialog *bkdiag;
     HelpDialog *hdiag;
-    DropWidget *dwidget;
     qreal volume;
     qint64 currenttime;
 
 
 
 };
+//Phonon::MediaObject MainWindow::med;
+//DropWidget MainWindow::dwidget;
 
 #endif // MAINWINDOW_H

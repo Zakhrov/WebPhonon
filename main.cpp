@@ -1,5 +1,7 @@
 #include <QtGui/QApplication>
-#include "mainwindow.h"
+//#include "mainwindow.h"
+#include "codeine.h"
+#include "appwrapper.h"
 #include <QCoreApplication>
 #include <QPixmap>
 #include <QSplashScreen>
@@ -10,6 +12,7 @@
 #include <KDE/KCmdLineArgs>
 #include <KDE/KUrl>
 #include <KDE/KAboutData>
+#include <KDE/KUniqueApplication>
 
 
 int main(int argc, char *argv[])
@@ -24,11 +27,11 @@ int main(int argc, char *argv[])
     KCmdLineOptions options; //new
       options.add("+[file]", ki18n("Document to open")); //new
       KCmdLineArgs::addCmdLineOptions(options); //new
-
+    KUniqueApplication::addCmdLineOptions();
 
     QApplication a(argc, argv);
     QCoreApplication::setApplicationName("WebPhonon");
-    MainWindow w;
+    AppWrapper app;
     QPixmap img;
     img.load(":/splash/WebPhonon-Master-text2.png");
     QSplashScreen spl;
@@ -44,12 +47,13 @@ int main(int argc, char *argv[])
 //    {
 //        w.cmdopen(cmd.last());
 //    }
-    KCmdLineArgs *args = KCmdLineArgs::parsedArgs(); //new
+    /*KCmdLineArgs *args = KCmdLineArgs::parsedArgs(); //new
      if(args->count()) //new
      {
-       w.cmdopen(args->url(0).url()); //new
-     }
-    w.showMaximized();
-    
-    return a.exec();
+         app(args->url(0).url()); //new
+     }*/
+    //w.showMaximized();
+    a.exec();
+    return app.exec();
+
 }

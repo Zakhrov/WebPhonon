@@ -1,4 +1,4 @@
-webphonon (1.5-1) Precise; urgency=low
+webphonon (1.5-8) Precise; urgency=low
 
     * Add cmake build dependency
 

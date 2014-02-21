@@ -16,6 +16,7 @@
         <file>view-close.png</file>
         <file>server-database.png</file>
         <file>WebPhononIcon.png</file>
+        <file>edit-clear-list.png</file>
     </qresource>
     <qresource prefix="/splash">
         <file>WebPhonon-Master-text2.png</file>

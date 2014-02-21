@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>687</width>
-    <height>307</height>
+    <width>685</width>
+    <height>305</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -166,8 +166,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>687</width>
-     <height>22</height>
+     <width>685</width>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -199,6 +199,7 @@
     <addaction name="actionVolume_Down"/>
     <addaction name="actionSkip_Foward"/>
     <addaction name="actionSkip_Backward"/>
+    <addaction name="actionClear_Playlist"/>
    </widget>
    <widget class="QMenu" name="menuDatabase">
     <property name="title">
@@ -239,6 +240,7 @@
    <addaction name="actionFull_Screen"/>
    <addaction name="actionSet_Database"/>
    <addaction name="actionHide_Table"/>
+   <addaction name="actionClear_Playlist"/>
    <addaction name="actionManage_Databases"/>
    <addaction name="actionExit"/>
   </widget>
@@ -433,6 +435,15 @@
    </property>
    <property name="shortcut">
     <string>Left</string>
+   </property>
+  </action>
+  <action name="actionClear_Playlist">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/Icons/edit-clear-list.png</normaloff>:/Icons/edit-clear-list.png</iconset>
+   </property>
+   <property name="text">
+    <string>Clear Playlist</string>
    </property>
   </action>
  </widget>
