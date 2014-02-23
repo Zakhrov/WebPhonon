@@ -11,7 +11,6 @@
 #include "backenddialog.h"
 #include "helpdialog.h"
 #include "dropwidget.h"
-#include "codeine.h"
 #include <QSqlDatabase>
 #include <QWebView>
 #include <QTableWidgetItem>
@@ -28,15 +27,8 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     void cmdopen(QString cmdfile);
-     Phonon::MediaObject *med;
-     DropWidget *dwidget;
-    friend QWidget *mwindow();
-          //static MainWindow *s_instance;
-          //friend class AppWrapper;
 
-
-
-    ~MainWindow();
+       ~MainWindow();
 
 public slots:
     void dropdata(const QMimeData *mimeData);
@@ -95,6 +87,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    Phonon::MediaObject *med;
+    DropWidget *dwidget;
     Phonon::AudioOutput *sndout;
     Dialog *d;
     QSqlDatabase MyDB;

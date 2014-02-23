@@ -14,7 +14,6 @@
 #include "ui_mainwindow.h"
 #include "helpdialog.h"
 #include "dropwidget.h"
-#include "mpris2.h"
 #include <Phonon/AudioOutput>
 #include <Phonon/MediaObject>
 #include <QFileDialog>
@@ -27,12 +26,7 @@
 #include <Phonon/VideoWidget>
 #include <KDE/KCmdLineArgs>
 #include <KDE/KUrl>
-//#include <stdlib.h>
-//#include <boost/filesystem/
-     // MainWindow * MainWindow::s_instance=0;
-      QWidget* mwindow() { return 0 ;}
-      //DropWidget *MainWindow::dwidget=new DropWidget();
-      //Phonon::MediaObject *MainWindow::med=new Phonon::MediaObject();
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -72,10 +66,11 @@ MainWindow::MainWindow(QWidget *parent) :
    //adding custom video widget with drag n drop enabled
     ui->gridLayout->addWidget(dwidget);
     ui->seekSlider->setIconVisible(false);
+    ui->volumeSlider->setMuteVisible(false);
     volume=sndout->volumeDecibel();
     ui->label->setText(QString::number(volume));
     //s_instance=this;
-    Mpris2(this);
+
 
 
 }

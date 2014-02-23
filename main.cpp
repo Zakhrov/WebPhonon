@@ -1,7 +1,5 @@
 #include <QtGui/QApplication>
 #include "mainwindow.h"
-#include "codeine.h"
-//#include "appwrapper.h"
 #include <QCoreApplication>
 #include <QPixmap>
 #include <QSplashScreen>

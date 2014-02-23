@@ -17,23 +17,14 @@ SOURCES += main.cpp\
     backenddialog.cpp \
     helpdialog.cpp \
     dbmainwindow.cpp \
-    dropwidget.cpp \
-    mediaplayer2.cpp \
-    mpris2.cpp \
-    mediaplayer2player.cpp \
-    appwrapper.cpp
+    dropwidget.cpp
 
 HEADERS  += mainwindow.h \
     dialog.h \
     backenddialog.h \
     helpdialog.h \
     dbmainwindow.h \
-    dropwidget.h \
-    mediaplayer2.h \
-    mpris2.h \
-    mediaplayer2player.h \
-    codeine.h \
-    appwrapper.h
+    dropwidget.h
 
 FORMS    += mainwindow.ui \
     dialog.ui \
