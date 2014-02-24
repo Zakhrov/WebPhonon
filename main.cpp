@@ -16,7 +16,7 @@
 int main(int argc, char *argv[])
 {
     KAboutData aboutData( "WebPhonon", "WebPhonon",
-          ki18n("WebPhonon"), "1.5",
+          ki18n("WebPhonon"), "1.6",
           ki18n("Media Player"),
           KAboutData::License_GPL,
           ki18n("Copyright (c) 2013 Zakhrov") );
