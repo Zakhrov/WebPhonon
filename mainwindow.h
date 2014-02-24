@@ -32,7 +32,6 @@ public:
 
 public slots:
     void dropdata(const QMimeData *mimeData);
-    void parseArgs();
 private slots:
 
     void on_actionLocal_File_triggered();

@@ -533,13 +533,6 @@ void MainWindow::dropdata(const QMimeData *mimeData)
     }
 }
 
-void MainWindow::parseArgs()
-{
-  KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
-  if(args->count()>0)
-      cmdopen(args->url(0).url());
-}
-
 void MainWindow::on_actionBack_triggered()
 {
    // if(sources.size()>0)

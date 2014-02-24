@@ -36,8 +36,6 @@ int main(int argc, char *argv[])
     spl.setPixmap(img);
     spl.show();
     MainWindow w;
-    w.parseArgs();
-    w.showMaximized();
 
    // QStringList cmd=a.arguments();
 //    QTextStream cout(stdout);
@@ -48,12 +46,12 @@ int main(int argc, char *argv[])
 //    {
 //        w.cmdopen(cmd.last());
 //    }
-    /*KCmdLineArgs *args = KCmdLineArgs::parsedArgs(); //new
+    KCmdLineArgs *args = KCmdLineArgs::parsedArgs(); //new
      if(args->count()) //new
      {
-         app(args->url(0).url()); //new
-     }*/
-    //w.showMaximized();
+         w.cmdopen(args->url(0).url()); //new
+     }
+    w.showMaximized();
    // a.exec();
     return a.exec();
 
