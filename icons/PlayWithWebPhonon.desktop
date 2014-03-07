@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=all/all;
+Icon=WebPhonon
+Actions=play;
+X-KDE-StartupNotify=false
+X-KDE-Priority=TopLevel
+
+[Desktop Action play]
+Name=Play With WebPhonon
+Exec=WebPhonon %U

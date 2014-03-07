@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui phonon sql webkit network dbus
+QT       += core gui phonon sql webkit network
 LIBS += -lkdeui -lkdecore
 
 TARGET = WebPhonon
@@ -87,7 +87,8 @@ OTHER_FILES += \
     icons/128x128/WebPhonon.png \
     icons/256x256/WebPhonon.png \
     icons/512x512/WebPhonon.png \
-    CMakeLists.txt
+    CMakeLists.txt \
+    icons/PlayWithWebPhonon.desktop
 
     target.path = /usr/bin
     desktop.path= /usr/share/applications
@@ -99,6 +100,8 @@ OTHER_FILES += \
     icon128.path= /usr/share/icons/hicolor/128x128/apps
     icon256.path= /usr/share/icons/hicolor/256x256/apps
     icon512.path= /usr/share/icons/hicolor/512x512/apps
+    service.path= /usr/share/kde4/services/ServiceMenus/
+    service.files+=PlayWithWebPhonon.desktop
 
 
 
@@ -121,7 +124,7 @@ OTHER_FILES += \
 
 
 
-INSTALLS+=target icon16 icon32 icon48 icon64 icon128 icon256 icon512 desktop
+INSTALLS+=target icon16 icon32 icon48 icon64 icon128 icon256 icon512 desktop service
 
 
 
