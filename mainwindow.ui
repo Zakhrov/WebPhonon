@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>685</width>
-    <height>305</height>
+    <width>683</width>
+    <height>303</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -166,7 +166,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>685</width>
+     <width>683</width>
      <height>21</height>
     </rect>
    </property>
@@ -213,6 +213,7 @@
     <property name="title">
      <string>&amp;Help</string>
     </property>
+    <addaction name="actionAbout_WebPhonon"/>
     <addaction name="actionAvailable_Formats"/>
     <addaction name="actionUser_Manual"/>
    </widget>
@@ -444,6 +445,11 @@
    </property>
    <property name="text">
     <string>Clear Playlist</string>
+   </property>
+  </action>
+  <action name="actionAbout_WebPhonon">
+   <property name="text">
+    <string>About WebPhonon</string>
    </property>
   </action>
  </widget>

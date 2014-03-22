@@ -14,6 +14,7 @@
 #include "ui_mainwindow.h"
 #include "helpdialog.h"
 #include "dropwidget.h"
+#include "aboutdialog.h"
 #include <Phonon/AudioOutput>
 #include <Phonon/MediaObject>
 #include <QFileDialog>
@@ -708,4 +709,10 @@ void MainWindow::on_actionClear_Playlist_triggered()
         ui->tableWidget->removeRow(i);
     }
 
+}
+
+void MainWindow::on_actionAbout_WebPhonon_triggered()
+{
+    AboutDialog *adiag=new AboutDialog(this);
+    adiag->show();
 }

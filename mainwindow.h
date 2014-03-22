@@ -84,6 +84,8 @@ private slots:
 
     void on_actionClear_Playlist_triggered();
 
+    void on_actionAbout_WebPhonon_triggered();
+
 private:
     Ui::MainWindow *ui;
     Phonon::MediaObject *med;
