@@ -68,10 +68,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->gridLayout->addWidget(dwidget);
     ui->seekSlider->setIconVisible(false);
     ui->volumeSlider->setMuteVisible(false);
+    ui->volumeSlider->setOrientation(Qt::Vertical);
     volume=sndout->volumeDecibel();
     ui->label->setText(QString::number(volume));
     //s_instance=this;
-
 
 
 }
@@ -91,8 +91,7 @@ void MainWindow::cmdopen(QString cmdfile)
 
         if(!sources.isEmpty())
        med->setCurrentSource(sources.at(index));
-       med->play();
-       ui->tableWidget->selectRow(index);
+       this->on_actionPlay_triggered();
     }
 
     ui->tableWidget->resizeColumnsToContents();
@@ -124,8 +123,7 @@ void MainWindow::on_actionLocal_File_triggered()
 
          if(!sources.isEmpty())
         med->setCurrentSource(sources.at(index));
-        med->play();
-        ui->tableWidget->selectRow(index);
+        this->on_actionPlay_triggered();
      }
 
 }
@@ -143,10 +141,13 @@ void MainWindow::on_actionHttp_Stream_triggered()
 
 void MainWindow::on_actionPlay_triggered()
 {
+    //int aspect;
     med->play();
     ui->lineEdit->hide();
     ui->pushButton->hide();
     ui->tableWidget->selectRow(sources.indexOf(med->currentSource()));
+
+
 }
 
 void MainWindow::on_actionPause_triggered()
@@ -419,8 +420,7 @@ void MainWindow::on_actionFrom_Database_triggered()
         {
             if(!sources.isEmpty())
                 med->setCurrentSource(sources.at(index));
-            ui->tableWidget->selectRow(index);
-            med->play();
+            this->on_actionPlay_triggered();
         }
 
         MyDB.close();
@@ -485,8 +485,7 @@ void MainWindow::on_pushButton_clicked()
      {
          if(!sources.isEmpty())
              med->setCurrentSource(sources.at(index));
-            ui->tableWidget->selectRow(index);
-         med->play();
+            this->on_actionPlay_triggered();
      }
 
 }
@@ -528,8 +527,7 @@ void MainWindow::dropdata(const QMimeData *mimeData)
 
                  if(!sources.isEmpty())
                 med->setCurrentSource(sources.at(index));
-                 ui->tableWidget->selectRow(index);
-                med->play();
+                 this->on_actionPlay_triggered();
              }
     }
 }
@@ -546,14 +544,12 @@ void MainWindow::on_actionBack_triggered()
         if(index!=0)
         {
             med->setCurrentSource(sources.at(index-1));
-            ui->tableWidget->selectRow(index-1);
-            med->play();
+            this->on_actionPlay_triggered();
         }
         else
         {
             med->setCurrentSource(sources.at(index));
-            ui->tableWidget->selectRow(index);
-            med->play();
+            this->on_actionPlay_triggered();
          }
 
 
@@ -568,8 +564,7 @@ void MainWindow::on_actionFoward_triggered()
        if(sources.size()>index)
        {
             med->setCurrentSource(sources.at(index));
-            ui->tableWidget->selectRow(index);
-            med->play();
+            this->on_actionPlay_triggered();
        }
 }
 
@@ -579,16 +574,13 @@ void MainWindow::widgetpause(QKeyEvent *event)
 
     switch(event->key())
     {
-        case Qt::Key_Space: if(med->state()==Phonon::PlayingState)
-            med->pause();
-        else
-            med->play();
+        case Qt::Key_Space: this->on_actionPause_triggered();
         break;
     case Qt::Key_MediaPrevious:this->on_actionBack_triggered();
         break;
     case Qt::Key_MediaNext:this->on_actionFoward_triggered();
         break;
-    case Qt::Key_MediaStop: med->stop();;
+    case Qt::Key_MediaStop: this->on_actionStop_triggered();
         break;
     case Qt::Key_F: if(dwidget->isFullScreen())
             dwidget->setFullScreen(false);
@@ -603,8 +595,14 @@ void MainWindow::widgetpause(QKeyEvent *event)
         break;
     case Qt::Key_Down: this->on_actionVolume_Down_triggered();
         break;
+    case Qt::Key_1: this->on_actionAuto_triggered();
+        break;
+    case Qt::Key_2: this->on_actionSquare_triggered();
+        break;
+    case Qt::Key_3: this->on_actionWideScreen_triggered();
+        break;
 
-    default: med->play();
+    default: this->on_actionPlay_triggered();
     }
 
 
@@ -715,4 +713,19 @@ void MainWindow::on_actionAbout_WebPhonon_triggered()
 {
     AboutDialog *adiag=new AboutDialog(this);
     adiag->show();
+}
+
+void MainWindow::on_actionAuto_triggered()
+{
+    dwidget->setAspectRatio(Phonon::VideoWidget::AspectRatioAuto);
+}
+
+void MainWindow::on_actionSquare_triggered()
+{
+    dwidget->setAspectRatio(Phonon::VideoWidget::AspectRatio4_3);
+}
+
+void MainWindow::on_actionWideScreen_triggered()
+{
+    dwidget->setAspectRatio(Phonon::VideoWidget::AspectRatio16_9);
 }

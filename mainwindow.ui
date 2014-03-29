@@ -42,7 +42,7 @@
     <item row="3" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="Phonon::SeekSlider" name="seekSlider"/>
+       <widget class="Phonon::SeekSlider" name="seekSlider" native="true"/>
       </item>
       <item>
        <widget class="QLabel" name="hourlabel1">
@@ -153,11 +153,7 @@
      </layout>
     </item>
     <item row="2" column="1">
-     <widget class="Phonon::VolumeSlider" name="volumeSlider">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-     </widget>
+     <widget class="Phonon::VolumeSlider" name="volumeSlider" native="true"/>
     </item>
    </layout>
   </widget>
@@ -167,7 +163,7 @@
      <x>0</x>
      <y>0</y>
      <width>683</width>
-     <height>21</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -189,6 +185,14 @@
     <property name="title">
      <string>&amp;Player</string>
     </property>
+    <widget class="QMenu" name="menuAspect_Ratio">
+     <property name="title">
+      <string>Aspect Ratio</string>
+     </property>
+     <addaction name="actionAuto"/>
+     <addaction name="actionSquare"/>
+     <addaction name="actionWideScreen"/>
+    </widget>
     <addaction name="actionPlay"/>
     <addaction name="actionPause"/>
     <addaction name="actionStop"/>
@@ -200,6 +204,7 @@
     <addaction name="actionSkip_Foward"/>
     <addaction name="actionSkip_Backward"/>
     <addaction name="actionClear_Playlist"/>
+    <addaction name="menuAspect_Ratio"/>
    </widget>
    <widget class="QMenu" name="menuDatabase">
     <property name="title">
@@ -450,6 +455,30 @@
   <action name="actionAbout_WebPhonon">
    <property name="text">
     <string>About WebPhonon</string>
+   </property>
+  </action>
+  <action name="actionAuto">
+   <property name="text">
+    <string>Auto</string>
+   </property>
+   <property name="shortcut">
+    <string>1</string>
+   </property>
+  </action>
+  <action name="actionSquare">
+   <property name="text">
+    <string>Square</string>
+   </property>
+   <property name="shortcut">
+    <string>2</string>
+   </property>
+  </action>
+  <action name="actionWideScreen">
+   <property name="text">
+    <string>WideScreen</string>
+   </property>
+   <property name="shortcut">
+    <string>3</string>
    </property>
   </action>
  </widget>

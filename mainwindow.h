@@ -86,6 +86,12 @@ private slots:
 
     void on_actionAbout_WebPhonon_triggered();
 
+    void on_actionAuto_triggered();
+
+    void on_actionSquare_triggered();
+
+    void on_actionWideScreen_triggered();
+
 private:
     Ui::MainWindow *ui;
     Phonon::MediaObject *med;
