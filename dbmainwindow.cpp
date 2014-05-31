@@ -48,7 +48,7 @@ void DBMainWindow::on_actionFoward_triggered()
 void DBMainWindow::on_pushButton_clicked()
 {
     url=ui->lineEdit->text();
-    ui->webView->setUrl(url);
+    ui->webView->load(url);
     ui->lineEdit->hide();
     ui->pushButton->hide();
 }

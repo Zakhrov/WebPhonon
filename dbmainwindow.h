@@ -36,7 +36,7 @@ private slots:
 
 private:
     Ui::DBMainWindow *ui;
-     QString url;
+     QUrl url;
      QNetworkAccessManager *manager;
 };
 

@@ -11,6 +11,8 @@ SET(WebPhonon_SOURCES main.cpp mainwindow.cpp dialog.cpp backenddialog.cpp helpd
 SET(WebPhonon_HEADERS mainwindow.h dialog.h backenddialog.h helpdialog.h dbmainwindow.h dropwidget.h aboutdialog.h)
 SET(WebPhonon_FORMS mainwindow.ui dialog.ui backenddialog.ui helpdialog.ui dbmainwindow.ui aboutdialog.ui)
 SET(WebPhonon_RESOURCES Icons.qrc)
+SET(WebPhonon_SPLASH WebPhonon-Master-text2.png)
+
 #set(CMAKE_AUTOMOC ON)
 #set(WebPhononSources icons/hi16-app-WebPhonon.png icons/hi32-app-WebPhonon.png icons/hi48-app-WebPhonon.png icons/hi64-app-WebPhonon.png icons/hi128-app-WebPhonon.png icons/hi256-app-WebPhonon.png icons/hi512-app-WebPhonon.png)
 qt4_automoc(${WebPhonon_SOURCES})
@@ -23,7 +25,7 @@ QT4_ADD_RESOURCES(WebPhonon_RESOURCES_RCC ${WebPhonon_RESOURCES})
 add_executable(WebPhonon ${WebPhonon_SOURCES} ${WebPhonon_HEADERS_MOC} ${WebPhonon_FORMS_HEADERS} ${WebPhonon_RESOURCES_RCC})
 target_link_libraries(WebPhonon ${QT_LIBRARIES} ${QT_QTCORE_LIBRARY} ${QT_QTSQL_LIBRARY} ${QT_QTNETWORK_LIBRARY} ${QT_QTWEBKIT_LIBRARY} ${QT_QTGUI_LIBRARY} ${KDE4_KDEUI_LIBS} ${PHONON_LIBS} ${KDE4_PHONON_LIBS} ${KDE4_KDECORE_LIBS})
 install(TARGETS WebPhonon ${INSTALL_TARGETS_DEFAULT_ARGS})
-
+INSTALL(FILES ${WebPhonon_SPLASH} DESTINATION /usr/share/WebPhonon/splash)
 #INSTALL( PROGRAMS WebPhonon.desktop DESTINATION ${XDG_APPS_INSTALL_DIR} )
 #INSTALL(FILES ${WebPhononSources} DESTINATION ${DATA_INSTALL_DIR}/WebPhonon)
 

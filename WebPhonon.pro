@@ -105,6 +105,9 @@ OTHER_FILES += \
     icon512.path= /usr/share/icons/hicolor/512x512/apps
     service.path= /usr/share/kde4/services/ServiceMenus/
     service.files+=PlayWithWebPhonon.desktop
+    splash.path= /usr/share/WebPhonon/splash
+    splash.files+= WebPhonon-Master-text2.png
+
 
 
 
@@ -127,7 +130,7 @@ OTHER_FILES += \
 
 
 
-INSTALLS+=target icon16 icon32 icon48 icon64 icon128 icon256 icon512 desktop service
+INSTALLS+=target icon16 icon32 icon48 icon64 icon128 icon256 icon512 desktop service splash
 
 
 

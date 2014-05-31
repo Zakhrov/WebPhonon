@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationName("WebPhonon");
     //AppWrapper app;
     QPixmap img;
-    img.load(":/splash/WebPhonon-Master-text2.png");
+    img.load("/usr/share/WebPhonon/splash/WebPhonon-Master-text2.png");
     QSplashScreen spl;
     spl.setPixmap(img);
     spl.show();

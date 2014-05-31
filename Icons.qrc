@@ -18,9 +18,6 @@
         <file>WebPhononIcon.png</file>
         <file>edit-clear-list.png</file>
     </qresource>
-    <qresource prefix="/splash">
-        <file>WebPhonon-Master-text2.png</file>
-    </qresource>
     <qresource prefix="/help">
         <file>helpimages/menu.png</file>
         <file>helpimages/image00.png</file>
