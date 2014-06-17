@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui phonon sql webkit network
+QT       += core gui sql webkit network phonon
 LIBS += -lkdeui -lkdecore
 
 TARGET = WebPhonon
@@ -137,3 +137,10 @@ INSTALLS+=target icon16 icon32 icon48 icon64 icon128 icon256 icon512 desktop ser
 
 
 
+
+win32: LIBS += -L$$PWD/../../../../usr/i686-w64-mingw32/sys-root/mingw/lib/ -lphonon
+
+win32:INCLUDEPATH += $$PWD/../../../../usr/i686-w64-mingw32/sys-root/mingw/include
+win32:DEPENDPATH += $$PWD/../../../../usr/i686-w64-mingw32/sys-root/mingw/include
+
+win32: PRE_TARGETDEPS += $$PWD/../../../../usr/i686-w64-mingw32/sys-root/mingw/lib/libphonon.dll.a

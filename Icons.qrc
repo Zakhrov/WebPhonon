@@ -31,4 +31,7 @@
         <file>helpimages/image09.png</file>
         <file>helpimages/image10.png</file>
     </qresource>
+    <qresource prefix="/splash">
+        <file>WebPhonon-Master-text2.png</file>
+    </qresource>
 </RCC>

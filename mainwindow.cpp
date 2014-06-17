@@ -15,16 +15,16 @@
 #include "helpdialog.h"
 #include "dropwidget.h"
 #include "aboutdialog.h"
-#include <Phonon/AudioOutput>
-#include <Phonon/MediaObject>
+#include <KDE/Phonon/AudioOutput>
+#include <KDE/Phonon/MediaObject>
 #include <QFileDialog>
-#include <Phonon/BackendCapabilities>
+#include <KDE/Phonon/BackendCapabilities>
 #include <QDesktopServices>
 #include <QSqlDatabase>
 #include <QTableWidgetItem>
 #include <QSqlQuery>
 #include <QMessageBox>
-#include <Phonon/VideoWidget>
+#include <KDE/Phonon/VideoWidget>
 #include <KDE/KCmdLineArgs>
 #include <KDE/KUrl>
 
@@ -146,6 +146,7 @@ void MainWindow::on_actionPlay_triggered()
     ui->lineEdit->hide();
     ui->pushButton->hide();
     ui->tableWidget->selectRow(sources.indexOf(med->currentSource()));
+    volume=sndout->volumeDecibel();
 
 
 }
@@ -610,6 +611,7 @@ void MainWindow::widgetpause(QKeyEvent *event)
 
 void MainWindow::on_actionVolume_Up_triggered()
 {
+    volume=sndout->volumeDecibel();
     if(volume<=50)
     {
         volume=volume+0.5;
@@ -620,6 +622,7 @@ void MainWindow::on_actionVolume_Up_triggered()
 
 void MainWindow::on_actionVolume_Down_triggered()
 {
+    volume=sndout->volumeDecibel();
     if(volume>=-50)
     {
         volume=volume-0.5;

@@ -3,8 +3,8 @@
 
 #include <QMainWindow>
 //#include <phonon/phonon>
-#include <Phonon/MediaObject>
-#include <Phonon/AudioOutput>
+#include <KDE/Phonon/MediaObject>
+#include <KDE/Phonon/AudioOutput>
 #include <QPlainTextEdit>
 #include "dialog.h"
 #include "dbmainwindow.h"
@@ -14,7 +14,7 @@
 #include <QSqlDatabase>
 #include <QWebView>
 #include <QTableWidgetItem>
-#include <Phonon/VideoWidget>
+#include <KDE/Phonon/VideoWidget>
 
 namespace Ui {
 class MainWindow;

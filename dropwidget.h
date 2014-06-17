@@ -2,7 +2,7 @@
 #define DROPWIDGET_H
 #include <QtGui>
 #include <QWidget>
-#include <Phonon/VideoWidget>
+#include <KDE/Phonon/VideoWidget>
 
 class DropWidget : public Phonon::VideoWidget
 {
