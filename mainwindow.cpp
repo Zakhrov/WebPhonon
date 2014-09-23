@@ -59,7 +59,7 @@ MainWindow::MainWindow(QWidget *parent) :
      ui->tableWidget->setHorizontalHeaderLabels(collabel);
      ui->pushButton->hide();
      //connecting signals and slots for going to next file and for drag n drop
-   connect(med,SIGNAL(aboutToFinish()),this,SLOT(next()));
+     connect(med,SIGNAL(finished()),this,SLOT(next()));
    connect(dwidget,SIGNAL(geturls(const QMimeData*)),this,SLOT(dropdata(const QMimeData*)));
    connect(dwidget,SIGNAL(capturespace(QKeyEvent*)),this,SLOT(widgetpause(QKeyEvent*)));
    connect(med,SIGNAL(tick(qint64)),this,SLOT(timechanged(qint64)));
