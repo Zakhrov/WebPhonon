@@ -1,6 +1,10 @@
 #include "backenddialog.h"
 #include "ui_backenddialog.h"
+#if QT_VERSION > 0x48100
 #include <KDE/Phonon/BackendCapabilities>
+#else
+#include <Phonon/BackendCapabilities>
+#endif
 #include <phonon/phononnamespace.h>
 BackendDialog::BackendDialog(QWidget *parent) :
     QDialog(parent),

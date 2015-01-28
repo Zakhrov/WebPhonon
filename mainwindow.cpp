@@ -15,16 +15,16 @@
 #include "helpdialog.h"
 #include "dropwidget.h"
 #include "aboutdialog.h"
-#include <KDE/Phonon/AudioOutput>
-#include <KDE/Phonon/MediaObject>
+//#include <KDE/Phonon/AudioOutput>
+//#include <KDE/Phonon/MediaObject>
 #include <QFileDialog>
-#include <KDE/Phonon/BackendCapabilities>
+//#include <KDE/Phonon/BackendCapabilities>
 #include <QDesktopServices>
 #include <QSqlDatabase>
 #include <QTableWidgetItem>
 #include <QSqlQuery>
 #include <QMessageBox>
-#include <KDE/Phonon/VideoWidget>
+//#include <KDE/Phonon/VideoWidget>
 #include <KDE/KCmdLineArgs>
 #include <KDE/KUrl>
 
