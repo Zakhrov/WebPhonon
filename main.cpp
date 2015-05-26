@@ -4,6 +4,7 @@
 #include <QPixmap>
 #include <QSplashScreen>
 #include <QTextStream>
+#include <QDesktopServices>
 //#include <kcmdlineargs.h>
 //#include <kurl.h>
 //#include <kaboutdata.h>
@@ -19,7 +20,7 @@ int main(int argc, char *argv[])
           ki18n("WebPhonon"), "1.6",
           ki18n("Media Player"),
           KAboutData::License_GPL,
-          ki18n("Copyright (c) 2013 Zakhrov") );
+          ki18n("Copyright (c) 2013 Aaron Zakhrov") );
 
     KCmdLineArgs::init( argc, argv, &aboutData );
     KCmdLineOptions options; //new
@@ -31,8 +32,12 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationName("WebPhonon");
     //AppWrapper app;
     QPixmap img;
-    img.load(":/splash/WebPhonon-Master-text2.png");
-    //img.load("/usr/share/WebPhonon/splash/WebPhonon-Master-text2.png");
+    //QString imgurl=QCoreApplication::applicationDirPath();
+    //img.load(":/splash/WebPhonon-Master-text2.png");
+    //img.load("/WebPhonon/splash/WebPhonon-Master-text2.png");
+    img.load("/usr/share/WebPhonon/splash/WebPhonon-Master-text2.png");
+    //qDebug()<<imgurl;
+    //img.load(imgurl);
     QSplashScreen spl;
     spl.setPixmap(img);
     spl.show();
@@ -53,6 +58,7 @@ int main(int argc, char *argv[])
          w.cmdopen(args->url(0).url()); //new
      }
     w.showMaximized();
+
    // a.exec();
     return a.exec();
 
