@@ -24,9 +24,6 @@
 #include <QTableWidgetItem>
 #include <QSqlQuery>
 #include <QMessageBox>
-//#include <KDE/Phonon/VideoWidget>
-#include <KDE/KCmdLineArgs>
-#include <KDE/KUrl>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
