@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
 
       if(!cmd.isEmpty())
       {
-          w.cmdopen(cmd.last());
+          w.cmdopen(argv[1]);
       }
 #endif
     w.showMaximized();

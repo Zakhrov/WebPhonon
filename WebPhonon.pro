@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui sql webkit network phonon
-LIBS += -lkdeui -lkdecore
+!win32: LIBS += -lkdeui -lkdecore
 
 TARGET = WebPhonon
 TEMPLATE = app
