@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>683</width>
-    <height>303</height>
+    <width>680</width>
+    <height>301</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,30 +19,16 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout_2">
-    <item row="0" column="0">
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <widget class="QLineEdit" name="lineEdit"/>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButton">
-        <property name="text">
-         <string>&amp;launch</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+    <item row="2" column="0">
+     <layout class="QGridLayout" name="gridLayout"/>
     </item>
     <item row="1" column="0" colspan="2">
      <widget class="QTableWidget" name="tableWidget"/>
     </item>
-    <item row="2" column="0">
-     <layout class="QGridLayout" name="gridLayout"/>
-    </item>
     <item row="3" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="Phonon::SeekSlider" name="seekSlider" native="true"/>
+       <widget class="Phonon::SeekSlider" name="seekSlider"/>
       </item>
       <item>
        <widget class="QLabel" name="hourlabel1">
@@ -152,8 +138,29 @@
       </item>
      </layout>
     </item>
+    <item row="0" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLineEdit" name="lineEdit"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton">
+        <property name="text">
+         <string>&amp;launch</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
     <item row="2" column="1">
-     <widget class="Phonon::VolumeSlider" name="volumeSlider" native="true"/>
+     <widget class="Phonon::VolumeSlider" name="volumeSlider">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2">
+     <layout class="QGridLayout" name="gridLayout_3"/>
     </item>
    </layout>
   </widget>
@@ -162,8 +169,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>683</width>
-     <height>19</height>
+     <width>680</width>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -205,6 +212,7 @@
     <addaction name="actionSkip_Backward"/>
     <addaction name="actionClear_Playlist"/>
     <addaction name="menuAspect_Ratio"/>
+    <addaction name="actionEqualizer"/>
    </widget>
    <widget class="QMenu" name="menuDatabase">
     <property name="title">
@@ -479,6 +487,14 @@
    </property>
    <property name="shortcut">
     <string>3</string>
+   </property>
+  </action>
+  <action name="actionEqualizer">
+   <property name="text">
+    <string>Equalizer</string>
+   </property>
+   <property name="shortcut">
+    <string>E</string>
    </property>
   </action>
  </widget>

@@ -55,12 +55,8 @@ int main(int argc, char *argv[])
          w.cmdopen(args->url(0).url()); //new
      }
 #else
-      QStringList cmd=a.arguments();
-      QTextStream cout(stdout);
-      cout<<argv[0]<<endl;
-      cout<<argv[1]<<endl;
 
-      if(!cmd.isEmpty())
+      if(argc>1)
       {
           w.cmdopen(argv[1]);
       }

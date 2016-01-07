@@ -7,10 +7,18 @@
 #include <KDE/Phonon/MediaObject>
 #include <KDE/Phonon/AudioOutput>
 #include <KDE/Phonon/VideoWidget>
+#include <KDE/Phonon/BackendCapabilities>
+#include <KDE/Phonon/Effect>
+#include <KDE/Phonon/ObjectDescription>
+#include <KDE/Phonon/EffectWidget>
 #else
 #include <Phonon/MediaObject>
 #include <Phonon/AudioOutput>
 #include <Phonon/VideoWidget>
+#include <Phonon/BackendCapabilities>
+#include <Phonon/Effect>
+#include <Phonon/ObjectDescription>
+#include <Phonon/EffectWidget>
 #endif
 #include <QPlainTextEdit>
 #include "dialog.h"
@@ -100,6 +108,8 @@ private slots:
 
     void on_actionWideScreen_triggered();
 
+    void on_actionEqualizer_triggered();
+
 private:
     Ui::MainWindow *ui;
     Phonon::MediaObject *med;
@@ -116,6 +126,12 @@ private:
     HelpDialog *hdiag;
     qreal volume;
     qint64 currenttime;
+    QList<Phonon::EffectDescription> effectDescriptions;
+     Phonon::EffectDescription effectDescription ;
+     Phonon::Path apath;
+     Phonon::Path vpath;
+     Phonon::Effect *effect;
+      Phonon::EffectWidget *effectWidget;
 
 
 

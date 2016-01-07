@@ -41,8 +41,15 @@ MainWindow::MainWindow(QWidget *parent) :
     med=new Phonon::MediaObject(this);
     dwidget=new DropWidget(this);
     med->setTransitionTime(2000);
-    Phonon::createPath(med,dwidget);
-    Phonon::createPath(med,sndout);
+    effectDescriptions =Phonon::BackendCapabilities::availableAudioEffects();
+    effectDescription = effectDescriptions.at(3);
+    effect = new Phonon::Effect(effectDescription);
+    effectWidget = new Phonon::EffectWidget(effect);
+    ui->gridLayout_3->addWidget(effectWidget);
+    effectWidget->hide();
+    vpath=Phonon::createPath(med,dwidget);
+    apath=Phonon::createPath(med,sndout);
+    apath.insertEffect(effect);
     QStringList collabel;
     collabel.append("URL");
     collabel.append("Name");
@@ -728,4 +735,12 @@ void MainWindow::on_actionSquare_triggered()
 void MainWindow::on_actionWideScreen_triggered()
 {
     dwidget->setAspectRatio(Phonon::VideoWidget::AspectRatio16_9);
+}
+
+void MainWindow::on_actionEqualizer_triggered()
+{
+    if(effectWidget->isVisible())
+    effectWidget->hide();
+    else
+        effectWidget->show();
 }
