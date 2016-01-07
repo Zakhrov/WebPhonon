@@ -596,9 +596,9 @@ void MainWindow::widgetpause(QKeyEvent *event)
         break;
     case Qt::Key_Left: this->on_actionSkip_Backward_triggered();
         break;
-    case Qt::Key_Up: this->on_actionVolume_Up_triggered();
+    case Qt::Key_Control+Qt::Key_Up: this->on_actionVolume_Up_triggered();
         break;
-    case Qt::Key_Down: this->on_actionVolume_Down_triggered();
+    case Qt::Key_Control+Qt::Key_Down: this->on_actionVolume_Down_triggered();
         break;
     case Qt::Key_1: this->on_actionAuto_triggered();
         break;

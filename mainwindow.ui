@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>680</width>
-    <height>301</height>
+    <width>678</width>
+    <height>299</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -169,7 +169,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>680</width>
+     <width>678</width>
      <height>22</height>
     </rect>
    </property>
@@ -424,7 +424,7 @@
     <string>Volume Up</string>
    </property>
    <property name="shortcut">
-    <string>Up</string>
+    <string>Ctrl+Up</string>
    </property>
   </action>
   <action name="actionVolume_Down">
@@ -432,7 +432,7 @@
     <string>Volume Down</string>
    </property>
    <property name="shortcut">
-    <string>Down</string>
+    <string>Ctrl+Down</string>
    </property>
   </action>
   <action name="actionSkip_Foward">
