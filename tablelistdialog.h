@@ -2,7 +2,7 @@
 #define TABLELISTDIALOG_H
 
 #include <QDialog>
-
+#include <QSqlDatabase>
 namespace Ui {
 class TableListDialog;
 }
@@ -23,6 +23,7 @@ private slots:
 
 private:
     Ui::TableListDialog *ui;
+    QSqlDatabase db;
 };
 
 #endif // TABLELISTDIALOG_H

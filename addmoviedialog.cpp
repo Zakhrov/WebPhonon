@@ -13,6 +13,8 @@ AddMovieDialog::AddMovieDialog(QWidget *parent) :
 AddMovieDialog::~AddMovieDialog()
 {
     delete ui;
+
+
 }
 
 void AddMovieDialog::on_pushButton_clicked()
@@ -32,7 +34,7 @@ void AddMovieDialog::on_pushButton_clicked()
     rating=ui->lineEdit_5->text();
     genre=ui->lineEdit_6->text();
     year=ui->lineEdit_7->text();
-    db=QSqlDatabase::addDatabase(dbtype);
+    db=QSqlDatabase::addDatabase(dbtype,"AddMovieConn");
     db.setConnectOptions();
     db.setHostName(host);
     db.setDatabaseName(database);
@@ -42,7 +44,7 @@ void AddMovieDialog::on_pushButton_clicked()
 
 
 
-        QSqlQuery *query=new QSqlQuery(db.database());
+        QSqlQuery *query=new QSqlQuery(db.database("AddMovieConn"));
         //query.prepare("insert into movies(url, title, language, studio, rating, genre, year) values(:url, :title, :language, :studio, :rating, :genre, :year");
         query->prepare("INSERT INTO `webphonon`.`movies` (`url`, `title`, `language`, `studio`, `rating`, `genre`, `year`) VALUES (:url, :title, :language, :studio, :rating, :genre, :year);");
         query->bindValue(":url",url);

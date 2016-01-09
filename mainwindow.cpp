@@ -107,8 +107,10 @@ void MainWindow::cmdopen(QString cmdfile)
 }
 MainWindow::~MainWindow()
 {
-    MyDB.close();
+
+
     delete ui;
+
 }
 void MainWindow::on_actionLocal_File_triggered()
 {
@@ -221,7 +223,7 @@ void MainWindow::on_actionFrom_Database_triggered()
     QMessageBox msg;
     msg.setIconPixmap(img2);
     msg.setWindowTitle("Database Module");
-    MyDB=QSqlDatabase::addDatabase(DBType);
+    MyDB=QSqlDatabase::addDatabase(DBType,"PlayConn");
     MyDB.setConnectOptions();
     if(MyDB.isDriverAvailable(DBType)==true)
     {
@@ -268,7 +270,7 @@ void MainWindow::on_actionFrom_Database_triggered()
             Moviecollabel.append("Language");
             Moviecollabel.append("Rating");
             ui->tableWidget->setHorizontalHeaderLabels(Moviecollabel);
-            QSqlQuery request("SELECT url, title, studio, language, rating FROM "+TabName);
+            QSqlQuery request("SELECT url, title, studio, language, rating FROM "+TabName,MyDB);
             while(request.next())
             {
 
@@ -303,7 +305,7 @@ void MainWindow::on_actionFrom_Database_triggered()
             Musiccollabel.append("Year");
             Musiccollabel.append("Language");
             ui->tableWidget->setHorizontalHeaderLabels(Musiccollabel);
-            QSqlQuery request("SELECT url, title, artist, album, year, language FROM "+TabName);
+            QSqlQuery request("SELECT url, title, artist, album, year, language FROM "+TabName,MyDB);
             while(request.next())
             {
 
@@ -342,7 +344,7 @@ void MainWindow::on_actionFrom_Database_triggered()
             MVidcollabel.append("Language");
             MVidcollabel.append("HD");
             ui->tableWidget->setHorizontalHeaderLabels(MVidcollabel);
-            QSqlQuery request("SELECT url, title, artist, language, HD FROM "+TabName);
+            QSqlQuery request("SELECT url, title, artist, language, HD FROM "+TabName,MyDB);
             while(request.next())
             {
 
@@ -382,7 +384,7 @@ void MainWindow::on_actionFrom_Database_triggered()
             TVcollabel.append("Episode");
             TVcollabel.append("Episode Title");
             ui->tableWidget->setHorizontalHeaderLabels(TVcollabel);
-            QSqlQuery request("SELECT url, title, season, episode, ep_title FROM "+TabName);
+            QSqlQuery request("SELECT url, title, season, episode, ep_title FROM "+TabName,MyDB);
             while(request.next())
             {
 
@@ -409,7 +411,7 @@ void MainWindow::on_actionFrom_Database_triggered()
         }
         else
         {
-            QSqlQuery request("SELECT url, title FROM "+TabName);
+            QSqlQuery request("SELECT url, title FROM "+TabName,MyDB);
             while(request.next())
             {
 

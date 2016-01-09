@@ -1,6 +1,5 @@
 #include "tablelistdialog.h"
 #include "ui_tablelistdialog.h"
-#include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSettings>
 TableListDialog::TableListDialog(QWidget *parent) :
@@ -8,7 +7,7 @@ TableListDialog::TableListDialog(QWidget *parent) :
     ui(new Ui::TableListDialog)
 {
     ui->setupUi(this);
-    QSqlDatabase db;
+
     QSettings settings;
     QString host,database,uname,passwd,dbtype;
     host=settings.value("server").toString();
@@ -34,11 +33,14 @@ TableListDialog::TableListDialog(QWidget *parent) :
 TableListDialog::~TableListDialog()
 {
     delete ui;
+
 }
 
 void TableListDialog::on_pushButton_clicked()
 {
+
     this->close();
+
 
 }
 
