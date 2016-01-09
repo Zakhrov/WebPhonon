@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QSqlDatabase>
+#include <QWebView>
+#include <QTableWidgetItem>
+#include <QSettings>
 //#include <phonon/phonon>
 #ifdef Q_OS_LINUX
 #include <KDE/Phonon/MediaObject>
@@ -26,10 +30,7 @@
 #include "backenddialog.h"
 #include "helpdialog.h"
 #include "dropwidget.h"
-#include <QSqlDatabase>
-#include <QWebView>
-#include <QTableWidgetItem>
-
+#include "tablelistdialog.h"
 
 
 namespace Ui {
@@ -43,6 +44,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     void cmdopen(QString cmdfile);
+
 
        ~MainWindow();
 
@@ -123,6 +125,7 @@ private:
     DBMainWindow *dm2;
     QTableWidgetItem *item;
     BackendDialog *bkdiag;
+    TableListDialog *tbdialog;
     HelpDialog *hdiag;
     qreal volume;
     qint64 currenttime;
@@ -132,6 +135,7 @@ private:
      Phonon::Path vpath;
      Phonon::Effect *effect;
       Phonon::EffectWidget *effectWidget;
+      QSettings dbSettings;
 
 
 

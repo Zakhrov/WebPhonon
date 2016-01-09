@@ -4,9 +4,7 @@
 
 
 #include <QMainWindow>
-#include <QtNetwork/QNetworkReply>
-#include <QtNetwork/QNetworkRequest>
-#include <QtNetwork/QNetworkAccessManager>
+#include "addmoviedialog.h"
 namespace Ui {
 class DBMainWindow;
 }
@@ -22,22 +20,35 @@ public:
 private slots:
     void on_actionConnect_triggered();
 
-    void on_actionBack_triggered();
 
-    void on_actionFoward_triggered();
+
+
+    void on_actionSongs_triggered();
+
+    void on_actionActors_triggered();
+
+    void on_actionArtists_triggered();
+
+    void on_actionAlbums_triggered();
+
+    void on_actionMovie_Info_triggered();
+
+    void on_actionMovie_Cast_triggered();
+
+    void on_actionShow_Info_triggered();
+
+    void on_actionShow_Cast_triggered();
+
+    void on_actionMusic_Video_Info_triggered();
+
+    void on_actionMusic_Video_Cast_triggered();
 
     void on_pushButton_clicked();
 
-    void on_actionReload_triggered();
-    void download(const QNetworkRequest request);
-    void onNetworkReply(QNetworkReply *reply);
-    void unsupportedcontent(QNetworkReply* reply);
-
-
 private:
     Ui::DBMainWindow *ui;
-     QUrl url;
-     QNetworkAccessManager *manager;
+    AddMovieDialog *addmovie;
+
 };
 
 #endif // DBMAINWINDOW_H

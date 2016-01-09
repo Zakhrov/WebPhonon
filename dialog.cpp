@@ -7,6 +7,11 @@ Dialog::Dialog(QWidget *parent) :
 {
     ui->setupUi(this);
     dbtype="QMYSQL";
+    ui->lineEdit->setText(custdbSettings.value("server").toString());
+    ui->lineEdit_2->setText(custdbSettings.value("database").toString());
+    ui->lineEdit_3->setText(custdbSettings.value("username").toString());
+    ui->lineEdit_4->setText(custdbSettings.value("password").toString());
+
 }
 
 Dialog::~Dialog()
@@ -20,7 +25,12 @@ void Dialog::on_pushButton_clicked()
     dbname=ui->lineEdit_2->text();
     uname=ui->lineEdit_3->text();
     passwd=ui->lineEdit_4->text();
-    tabname=ui->lineEdit_5->text();
+
+    custdbSettings.setValue("server",host);
+    custdbSettings.setValue("username",uname);
+    custdbSettings.setValue("password",passwd);
+    custdbSettings.setValue("database",dbname);
+
     this->close();
 }
 
@@ -38,5 +48,6 @@ void Dialog::on_comboBox_activated(const QString &arg1)
         dbtype="QODBC";
     else
         dbtype="QMYSQL";
+    custdbSettings.setValue("dbtype",dbtype);
 
 }

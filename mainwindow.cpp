@@ -33,7 +33,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setWindowIcon(QIcon(":/icons/WebPhononIcon.png"));
     ui->setupUi(this);
     d=new Dialog(this);
-
+    tbdialog=new TableListDialog(this);
     dm2=new DBMainWindow(this);
     bkdiag=new BackendDialog(this);
     hdiag=new HelpDialog(this);
@@ -42,7 +42,11 @@ MainWindow::MainWindow(QWidget *parent) :
     dwidget=new DropWidget(this);
     med->setTransitionTime(2000);
     effectDescriptions =Phonon::BackendCapabilities::availableAudioEffects();
+#ifdef Q_OS_LINUX
     effectDescription = effectDescriptions.at(3);
+#else
+    effectDescription = effectDescriptions.at(0);
+#endif
     effect = new Phonon::Effect(effectDescription);
     effectWidget = new Phonon::EffectWidget(effect);
     ui->gridLayout_3->addWidget(effectWidget);
@@ -204,12 +208,13 @@ void MainWindow::on_actionFrom_Database_triggered()
     QString tabindex,titleindex,studio,language,artist,album,year;
     int i;
     int index=sources.size();
-    HostName=d->host;
-    DBName=d->dbname;
-    UName=d->uname;
-    Passwd=d->passwd;
-    TabName=d->tabname;
-    DBType=d->dbtype;
+    tbdialog->exec();
+    HostName=dbSettings.value("server").toString();
+    DBName=dbSettings.value("database").toString();
+    UName=dbSettings.value("username").toString();
+    Passwd=dbSettings.value("password").toString();
+    TabName=tbdialog->tabname;
+    DBType=dbSettings.value("dbtype").toString();
     QPixmap img1,img2;
     img1.load(":/Icons/WebPhononIcon.png");
     img2=img1.scaled(32,32);
@@ -247,12 +252,12 @@ void MainWindow::on_actionFrom_Database_triggered()
               msg.setText(MyDB.driverName()+" Database "+DBName+" Open");
               msg.exec();
         }
-        if(!MyDB.tables().contains(TabName))
+        if(TabName==""||!MyDB.tables().contains(TabName))
         {
             msg.setText(TabName+" does not exist");
             msg.exec();
         }
-        else if(TabName=="Movies")
+        else if(TabName=="movies")
         {
             ui->tableWidget->setColumnCount(5);
             QStringList Moviecollabel;
@@ -263,7 +268,7 @@ void MainWindow::on_actionFrom_Database_triggered()
             Moviecollabel.append("Language");
             Moviecollabel.append("Rating");
             ui->tableWidget->setHorizontalHeaderLabels(Moviecollabel);
-            QSqlQuery request("SELECT url, Title, Studio, Language, rating FROM "+TabName);
+            QSqlQuery request("SELECT url, title, studio, language, rating FROM "+TabName);
             while(request.next())
             {
 
@@ -298,7 +303,7 @@ void MainWindow::on_actionFrom_Database_triggered()
             Musiccollabel.append("Year");
             Musiccollabel.append("Language");
             ui->tableWidget->setHorizontalHeaderLabels(Musiccollabel);
-            QSqlQuery request("SELECT url, Title, artist, album, year, language FROM "+TabName);
+            QSqlQuery request("SELECT url, title, artist, album, year, language FROM "+TabName);
             while(request.next())
             {
 
@@ -337,7 +342,7 @@ void MainWindow::on_actionFrom_Database_triggered()
             MVidcollabel.append("Language");
             MVidcollabel.append("HD");
             ui->tableWidget->setHorizontalHeaderLabels(MVidcollabel);
-            QSqlQuery request("SELECT url, Title, artist, language, HD FROM "+TabName);
+            QSqlQuery request("SELECT url, title, artist, language, HD FROM "+TabName);
             while(request.next())
             {
 
@@ -377,7 +382,7 @@ void MainWindow::on_actionFrom_Database_triggered()
             TVcollabel.append("Episode");
             TVcollabel.append("Episode Title");
             ui->tableWidget->setHorizontalHeaderLabels(TVcollabel);
-            QSqlQuery request("SELECT url, Title, Season, Episode, Ep_Title FROM "+TabName);
+            QSqlQuery request("SELECT url, title, season, episode, ep_title FROM "+TabName);
             while(request.next())
             {
 
@@ -404,7 +409,7 @@ void MainWindow::on_actionFrom_Database_triggered()
         }
         else
         {
-            QSqlQuery request("SELECT url, Title FROM "+TabName);
+            QSqlQuery request("SELECT url, title FROM "+TabName);
             while(request.next())
             {
 

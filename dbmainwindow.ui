@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>599</width>
-    <height>271</height>
+    <width>1030</width>
+    <height>261</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,28 +19,47 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <item>
-       <widget class="QLineEdit" name="lineEdit"/>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButton">
-        <property name="text">
-         <string>Launch</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
     <item row="1" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QWebView" name="webView">
-        <property name="url">
-         <url>
-          <string>about:blank</string>
-         </url>
+       <widget class="QTableView" name="tableView"/>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QPushButton" name="pushButton">
+        <property name="text">
+         <string>Add Movies</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="text">
+         <string>Add TV Shows</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_3">
+        <property name="text">
+         <string>Add Music Videos</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_4">
+        <property name="text">
+         <string>Add Songs</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_5">
+        <property name="text">
+         <string>Add Actors</string>
         </property>
        </widget>
       </item>
@@ -53,7 +72,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>599</width>
+     <width>1030</width>
      <height>22</height>
     </rect>
    </property>
@@ -65,11 +84,36 @@
    </widget>
    <widget class="QMenu" name="menuBrowser">
     <property name="title">
-     <string>Browser</string>
+     <string>View</string>
     </property>
-    <addaction name="actionBack"/>
-    <addaction name="actionFoward"/>
-    <addaction name="actionReload"/>
+    <widget class="QMenu" name="menuMovies">
+     <property name="title">
+      <string>Movies</string>
+     </property>
+     <addaction name="actionMovie_Info"/>
+     <addaction name="actionMovie_Cast"/>
+    </widget>
+    <widget class="QMenu" name="menuTV_Shows">
+     <property name="title">
+      <string>TV Shows</string>
+     </property>
+     <addaction name="actionShow_Info"/>
+     <addaction name="actionShow_Cast"/>
+    </widget>
+    <widget class="QMenu" name="menuMusic_Videos">
+     <property name="title">
+      <string>Music Videos</string>
+     </property>
+     <addaction name="actionMusic_Video_Info"/>
+     <addaction name="actionMusic_Video_Cast"/>
+    </widget>
+    <addaction name="menuMovies"/>
+    <addaction name="menuTV_Shows"/>
+    <addaction name="menuMusic_Videos"/>
+    <addaction name="actionSongs"/>
+    <addaction name="actionActors"/>
+    <addaction name="actionArtists"/>
+    <addaction name="actionAlbums"/>
    </widget>
    <addaction name="menuDatabase"/>
    <addaction name="menuBrowser"/>
@@ -85,42 +129,73 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionBack"/>
-   <addaction name="actionFoward"/>
-   <addaction name="actionReload"/>
    <addaction name="actionConnect"/>
+   <addaction name="actionActors"/>
+   <addaction name="actionArtists"/>
+   <addaction name="actionAlbums"/>
+   <addaction name="actionMovie_Info"/>
+   <addaction name="actionMovie_Cast"/>
+   <addaction name="actionShow_Info"/>
+   <addaction name="actionShow_Cast"/>
+   <addaction name="actionMusic_Video_Info"/>
+   <addaction name="actionMusic_Video_Cast"/>
   </widget>
   <action name="actionConnect">
    <property name="text">
     <string>Connect</string>
    </property>
   </action>
-  <action name="actionBack">
+  <action name="actionSongs">
    <property name="text">
-    <string>Back</string>
+    <string>Songs</string>
    </property>
   </action>
-  <action name="actionFoward">
+  <action name="actionActors">
    <property name="text">
-    <string>Forward</string>
+    <string>Actors</string>
    </property>
   </action>
-  <action name="actionReload">
+  <action name="actionArtists">
    <property name="text">
-    <string>Reload</string>
+    <string>Artists</string>
    </property>
-   <property name="shortcut">
-    <string>F5</string>
+  </action>
+  <action name="actionAlbums">
+   <property name="text">
+    <string>Albums</string>
+   </property>
+  </action>
+  <action name="actionMovie_Info">
+   <property name="text">
+    <string>Movie Info</string>
+   </property>
+  </action>
+  <action name="actionMovie_Cast">
+   <property name="text">
+    <string>Movie Cast</string>
+   </property>
+  </action>
+  <action name="actionShow_Info">
+   <property name="text">
+    <string>Show Info</string>
+   </property>
+  </action>
+  <action name="actionShow_Cast">
+   <property name="text">
+    <string>Show Cast</string>
+   </property>
+  </action>
+  <action name="actionMusic_Video_Info">
+   <property name="text">
+    <string>Music Video Info</string>
+   </property>
+  </action>
+  <action name="actionMusic_Video_Cast">
+   <property name="text">
+    <string>Music Video Cast</string>
    </property>
   </action>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>QWebView</class>
-   <extends>QWidget</extends>
-   <header>QtWebKit/QWebView</header>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="Icons.qrc"/>
  </resources>

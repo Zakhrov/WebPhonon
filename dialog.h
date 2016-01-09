@@ -2,6 +2,7 @@
 #define DIALOG_H
 
 #include <QDialog>
+#include <QSettings>
 
 namespace Ui {
 class Dialog;
@@ -13,8 +14,7 @@ class Dialog : public QDialog
     
 public:
     explicit Dialog(QWidget *parent = 0);
-    QString host,dbname,uname,passwd,tabname;
-    QString dbtype;
+    //QString tabname;
     ~Dialog();
     
 private slots:
@@ -26,6 +26,9 @@ private slots:
 
 private:
     Ui::Dialog *ui;
+    QString host,dbname,uname,passwd;
+    QString dbtype;
+    QSettings custdbSettings;
 };
 
 #endif // DIALOG_H

@@ -18,7 +18,9 @@ SOURCES += main.cpp\
     helpdialog.cpp \
     dbmainwindow.cpp \
     dropwidget.cpp \
-    aboutdialog.cpp
+    aboutdialog.cpp \
+    addmoviedialog.cpp \
+    tablelistdialog.cpp
 
 HEADERS  += mainwindow.h \
     dialog.h \
@@ -26,14 +28,18 @@ HEADERS  += mainwindow.h \
     helpdialog.h \
     dbmainwindow.h \
     dropwidget.h \
-    aboutdialog.h
+    aboutdialog.h \
+    addmoviedialog.h \
+    tablelistdialog.h
 
 FORMS    += mainwindow.ui \
     dialog.ui \
     backenddialog.ui \
     helpdialog.ui \
     dbmainwindow.ui \
-    aboutdialog.ui
+    aboutdialog.ui \
+    addmoviedialog.ui \
+    tablelistdialog.ui
 
 RESOURCES += \
     Icons.qrc

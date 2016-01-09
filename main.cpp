@@ -5,6 +5,7 @@
 #include <QSplashScreen>
 #include <QTextStream>
 #include <QDesktopServices>
+#include <QSettings>
 //#include <kcmdlineargs.h>
 //#include <kurl.h>
 //#include <kaboutdata.h>
@@ -31,7 +32,10 @@ int main(int argc, char *argv[])
     KUniqueApplication::addCmdLineOptions();
 #endif
    QApplication a(argc, argv);
-    QCoreApplication::setApplicationName("WebPhonon");
+    a.setApplicationName("WebPhonon");
+    a.setApplicationVersion("1.6");
+    a.setOrganizationName("Zakhrov");
+    a.setOrganizationDomain("Zakhrov");
     //AppWrapper app;
     QPixmap img;
     //QString imgurl=QCoreApplication::applicationDirPath();
@@ -42,6 +46,16 @@ int main(int argc, char *argv[])
 #else
     img.load(":/splash/WebPhonon-Master-text2.png");
 #endif
+    QSettings defaultSettings;
+    if(!defaultSettings.contains("server"))
+    {
+    defaultSettings.setValue("server","localhost");
+    defaultSettings.setValue("username","root");
+    defaultSettings.setValue("password","root");
+    defaultSettings.setValue("database","webphonon");
+    defaultSettings.setValue("dbtype","QMYSQL");
+    defaultSettings.sync();
+    }
     //qDebug()<<imgurl;
     //img.load(imgurl);
     QSplashScreen spl;
