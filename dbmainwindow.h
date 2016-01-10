@@ -2,7 +2,8 @@
 #define DBMAINWINDOW_H
 
 
-
+#include <QSqlDatabase>
+#include <QSqlQueryModel>
 #include <QMainWindow>
 #include "addmoviedialog.h"
 namespace Ui {
@@ -19,9 +20,6 @@ public:
     
 private slots:
     void on_actionConnect_triggered();
-
-
-
 
     void on_actionSongs_triggered();
 
@@ -48,6 +46,14 @@ private slots:
 private:
     Ui::DBMainWindow *ui;
     AddMovieDialog *addmovie;
+    QSqlDatabase db;
+    QSqlQueryModel *movieModel;
+    QSqlQueryModel *movieCastModel;
+    QSqlQueryModel *tvModel;
+    QSqlQueryModel *tvCastModel;
+    QSqlQueryModel *musivVideoModel;
+    QSqlQueryModel *musicVideoCastModel;
+    QSqlQueryModel *musicModel;
 
 };
 

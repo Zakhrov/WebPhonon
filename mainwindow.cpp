@@ -80,6 +80,17 @@ MainWindow::MainWindow(QWidget *parent) :
     volume=sndout->volumeDecibel();
     ui->label->setText(QString::number(volume));
     //s_instance=this;
+    HostName=dbSettings.value("server").toString();
+    DBName=dbSettings.value("database").toString();
+    UName=dbSettings.value("username").toString();
+    Passwd=dbSettings.value("password").toString();
+    DBType=dbSettings.value("dbtype").toString();
+    MyDB=QSqlDatabase::addDatabase(DBType,"PlayConn");
+    MyDB.setHostName(HostName);
+    MyDB.setDatabaseName(DBName);
+    MyDB.setUserName(UName);
+    MyDB.setPassword(Passwd);
+    MyDB.open();
 
 
 }
@@ -207,47 +218,29 @@ void MainWindow::on_actionSet_Database_triggered()
 void MainWindow::on_actionFrom_Database_triggered()
 {
     //queries the database for media information and urls
-    QString tabindex,titleindex,studio,language,artist,album,year;
+    QString tabindex,titleindex,studio,language,genre,year;
     int i;
     int index=sources.size();
     tbdialog->exec();
-    HostName=dbSettings.value("server").toString();
-    DBName=dbSettings.value("database").toString();
-    UName=dbSettings.value("username").toString();
-    Passwd=dbSettings.value("password").toString();
+
     TabName=tbdialog->tabname;
-    DBType=dbSettings.value("dbtype").toString();
+
     QPixmap img1,img2;
     img1.load(":/Icons/WebPhononIcon.png");
     img2=img1.scaled(32,32);
     QMessageBox msg;
     msg.setIconPixmap(img2);
     msg.setWindowTitle("Database Module");
-    MyDB=QSqlDatabase::addDatabase(DBType,"PlayConn");
-    MyDB.setConnectOptions();
+
+
     if(MyDB.isDriverAvailable(DBType)==true)
     {
-        if(DBType=="QODBC")
-        {
-            QString dsn= QString("DRIVER={SQL Server};SERVER=%1;DATABASE=%2;Trusted_Connection=Yes;").arg(HostName).arg(DBName);
-           MyDB.setDatabaseName(dsn);
-           MyDB.open();
-        }
-        else
-        {
-            if(HostName=="localhost")
-            {
-                MyDB.setHostName(HostName);
-                MyDB.setDatabaseName(DBName);
-            }
-            else
-            {
-                MyDB.setHostName(HostName);
-                MyDB.setPort(3306);
-                MyDB.setDatabaseName(DBName);
-            }
-            MyDB.open(UName,Passwd);
-        }
+//        if(DBType=="QODBC")
+//        {
+//            QString dsn= QString("DRIVER={SQL Server};SERVER=%1;DATABASE=%2;Trusted_Connection=Yes;").arg(HostName).arg(DBName);
+//           MyDB.setDatabaseName(dsn)Musiccollabel.append("Album");
+//           MyDB.open();
+//        }
 
         if(MyDB.isOpen()==true)
         {
@@ -296,80 +289,57 @@ void MainWindow::on_actionFrom_Database_triggered()
         }
         else if(TabName=="Music")
         {
-            ui->tableWidget->setColumnCount(6);
+            ui->tableWidget->setColumnCount(3);
             QStringList Musiccollabel;
             Musiccollabel.append("URL");
             Musiccollabel.append("Title");
-            Musiccollabel.append("Artist");
-            Musiccollabel.append("Album");
-            Musiccollabel.append("Year");
-            Musiccollabel.append("Language");
+            Musiccollabel.append("Genre");
             ui->tableWidget->setHorizontalHeaderLabels(Musiccollabel);
-            QSqlQuery request("SELECT url, title, artist, album, year, language FROM "+TabName,MyDB);
+            QSqlQuery request("SELECT url, title, genre FROM "+TabName,MyDB);
             while(request.next())
             {
 
                 tabindex=request.value(0).toString();
                 titleindex=request.value(1).toString();
-                artist=request.value(2).toString();
-                album=request.value(3).toString();
-                year=request.value(4).toString();
-                language=request.value(5).toString();
+                genre=request.value(2).toString();
                 sources.append(Phonon::MediaSource(QUrl(request.value(0).toString())));
                 QTableWidgetItem *item1=new QTableWidgetItem(tabindex,1);
                 QTableWidgetItem *item2=new QTableWidgetItem(titleindex,1);
-                QTableWidgetItem *item3=new QTableWidgetItem(artist,1);
-                QTableWidgetItem *item4=new QTableWidgetItem(album,1);
-                QTableWidgetItem *item5=new QTableWidgetItem(year,1);
-                QTableWidgetItem *item6=new QTableWidgetItem(language,1);
+                QTableWidgetItem *item3=new QTableWidgetItem(genre,1);
                 i=ui->tableWidget->rowCount();
                 ui->tableWidget->insertRow(i);
                 ui->tableWidget->setItem(i,0,item1);
                 ui->tableWidget->setItem(i,1,item2);
                 ui->tableWidget->setItem(i,2,item3);
-                ui->tableWidget->setItem(i,3,item4);
-                ui->tableWidget->setItem(i,4,item5);
-                ui->tableWidget->setItem(i,5,item6);
+
             }
         }
-        else if(TabName=="Music_Videos")
+        else if(TabName=="music_videos")
         {
-            QString ishd;
-            int hd;
+
             ui->tableWidget->setColumnCount(5);
             QStringList MVidcollabel;
             MVidcollabel.append("URL");
             MVidcollabel.append("Title");
-            MVidcollabel.append("Artist");
-            MVidcollabel.append("Language");
-            MVidcollabel.append("HD");
+            MVidcollabel.append("Genre");
             ui->tableWidget->setHorizontalHeaderLabels(MVidcollabel);
-            QSqlQuery request("SELECT url, title, artist, language, HD FROM "+TabName,MyDB);
+            QSqlQuery request("SELECT music_videos.url, music.title, music.genre FROM music, music_videos WHERE music_videos.music_id=music.music_id",MyDB);
             while(request.next())
             {
 
                 tabindex=request.value(0).toString();
                 titleindex=request.value(1).toString();
-                artist=request.value(2).toString();
-                language=request.value(3).toString();
-                hd=request.value(4).toInt();
-                if(hd==1)
-                    ishd="yes";
-                else
-                    ishd="no";
+                genre=request.value(2).toString();
                 sources.append(Phonon::MediaSource(QUrl(request.value(0).toString())));
                 QTableWidgetItem *item1=new QTableWidgetItem(tabindex,1);
                 QTableWidgetItem *item2=new QTableWidgetItem(titleindex,1);
-                QTableWidgetItem *item3=new QTableWidgetItem(artist,1);
-                QTableWidgetItem *item4=new QTableWidgetItem(language,1);
-                QTableWidgetItem *item5=new QTableWidgetItem(ishd,1);
+                QTableWidgetItem *item3=new QTableWidgetItem(genre,1);
                 i=ui->tableWidget->rowCount();
                 ui->tableWidget->insertRow(i);
                 ui->tableWidget->setItem(i,0,item1);
                 ui->tableWidget->setItem(i,1,item2);
                 ui->tableWidget->setItem(i,2,item3);
-                ui->tableWidget->setItem(i,3,item4);
-                ui->tableWidget->setItem(i,4,item5);
+
             }
         }
         else if(TabName=="TV_Shows")
