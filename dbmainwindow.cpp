@@ -1,7 +1,6 @@
 #include "dbmainwindow.h"
 #include "ui_dbmainwindow.h"
 #include <QFileDialog>
-#include <QtNetwork/QNetworkAccessManager>
 #include <QDesktopServices>
 #include <QMessageBox>
 #include <QSqlError>
