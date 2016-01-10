@@ -20,7 +20,7 @@ public:
     ~DBMainWindow();
     
 private slots:
-    void on_actionConnect_triggered();
+
 
     void on_actionSongs_triggered();
 
@@ -50,7 +50,10 @@ private slots:
 
     void on_pushButton_4_clicked();
 
+    void on_actionCreate_Database_triggered();
+
 private:
+    void on_actionConnect_triggered();
     Ui::DBMainWindow *ui;
     AddMovieDialog *addmovie;
     AddTVDialog *addtv;

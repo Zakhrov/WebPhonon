@@ -21,7 +21,7 @@ TableListDialog::TableListDialog(QWidget *parent) :
     db.setDatabaseName(database);
     db.setUserName(uname);
     db.setPassword(passwd);
-    db.open();
+    if(db.open())
     ui->comboBox->addItems(db.tables());
     tabname="movies";
     db.close();

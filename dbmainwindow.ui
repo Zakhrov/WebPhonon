@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1030</width>
-    <height>261</height>
+    <width>1028</width>
+    <height>259</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -72,7 +72,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1030</width>
+     <width>1028</width>
      <height>22</height>
     </rect>
    </property>
@@ -80,7 +80,7 @@
     <property name="title">
      <string>Database</string>
     </property>
-    <addaction name="actionConnect"/>
+    <addaction name="actionCreate_Database"/>
    </widget>
    <widget class="QMenu" name="menuBrowser">
     <property name="title">
@@ -129,7 +129,7 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionConnect"/>
+   <addaction name="actionCreate_Database"/>
    <addaction name="actionActors"/>
    <addaction name="actionArtists"/>
    <addaction name="actionAlbums"/>
@@ -140,9 +140,12 @@
    <addaction name="actionMusic_Video_Info"/>
    <addaction name="actionMusic_Video_Cast"/>
   </widget>
-  <action name="actionConnect">
+  <action name="actionCreate_Database">
    <property name="text">
-    <string>Connect</string>
+    <string>Create Database</string>
+   </property>
+   <property name="toolTip">
+    <string>Create Default Database</string>
    </property>
   </action>
   <action name="actionSongs">
