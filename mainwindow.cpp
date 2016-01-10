@@ -90,7 +90,7 @@ MainWindow::MainWindow(QWidget *parent) :
     MyDB.setDatabaseName(DBName);
     MyDB.setUserName(UName);
     MyDB.setPassword(Passwd);
-    MyDB.open();
+
 
 
 }
@@ -231,10 +231,10 @@ void MainWindow::on_actionFrom_Database_triggered()
     QMessageBox msg;
     msg.setIconPixmap(img2);
     msg.setWindowTitle("Database Module");
+MyDB.open();
 
-
-    if(MyDB.isDriverAvailable(DBType)==true)
-    {
+//    if(MyDB.isDriverAvailable(DBType)==true)
+//    {
 //        if(DBType=="QODBC")
 //        {
 //            QString dsn= QString("DRIVER={SQL Server};SERVER=%1;DATABASE=%2;Trusted_Connection=Yes;").arg(HostName).arg(DBName);
@@ -242,11 +242,11 @@ void MainWindow::on_actionFrom_Database_triggered()
 //           MyDB.open();
 //        }
 
-        if(MyDB.isOpen()==true)
-        {
-              msg.setText(MyDB.driverName()+" Database "+DBName+" Open");
-              msg.exec();
-        }
+//        if(MyDB.isOpen()==true)
+//        {
+//              msg.setText(MyDB.driverName()+" Database "+DBName+" Open");
+//              msg.exec();
+//        }
         if(TabName==""||!MyDB.tables().contains(TabName))
         {
             msg.setText(TabName+" does not exist");
@@ -254,6 +254,7 @@ void MainWindow::on_actionFrom_Database_triggered()
         }
         else if(TabName=="movies")
         {
+            //ui->tableWidget->clear();
             ui->tableWidget->setColumnCount(5);
             QStringList Moviecollabel;
             QString rating;
@@ -287,74 +288,87 @@ void MainWindow::on_actionFrom_Database_triggered()
                 ui->tableWidget->setItem(i,4,item5);
             }
         }
-        else if(TabName=="Music")
+        else if(TabName=="music")
         {
-            ui->tableWidget->setColumnCount(3);
+            //ui->tableWidget->clear();
+            ui->tableWidget->setColumnCount(4);
             QStringList Musiccollabel;
             Musiccollabel.append("URL");
             Musiccollabel.append("Title");
             Musiccollabel.append("Genre");
+            Musiccollabel.append("language");
             ui->tableWidget->setHorizontalHeaderLabels(Musiccollabel);
-            QSqlQuery request("SELECT url, title, genre FROM "+TabName,MyDB);
+            QSqlQuery request("SELECT url, title, genre,language FROM "+TabName,MyDB);
             while(request.next())
             {
 
                 tabindex=request.value(0).toString();
                 titleindex=request.value(1).toString();
                 genre=request.value(2).toString();
+                language=request.value(3).toString();
                 sources.append(Phonon::MediaSource(QUrl(request.value(0).toString())));
                 QTableWidgetItem *item1=new QTableWidgetItem(tabindex,1);
                 QTableWidgetItem *item2=new QTableWidgetItem(titleindex,1);
                 QTableWidgetItem *item3=new QTableWidgetItem(genre,1);
+                QTableWidgetItem *item4=new QTableWidgetItem(language,1);
                 i=ui->tableWidget->rowCount();
                 ui->tableWidget->insertRow(i);
                 ui->tableWidget->setItem(i,0,item1);
                 ui->tableWidget->setItem(i,1,item2);
                 ui->tableWidget->setItem(i,2,item3);
+                ui->tableWidget->setItem(i,3,item4);
 
             }
         }
         else if(TabName=="music_videos")
         {
 
-            ui->tableWidget->setColumnCount(5);
+           // ui->tableWidget->clear();
+            ui->tableWidget->setColumnCount(4);
             QStringList MVidcollabel;
             MVidcollabel.append("URL");
             MVidcollabel.append("Title");
             MVidcollabel.append("Genre");
+            MVidcollabel.append("Language");
             ui->tableWidget->setHorizontalHeaderLabels(MVidcollabel);
-            QSqlQuery request("SELECT music_videos.url, music.title, music.genre FROM music, music_videos WHERE music_videos.music_id=music.music_id",MyDB);
+            QSqlQuery request("SELECT music_videos.url, music.title, music.genre, music.language FROM music, music_videos WHERE music_videos.music_id=music.music_id",MyDB);
             while(request.next())
             {
 
                 tabindex=request.value(0).toString();
                 titleindex=request.value(1).toString();
                 genre=request.value(2).toString();
+                language=request.value(3).toString();
                 sources.append(Phonon::MediaSource(QUrl(request.value(0).toString())));
                 QTableWidgetItem *item1=new QTableWidgetItem(tabindex,1);
                 QTableWidgetItem *item2=new QTableWidgetItem(titleindex,1);
                 QTableWidgetItem *item3=new QTableWidgetItem(genre,1);
+                QTableWidgetItem *item4=new QTableWidgetItem(language,1);
                 i=ui->tableWidget->rowCount();
                 ui->tableWidget->insertRow(i);
                 ui->tableWidget->setItem(i,0,item1);
                 ui->tableWidget->setItem(i,1,item2);
                 ui->tableWidget->setItem(i,2,item3);
+                ui->tableWidget->setItem(i,3,item4);
 
             }
         }
-        else if(TabName=="TV_Shows")
+        else if(TabName=="tv")
         {
             int season,episode;
             QString eptitle;
-            ui->tableWidget->setColumnCount(5);
+           // ui->tableWidget->clear();
+            ui->tableWidget->setColumnCount(7);
             QStringList TVcollabel;
             TVcollabel.append("URL");
             TVcollabel.append("Title");
             TVcollabel.append("Season");
             TVcollabel.append("Episode");
             TVcollabel.append("Episode Title");
+            TVcollabel.append("Language");
+            TVcollabel.append("Genre");
             ui->tableWidget->setHorizontalHeaderLabels(TVcollabel);
-            QSqlQuery request("SELECT url, title, season, episode, ep_title FROM "+TabName,MyDB);
+            QSqlQuery request("SELECT url, title, season, episode, ep_title, language, genre FROM "+TabName,MyDB);
             while(request.next())
             {
 
@@ -363,13 +377,16 @@ void MainWindow::on_actionFrom_Database_triggered()
                 season=request.value(2).toInt();
                 episode=request.value(3).toInt();
                 eptitle=request.value(4).toString();
-
+                language=request.value(5).toString();
+                genre=request.value(6).toString();
                 sources.append(Phonon::MediaSource(QUrl(request.value(0).toString())));
                 QTableWidgetItem *item1=new QTableWidgetItem(tabindex,1);
                 QTableWidgetItem *item2=new QTableWidgetItem(titleindex,1);
                 QTableWidgetItem *item3=new QTableWidgetItem(QString::number(season),1);
                 QTableWidgetItem *item4=new QTableWidgetItem(QString::number(episode),1);
                 QTableWidgetItem *item5=new QTableWidgetItem(eptitle,1);
+                QTableWidgetItem *item6=new QTableWidgetItem(language,1);
+                QTableWidgetItem *item7=new QTableWidgetItem(genre,1);
                 i=ui->tableWidget->rowCount();
                 ui->tableWidget->insertRow(i);
                 ui->tableWidget->setItem(i,0,item1);
@@ -377,6 +394,8 @@ void MainWindow::on_actionFrom_Database_triggered()
                 ui->tableWidget->setItem(i,2,item3);
                 ui->tableWidget->setItem(i,3,item4);
                 ui->tableWidget->setItem(i,4,item5);
+                ui->tableWidget->setItem(i,5,item6);
+                ui->tableWidget->setItem(i,6,item7);
             }
         }
         else
@@ -406,12 +425,12 @@ void MainWindow::on_actionFrom_Database_triggered()
         }
 
         MyDB.close();
-    }
-    else
-    {
-        msg.setText("Database Driver not Loaded");
-        msg.exec();
-    }
+//    }
+//    else
+//    {
+//        msg.setText("Database Driver not Loaded");
+//        msg.exec();
+//    }
 
 }
 
@@ -430,6 +449,7 @@ void MainWindow::on_tableWidget_cellClicked(int row, int column)
         med->stop();
         med->clearQueue();
         if(row>=sources.size())
+            //adds url typed in url bar to playlist
             return;
         med->setCurrentSource(sources[row]);
         med->play();

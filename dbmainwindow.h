@@ -6,6 +6,7 @@
 #include <QSqlQueryModel>
 #include <QMainWindow>
 #include "addmoviedialog.h"
+#include "addtvdialog.h"
 namespace Ui {
 class DBMainWindow;
 }
@@ -43,17 +44,19 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_3_clicked();
+
+    void on_pushButton_4_clicked();
+
 private:
     Ui::DBMainWindow *ui;
     AddMovieDialog *addmovie;
+    AddTVDialog *addtv;
     QSqlDatabase db;
-    QSqlQueryModel *movieModel;
-    QSqlQueryModel *movieCastModel;
-    QSqlQueryModel *tvModel;
-    QSqlQueryModel *tvCastModel;
-    QSqlQueryModel *musivVideoModel;
-    QSqlQueryModel *musicVideoCastModel;
-    QSqlQueryModel *musicModel;
+    QSqlQueryModel *DBModel;
+
 
 };
 

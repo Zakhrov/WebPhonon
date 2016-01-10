@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     dropwidget.cpp \
     aboutdialog.cpp \
     addmoviedialog.cpp \
-    tablelistdialog.cpp
+    tablelistdialog.cpp \
+    addtvdialog.cpp
 
 HEADERS  += mainwindow.h \
     dialog.h \
@@ -30,7 +31,8 @@ HEADERS  += mainwindow.h \
     dropwidget.h \
     aboutdialog.h \
     addmoviedialog.h \
-    tablelistdialog.h
+    tablelistdialog.h \
+    addtvdialog.h
 
 FORMS    += mainwindow.ui \
     dialog.ui \
@@ -39,7 +41,8 @@ FORMS    += mainwindow.ui \
     dbmainwindow.ui \
     aboutdialog.ui \
     addmoviedialog.ui \
-    tablelistdialog.ui
+    tablelistdialog.ui \
+    addtvdialog.ui
 
 RESOURCES += \
     Icons.qrc

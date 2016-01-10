@@ -1,6 +1,7 @@
 #include "addmoviedialog.h"
 #include "ui_addmoviedialog.h"
 #include <QMessageBox>
+#include <QFileDialog>
 AddMovieDialog::AddMovieDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AddMovieDialog)
@@ -26,7 +27,6 @@ void AddMovieDialog::on_pushButton_clicked()
     uname=settings.value("username").toString();
     passwd=settings.value("password").toString();
     dbtype=settings.value("dbtype").toString();
-    QString url,title,language,rating,genre,year,studio;
     url=ui->lineEdit->text();
     title=ui->lineEdit_2->text();
     language=ui->lineEdit_3->text();
@@ -77,4 +77,10 @@ void AddMovieDialog::on_pushButton_clicked()
 void AddMovieDialog::on_pushButton_2_clicked()
 {
     this->close();
+}
+
+void AddMovieDialog::on_pushButton_3_clicked()
+{
+    url=QFileDialog::getOpenFileName(this,"Choose File");
+    ui->lineEdit->setText(url);
 }

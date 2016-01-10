@@ -23,10 +23,14 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_pushButton_3_clicked();
+
 private:
     Ui::AddMovieDialog *ui;
     QSettings settings;
     QSqlDatabase db;
+    QString url,title,language,rating,genre,year,studio;
+
 
 };
 
