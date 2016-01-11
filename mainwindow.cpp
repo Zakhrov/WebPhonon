@@ -33,8 +33,8 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setWindowIcon(QIcon(":/icons/WebPhononIcon.png"));
     ui->setupUi(this);
     d=new Dialog(this);
-    tbdialog=new TableListDialog(this);
-    dm2=new DBMainWindow(this);
+
+
     bkdiag=new BackendDialog(this);
     hdiag=new HelpDialog(this);
     sndout=new Phonon::AudioOutput(Phonon::VideoCategory,this);
@@ -221,6 +221,7 @@ void MainWindow::on_actionFrom_Database_triggered()
     QString tabindex,titleindex,studio,language,genre,year;
     int i;
     int index=sources.size();
+    tbdialog=new TableListDialog(this);
     tbdialog->exec();
 
     TabName=tbdialog->tabname;
@@ -437,6 +438,7 @@ MyDB.open();
 void MainWindow::on_actionManage_Databases_triggered()
 {
     //shows database manager window
+    dm2=new DBMainWindow(this);
     dm2->showMaximized();
 }
 
@@ -538,7 +540,10 @@ void MainWindow::on_actionBack_triggered()
 {
    // if(sources.size()>0)
     //{
-        int index=sources.indexOf(med->currentSource());
+    int index=-1;
+    if(sources.size()>0)
+    {
+     index=sources.indexOf(med->currentSource());
 //        QString size=QString::number(index);
 //        QMessageBox *sizedisp=new QMessageBox(this);
 //        sizedisp->setText(size);
@@ -556,7 +561,7 @@ void MainWindow::on_actionBack_triggered()
 
 
 
-
+}
 }
 
 void MainWindow::on_actionFoward_triggered()

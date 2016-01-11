@@ -21,12 +21,12 @@ AddMovieDialog::~AddMovieDialog()
 void AddMovieDialog::on_pushButton_clicked()
 {
     QMessageBox msg;
-    QString host,database,uname,passwd,dbtype;
-    host=settings.value("server").toString();
-    database=settings.value("database").toString();
-    uname=settings.value("username").toString();
-    passwd=settings.value("password").toString();
-    dbtype=settings.value("dbtype").toString();
+//    QString host,database,uname,passwd,dbtype;
+//    host=settings.value("server").toString();
+//    database=settings.value("database").toString();
+//    uname=settings.value("username").toString();
+//    passwd=settings.value("password").toString();
+//    dbtype=settings.value("dbtype").toString();
     url=ui->lineEdit->text();
     title=ui->lineEdit_2->text();
     language=ui->lineEdit_3->text();
@@ -34,17 +34,17 @@ void AddMovieDialog::on_pushButton_clicked()
     rating=ui->lineEdit_5->text();
     genre=ui->lineEdit_6->text();
     year=ui->lineEdit_7->text();
-    db=QSqlDatabase::addDatabase(dbtype,"AddMovieConn");
-    db.setConnectOptions();
-    db.setHostName(host);
-    db.setDatabaseName(database);
-    db.setUserName(uname);
-    db.setPassword(passwd);
+    db=QSqlDatabase::database("PlayConn");
+//    db.setConnectOptions();
+//    db.setHostName(host);
+//    db.setDatabaseName(database);
+//    db.setUserName(uname);
+//    db.setPassword(passwd);
     db.open();
 
 
 
-        QSqlQuery *query=new QSqlQuery(db.database("AddMovieConn"));
+        QSqlQuery *query=new QSqlQuery(db);
         //query.prepare("insert into movies(url, title, language, studio, rating, genre, year) values(:url, :title, :language, :studio, :rating, :genre, :year");
         query->prepare("INSERT INTO `webphonon`.`movies` (`url`, `title`, `language`, `studio`, `rating`, `genre`, `year`) VALUES (:url, :title, :language, :studio, :rating, :genre, :year);");
         query->bindValue(":url",url);

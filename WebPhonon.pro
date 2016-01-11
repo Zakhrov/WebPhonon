@@ -21,7 +21,9 @@ SOURCES += main.cpp\
     aboutdialog.cpp \
     addmoviedialog.cpp \
     tablelistdialog.cpp \
-    addtvdialog.cpp
+    addtvdialog.cpp \
+    addmusicdialog.cpp \
+    addmvdialog.cpp
 
 HEADERS  += mainwindow.h \
     dialog.h \
@@ -32,7 +34,9 @@ HEADERS  += mainwindow.h \
     aboutdialog.h \
     addmoviedialog.h \
     tablelistdialog.h \
-    addtvdialog.h
+    addtvdialog.h \
+    addmusicdialog.h \
+    addmvdialog.h
 
 FORMS    += mainwindow.ui \
     dialog.ui \
@@ -42,7 +46,9 @@ FORMS    += mainwindow.ui \
     aboutdialog.ui \
     addmoviedialog.ui \
     tablelistdialog.ui \
-    addtvdialog.ui
+    addtvdialog.ui \
+    addmusicdialog.ui \
+    addmvdialog.ui
 
 RESOURCES += \
     Icons.qrc
@@ -100,7 +106,8 @@ OTHER_FILES += \
     icons/256x256/WebPhonon.png \
     icons/512x512/WebPhonon.png \
     CMakeLists.txt \
-    icons/PlayWithWebPhonon.desktop
+    icons/PlayWithWebPhonon.desktop \
+    README.md
 
     target.path = /usr/bin
     desktop.path= /usr/share/applications

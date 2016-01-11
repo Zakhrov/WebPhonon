@@ -7,6 +7,8 @@
 #include <QMainWindow>
 #include "addmoviedialog.h"
 #include "addtvdialog.h"
+#include "addmusicdialog.h"
+#include "addmvdialog.h"
 namespace Ui {
 class DBMainWindow;
 }
@@ -57,6 +59,8 @@ private:
     Ui::DBMainWindow *ui;
     AddMovieDialog *addmovie;
     AddTVDialog *addtv;
+    AddMusicDialog *addmusic;
+    AddMVDialog *addmv;
     QSqlDatabase db;
     QSqlQueryModel *DBModel;
 

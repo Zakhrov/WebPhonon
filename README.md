@@ -3,14 +3,14 @@ WebPhonon
 
 Simple Phonon based Video Player written in QT
 
-Build Instructions
-
-Download and extract source archive
-Open a terminal and navigate to the extracted folder/directory
-Issue the following commands:
+Runtime Dependencies: Qt4, Phonon, kdelibs4 (linux only)
+Build Dependencies: cmake, Qt4-dev, Phonon-dev, kdebase4-dev
+Download:
+git clone https://www.github.com/Zakhrov/WebPhonon.git
+Build Instructions:
+cd to the directory you cloned WebPhonon to
 mkdir build
 cd build
-qmake ..
+cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 make
-
 execute using ./WebPhonon or run sudo make install for systemwide install

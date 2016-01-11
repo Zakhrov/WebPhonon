@@ -42,8 +42,16 @@ int main(int argc, char *argv[])
 
     //img.load("/WebPhonon/splash/WebPhonon-Master-text2.png");
 #ifdef Q_OS_LINUX
+    if(QFile::exists("/usr/share/WebPhonon/splash/WebPhonon-Master-text2.png"))
     img.load("/usr/share/WebPhonon/splash/WebPhonon-Master-text2.png");
+    else
+        img.load(":/splash/WebPhonon-Master-text2.png");
 #else
+    if(QFile::exists("C:/Program Files/WebPhonon/splash/WebPhonon-Master-text2.png"))
+    img.load("C:/Program Files/WebPhonon/splash/WebPhonon-Master-text2.png");
+    else if(QFile::exists("C:/Program Files(x86)/WebPhonon/splash/WebPhonon-Master-text2.png"))
+        img.load("C:/Program Files(x86)/WebPhonon/splash/WebPhonon-Master-text2.png");
+    else
     img.load(":/splash/WebPhonon-Master-text2.png");
 #endif
     QSettings defaultSettings;

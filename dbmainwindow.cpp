@@ -15,6 +15,8 @@ DBMainWindow::DBMainWindow(QWidget *parent) :
     addmovie = new AddMovieDialog(this);
     DBModel = new QSqlQueryModel(this);
     addtv=new AddTVDialog(this);
+    addmusic = new AddMusicDialog(this);
+    addmv = new AddMVDialog(this);
 
 
 
@@ -180,11 +182,13 @@ void DBMainWindow::on_pushButton_2_clicked()
 void DBMainWindow::on_pushButton_3_clicked()
 {
     //add music vids
+    addmv->show();
 }
 
 void DBMainWindow::on_pushButton_4_clicked()
 {
     //add music
+    addmusic->show();
 }
 
 void DBMainWindow::on_actionCreate_Database_triggered()

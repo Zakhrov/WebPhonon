@@ -15,7 +15,7 @@ TableListDialog::TableListDialog(QWidget *parent) :
     uname=settings.value("username").toString();
     passwd=settings.value("password").toString();
     dbtype=settings.value("dbtype").toString();
-    db=QSqlDatabase::addDatabase(dbtype);
+    db=QSqlDatabase::database("PlayConn");
     db.setConnectOptions();
     db.setHostName(host);
     db.setDatabaseName(database);
