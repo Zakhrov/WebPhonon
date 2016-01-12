@@ -4,8 +4,9 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql phonon
-!win32: LIBS += -lkdeui -lkdecore
+QT       += core gui sql phonon opengl
+QMAKE_CXXFLAGS += -std=c++11
+!win32: LIBS += -lkdeui -lkdecore -lGLEW -lGLU
 
 TARGET = WebPhonon
 TEMPLATE = app
@@ -23,7 +24,8 @@ SOURCES += main.cpp\
     tablelistdialog.cpp \
     addtvdialog.cpp \
     addmusicdialog.cpp \
-    addmvdialog.cpp
+    addmvdialog.cpp \
+    visualizer.cpp
 
 HEADERS  += mainwindow.h \
     dialog.h \
@@ -36,7 +38,8 @@ HEADERS  += mainwindow.h \
     tablelistdialog.h \
     addtvdialog.h \
     addmusicdialog.h \
-    addmvdialog.h
+    addmvdialog.h \
+    visualizer.h
 
 FORMS    += mainwindow.ui \
     dialog.ui \
@@ -160,3 +163,10 @@ INSTALLS+=target icon16 icon32 icon48 icon64 icon128 icon256 icon512 desktop ser
 #win32:DEPENDPATH += $$PWD/../../../../usr/i686-w64-mingw32/sys-root/mingw/include
 
 #win32: PRE_TARGETDEPS += $$PWD/../../../../usr/i686-w64-mingw32/sys-root/mingw/lib/libphonon.dll.a
+
+
+
+#unix:!macx: LIBS += -L$$PWD/../../../../usr/lib64/ -lvisual-0.5
+
+#INCLUDEPATH += $$PWD/../../../../usr/include/libvisual-0.5
+#DEPENDPATH += $$PWD/../../../../usr/include/libvisual-0.5

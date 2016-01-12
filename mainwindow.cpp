@@ -40,6 +40,7 @@ MainWindow::MainWindow(QWidget *parent) :
     sndout=new Phonon::AudioOutput(Phonon::VideoCategory,this);
     med=new Phonon::MediaObject(this);
     dwidget=new DropWidget(this);
+    vwidget = new Visualizer(this);
     med->setTransitionTime(2000);
     effectDescriptions =Phonon::BackendCapabilities::availableAudioEffects();
 #ifdef Q_OS_LINUX
@@ -66,14 +67,18 @@ MainWindow::MainWindow(QWidget *parent) :
      ui->tableWidget->setColumnCount(2);
      ui->tableWidget->setHorizontalHeaderLabels(collabel);
      ui->pushButton->hide();
+     //vwidget->hide();
      //connecting signals and slots for going to next file and for drag n drop
      connect(med,SIGNAL(finished()),this,SLOT(next()));
    connect(dwidget,SIGNAL(geturls(const QMimeData*)),this,SLOT(dropdata(const QMimeData*)));
    connect(dwidget,SIGNAL(capturespace(QKeyEvent*)),this,SLOT(widgetpause(QKeyEvent*)));
    connect(med,SIGNAL(tick(qint64)),this,SLOT(timechanged(qint64)));
+   //connect(med,SIGNAL(tick(qint64)),vwidget,SLOT(setXRotation(qint64)));
    connect(med,SIGNAL(totalTimeChanged(qint64)),this,SLOT(totalTimeChanged(qint64)));
+   connect(med,SIGNAL(hasVideoChanged(bool)),this,SLOT(switchviewports(bool)));
    //adding custom video widget with drag n drop enabled
     ui->gridLayout->addWidget(dwidget);
+   ui->gridLayout->addWidget(vwidget);
     ui->seekSlider->setIconVisible(false);
     ui->volumeSlider->setMuteVisible(false);
     ui->volumeSlider->setOrientation(Qt::Vertical);
@@ -175,7 +180,10 @@ void MainWindow::on_actionPlay_triggered()
 void MainWindow::on_actionPause_triggered()
 {
     if(med->state()==Phonon::PlayingState)
+    {
     med->pause();
+    vwidget->timer->setInterval(100);
+    }
     else
         med->play();
 }
@@ -183,6 +191,7 @@ void MainWindow::on_actionPause_triggered()
 void MainWindow::on_actionStop_triggered()
 {
     med->stop();
+    vwidget->timer->stop();
 }
 
 void MainWindow::on_actionFull_Screen_triggered()
@@ -534,6 +543,24 @@ void MainWindow::dropdata(const QMimeData *mimeData)
                  this->on_actionPlay_triggered();
              }
     }
+}
+
+void MainWindow::switchviewports(bool vflag)
+{
+
+   if(!vflag)
+   {
+       dwidget->hide();
+
+       vwidget->show();
+       //qDebug() << "no video";
+   }
+   else
+   {
+        vwidget->hide();
+        dwidget->show();
+      // qDebug() << " video";
+   }
 }
 
 void MainWindow::on_actionBack_triggered()

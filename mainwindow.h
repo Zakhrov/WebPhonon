@@ -14,6 +14,7 @@
 #include <KDE/Phonon/Effect>
 #include <KDE/Phonon/ObjectDescription>
 #include <KDE/Phonon/EffectWidget>
+#include "visualizer.h"
 #else
 #include <Phonon/MediaObject>
 #include <Phonon/AudioOutput>
@@ -50,7 +51,7 @@ public:
 public slots:
     void dropdata(const QMimeData *mimeData);
 private slots:
-
+    void switchviewports(bool vflag);
     void on_actionLocal_File_triggered();
 
     void on_actionHttp_Stream_triggered();
@@ -135,6 +136,9 @@ private:
      Phonon::Effect *effect;
       Phonon::EffectWidget *effectWidget;
       QSettings dbSettings;
+      Visualizer *vwidget;
+
+
 
 
 
