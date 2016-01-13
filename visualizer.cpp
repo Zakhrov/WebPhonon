@@ -150,9 +150,9 @@ void Visualizer::loadGLTexture()
     QImage t;
       QImage b;
 #ifdef Q_OS_LINUX
-        b.load( "/usr/share/WebPhonon/splash/WebPhonon-Master-text2.tiff" );
+        b.load( "/usr/share/WebPhonon/splash/WebPhononIcon.tiff" );
 #else
-        b.load( "WebPhonon-Master-text2.tiff" );
+        b.load( "WebPhononIcon.tiff" );
 #endif
       t = QGLWidget::convertToGLFormat( b );
       glGenTextures( 1, &texture[0] );
