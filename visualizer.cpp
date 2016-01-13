@@ -57,7 +57,7 @@ void Visualizer::paintGL()
     glTranslatef(0.0f,0.0f,-10.0f);
     glRotatef(xRot, 0.0, 0.0, 1.0);
     glRotatef(yRot,0.0f,1.0f,0.0f);
-    glRotatef(zRot,0.0f,0.0f,1.0f);
+    //glRotatef(zRot,0.0f,0.0f,1.0f);
     glBindTexture(GL_TEXTURE_2D, texture[0]);
       /*glBegin(GL_TRIANGLES);
       glColor3f(1,0,0);
@@ -139,9 +139,9 @@ void Visualizer::resizeGL(int w, int h)
 
 void Visualizer::animate()
 {
-    xRot-=4.0f;
+    xRot+=0.4f;
     yRot-=4.0f;
-    zRot-=4.0f;
+   // zRot-=4.0f;
     updateGL();
 }
 

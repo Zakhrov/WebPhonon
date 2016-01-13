@@ -9,7 +9,7 @@ class Visualizer : public QGLWidget
 public:
     Visualizer(QWidget *parent = 0);
     ~Visualizer();
-    QTimer *timer;
+
 protected:
     void initializeGL();
     void paintGL();
@@ -18,7 +18,7 @@ public slots:
     void animate();
 private:
     void loadGLTexture();
-
+   QTimer *timer;
   GLfloat xRot;
   GLfloat yRot;
   GLfloat zRot;

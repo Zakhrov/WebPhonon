@@ -79,7 +79,7 @@ MainWindow::MainWindow(QWidget *parent) :
    //adding custom video widget with drag n drop enabled
     ui->gridLayout->addWidget(dwidget);
    ui->gridLayout->addWidget(vwidget);
-   vwidget->hide();
+    dwidget->hide();
     ui->seekSlider->setIconVisible(false);
     ui->volumeSlider->setMuteVisible(false);
     ui->volumeSlider->setOrientation(Qt::Vertical);
