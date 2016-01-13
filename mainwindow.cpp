@@ -551,9 +551,18 @@ void MainWindow::switchviewports(bool vflag)
 
    if(!vflag)
    {
+       if(dwidget->isFullScreen()==false)
+       {
        dwidget->hide();
-
        vwidget->show();
+       }
+       else
+       {
+           on_actionFull_Screen_triggered();
+           dwidget->hide();
+           vwidget->show();
+
+       }
        //qDebug() << "no video";
    }
    else

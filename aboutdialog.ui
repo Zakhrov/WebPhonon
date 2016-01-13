@@ -6,27 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>501</width>
-    <height>232</height>
+    <width>499</width>
+    <height>230</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0" rowspan="3">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="Icons.qrc">:/Icons/WebPhononIcon.png</pixmap>
-     </property>
-     <property name="scaledContents">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="1">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
@@ -45,17 +32,37 @@
      </item>
     </layout>
    </item>
-   <item row="1" column="1">
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string>Built by Aaron Zakhrov (Aaron P. Dominick)</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
+   <item row="4" column="1">
     <widget class="QLabel" name="label_5">
      <property name="text">
       <string>aaron.zakhrov@gmail.com</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" rowspan="5">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Icons.qrc">:/Icons/WebPhononIcon.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QPushButton" name="pushButton">
+     <property name="text">
+      <string>About Qt</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Built by Aaron Zakhrov (Aaron P. Dominick)</string>
      </property>
     </widget>
    </item>

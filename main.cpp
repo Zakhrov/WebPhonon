@@ -47,10 +47,8 @@ int main(int argc, char *argv[])
     else
         img.load(":/splash/WebPhonon-Master-text2.png");
 #else
-    if(QFile::exists("C:/Program Files/WebPhonon/splash/WebPhonon-Master-text2.png"))
-    img.load("C:/Program Files/WebPhonon/splash/WebPhonon-Master-text2.png");
-    else if(QFile::exists("C:/Program Files(x86)/WebPhonon/splash/WebPhonon-Master-text2.png"))
-        img.load("C:/Program Files(x86)/WebPhonon/splash/WebPhonon-Master-text2.png");
+    if(QFile::exists("WebPhonon-Master-text2.png"))
+    img.load("WebPhonon-Master-text2.png");
     else
     img.load(":/splash/WebPhonon-Master-text2.png");
 #endif

@@ -139,9 +139,9 @@ void Visualizer::resizeGL(int w, int h)
 
 void Visualizer::animate()
 {
-    xRot+=4.0f;
-    yRot+=4.0f;
-   // zRot+=4.0f;
+    xRot-=4.0f;
+    yRot-=4.0f;
+    zRot-=4.0f;
     updateGL();
 }
 
@@ -150,7 +150,7 @@ void Visualizer::loadGLTexture()
     QImage t;
       QImage b;
 #ifdef Q_OS_LINUX
-        b.load( "/usr/share/WebPhonon/splash/WebPhononIcon.tiff" );
+        b.load( "/usr/share/WebPhonon/splash/WebPhonon-Master-text2.tiff" );
 #else
         b.load( "WebPhononIcon.tiff" );
 #endif
