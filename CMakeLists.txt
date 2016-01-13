@@ -62,7 +62,7 @@ INSTALL(FILES C:/Qt/4.8.5/bin/libmysql.dll DESTINATION bin )
 INSTALL(DIRECTORY C:/Qt/4.8.5/plugins/phonon_backend DESTINATION bin )
 INSTALL(DIRECTORY C:/Qt/4.8.5/plugins/sqldrivers DESTINATION bin )
 # build a CPack driven installer package
-#include (InstallRequiredSystemLibraries)
+include (InstallRequiredSystemLibraries)
 set(CPACK_PACKAGE_VERSION 2.0.0)
 set(CPACK_GENERATOR "NSIS")
 set(CPACK_PACKAGE_NAME "WebPhonon")
