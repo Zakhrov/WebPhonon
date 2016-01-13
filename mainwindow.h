@@ -138,7 +138,6 @@ private:
       Phonon::EffectWidget *effectWidget;
       QSettings dbSettings;
       Visualizer *vwidget;
-      bool fscreen;
 
 
 
