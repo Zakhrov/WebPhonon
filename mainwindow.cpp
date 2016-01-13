@@ -79,6 +79,7 @@ MainWindow::MainWindow(QWidget *parent) :
    //adding custom video widget with drag n drop enabled
     ui->gridLayout->addWidget(dwidget);
    ui->gridLayout->addWidget(vwidget);
+   vwidget->hide();
     ui->seekSlider->setIconVisible(false);
     ui->volumeSlider->setMuteVisible(false);
     ui->volumeSlider->setOrientation(Qt::Vertical);
@@ -182,7 +183,7 @@ void MainWindow::on_actionPause_triggered()
     if(med->state()==Phonon::PlayingState)
     {
     med->pause();
-    vwidget->timer->setInterval(100);
+   // vwidget->timer->setInterval(100);
     }
     else
         med->play();
@@ -191,7 +192,7 @@ void MainWindow::on_actionPause_triggered()
 void MainWindow::on_actionStop_triggered()
 {
     med->stop();
-    vwidget->timer->stop();
+    //vwidget->timer->stop();
 }
 
 void MainWindow::on_actionFull_Screen_triggered()
@@ -635,6 +636,8 @@ void MainWindow::widgetpause(QKeyEvent *event)
         break;
     case Qt::Key_3: this->on_actionWideScreen_triggered();
         break;
+//    case Qt::Key_V: this->on_actionOpen_Visualizer_triggered();
+//        break;
 
     default: this->on_actionPlay_triggered();
     }
@@ -772,4 +775,18 @@ void MainWindow::on_actionEqualizer_triggered()
     effectWidget->hide();
     else
         effectWidget->show();
+}
+
+void MainWindow::on_actionOpen_Visualizer_triggered()
+{
+    if(dwidget->isVisible())
+    {
+    dwidget->hide();
+    vwidget->show();
+    }
+    else
+    {
+        vwidget->hide();
+        dwidget->show();
+    }
 }

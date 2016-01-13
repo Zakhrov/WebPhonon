@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>674</width>
-    <height>295</height>
+    <width>672</width>
+    <height>293</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -169,7 +169,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>674</width>
+     <width>672</width>
      <height>22</height>
     </rect>
    </property>
@@ -213,6 +213,7 @@
     <addaction name="actionClear_Playlist"/>
     <addaction name="menuAspect_Ratio"/>
     <addaction name="actionEqualizer"/>
+    <addaction name="actionOpen_Visualizer"/>
    </widget>
    <widget class="QMenu" name="menuDatabase">
     <property name="title">
@@ -495,6 +496,11 @@
    </property>
    <property name="shortcut">
     <string>E</string>
+   </property>
+  </action>
+  <action name="actionOpen_Visualizer">
+   <property name="text">
+    <string>Open Visualizer</string>
    </property>
   </action>
  </widget>

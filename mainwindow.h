@@ -112,6 +112,8 @@ private slots:
 
     void on_actionEqualizer_triggered();
 
+    void on_actionOpen_Visualizer_triggered();
+
 private:
     Ui::MainWindow *ui;
     Phonon::MediaObject *med;
