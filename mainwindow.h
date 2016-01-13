@@ -14,7 +14,6 @@
 #include <KDE/Phonon/Effect>
 #include <KDE/Phonon/ObjectDescription>
 #include <KDE/Phonon/EffectWidget>
-#include "visualizer.h"
 #else
 #include <Phonon/MediaObject>
 #include <Phonon/AudioOutput>
@@ -31,7 +30,7 @@
 #include "helpdialog.h"
 #include "dropwidget.h"
 #include "tablelistdialog.h"
-
+#include "visualizer.h"
 
 namespace Ui {
 class MainWindow;
