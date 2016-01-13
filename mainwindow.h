@@ -14,6 +14,14 @@
 #include <KDE/Phonon/Effect>
 #include <KDE/Phonon/ObjectDescription>
 #include <KDE/Phonon/EffectWidget>
+//fix for ubuntu
+#include <phonon/MediaObject>
+#include <phonon/AudioOutput>
+#include <phonon/VideoWidget>
+#include <phonon/BackendCapabilities>
+#include <phonon/Effect>
+#include <phonon/ObjectDescription>
+#include <phonon/EffectWidget>
 #else
 #include <Phonon/MediaObject>
 #include <Phonon/AudioOutput>
