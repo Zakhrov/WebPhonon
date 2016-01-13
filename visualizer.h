@@ -2,6 +2,7 @@
 #define VISUALIZER_H
 #include <QtOpenGL/QGLWidget>
 #include <QTimer>
+#include <QImage>
 class Visualizer : public QGLWidget
 {
     Q_OBJECT
