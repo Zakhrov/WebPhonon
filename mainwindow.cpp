@@ -200,6 +200,7 @@ void MainWindow::on_actionFull_Screen_triggered()
 
    if(dwidget->isFullScreen()==false)
    { 
+       vwidget->hide();
        dwidget->setFullScreen(true);
        dwidget->setFocus();
 
