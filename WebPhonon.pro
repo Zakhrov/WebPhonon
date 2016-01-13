@@ -110,7 +110,8 @@ OTHER_FILES += \
     icons/512x512/WebPhonon.png \
     CMakeLists.txt \
     icons/PlayWithWebPhonon.desktop \
-    README.md
+    README.md \
+    textures/WebPhononIcon.bmp
 
     target.path = /usr/bin
     desktop.path= /usr/share/applications

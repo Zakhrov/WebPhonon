@@ -1,5 +1,6 @@
 #include "visualizer.h"
 #include <QTimer>
+#include <QDebug>
 
 Visualizer::Visualizer(QWidget *parent)
     : QGLWidget(parent)
@@ -148,7 +149,10 @@ void Visualizer::loadGLTexture()
 {
     QImage t;
       QImage b;
-        b.load( ":/splash/WebPhonon-Master-text2.png" );
+        if(b.load( "textures/WebPhononIcon.bmp" ))
+            qDebug() <<"Image Loaded";
+        else
+            qDebug() <<"Image not loaded";
 
 
       t = QGLWidget::convertToGLFormat( b );
