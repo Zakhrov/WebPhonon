@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui sql phonon opengl
-QMAKE_CXXFLAGS += -std=c++11
+#QMAKE_CXXFLAGS += -std=c++11
 !win32: LIBS += -lkdeui -lkdecore -lGLEW -lGLU
 
 TARGET = WebPhonon

@@ -22,11 +22,6 @@ private:
   GLfloat yRot;
   GLfloat zRot;
   GLuint texture[1];
-
-  GLfloat LightAmbient[4]= { 0.5f, 0.5f, 0.5f, 1.0f };                 // Ambient Light Values ( NEW )
-
-  GLfloat LightDiffuse[4]= { 1.0f, 1.0f, 1.0f, 1.0f };              // Diffuse Light Values ( NEW )
-  GLfloat LightPosition[4]= { 0.0f, 0.0f, 2.0f, 1.0f };                 // Light Position ( NEW )
 };
 
 #endif // VISUALIZER_H
