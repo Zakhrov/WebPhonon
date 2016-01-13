@@ -19,7 +19,7 @@ SET(WebPhonon_SOURCES main.cpp mainwindow.cpp dialog.cpp backenddialog.cpp helpd
 SET(WebPhonon_HEADERS mainwindow.h dialog.h backenddialog.h helpdialog.h dbmainwindow.h dropwidget.h aboutdialog.h addmoviedialog.h tablelistdialog.h addtvdialog.h addmusicdialog.h addmvdialog.h visualizer.h)
 SET(WebPhonon_FORMS mainwindow.ui dialog.ui backenddialog.ui helpdialog.ui dbmainwindow.ui aboutdialog.ui addmoviedialog.ui tablelistdialog.ui addtvdialog.ui addmusicdialog.ui addmvdialog.ui)
 SET(WebPhonon_RESOURCES Icons.qrc)
-SET(WebPhonon_SPLASH WebPhonon-Master-text2.png)
+SET(WebPhonon_SPLASH WebPhonon-Master-text2.png WebPhonon-Master-text2.tiff)
 
 #set(CMAKE_AUTOMOC ON)
 #set(WebPhononSources icons/hi16-app-WebPhonon.png icons/hi32-app-WebPhonon.png icons/hi48-app-WebPhonon.png icons/hi64-app-WebPhonon.png icons/hi128-app-WebPhonon.png icons/hi256-app-WebPhonon.png icons/hi512-app-WebPhonon.png)
