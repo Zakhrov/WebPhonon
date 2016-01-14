@@ -31,6 +31,7 @@
 #include "dropwidget.h"
 #include "tablelistdialog.h"
 #include "visualizer.h"
+#include "widget.h"
 
 namespace Ui {
 class MainWindow;
@@ -130,12 +131,10 @@ private:
     HelpDialog *hdiag;
     qreal volume;
     qint64 currenttime;
-    QList<Phonon::EffectDescription> effectDescriptions;
-     Phonon::EffectDescription effectDescription ;
+
      Phonon::Path apath;
      Phonon::Path vpath;
-     Phonon::Effect *effect;
-      Phonon::EffectWidget *effectWidget;
+    Widget *eqwidget;
       QSettings dbSettings;
       Visualizer *vwidget;
 

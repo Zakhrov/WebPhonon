@@ -25,7 +25,8 @@ SOURCES += main.cpp\
     addtvdialog.cpp \
     addmusicdialog.cpp \
     addmvdialog.cpp \
-    visualizer.cpp
+    visualizer.cpp \
+    widget.cpp
 
 HEADERS  += mainwindow.h \
     dialog.h \
@@ -39,7 +40,8 @@ HEADERS  += mainwindow.h \
     addtvdialog.h \
     addmusicdialog.h \
     addmvdialog.h \
-    visualizer.h
+    visualizer.h \
+    widget.h
 
 FORMS    += mainwindow.ui \
     dialog.ui \
@@ -51,7 +53,8 @@ FORMS    += mainwindow.ui \
     tablelistdialog.ui \
     addtvdialog.ui \
     addmusicdialog.ui \
-    addmvdialog.ui
+    addmvdialog.ui \
+    widget.ui
 
 RESOURCES += \
     Icons.qrc

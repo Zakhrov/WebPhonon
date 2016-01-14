@@ -42,19 +42,12 @@ MainWindow::MainWindow(QWidget *parent) :
     dwidget=new DropWidget(this);
     vwidget = new Visualizer(this);
     med->setTransitionTime(2000);
-    effectDescriptions =Phonon::BackendCapabilities::availableAudioEffects();
-#ifdef Q_OS_LINUX
-    effectDescription = effectDescriptions.at(3);
-#else
-    effectDescription = effectDescriptions.at(0);
-#endif
-    effect = new Phonon::Effect(effectDescription);
-    effectWidget = new Phonon::EffectWidget(effect);
-    ui->gridLayout_3->addWidget(effectWidget);
-    effectWidget->hide();
+    eqwidget = new Widget(this);
+    ui->gridLayout_3->addWidget(eqwidget);
+    eqwidget->hide();
     vpath=Phonon::createPath(med,dwidget);
     apath=Phonon::createPath(med,sndout);
-    apath.insertEffect(effect);
+    apath.insertEffect(eqwidget->equalizer);
     QStringList collabel;
     collabel.append("URL");
     collabel.append("Name");
@@ -793,10 +786,10 @@ void MainWindow::on_actionWideScreen_triggered()
 
 void MainWindow::on_actionEqualizer_triggered()
 {
-    if(effectWidget->isVisible())
-    effectWidget->hide();
+    if(eqwidget->isVisible())
+    eqwidget->hide();
     else
-        effectWidget->show();
+        eqwidget->show();
 }
 
 void MainWindow::on_actionOpen_Visualizer_triggered()
