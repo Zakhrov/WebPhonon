@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1028</width>
-    <height>259</height>
+    <width>1026</width>
+    <height>257</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -72,7 +72,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1028</width>
+     <width>1026</width>
      <height>22</height>
     </rect>
    </property>
@@ -130,6 +130,7 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionCreate_Database"/>
+   <addaction name="separator"/>
    <addaction name="actionActors"/>
    <addaction name="actionArtists"/>
    <addaction name="actionAlbums"/>
@@ -139,6 +140,7 @@
    <addaction name="actionShow_Cast"/>
    <addaction name="actionMusic_Video_Info"/>
    <addaction name="actionMusic_Video_Cast"/>
+   <addaction name="actionSongs"/>
   </widget>
   <action name="actionCreate_Database">
    <property name="text">
@@ -180,12 +182,18 @@
   </action>
   <action name="actionShow_Info">
    <property name="text">
-    <string>Show Info</string>
+    <string>TV Info</string>
+   </property>
+   <property name="toolTip">
+    <string>TV Info</string>
    </property>
   </action>
   <action name="actionShow_Cast">
    <property name="text">
-    <string>Show Cast</string>
+    <string>TV Cast</string>
+   </property>
+   <property name="toolTip">
+    <string>TV Cast</string>
    </property>
   </action>
   <action name="actionMusic_Video_Info">
