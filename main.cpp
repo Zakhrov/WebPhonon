@@ -15,12 +15,23 @@
 #include <KDE/KAboutData>
 #include <KDE/KUniqueApplication>
 #endif
+#ifdef WEBPHONONCONFIG_H
+#include "WebPhononConfig.h"
+#else
+#define WebPhonon_VERSION_MAJOR 2
+#define WebPhonon_VERSION_MINOR 0
+#endif
 
 int main(int argc, char *argv[])
 {
+    QApplication a(argc, argv);
+     a.setApplicationName("WebPhonon");
+     a.setApplicationVersion(QString::number(WebPhonon_VERSION_MAJOR).append(".").append(QString::number(WebPhonon_VERSION_MINOR)));
+     a.setOrganizationName("Zakhrov");
+     a.setOrganizationDomain("Zakhrov");
 #ifdef Q_OS_LINUX
     KAboutData aboutData( "WebPhonon", "WebPhonon",
-          ki18n("WebPhonon"), "1.6",
+          ki18n("WebPhonon"), a.applicationVersion().toAscii(),
           ki18n("Media Player"),
           KAboutData::License_GPL,
           ki18n("Copyright (c) 2013 Aaron Zakhrov") );
@@ -31,11 +42,7 @@ int main(int argc, char *argv[])
       KCmdLineArgs::addCmdLineOptions(options); //new
     KUniqueApplication::addCmdLineOptions();
 #endif
-   QApplication a(argc, argv);
-    a.setApplicationName("WebPhonon");
-    a.setApplicationVersion("1.6");
-    a.setOrganizationName("Zakhrov");
-    a.setOrganizationDomain("Zakhrov");
+
     //AppWrapper app;
     QPixmap img;
     //QString imgurl=QCoreApplication::applicationDirPath();

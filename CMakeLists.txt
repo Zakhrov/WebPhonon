@@ -1,17 +1,25 @@
 project (WebPhonon)
+set(WebPhonon_VERSION_MAJOR 2)
+set(WebPhonon_VERSION_MINOR 0)
 cmake_minimum_required(VERSION 2.6)
 find_package(Qt4 REQUIRED)
 find_package(OpenGL REQUIRED)
+# configure a header file to pass some of the CMake settings
+# to the source code
+configure_file (
+  "${PROJECT_SOURCE_DIR}/WebPhononConfig.h.in"
+  "${PROJECT_BINARY_DIR}/WebPhononConfig.h"
+  )
 if( NOT WIN32)
 find_package(Phonon REQUIRED)
 find_package(KDE4 REQUIRED)
 include (KDE4Defaults)
-include_directories(${QT_INCLUDES} ${CMAKE_CURRENT_BINARY_DIR} ${KDE4_INCLUDES})
+include_directories(${QT_INCLUDES} ${CMAKE_CURRENT_BINARY_DIR} ${KDE4_INCLUDES} ${PROJECT_BINARY_DIR})
 message(STATUS "Build system is not Windows/win32")
 ADD_SUBDIRECTORY(icons)
 else(NOT WIN32)
 message(STATUS "Build system is Windows/win32")
-include_directories(${QT_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${PHONON_INCLUDE_DIR} ${QT_INCULDE_DIR})
+include_directories(${QT_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${PHONON_INCLUDE_DIR} ${QT_INCULDE_DIR} ${PROJECT_BINARY_DIR})
 endif(NOT WIN32)
 
 INCLUDE(${QT_USE_FILE})
@@ -69,6 +77,7 @@ set(CPACK_PACKAGE_NAME "WebPhonon")
 set(CPACK_PACKAGE_RELEASE 2.0.0)
 set(CPACK_PACKAGE_CONTACT "aaron.zakhrov@gmail.com")
 set(CPACK_PACKAGE_VENDOR "Aaron Zakhrov")
+set(CPACK_RESOURCE_FILE_LICENSE ${CMAKE_SOURCE_DIR}/LICENSE)
 include (CPack)
 endif(NOT WIN32)
 #INSTALL( PROGRAMS WebPhonon.desktop DESTINATION ${XDG_APPS_INSTALL_DIR} )
