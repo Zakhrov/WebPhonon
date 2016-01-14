@@ -11,6 +11,7 @@ QT       += core gui sql phonon opengl
 TARGET = WebPhonon
 TEMPLATE = app
 
+win32 { SOURCES += winwidget.cpp }
 
 SOURCES += main.cpp\
         mainwindow.cpp \
@@ -26,8 +27,11 @@ SOURCES += main.cpp\
     addmusicdialog.cpp \
     addmvdialog.cpp \
     visualizer.cpp \
-    widget.cpp \
-    winwidget.cpp
+    widget.cpp
+win32 { SOURCES-=widget.cpp }
+
+win32 {HEADERS += winwidget.h }
+
 
 HEADERS  += mainwindow.h \
     dialog.h \
@@ -42,8 +46,10 @@ HEADERS  += mainwindow.h \
     addmusicdialog.h \
     addmvdialog.h \
     visualizer.h \
-    widget.h \
-    winwidget.h
+    widget.h
+win32 { HEADERS -= widget.h }
+
+win32 { FORMS += winwidget.ui }
 
 FORMS    += mainwindow.ui \
     dialog.ui \
@@ -56,8 +62,8 @@ FORMS    += mainwindow.ui \
     addtvdialog.ui \
     addmusicdialog.ui \
     addmvdialog.ui \
-    widget.ui \
-    winwidget.ui
+    widget.ui
+win32 { FORMS -= widget.ui }
 
 RESOURCES += \
     Icons.qrc
