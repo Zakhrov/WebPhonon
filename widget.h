@@ -2,12 +2,19 @@
 #define WIDGET_H
 
 #include <QWidget>
+#ifdef Q_OS_LINUX
 #include <KDE/Phonon/Effect>
 #include <KDE/Phonon/MediaObject>
 #include <KDE/Phonon/AudioOutput>
-#include <KDE/Phonon/Path>
 #include <KDE/Phonon/EffectParameter>
 #include <KDE/Phonon/BackendCapabilities>
+#else
+#include <Phonon/Effect>
+#include <Phonon/MediaObject>
+#include <Phonon/AudioOutput>
+#include <Phonon/EffectParameter>
+#include <Phonon/BackendCapabilities>
+#endif
 namespace Ui {
 class Widget;
 }
