@@ -6,12 +6,6 @@ WinWidget::WinWidget(QWidget *parent) :
     ui(new Ui::WinWidget)
 {
     ui->setupUi(this);
-
-}
-
-WinWidget::~WinWidget()
-{
-    delete ui;
     effectDescriptions =Phonon::BackendCapabilities::availableAudioEffects();
 #ifdef Q_OS_LINUX
     effectDescription = effectDescriptions.at(3);
@@ -32,6 +26,13 @@ WinWidget::~WinWidget()
      connect(ui->verticalSlider,SIGNAL(valueChanged(int)),this,SLOT(valuechange1(int)));
      connect(ui->verticalSlider_2,SIGNAL(valueChanged(int)),this,SLOT(valuechange2(int)));
      connect(ui->verticalSlider_3,SIGNAL(valueChanged(int)),this,SLOT(valuechange3(int)));
+
+}
+
+WinWidget::~WinWidget()
+{
+    delete ui;
+
 }
 
 void WinWidget::valuechange1(int value)
