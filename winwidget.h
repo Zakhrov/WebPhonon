@@ -1,5 +1,5 @@
-#ifndef WIDGET_H
-#define WIDGET_H
+#ifndef WINWIDGET_H
+#define WINWIDGET_H
 
 #include <QWidget>
 #ifdef Q_OS_LINUX
@@ -16,32 +16,25 @@
 #include <Phonon/BackendCapabilities>
 #endif
 namespace Ui {
-class Widget;
+class WinWidget;
 }
 
-class Widget : public QWidget
+class WinWidget : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit Widget(QWidget *parent = 0);
+    explicit WinWidget(QWidget *parent = 0);
     Phonon::Effect *equalizer;
-    ~Widget();
+    ~WinWidget();
 private slots:
    void valuechange1(int value);
    void valuechange2(int value);
    void valuechange3(int value);
-   void valuechange4(int value);
-   void valuechange5(int value);
-   void valuechange6(int value);
-   void valuechange7(int value);
-   void valuechange8(int value);
-   void valuechange9(int value);
-   void valuechange10(int value);
 private:
-    Ui::Widget *ui;
+    Ui::WinWidget *ui;
     QList<Phonon::EffectDescription> effectDescriptions;
      Phonon::EffectDescription effectDescription ;
 };
 
-#endif // WIDGET_H
+#endif // WINWIDGET_H

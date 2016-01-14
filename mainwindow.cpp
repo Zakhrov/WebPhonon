@@ -42,7 +42,11 @@ MainWindow::MainWindow(QWidget *parent) :
     dwidget=new DropWidget(this);
     vwidget = new Visualizer(this);
     med->setTransitionTime(2000);
+#ifdef Q_OS_LINUX
     eqwidget = new Widget(this);
+#else
+    eqwidget = new WinWidget(this);
+#endif
     ui->gridLayout_3->addWidget(eqwidget);
     eqwidget->hide();
     vpath=Phonon::createPath(med,dwidget);

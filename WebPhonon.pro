@@ -26,7 +26,8 @@ SOURCES += main.cpp\
     addmusicdialog.cpp \
     addmvdialog.cpp \
     visualizer.cpp \
-    widget.cpp
+    widget.cpp \
+    winwidget.cpp
 
 HEADERS  += mainwindow.h \
     dialog.h \
@@ -41,7 +42,8 @@ HEADERS  += mainwindow.h \
     addmusicdialog.h \
     addmvdialog.h \
     visualizer.h \
-    widget.h
+    widget.h \
+    winwidget.h
 
 FORMS    += mainwindow.ui \
     dialog.ui \
@@ -54,7 +56,8 @@ FORMS    += mainwindow.ui \
     addtvdialog.ui \
     addmusicdialog.ui \
     addmvdialog.ui \
-    widget.ui
+    widget.ui \
+    winwidget.ui
 
 RESOURCES += \
     Icons.qrc

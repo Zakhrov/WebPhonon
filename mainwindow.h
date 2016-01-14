@@ -14,6 +14,7 @@
 #include <KDE/Phonon/Effect>
 #include <KDE/Phonon/ObjectDescription>
 #include <KDE/Phonon/EffectWidget>
+#include "widget.h"
 #else
 #include <Phonon/MediaObject>
 #include <Phonon/AudioOutput>
@@ -22,6 +23,7 @@
 #include <Phonon/Effect>
 #include <Phonon/ObjectDescription>
 #include <Phonon/EffectWidget>
+#include "winwidget.h"
 #endif
 #include <QPlainTextEdit>
 #include "dialog.h"
@@ -31,7 +33,7 @@
 #include "dropwidget.h"
 #include "tablelistdialog.h"
 #include "visualizer.h"
-#include "widget.h"
+
 
 namespace Ui {
 class MainWindow;
@@ -134,7 +136,11 @@ private:
 
      Phonon::Path apath;
      Phonon::Path vpath;
+#ifdef Q_OS_LINUX
     Widget *eqwidget;
+#else
+     WinWidget *eqwidget;
+#endif
       QSettings dbSettings;
       Visualizer *vwidget;
 
