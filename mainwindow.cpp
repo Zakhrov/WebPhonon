@@ -61,6 +61,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lineEdit->hide();
     urls.clear();
     ui->tableWidget->hide();
+
      ui->tableWidget->setColumnCount(2);
      ui->tableWidget->setHorizontalHeaderLabels(collabel);
      ui->pushButton->hide();
@@ -68,6 +69,7 @@ MainWindow::MainWindow(QWidget *parent) :
      //connecting signals and slots for going to next file and for drag n drop
      connect(med,SIGNAL(finished()),this,SLOT(next()));
    connect(dwidget,SIGNAL(geturls(const QMimeData*)),this,SLOT(dropdata(const QMimeData*)));
+   connect(vwidget,SIGNAL(geturls(const QMimeData*)),this,SLOT(dropdata(const QMimeData*)));
    connect(dwidget,SIGNAL(capturespace(QKeyEvent*)),this,SLOT(widgetpause(QKeyEvent*)));
    connect(med,SIGNAL(tick(qint64)),this,SLOT(timechanged(qint64)));
    //connect(med,SIGNAL(tick(qint64)),vwidget,SLOT(setXRotation(qint64)));

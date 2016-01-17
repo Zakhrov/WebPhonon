@@ -5,10 +5,13 @@
 #include <QSqlDatabase>
 #include <QSqlQueryModel>
 #include <QMainWindow>
+
 #include "addmoviedialog.h"
 #include "addtvdialog.h"
 #include "addmusicdialog.h"
 #include "addmvdialog.h"
+#include "addactordialog.h"
+#include "addmoviecastdialog.h"
 namespace Ui {
 class DBMainWindow;
 }
@@ -54,6 +57,10 @@ private slots:
 
     void on_actionCreate_Database_triggered();
 
+    void on_pushButton_5_clicked();
+
+    void on_pushButton_6_clicked();
+
 private:
     void on_actionConnect_triggered();
     Ui::DBMainWindow *ui;
@@ -61,8 +68,11 @@ private:
     AddTVDialog *addtv;
     AddMusicDialog *addmusic;
     AddMVDialog *addmv;
+    AddActorDialog *addactor;
+    AddMovieCastDialog *addmoviecast;
     QSqlDatabase db;
     QSqlQueryModel *DBModel;
+
 
 
 };

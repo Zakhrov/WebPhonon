@@ -12,12 +12,14 @@ DBMainWindow::DBMainWindow(QWidget *parent) :
     ui->setupUi(this);
 
 
+
     addmovie = new AddMovieDialog(this);
     DBModel = new QSqlQueryModel(this);
     addtv=new AddTVDialog(this);
     addmusic = new AddMusicDialog(this);
     addmv = new AddMVDialog(this);
-
+    addactor = new AddActorDialog(this);
+    addmoviecast = new AddMovieCastDialog(this);
 
 
 
@@ -104,13 +106,22 @@ void DBMainWindow::on_actionSongs_triggered()
     db=QSqlDatabase::database("PlayConn");
     db.open();
     DBModel->setQuery("SELECT url, title, genre FROM music",db);
+    DBModel->setHeaderData(0,Qt::Horizontal,"URL");
+    DBModel->setHeaderData(1,Qt::Horizontal,"Title");
+    DBModel->setHeaderData(2,Qt::Horizontal,"Genre");
     ui->tableView->setModel(DBModel);
+    ui->tableView->resizeColumnsToContents();
     db.close();
 }
 
 void DBMainWindow::on_actionActors_triggered()
 {
-
+    db=QSqlDatabase::database("PlayConn");
+    db.open();
+    DBModel->setQuery("SELECT name FROM actor",db);
+    DBModel->setHeaderData(0,Qt::Horizontal,"Name");
+    ui->tableView->setModel(DBModel);
+    db.close();
 }
 
 void DBMainWindow::on_actionArtists_triggered()
@@ -129,6 +140,12 @@ void DBMainWindow::on_actionMovie_Info_triggered()
     db=QSqlDatabase::database("PlayConn");
     db.open();
     DBModel->setQuery("SELECT url, title, studio, language, rating, genre FROM movies",db);
+    DBModel->setHeaderData(0,Qt::Horizontal,"URL");
+    DBModel->setHeaderData(1,Qt::Horizontal,"Title");
+    DBModel->setHeaderData(2,Qt::Horizontal,"Studio");
+    DBModel->setHeaderData(3,Qt::Horizontal,"Language");
+    DBModel->setHeaderData(4,Qt::Horizontal,"Rating");
+    DBModel->setHeaderData(5,Qt::Horizontal,"Genre");
     ui->tableView->setModel(DBModel);
     ui->tableView->resizeColumnsToContents();
     db.close();
@@ -136,7 +153,16 @@ void DBMainWindow::on_actionMovie_Info_triggered()
 
 void DBMainWindow::on_actionMovie_Cast_triggered()
 {
-
+    db=QSqlDatabase::database("PlayConn");
+    db.open();
+    DBModel->setQuery("SELECT movies.title, actor.name, movie_cast.charecter_name, movie_cast.role FROM movie_cast INNER JOIN actor ON movie_cast.actor_id=actor.actor_id INNER JOIN movies ON movie_cast.movie_id=movies.movies_id;",db);
+    DBModel->setHeaderData(0,Qt::Horizontal,"Movie");
+    DBModel->setHeaderData(1,Qt::Horizontal,"Actor");
+    DBModel->setHeaderData(2,Qt::Horizontal,"Charecter");
+    DBModel->setHeaderData(3,Qt::Horizontal,"Role");
+    ui->tableView->setModel(DBModel);
+    ui->tableView->resizeColumnsToContents();
+    db.close();
 }
 
 void DBMainWindow::on_actionShow_Info_triggered()
@@ -144,6 +170,13 @@ void DBMainWindow::on_actionShow_Info_triggered()
     db=QSqlDatabase::database("PlayConn");
     db.open();
     DBModel->setQuery("SELECT url, title, season, episode, ep_title, language, genre FROM tv",db);
+    DBModel->setHeaderData(0,Qt::Horizontal,"URL");
+    DBModel->setHeaderData(1,Qt::Horizontal,"Title");
+    DBModel->setHeaderData(2,Qt::Horizontal,"Season");
+    DBModel->setHeaderData(3,Qt::Horizontal,"Episode");
+    DBModel->setHeaderData(4,Qt::Horizontal,"Episode Title");
+    DBModel->setHeaderData(5,Qt::Horizontal,"Language");
+    DBModel->setHeaderData(6,Qt::Horizontal,"Genre");
     ui->tableView->setModel(DBModel);
     ui->tableView->resizeColumnsToContents();
     db.close();
@@ -159,6 +192,9 @@ void DBMainWindow::on_actionMusic_Video_Info_triggered()
     db=QSqlDatabase::database("PlayConn");
     db.open();
     DBModel->setQuery("SELECT music_videos.url, music.title, music.genre FROM music_videos INNER JOIN music ON music_videos.music_id=music.music_id;",db);
+    DBModel->setHeaderData(0,Qt::Horizontal,"URL");
+    DBModel->setHeaderData(1,Qt::Horizontal,"Title");
+    DBModel->setHeaderData(2,Qt::Horizontal,"Genre");
     ui->tableView->setModel(DBModel);
     ui->tableView->resizeColumnsToContents();
     db.close();
@@ -194,4 +230,14 @@ void DBMainWindow::on_pushButton_4_clicked()
 void DBMainWindow::on_actionCreate_Database_triggered()
 {
     this->on_actionConnect_triggered();
+}
+
+void DBMainWindow::on_pushButton_5_clicked()
+{
+    addactor->show();
+}
+
+void DBMainWindow::on_pushButton_6_clicked()
+{
+    addmoviecast->show();
 }

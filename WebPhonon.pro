@@ -27,7 +27,9 @@ SOURCES += main.cpp\
     addmusicdialog.cpp \
     addmvdialog.cpp \
     visualizer.cpp \
-    widget.cpp
+    widget.cpp \
+    addmoviecastdialog.cpp \
+    addactordialog.cpp
 win32 { SOURCES-=widget.cpp }
 
 win32 {HEADERS += winwidget.h }
@@ -46,7 +48,9 @@ HEADERS  += mainwindow.h \
     addmusicdialog.h \
     addmvdialog.h \
     visualizer.h \
-    widget.h
+    widget.h \
+    addmoviecastdialog.h \
+    addactordialog.h
 win32 { HEADERS -= widget.h }
 
 win32 { FORMS += winwidget.ui }
@@ -62,7 +66,9 @@ FORMS    += mainwindow.ui \
     addtvdialog.ui \
     addmusicdialog.ui \
     addmvdialog.ui \
-    widget.ui
+    widget.ui \
+    addmoviecastdialog.ui \
+    addactordialog.ui
 win32 { FORMS -= widget.ui }
 
 RESOURCES += \

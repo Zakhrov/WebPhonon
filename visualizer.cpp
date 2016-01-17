@@ -5,6 +5,10 @@
 Visualizer::Visualizer(QWidget *parent)
     : QGLWidget(parent)
 {
+    setAcceptDrops(true);
+    //setAttribute(Qt::WA_TransparentForMouseEvents);
+    setCursor(Qt::BlankCursor);
+    setFocus();
          xRot = 0;
          yRot = 0;
          zRot = 0;
@@ -135,6 +139,23 @@ void Visualizer::resizeGL(int w, int h)
        glLoadIdentity();
        glFrustum( -1.0, 1.0, -1.0, 1.0, 5.0, 15.0 );
        glMatrixMode( GL_MODELVIEW );
+}
+
+void Visualizer::dragEnterEvent(QDragEnterEvent *event)
+{
+    if (event->mimeData()->hasUrls())
+        event->acceptProposedAction();
+}
+
+void Visualizer::dragMoveEvent(QDragMoveEvent *event)
+{
+  event->acceptProposedAction();
+}
+
+void Visualizer::dropEvent(QDropEvent *event)
+{
+    if(event->mimeData()->hasUrls())
+        emit geturls(event->mimeData());
 }
 
 void Visualizer::animate()
