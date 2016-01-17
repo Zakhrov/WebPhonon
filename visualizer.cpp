@@ -177,8 +177,8 @@ void Visualizer::loadGLTexture()
         if(!b.load(":/splash/WebPhonon-Master-text2.png","PNG"))
         qDebug() <<"Image not loaded";
 #else
-      if(b.load( "C:/Program Files (x86)/WebPhonon 2.0.0/WebPhonon-Master-text2.tiff" )==false)
-      b.load( "WebPhononIcon.tiff" );
+      if(!b.load( ":/splash/WebPhonon-Master-text2.png","PNG" ))
+      qDebug() <<"Image not loaded";
 #endif
       t = QGLWidget::convertToGLFormat( b );
       glGenTextures( 1, &texture[0] );
