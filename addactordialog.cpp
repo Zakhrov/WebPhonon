@@ -32,6 +32,7 @@ void AddActorDialog::on_pushButton_clicked()
         msg.setText("Actor not added");
     }
     msg.exec();
+    db.close();
     this->close();
 
 

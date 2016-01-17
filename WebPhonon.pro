@@ -29,7 +29,8 @@ SOURCES += main.cpp\
     visualizer.cpp \
     widget.cpp \
     addmoviecastdialog.cpp \
-    addactordialog.cpp
+    addactordialog.cpp \
+    addtvcastdialog.cpp
 win32 { SOURCES-=widget.cpp }
 
 win32 {HEADERS += winwidget.h }
@@ -50,7 +51,8 @@ HEADERS  += mainwindow.h \
     visualizer.h \
     widget.h \
     addmoviecastdialog.h \
-    addactordialog.h
+    addactordialog.h \
+    addtvcastdialog.h
 win32 { HEADERS -= widget.h }
 
 win32 { FORMS += winwidget.ui }
@@ -68,7 +70,8 @@ FORMS    += mainwindow.ui \
     addmvdialog.ui \
     widget.ui \
     addmoviecastdialog.ui \
-    addactordialog.ui
+    addactordialog.ui \
+    addtvcastdialog.ui
 win32 { FORMS -= widget.ui }
 
 RESOURCES += \
@@ -128,8 +131,7 @@ OTHER_FILES += \
     icons/512x512/WebPhonon.png \
     CMakeLists.txt \
     icons/PlayWithWebPhonon.desktop \
-    README.md \
-    textures/WebPhononIcon.bmp
+    README.md
 
     target.path = /usr/bin
     desktop.path= /usr/share/applications

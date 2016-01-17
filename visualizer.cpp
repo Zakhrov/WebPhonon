@@ -171,8 +171,11 @@ void Visualizer::loadGLTexture()
     QImage t;
       QImage b;
 #ifdef Q_OS_LINUX
-        if(b.load( "/usr/share/WebPhonon/splash/WebPhonon-Master-text2.tiff" )==false)
-        b.load( "WebPhononIcon.tiff" );
+        QFileInfo finfo("../share/WebPhonon/splash/WebPhonon-Master-text2.tiff");
+        qDebug() << finfo.absoluteFilePath();
+        qDebug() << QCoreApplication::applicationDirPath();
+        if(!b.load(":/splash/WebPhonon-Master-text2.png","PNG"))
+        qDebug() <<"Image not loaded";
 #else
       if(b.load( "C:/Program Files (x86)/WebPhonon 2.0.0/WebPhonon-Master-text2.tiff" )==false)
       b.load( "WebPhononIcon.tiff" );

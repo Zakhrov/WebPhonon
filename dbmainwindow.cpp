@@ -20,6 +20,7 @@ DBMainWindow::DBMainWindow(QWidget *parent) :
     addmv = new AddMVDialog(this);
     addactor = new AddActorDialog(this);
     addmoviecast = new AddMovieCastDialog(this);
+    addtvcast = new AddTVCastDialog(this);
 
 
 
@@ -184,7 +185,16 @@ void DBMainWindow::on_actionShow_Info_triggered()
 
 void DBMainWindow::on_actionShow_Cast_triggered()
 {
-
+    db=QSqlDatabase::database("PlayConn");
+    db.open();
+    DBModel->setQuery("SELECT tv.title, actor.name, tv_cast.charecter_name, tv_cast.role FROM tv_cast INNER JOIN actor ON tv_cast.actor_id=actor.actor_id INNER JOIN tv ON tv_cast.tv_id=tv.tv_id;",db);
+    DBModel->setHeaderData(0,Qt::Horizontal,"TV Show");
+    DBModel->setHeaderData(1,Qt::Horizontal,"Actor");
+    DBModel->setHeaderData(2,Qt::Horizontal,"Character");
+    DBModel->setHeaderData(3,Qt::Horizontal,"Role");
+    ui->tableView->setModel(DBModel);
+    ui->tableView->resizeColumnsToContents();
+    db.close();
 }
 
 void DBMainWindow::on_actionMusic_Video_Info_triggered()
@@ -240,4 +250,9 @@ void DBMainWindow::on_pushButton_5_clicked()
 void DBMainWindow::on_pushButton_6_clicked()
 {
     addmoviecast->show();
+}
+
+void DBMainWindow::on_pushButton_7_clicked()
+{
+    addtvcast->show();
 }

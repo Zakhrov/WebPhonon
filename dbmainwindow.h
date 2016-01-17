@@ -12,6 +12,7 @@
 #include "addmvdialog.h"
 #include "addactordialog.h"
 #include "addmoviecastdialog.h"
+#include "addtvcastdialog.h"
 namespace Ui {
 class DBMainWindow;
 }
@@ -61,6 +62,8 @@ private slots:
 
     void on_pushButton_6_clicked();
 
+    void on_pushButton_7_clicked();
+
 private:
     void on_actionConnect_triggered();
     Ui::DBMainWindow *ui;
@@ -70,6 +73,7 @@ private:
     AddMVDialog *addmv;
     AddActorDialog *addactor;
     AddMovieCastDialog *addmoviecast;
+    AddTVCastDialog *addtvcast;
     QSqlDatabase db;
     QSqlQueryModel *DBModel;
 
