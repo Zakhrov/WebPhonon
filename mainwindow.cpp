@@ -134,6 +134,7 @@ void MainWindow::on_actionLocal_File_triggered()
     int i;
     int index=sources.size();
     QStringList fnames=QFileDialog::getOpenFileNames(this,tr("Choose Files"),QDesktopServices::storageLocation(QDesktopServices::MoviesLocation));
+    if(!fnames.isEmpty())
     foreach (QString fname, fnames) {
         sources.append(Phonon::MediaSource(QUrl::fromLocalFile(fname)));
         QTableWidgetItem *fitem=new QTableWidgetItem(fname,1);
@@ -148,8 +149,10 @@ void MainWindow::on_actionLocal_File_triggered()
      {
 
          if(!sources.isEmpty())
+         {
         med->setCurrentSource(sources.at(index));
         this->on_actionPlay_triggered();
+         }
      }
 
 }
