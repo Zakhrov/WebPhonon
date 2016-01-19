@@ -9,11 +9,18 @@ Widget::Widget(QWidget *parent) :
 
     effectDescriptions =Phonon::BackendCapabilities::availableAudioEffects();
 #ifdef Q_OS_LINUX
-    effectDescription = effectDescriptions.at(3);
+    //effectDescription = effectDescriptions.at(3);
+    foreach (effectDescription, effectDescriptions) {
+        if(effectDescription.name().contains("equal"))
+        {
+            equalizer = new Phonon::Effect(effectDescription);
+        }
+
+    }
 #else
     effectDescription = effectDescriptions.at(0);
 #endif
-     equalizer = new Phonon::Effect(effectDescription);
+
     ui->label->setText(equalizer->parameters().at(0).name());
     ui->label_2->setText(equalizer->parameters().at(1).name());
     ui->label_3->setText(equalizer->parameters().at(2).name());
