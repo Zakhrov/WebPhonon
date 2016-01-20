@@ -1,6 +1,6 @@
 #include "widget.h"
 #include "ui_widget.h"
-
+#include <KDE/Phonon/EffectWidget>
 Widget::Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget)
@@ -10,17 +10,21 @@ Widget::Widget(QWidget *parent) :
     effectDescriptions =Phonon::BackendCapabilities::availableAudioEffects();
 #ifdef Q_OS_LINUX
     //effectDescription = effectDescriptions.at(3);
+    Phonon::EffectDescription eqdesc=effectDescriptions.at(0);
     foreach (effectDescription, effectDescriptions) {
+        //qDebug()<< effectDescription.name();
         if(effectDescription.name().contains("equal"))
         {
-            equalizer = new Phonon::Effect(effectDescription);
+            eqdesc=effectDescription;
         }
 
     }
 #else
     effectDescription = effectDescriptions.at(0);
 #endif
-
+    equalizer = new Phonon::Effect(eqdesc);
+    if(equalizer->parameters().size()==10)
+    {
     ui->label->setText(equalizer->parameters().at(0).name());
     ui->label_2->setText(equalizer->parameters().at(1).name());
     ui->label_3->setText(equalizer->parameters().at(2).name());
@@ -61,6 +65,16 @@ Widget::Widget(QWidget *parent) :
      connect(ui->horizontalSlider_8,SIGNAL(valueChanged(int)),this,SLOT(valuechange8(int)));
      connect(ui->horizontalSlider_9,SIGNAL(valueChanged(int)),this,SLOT(valuechange9(int)));
      connect(ui->horizontalSlider_10,SIGNAL(valueChanged(int)),this,SLOT(valuechange10(int)));
+    }
+    else
+    {
+        ui->widget->hide();
+        Phonon::EffectWidget *ewidget=new Phonon::EffectWidget(equalizer,this);
+        ui->gridLayout_2->addWidget(ewidget);
+
+
+
+    }
 
 
 }
