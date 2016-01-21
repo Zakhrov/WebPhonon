@@ -30,7 +30,8 @@ SOURCES += main.cpp\
     widget.cpp \
     addmoviecastdialog.cpp \
     addactordialog.cpp \
-    addtvcastdialog.cpp
+    addtvcastdialog.cpp \
+    addartistdialog.cpp
 win32 { SOURCES-=widget.cpp }
 
 win32 {HEADERS += winwidget.h }
@@ -52,7 +53,8 @@ HEADERS  += mainwindow.h \
     widget.h \
     addmoviecastdialog.h \
     addactordialog.h \
-    addtvcastdialog.h
+    addtvcastdialog.h \
+    addartistdialog.h
 win32 { HEADERS -= widget.h }
 
 win32 { FORMS += winwidget.ui }
@@ -71,7 +73,8 @@ FORMS    += mainwindow.ui \
     widget.ui \
     addmoviecastdialog.ui \
     addactordialog.ui \
-    addtvcastdialog.ui
+    addtvcastdialog.ui \
+    addartistdialog.ui
 win32 { FORMS -= widget.ui }
 
 RESOURCES += \

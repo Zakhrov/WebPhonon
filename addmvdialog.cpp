@@ -32,7 +32,7 @@ void AddMVDialog::on_pushButton_2_clicked()
     QMessageBox msg;
     url=ui->lineEdit->text();
     music_id=model->data(model->index(ui->comboBox->currentIndex(),0)).toInt();
-
+    db.open();
     query=new QSqlQuery(db);
     query->prepare("INSERT INTO `webphonon`.`music_videos` (`url`, `music_id`) VALUES (:url, :music_id);");
     query->bindValue(":url",url);

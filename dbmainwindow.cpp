@@ -21,6 +21,7 @@ DBMainWindow::DBMainWindow(QWidget *parent) :
     addactor = new AddActorDialog(this);
     addmoviecast = new AddMovieCastDialog(this);
     addtvcast = new AddTVCastDialog(this);
+    addartist = new AddArtistDialog(this);
 
 
 
@@ -127,7 +128,12 @@ void DBMainWindow::on_actionActors_triggered()
 
 void DBMainWindow::on_actionArtists_triggered()
 {
-
+    db=QSqlDatabase::database("PlayConn");
+    db.open();
+    DBModel->setQuery("SELECT name FROM artist",db);
+    DBModel->setHeaderData(0,Qt::Horizontal,"Name");
+    ui->tableView->setModel(DBModel);
+    db.close();
 }
 
 void DBMainWindow::on_actionAlbums_triggered()
@@ -255,4 +261,9 @@ void DBMainWindow::on_pushButton_6_clicked()
 void DBMainWindow::on_pushButton_7_clicked()
 {
     addtvcast->show();
+}
+
+void DBMainWindow::on_pushButton_8_clicked()
+{
+    addartist->show();
 }
