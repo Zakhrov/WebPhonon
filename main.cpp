@@ -27,9 +27,9 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
      a.setApplicationName("WebPhonon");
      a.setApplicationVersion(QString::number(WebPhonon_VERSION_MAJOR).append(".").append(QString::number(WebPhonon_VERSION_MINOR)));
-     a.setOrganizationName("Zakhrov");
-     a.setOrganizationDomain("Zakhrov");
-     qDebug()<<QStyleFactory::keys();
+     a.setOrganizationName("Aaron Zakhrov (Aaron Dominick)");
+     a.setOrganizationDomain("aaron.zakhrov@gmail.com");
+     //qDebug()<<QStyleFactory::keys();
      //a.setStyle("Cleanlooks");
      //a.setStyleSheet("* { background-color: white}");
 #ifdef Q_OS_LINUX

@@ -14,6 +14,10 @@
 #include "addmoviecastdialog.h"
 #include "addtvcastdialog.h"
 #include "addartistdialog.h"
+#include "addalbumdialog.h"
+#include "addalbumcastdialog.h"
+#include "addmvcastdialog.h"
+#include "addmusicalbumdialog.h"
 namespace Ui {
 class DBMainWindow;
 }
@@ -67,6 +71,18 @@ private slots:
 
     void on_pushButton_8_clicked();
 
+    void on_pushButton_10_clicked();
+
+    void on_pushButton_9_clicked();
+
+    void on_pushButton_11_clicked();
+
+    void on_actionAlbum_Artists_Collaborators_triggered();
+
+    void on_pushButton_12_clicked();
+
+    void on_actionAlbum_Tracks_triggered();
+
 private:
     void on_actionConnect_triggered();
     Ui::DBMainWindow *ui;
@@ -78,6 +94,10 @@ private:
     AddMovieCastDialog *addmoviecast;
     AddTVCastDialog *addtvcast;
     AddArtistDialog *addartist;
+    AddAlbumDialog *addalbum;
+    AddAlbumCastDialog *addalbumcast;
+    AddMVCastDialog *addmvcast;
+    AddMusicAlbumDialog *addmusicalbum;
     QSqlDatabase db;
     QSqlQueryModel *DBModel;
 

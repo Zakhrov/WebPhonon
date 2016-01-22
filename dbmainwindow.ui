@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1022</width>
-    <height>288</height>
+    <width>1284</width>
+    <height>284</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -89,6 +89,13 @@
        </widget>
       </item>
       <item>
+       <widget class="QPushButton" name="pushButton_12">
+        <property name="text">
+         <string>Link Actors to Music Videos</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="pushButton_10">
         <property name="text">
          <string>Add Album Artists/Collaborators</string>
@@ -114,7 +121,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1022</width>
+     <width>1284</width>
      <height>22</height>
     </rect>
    </property>
@@ -156,6 +163,8 @@
     <addaction name="actionActors"/>
     <addaction name="actionArtists"/>
     <addaction name="actionAlbums"/>
+    <addaction name="actionAlbum_Artists_Collaborators"/>
+    <addaction name="actionAlbum_Tracks"/>
    </widget>
    <addaction name="menuDatabase"/>
    <addaction name="menuBrowser"/>
@@ -176,6 +185,7 @@
    <addaction name="actionActors"/>
    <addaction name="actionArtists"/>
    <addaction name="actionAlbums"/>
+   <addaction name="actionAlbum_Artists_Collaborators"/>
    <addaction name="actionMovie_Info"/>
    <addaction name="actionMovie_Cast"/>
    <addaction name="actionShow_Info"/>
@@ -183,6 +193,7 @@
    <addaction name="actionMusic_Video_Info"/>
    <addaction name="actionMusic_Video_Cast"/>
    <addaction name="actionSongs"/>
+   <addaction name="actionAlbum_Tracks"/>
   </widget>
   <action name="actionCreate_Database">
    <property name="text">
@@ -246,6 +257,16 @@
   <action name="actionMusic_Video_Cast">
    <property name="text">
     <string>Music Video Cast</string>
+   </property>
+  </action>
+  <action name="actionAlbum_Artists_Collaborators">
+   <property name="text">
+    <string>Album Artists/Collaborators</string>
+   </property>
+  </action>
+  <action name="actionAlbum_Tracks">
+   <property name="text">
+    <string>Album Tracks</string>
    </property>
   </action>
  </widget>

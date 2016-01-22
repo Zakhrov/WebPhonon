@@ -95,6 +95,7 @@ MainWindow::MainWindow(QWidget *parent) :
     MyDB.setDatabaseName(DBName);
     MyDB.setUserName(UName);
     MyDB.setPassword(Passwd);
+    MyDB.open();
 
 
 
@@ -398,27 +399,19 @@ void MainWindow::on_actionFrom_Database_triggered()
     }
     else
     {
-        QSqlQuery request("SELECT url, title FROM "+TabName,MyDB);
-        while(request.next())
-        {
+            msg.setText("Selected Table does not contain media Information");
+            msg.exec();
 
-            tabindex=request.value(0).toString();
-            titleindex=request.value(1).toString();
-            sources.append(Phonon::MediaSource(QUrl(request.value(0).toString())));
-            QTableWidgetItem *item1=new QTableWidgetItem(tabindex,1);
-            QTableWidgetItem *item2=new QTableWidgetItem(titleindex,1);
-            i=ui->tableWidget->rowCount();
-            ui->tableWidget->insertRow(i);
-            ui->tableWidget->setItem(i,0,item1);
-            ui->tableWidget->setItem(i,1,item2);
-        }
+
     }
     MyDB.close();
     if(med->state()!=Phonon::PlayingState)
     {
         if(!sources.isEmpty())
+        {
             med->setCurrentSource(sources.at(index));
         this->on_actionPlay_triggered();
+        }
         ui->tableWidget->resizeColumnsToContents();
         ui->tableWidget->show();
     }

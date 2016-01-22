@@ -31,7 +31,11 @@ SOURCES += main.cpp\
     addmoviecastdialog.cpp \
     addactordialog.cpp \
     addtvcastdialog.cpp \
-    addartistdialog.cpp
+    addartistdialog.cpp \
+    addalbumdialog.cpp \
+    addalbumcastdialog.cpp \
+    addmvcastdialog.cpp \
+    addmusicalbumdialog.cpp
 win32 { SOURCES-=widget.cpp }
 
 win32 {HEADERS += winwidget.h }
@@ -54,7 +58,11 @@ HEADERS  += mainwindow.h \
     addmoviecastdialog.h \
     addactordialog.h \
     addtvcastdialog.h \
-    addartistdialog.h
+    addartistdialog.h \
+    addalbumdialog.h \
+    addalbumcastdialog.h \
+    addmvcastdialog.h \
+    addmusicalbumdialog.h
 win32 { HEADERS -= widget.h }
 
 win32 { FORMS += winwidget.ui }
@@ -74,7 +82,11 @@ FORMS    += mainwindow.ui \
     addmoviecastdialog.ui \
     addactordialog.ui \
     addtvcastdialog.ui \
-    addartistdialog.ui
+    addartistdialog.ui \
+    addalbumdialog.ui \
+    addalbumcastdialog.ui \
+    addmvcastdialog.ui \
+    addmusicalbumdialog.ui
 win32 { FORMS -= widget.ui }
 
 RESOURCES += \

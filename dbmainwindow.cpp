@@ -13,15 +13,9 @@ DBMainWindow::DBMainWindow(QWidget *parent) :
 
 
 
-    addmovie = new AddMovieDialog(this);
+
     DBModel = new QSqlQueryModel(this);
-    addtv=new AddTVDialog(this);
-    addmusic = new AddMusicDialog(this);
-    addmv = new AddMVDialog(this);
-    addactor = new AddActorDialog(this);
-    addmoviecast = new AddMovieCastDialog(this);
-    addtvcast = new AddTVCastDialog(this);
-    addartist = new AddArtistDialog(this);
+
 
 
 
@@ -138,7 +132,13 @@ void DBMainWindow::on_actionArtists_triggered()
 
 void DBMainWindow::on_actionAlbums_triggered()
 {
-
+    db=QSqlDatabase::database("PlayConn");
+    db.open();
+    DBModel->setQuery("SELECT album_name, record_label FROM album",db);
+    DBModel->setHeaderData(0,Qt::Horizontal,"Name");
+    DBModel->setHeaderData(1,Qt::Horizontal,"Record Label");
+    ui->tableView->setModel(DBModel);
+    db.close();
 }
 
 void DBMainWindow::on_actionMovie_Info_triggered()
@@ -218,28 +218,66 @@ void DBMainWindow::on_actionMusic_Video_Info_triggered()
 
 void DBMainWindow::on_actionMusic_Video_Cast_triggered()
 {
+    db=QSqlDatabase::database("PlayConn");
+    db.open();
+    DBModel->setQuery("SELECT music.title, actor.`name` FROM music,actor,music_video_cast,music_videos where music_video_cast.music_video_id=music_videos.mv_id and music_video_cast.actor_id=actor.actor_id and music_videos.music_id=music.music_id;",db);
+    DBModel->setHeaderData(0,Qt::Horizontal,"Song/Music Video");
+    DBModel->setHeaderData(1,Qt::Horizontal,"Actor");
+    ui->tableView->setModel(DBModel);
+    ui->tableView->resizeColumnsToContents();
+    db.close();
+}
 
+void DBMainWindow::on_actionAlbum_Artists_Collaborators_triggered()
+{
+    db=QSqlDatabase::database("PlayConn");
+    db.open();
+    DBModel->setQuery("SELECT album.album_name, artist.name, album_cast.role FROM album_cast INNER JOIN album ON album_cast.album_id=album.album_id INNER JOIN artist ON album_cast.artist_id=artist.artist_id ;",db);
+    DBModel->setHeaderData(0,Qt::Horizontal,"Album");
+    DBModel->setHeaderData(1,Qt::Horizontal,"Artist");
+    DBModel->setHeaderData(2,Qt::Horizontal,"Role");
+    ui->tableView->setModel(DBModel);
+    ui->tableView->resizeColumnsToContents();
+    db.close();
+}
+void DBMainWindow::on_actionAlbum_Tracks_triggered()
+{
+    db=QSqlDatabase::database("PlayConn");
+    db.open();
+    DBModel->setQuery("SELECT album.album_name, music.title, music_album.track FROM music_album INNER JOIN album ON music_album.album_id=album.album_id INNER JOIN music ON music_album.music_id=music.music_id ;",db);
+    DBModel->setHeaderData(0,Qt::Horizontal,"Album");
+    DBModel->setHeaderData(1,Qt::Horizontal,"Song");
+    DBModel->setHeaderData(2,Qt::Horizontal,"Track Number");
+    ui->tableView->setModel(DBModel);
+    ui->tableView->resizeColumnsToContents();
+    db.close();
 }
 
 void DBMainWindow::on_pushButton_clicked()
 {
+    addmovie = new AddMovieDialog(this);
     addmovie->show();
 }
 
 void DBMainWindow::on_pushButton_2_clicked()
 {
+    addtv=new AddTVDialog(this);
     addtv->show();
 }
 
 void DBMainWindow::on_pushButton_3_clicked()
 {
     //add music vids
+    addmv = new AddMVDialog(this);
+
     addmv->show();
 }
 
 void DBMainWindow::on_pushButton_4_clicked()
 {
     //add music
+    addmusic = new AddMusicDialog(this);
+
     addmusic->show();
 }
 
@@ -250,20 +288,60 @@ void DBMainWindow::on_actionCreate_Database_triggered()
 
 void DBMainWindow::on_pushButton_5_clicked()
 {
+    addactor = new AddActorDialog(this);
+
     addactor->show();
 }
 
 void DBMainWindow::on_pushButton_6_clicked()
 {
+    addmoviecast = new AddMovieCastDialog(this);
+
     addmoviecast->show();
 }
 
 void DBMainWindow::on_pushButton_7_clicked()
 {
+    addtvcast = new AddTVCastDialog(this);
+
     addtvcast->show();
 }
 
 void DBMainWindow::on_pushButton_8_clicked()
 {
+    addartist = new AddArtistDialog(this);
+
     addartist->show();
 }
+
+void DBMainWindow::on_pushButton_9_clicked()
+{
+    //Add Albums
+    addalbum = new AddAlbumDialog(this);
+    addalbum->show();
+}
+
+void DBMainWindow::on_pushButton_10_clicked()
+{
+    //Add Album Artists
+    addalbumcast = new AddAlbumCastDialog(this);
+    addalbumcast->show();
+}
+
+
+
+void DBMainWindow::on_pushButton_11_clicked()
+{
+    //Add music to albums
+    addmusicalbum = new AddMusicAlbumDialog(this);
+    addmusicalbum->show();
+}
+
+
+
+void DBMainWindow::on_pushButton_12_clicked()
+{
+    addmvcast = new AddMVCastDialog(this);
+    addmvcast->show();
+}
+

@@ -55,7 +55,7 @@ void AddTVDialog::on_pushButton_2_clicked()
 
     }
     db.close();
-    this->close();
+    //this->close();
 
 
 

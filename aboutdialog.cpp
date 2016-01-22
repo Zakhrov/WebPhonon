@@ -11,6 +11,8 @@ AboutDialog::AboutDialog(QWidget *parent) :
     simg=img.scaled(128,128);
     ui->label->setPixmap(simg);
     ui->label_3->setText(QApplication::applicationVersion());
+    ui->label_4->setText(QApplication::organizationName());
+    ui->label_5->setText(QApplication::organizationDomain());
 
 }
 

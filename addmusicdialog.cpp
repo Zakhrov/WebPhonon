@@ -45,7 +45,7 @@ void AddMusicDialog::on_pushButton_2_clicked()
     }
     msg.exec();
     db.close();
-    this->close();
+
 
 
 }

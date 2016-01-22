@@ -32,7 +32,7 @@ void AddArtistDialog::on_pushButton_clicked()
     }
     msg.exec();
     db.close();
-    this->close();
+
 
 
 }

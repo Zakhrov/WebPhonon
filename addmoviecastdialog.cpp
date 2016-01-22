@@ -7,6 +7,7 @@ AddMovieCastDialog::AddMovieCastDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     db=QSqlDatabase::database("PlayConn");
+    db.close();
     db.open();
     model1=new QSqlQueryModel(this);
     model1->setQuery("select movies_id, title from movies",db);
@@ -46,6 +47,12 @@ void AddMovieCastDialog::on_pushButton_clicked()
         msg.setText("Error"+query->lastError().text());
     }
     msg.exec();
+    db.close();
 
 
+}
+
+void AddMovieCastDialog::on_pushButton_2_clicked()
+{
+    this->close();
 }

@@ -1,22 +1,23 @@
-#ifndef ADDMOVIECASTDIALOG_H
-#define ADDMOVIECASTDIALOG_H
+#ifndef ADDMUSICALBUMDIALOG_H
+#define ADDMUSICALBUMDIALOG_H
 
 #include <QDialog>
 #include <QSqlDatabase>
 #include <QSqlQuery>
+#include <QSqlError>
 #include <QSqlQueryModel>
 #include <QMessageBox>
 namespace Ui {
-class AddMovieCastDialog;
+class AddMusicAlbumDialog;
 }
 
-class AddMovieCastDialog : public QDialog
+class AddMusicAlbumDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit AddMovieCastDialog(QWidget *parent = 0);
-    ~AddMovieCastDialog();
+    explicit AddMusicAlbumDialog(QWidget *parent = 0);
+    ~AddMusicAlbumDialog();
 
 private slots:
     void on_pushButton_clicked();
@@ -24,14 +25,14 @@ private slots:
     void on_pushButton_2_clicked();
 
 private:
-    Ui::AddMovieCastDialog *ui;
+    Ui::AddMusicAlbumDialog *ui;
     QSqlDatabase db;
     QSqlQuery *query;
     QSqlQueryModel *model1;
     QSqlQueryModel *model2;
     QString charecter,role;
 
-    int actor_id,movie_id;
+    int album_id,music_id;
 };
 
-#endif // ADDMOVIECASTDIALOG_H
+#endif // ADDMUSICALBUMDIALOG_H

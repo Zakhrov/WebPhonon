@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>499</width>
-    <height>230</height>
+    <width>497</width>
+    <height>228</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -35,7 +35,7 @@
    <item row="4" column="1">
     <widget class="QLabel" name="label_5">
      <property name="text">
-      <string>aaron.zakhrov@gmail.com</string>
+      <string/>
      </property>
     </widget>
    </item>
@@ -62,7 +62,7 @@
    <item row="3" column="1">
     <widget class="QLabel" name="label_4">
      <property name="text">
-      <string>Built by Aaron Zakhrov (Aaron P. Dominick)</string>
+      <string/>
      </property>
     </widget>
    </item>

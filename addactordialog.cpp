@@ -33,7 +33,7 @@ void AddActorDialog::on_pushButton_clicked()
     }
     msg.exec();
     db.close();
-    this->close();
+
 
 
 }
