@@ -33,7 +33,7 @@ void AddAlbumDialog::on_pushButton_clicked()
         msg.setText("Album not added");
     }
     msg.exec();
-    db.close();
+    //db.close();
 
 }
 

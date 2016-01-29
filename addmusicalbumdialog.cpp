@@ -45,7 +45,7 @@ void AddMusicAlbumDialog::on_pushButton_clicked()
         msg.setText("Error"+query->lastError().text());
     }
     msg.exec();
-    db.close();
+    //db.close();
     //this->close();
 }
 

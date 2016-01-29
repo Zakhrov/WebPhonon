@@ -1,11 +1,11 @@
 #ifndef DBMAINWINDOW_H
 #define DBMAINWINDOW_H
-
-
 #include <QSqlDatabase>
 #include <QSqlQueryModel>
 #include <QMainWindow>
-
+#include <QSqlRelation>
+#include <QSqlRelationalDelegate>
+#include <QSqlRelationalTableModel>
 #include "addmoviedialog.h"
 #include "addtvdialog.h"
 #include "addmusicdialog.h"
@@ -99,7 +99,8 @@ private:
     AddMVCastDialog *addmvcast;
     AddMusicAlbumDialog *addmusicalbum;
     QSqlDatabase db;
-    QSqlQueryModel *DBModel;
+    QSqlRelationalTableModel *TabModel;
+
 
 
 

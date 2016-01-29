@@ -31,7 +31,7 @@ void AddArtistDialog::on_pushButton_clicked()
         msg.setText("Artist not added");
     }
     msg.exec();
-    db.close();
+    //db.close();
 
 
 

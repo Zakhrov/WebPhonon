@@ -10,12 +10,8 @@ DBMainWindow::DBMainWindow(QWidget *parent) :
 {
 
     ui->setupUi(this);
-
-
-
-
-    DBModel = new QSqlQueryModel(this);
-
+    db=QSqlDatabase::database("PlayConn");
+    TabModel=new QSqlRelationalTableModel(this,db);
 
 
 
@@ -99,158 +95,199 @@ void DBMainWindow::on_actionConnect_triggered()
 
 void DBMainWindow::on_actionSongs_triggered()
 {
-    db=QSqlDatabase::database("PlayConn");
-    db.open();
-    DBModel->setQuery("SELECT url, title, genre FROM music",db);
-    DBModel->setHeaderData(0,Qt::Horizontal,"URL");
-    DBModel->setHeaderData(1,Qt::Horizontal,"Title");
-    DBModel->setHeaderData(2,Qt::Horizontal,"Genre");
-    ui->tableView->setModel(DBModel);
+
+
+
+    TabModel->setTable("music");
+    TabModel->setEditStrategy(QSqlRelationalTableModel::OnFieldChange);
+    TabModel->select();
+    TabModel->setHeaderData(1,Qt::Horizontal,"URL");
+    TabModel->setHeaderData(2,Qt::Horizontal,"Title");
+    TabModel->setHeaderData(3,Qt::Horizontal,"Genre");
+    ui->tableView->setModel(TabModel);
+    ui->tableView->hideColumn(0);
     ui->tableView->resizeColumnsToContents();
-    db.close();
+    //db.close();
 }
 
 void DBMainWindow::on_actionActors_triggered()
 {
-    db=QSqlDatabase::database("PlayConn");
-    db.open();
-    DBModel->setQuery("SELECT name FROM actor",db);
-    DBModel->setHeaderData(0,Qt::Horizontal,"Name");
-    ui->tableView->setModel(DBModel);
-    db.close();
+
+    TabModel->setTable("actor");
+    TabModel->setEditStrategy(QSqlRelationalTableModel::OnFieldChange);
+    TabModel->select();
+    TabModel->setHeaderData(1,Qt::Horizontal,"Name");
+    ui->tableView->setModel(TabModel);
+    ui->tableView->hideColumn(0);
+    ui->tableView->resizeColumnsToContents();
+
 }
 
 void DBMainWindow::on_actionArtists_triggered()
 {
-    db=QSqlDatabase::database("PlayConn");
-    db.open();
-    DBModel->setQuery("SELECT name FROM artist",db);
-    DBModel->setHeaderData(0,Qt::Horizontal,"Name");
-    ui->tableView->setModel(DBModel);
-    db.close();
+    TabModel->setTable("artist");
+    TabModel->setEditStrategy(QSqlRelationalTableModel::OnFieldChange);
+    TabModel->select();
+    TabModel->setHeaderData(1,Qt::Horizontal,"Name");
+    ui->tableView->setModel(TabModel);
+    ui->tableView->hideColumn(0);
+    ui->tableView->resizeColumnsToContents();
 }
 
 void DBMainWindow::on_actionAlbums_triggered()
 {
-    db=QSqlDatabase::database("PlayConn");
-    db.open();
-    DBModel->setQuery("SELECT album_name, record_label FROM album",db);
-    DBModel->setHeaderData(0,Qt::Horizontal,"Name");
-    DBModel->setHeaderData(1,Qt::Horizontal,"Record Label");
-    ui->tableView->setModel(DBModel);
-    db.close();
+    TabModel->setTable("album");
+    TabModel->setEditStrategy(QSqlRelationalTableModel::OnFieldChange);
+    TabModel->select();
+    TabModel->setHeaderData(1,Qt::Horizontal,"Album Name");
+    TabModel->setHeaderData(2,Qt::Horizontal,"Record Label");
+    ui->tableView->setModel(TabModel);
+    ui->tableView->hideColumn(0);
+    ui->tableView->resizeColumnsToContents();
 }
 
 void DBMainWindow::on_actionMovie_Info_triggered()
 {
 
-    db=QSqlDatabase::database("PlayConn");
-    db.open();
-    DBModel->setQuery("SELECT url, title, studio, language, rating, genre FROM movies",db);
-    DBModel->setHeaderData(0,Qt::Horizontal,"URL");
-    DBModel->setHeaderData(1,Qt::Horizontal,"Title");
-    DBModel->setHeaderData(2,Qt::Horizontal,"Studio");
-    DBModel->setHeaderData(3,Qt::Horizontal,"Language");
-    DBModel->setHeaderData(4,Qt::Horizontal,"Rating");
-    DBModel->setHeaderData(5,Qt::Horizontal,"Genre");
-    ui->tableView->setModel(DBModel);
+    TabModel->setTable("movies");
+    TabModel->setEditStrategy(QSqlRelationalTableModel::OnFieldChange);
+    TabModel->select();
+    TabModel->setHeaderData(1,Qt::Horizontal,"Url");
+    TabModel->setHeaderData(2,Qt::Horizontal,"Title");
+    TabModel->setHeaderData(3,Qt::Horizontal,"Studio");
+    TabModel->setHeaderData(4,Qt::Horizontal,"Language");
+    TabModel->setHeaderData(5,Qt::Horizontal,"Rating");
+    TabModel->setHeaderData(6,Qt::Horizontal,"Genre");
+    ui->tableView->setModel(TabModel);
+    ui->tableView->hideColumn(0);
     ui->tableView->resizeColumnsToContents();
-    db.close();
+
 }
 
 void DBMainWindow::on_actionMovie_Cast_triggered()
 {
-    db=QSqlDatabase::database("PlayConn");
-    db.open();
-    DBModel->setQuery("SELECT movies.title, actor.name, movie_cast.charecter_name, movie_cast.role FROM movie_cast INNER JOIN actor ON movie_cast.actor_id=actor.actor_id INNER JOIN movies ON movie_cast.movie_id=movies.movies_id;",db);
-    DBModel->setHeaderData(0,Qt::Horizontal,"Movie");
-    DBModel->setHeaderData(1,Qt::Horizontal,"Actor");
-    DBModel->setHeaderData(2,Qt::Horizontal,"Charecter");
-    DBModel->setHeaderData(3,Qt::Horizontal,"Role");
-    ui->tableView->setModel(DBModel);
+
+    TabModel->setTable("movie_cast");
+    TabModel->setEditStrategy(QSqlRelationalTableModel::OnFieldChange);
+    TabModel->setRelation(1,QSqlRelation("movies","movies_id","title"));
+    TabModel->setRelation(2,QSqlRelation("actor","actor_id","name"));
+    TabModel->select();
+    TabModel->setHeaderData(1,Qt::Horizontal,"Movie");
+    TabModel->setHeaderData(2,Qt::Horizontal,"Actor");
+    TabModel->setHeaderData(3,Qt::Horizontal,"Charecter");
+    TabModel->setHeaderData(4,Qt::Horizontal,"Role");
+    ui->tableView->setModel(TabModel);
+    ui->tableView->setItemDelegate(new QSqlRelationalDelegate(ui->tableView));
+    ui->tableView->hideColumn(0);
     ui->tableView->resizeColumnsToContents();
-    db.close();
+
+
 }
 
 void DBMainWindow::on_actionShow_Info_triggered()
 {
-    db=QSqlDatabase::database("PlayConn");
-    db.open();
-    DBModel->setQuery("SELECT url, title, season, episode, ep_title, language, genre FROM tv",db);
-    DBModel->setHeaderData(0,Qt::Horizontal,"URL");
-    DBModel->setHeaderData(1,Qt::Horizontal,"Title");
-    DBModel->setHeaderData(2,Qt::Horizontal,"Season");
-    DBModel->setHeaderData(3,Qt::Horizontal,"Episode");
-    DBModel->setHeaderData(4,Qt::Horizontal,"Episode Title");
-    DBModel->setHeaderData(5,Qt::Horizontal,"Language");
-    DBModel->setHeaderData(6,Qt::Horizontal,"Genre");
-    ui->tableView->setModel(DBModel);
+    TabModel->setTable("tv");
+    TabModel->setEditStrategy(QSqlRelationalTableModel::OnFieldChange);
+    TabModel->select();
+    TabModel->setHeaderData(1,Qt::Horizontal,"Url");
+    TabModel->setHeaderData(2,Qt::Horizontal,"Title");
+    TabModel->setHeaderData(3,Qt::Horizontal,"Season");
+    TabModel->setHeaderData(4,Qt::Horizontal,"Episode");
+    TabModel->setHeaderData(5,Qt::Horizontal,"Episode Title");
+    TabModel->setHeaderData(6,Qt::Horizontal,"Language");
+    TabModel->setHeaderData(7,Qt::Horizontal,"Genre");
+    ui->tableView->setModel(TabModel);
+
+    ui->tableView->hideColumn(0);
     ui->tableView->resizeColumnsToContents();
-    db.close();
 }
 
 void DBMainWindow::on_actionShow_Cast_triggered()
 {
-    db=QSqlDatabase::database("PlayConn");
-    db.open();
-    DBModel->setQuery("SELECT tv.title, actor.name, tv_cast.charecter_name, tv_cast.role FROM tv_cast INNER JOIN actor ON tv_cast.actor_id=actor.actor_id INNER JOIN tv ON tv_cast.tv_id=tv.tv_id;",db);
-    DBModel->setHeaderData(0,Qt::Horizontal,"TV Show");
-    DBModel->setHeaderData(1,Qt::Horizontal,"Actor");
-    DBModel->setHeaderData(2,Qt::Horizontal,"Character");
-    DBModel->setHeaderData(3,Qt::Horizontal,"Role");
-    ui->tableView->setModel(DBModel);
+    TabModel->setTable("tv_cast");
+    TabModel->setEditStrategy(QSqlRelationalTableModel::OnFieldChange);
+    TabModel->setRelation(1,QSqlRelation("tv","tv_id","title"));
+    TabModel->setRelation(2,QSqlRelation("actor","actor_id","name"));
+    TabModel->select();
+    TabModel->setHeaderData(1,Qt::Horizontal,"TV Show");
+    TabModel->setHeaderData(2,Qt::Horizontal,"Actor");
+    TabModel->setHeaderData(3,Qt::Horizontal,"Character");
+    TabModel->setHeaderData(4,Qt::Horizontal,"Role");
+    ui->tableView->setModel(TabModel);
+    ui->tableView->setItemDelegate(new QSqlRelationalDelegate(ui->tableView));
+    ui->tableView->hideColumn(0);
     ui->tableView->resizeColumnsToContents();
-    db.close();
+
+
+
+
 }
 
 void DBMainWindow::on_actionMusic_Video_Info_triggered()
 {
-    db=QSqlDatabase::database("PlayConn");
-    db.open();
-    DBModel->setQuery("SELECT music_videos.url, music.title, music.genre FROM music_videos INNER JOIN music ON music_videos.music_id=music.music_id;",db);
-    DBModel->setHeaderData(0,Qt::Horizontal,"URL");
-    DBModel->setHeaderData(1,Qt::Horizontal,"Title");
-    DBModel->setHeaderData(2,Qt::Horizontal,"Genre");
-    ui->tableView->setModel(DBModel);
+    TabModel->setTable("music_videos");
+    TabModel->setEditStrategy(QSqlRelationalTableModel::OnFieldChange);
+    TabModel->setRelation(2,QSqlRelation("music","music_id","title"));
+    TabModel->select();
+    TabModel->setHeaderData(1,Qt::Horizontal,"URL");
+    TabModel->setHeaderData(2,Qt::Horizontal,"Title");
+    ui->tableView->setModel(TabModel);
+    ui->tableView->setItemDelegate(new QSqlRelationalDelegate(ui->tableView));
+    ui->tableView->hideColumn(0);
     ui->tableView->resizeColumnsToContents();
-    db.close();
+
 }
 
 void DBMainWindow::on_actionMusic_Video_Cast_triggered()
 {
-    db=QSqlDatabase::database("PlayConn");
-    db.open();
-    DBModel->setQuery("SELECT music.title, actor.`name` FROM music,actor,music_video_cast,music_videos where music_video_cast.music_video_id=music_videos.mv_id and music_video_cast.actor_id=actor.actor_id and music_videos.music_id=music.music_id;",db);
-    DBModel->setHeaderData(0,Qt::Horizontal,"Song/Music Video");
-    DBModel->setHeaderData(1,Qt::Horizontal,"Actor");
-    ui->tableView->setModel(DBModel);
+
+    TabModel->setTable("music_video_cast");
+    TabModel->setEditStrategy(QSqlRelationalTableModel::OnFieldChange);
+    TabModel->setRelation(1,QSqlRelation("music_videos","mv_id","url"));
+    TabModel->setRelation(2,QSqlRelation("actor","actor_id","name"));
+    TabModel->select();
+    TabModel->setHeaderData(1,Qt::Horizontal,"Song/Music Video");
+    TabModel->setHeaderData(2,Qt::Horizontal,"Actor");
+    ui->tableView->setModel(TabModel);
+    ui->tableView->setItemDelegate(new QSqlRelationalDelegate(ui->tableView));
+    ui->tableView->hideColumn(0);
     ui->tableView->resizeColumnsToContents();
-    db.close();
+
 }
 
 void DBMainWindow::on_actionAlbum_Artists_Collaborators_triggered()
 {
-    db=QSqlDatabase::database("PlayConn");
-    db.open();
-    DBModel->setQuery("SELECT album.album_name, artist.name, album_cast.role FROM album_cast INNER JOIN album ON album_cast.album_id=album.album_id INNER JOIN artist ON album_cast.artist_id=artist.artist_id ;",db);
-    DBModel->setHeaderData(0,Qt::Horizontal,"Album");
-    DBModel->setHeaderData(1,Qt::Horizontal,"Artist");
-    DBModel->setHeaderData(2,Qt::Horizontal,"Role");
-    ui->tableView->setModel(DBModel);
+
+    TabModel->setTable("album_cast");
+    TabModel->setEditStrategy(QSqlRelationalTableModel::OnFieldChange);
+    TabModel->setRelation(1,QSqlRelation("album","album_id","album_name"));
+    TabModel->setRelation(2,QSqlRelation("artist","artist_id","name"));
+    TabModel->select();
+    TabModel->setHeaderData(1,Qt::Horizontal,"Album");
+    TabModel->setHeaderData(2,Qt::Horizontal,"Artist");
+    TabModel->setHeaderData(3,Qt::Horizontal,"Role");
+    ui->tableView->setModel(TabModel);
+    ui->tableView->setItemDelegate(new QSqlRelationalDelegate(ui->tableView));
+    ui->tableView->hideColumn(0);
     ui->tableView->resizeColumnsToContents();
-    db.close();
+
 }
 void DBMainWindow::on_actionAlbum_Tracks_triggered()
 {
-    db=QSqlDatabase::database("PlayConn");
-    db.open();
-    DBModel->setQuery("SELECT album.album_name, music.title, music_album.track FROM music_album INNER JOIN album ON music_album.album_id=album.album_id INNER JOIN music ON music_album.music_id=music.music_id ;",db);
-    DBModel->setHeaderData(0,Qt::Horizontal,"Album");
-    DBModel->setHeaderData(1,Qt::Horizontal,"Song");
-    DBModel->setHeaderData(2,Qt::Horizontal,"Track Number");
-    ui->tableView->setModel(DBModel);
+
+
+    TabModel->setTable("music_album");
+    TabModel->setEditStrategy(QSqlRelationalTableModel::OnFieldChange);
+    TabModel->setRelation(1,QSqlRelation("album","album_id","album_name"));
+    TabModel->setRelation(2,QSqlRelation("music","music_id","title"));
+    TabModel->select();
+    TabModel->setHeaderData(1,Qt::Horizontal,"Album");
+    TabModel->setHeaderData(2,Qt::Horizontal,"Song");
+    TabModel->setHeaderData(3,Qt::Horizontal,"Track Number");
+    ui->tableView->setModel(TabModel);
+    ui->tableView->setItemDelegate(new QSqlRelationalDelegate(ui->tableView));
+    ui->tableView->hideColumn(0);
     ui->tableView->resizeColumnsToContents();
-    db.close();
 }
 
 void DBMainWindow::on_pushButton_clicked()

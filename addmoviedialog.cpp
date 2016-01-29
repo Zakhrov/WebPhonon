@@ -66,7 +66,7 @@ void AddMovieDialog::on_pushButton_clicked()
             msg.exec();
 
         }
-        db.close();
+        //db.close();
 
 
 

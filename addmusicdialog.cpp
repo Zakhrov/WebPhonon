@@ -44,7 +44,7 @@ void AddMusicDialog::on_pushButton_2_clicked()
         msg.setText("Music Not Added "+query->lastError().text());
     }
     msg.exec();
-    db.close();
+    //db.close();
 
 
 

@@ -47,7 +47,7 @@ void AddMVDialog::on_pushButton_2_clicked()
         msg.setText("Music Video not added "+query->lastError().text());
     }
     msg.exec();
-    db.close();
+    //db.close();
     //this->close();
 
 
