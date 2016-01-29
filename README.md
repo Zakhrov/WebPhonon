@@ -21,7 +21,13 @@ apt-get install cmake libqt4-dev libphonon-dev kdelibs5-dev
 ## OpenSUSE command:
 zypper in cmake libqt4-devel phonon-devel libkde4-devel
 
-## Download:
+## OpenSUSE Repo
+http://software.opensuse.org/package/WebPhonon
+
+## Generic Binary Packages (RPM, DEB and win32 EXE)
+http://sourceforge.net/projects/webphonon/
+
+## Build from Source:
 * git clone https://www.github.com/Zakhrov/WebPhonon.git
 * Build Instructions:
 * cd to the directory you cloned WebPhonon to
