@@ -11,7 +11,7 @@ configure_file (
   "${PROJECT_BINARY_DIR}/WebPhononConfig.h"
   )
 if( NOT WIN32)
-find_package(Phonon REQUIRED)
+#find_package(Phonon REQUIRED)
 find_package(KDE4 REQUIRED)
 include (KDE4Defaults)
 include_directories(${QT_INCLUDES} ${CMAKE_CURRENT_BINARY_DIR} ${KDE4_INCLUDES} ${PROJECT_BINARY_DIR})

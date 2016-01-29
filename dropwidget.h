@@ -3,7 +3,7 @@
 #include <QtGui>
 #include <QWidget>
 #ifdef Q_OS_LINUX
-#include <phonon/VideoWidget>
+#include <phonon/videowidget.h>
 #else
 #include <Phonon/VideoWidget>
 #endif
