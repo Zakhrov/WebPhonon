@@ -83,6 +83,8 @@ private slots:
 
     void on_actionAlbum_Tracks_triggered();
 
+    void on_actionDelete_Selected_Item_triggered();
+
 private:
     void on_actionConnect_triggered();
     Ui::DBMainWindow *ui;

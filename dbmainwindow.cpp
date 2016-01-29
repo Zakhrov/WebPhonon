@@ -108,6 +108,9 @@ void DBMainWindow::on_actionSongs_triggered()
     ui->tableView->hideColumn(0);
     ui->tableView->resizeColumnsToContents();
     //db.close();
+
+
+
 }
 
 void DBMainWindow::on_actionActors_triggered()
@@ -382,3 +385,8 @@ void DBMainWindow::on_pushButton_12_clicked()
     addmvcast->show();
 }
 
+
+void DBMainWindow::on_actionDelete_Selected_Item_triggered()
+{
+    TabModel->removeRow(ui->tableView->currentIndex().row());
+}

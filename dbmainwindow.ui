@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1284</width>
-    <height>284</height>
+    <width>1282</width>
+    <height>282</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -121,7 +121,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1284</width>
+     <width>1282</width>
      <height>22</height>
     </rect>
    </property>
@@ -166,8 +166,15 @@
     <addaction name="actionAlbum_Artists_Collaborators"/>
     <addaction name="actionAlbum_Tracks"/>
    </widget>
+   <widget class="QMenu" name="menuDelete">
+    <property name="title">
+     <string>Delete</string>
+    </property>
+    <addaction name="actionDelete_Selected_Item"/>
+   </widget>
    <addaction name="menuDatabase"/>
    <addaction name="menuBrowser"/>
+   <addaction name="menuDelete"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
@@ -267,6 +274,11 @@
   <action name="actionAlbum_Tracks">
    <property name="text">
     <string>Album Tracks</string>
+   </property>
+  </action>
+  <action name="actionDelete_Selected_Item">
+   <property name="text">
+    <string>Delete Selected Item</string>
    </property>
   </action>
  </widget>
