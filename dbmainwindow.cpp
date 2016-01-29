@@ -25,8 +25,11 @@ DBMainWindow::~DBMainWindow()
 
 void DBMainWindow::on_actionConnect_triggered()
 {
-//    QSettings settings;
-//    QMessageBox msg;
+        QMessageBox msg;
+        msg.setText("Import the DB.sql file from ../share/WebPhonon/db on Linux or from C:/Program Files(x86)/WebPhonon/bin on Linux");
+        msg.exec();
+    //    QSettings settings;
+//
 //    QSqlDatabase cdb=QSqlDatabase::addDatabase(settings.value("dbtype").toString(),"CreateConn");
 //    cdb.setHostName(settings.value("server").toString());
 //    cdb.setUserName(settings.value("username").toString());
