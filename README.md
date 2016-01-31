@@ -1,9 +1,9 @@
 WebPhonon
 =========
+[!Splash Screen](WebPhonon-Master-text2.png)
 
 Phonon based Video Player written in Qt
 ----------------------------------------------- 
-
 
 ## Features:
 * OpenGL Visualization
