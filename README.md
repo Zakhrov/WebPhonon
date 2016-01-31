@@ -7,13 +7,13 @@ Phonon based Video Player written in Qt
 
 ## Features:
 * OpenGL Visualization
-![Visualizer](https://raw.githubusercontent.com/Zakhrov/WebPhonon/master/screens/visualizer.png)
+[![Visualizer](https://raw.githubusercontent.com/Zakhrov/WebPhonon/master/screens/visualizer.png)](https://raw.githubusercontent.com/Zakhrov/WebPhonon/master/screens/visualizer.png)
 * MySQL powered Media Library
-![database](https://raw.githubusercontent.com/Zakhrov/WebPhonon/master/screens/db_manager.png)
+[![database](https://raw.githubusercontent.com/Zakhrov/WebPhonon/master/screens/db_manager.png)](https://raw.githubusercontent.com/Zakhrov/WebPhonon/master/screens/db_manager.png)
 * 10 band Equalizer (Linux Gstreamer backend Only)
-![Equalizer](https://raw.githubusercontent.com/Zakhrov/WebPhonon/master/screens/equalizer.png)
+[![Equalizer](https://raw.githubusercontent.com/Zakhrov/WebPhonon/master/screens/equalizer.png)](https://raw.githubusercontent.com/Zakhrov/WebPhonon/master/screens/equalizer.png)
 * Volume amplifier (can blow your speakers out!)
-![interface](https://raw.githubusercontent.com/Zakhrov/WebPhonon/master/screens/full_interface.png)
+[![interface](https://raw.githubusercontent.com/Zakhrov/WebPhonon/master/screens/full_interface.png)](https://raw.githubusercontent.com/Zakhrov/WebPhonon/master/screens/full_interface.png)
 
 ## Runtime Dependencies: 
 Qt4, Phonon, kdelibs4 (linux only)
