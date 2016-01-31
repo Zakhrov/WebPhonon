@@ -7,12 +7,17 @@ Phonon based Video Player written in Qt
 
 ## Features:
 * OpenGL Visualization
-
+![Visualizer](https://raw.githubusercontent.com/Zakhrov/WebPhonon/master/screens/visualizer.png)
 * MySQL powered Media Library
-
 * 10 band Equalizer (Linux Gstreamer backend Only)
-
+![Equalizer](https://raw.githubusercontent.com/Zakhrov/WebPhonon/master/screens/equalizer.png)
 * Volume amplifier (can blow your speakers out!)
+
+Screen Shots:
+----------------
+## Main Interface
+
+## Database Manager
 
 
 ## Runtime Dependencies: 
