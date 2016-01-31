@@ -1,6 +1,6 @@
 WebPhonon
 =========
-![Splash Screen](https://raw.githubusercontent.com/Zakhrov/WebPhonon/master/WebPhonon-Master-text2.png)
+[![Splash Screen](https://raw.githubusercontent.com/Zakhrov/WebPhonon/master/WebPhonon-Master-text2.png)](https://youtu.be/xsereIusvYk)
 
 Phonon based Video Player written in Qt
 ----------------------------------------------- 
@@ -12,12 +12,6 @@ Phonon based Video Player written in Qt
 * 10 band Equalizer (Linux Gstreamer backend Only)
 ![Equalizer](https://raw.githubusercontent.com/Zakhrov/WebPhonon/master/screens/equalizer.png)
 * Volume amplifier (can blow your speakers out!)
-
-Screen Shots:
-----------------
-## Main Interface
-
-## Database Manager
 
 
 ## Runtime Dependencies: 
@@ -44,3 +38,11 @@ http://sourceforge.net/projects/webphonon/
 * cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 * make
 * execute using ./WebPhonon or run sudo make install for systemwide install
+
+Screen Shots:
+----------------
+## Main Interface
+![interface](https://raw.githubusercontent.com/Zakhrov/WebPhonon/master/screens/full_interface.png)
+
+## Database Manager
+![database](https://raw.githubusercontent.com/Zakhrov/WebPhonon/master/screens/db_manager.png)
