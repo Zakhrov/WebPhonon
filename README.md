@@ -9,10 +9,11 @@ Phonon based Video Player written in Qt
 * OpenGL Visualization
 ![Visualizer](https://raw.githubusercontent.com/Zakhrov/WebPhonon/master/screens/visualizer.png)
 * MySQL powered Media Library
+![database](https://raw.githubusercontent.com/Zakhrov/WebPhonon/master/screens/db_manager.png)
 * 10 band Equalizer (Linux Gstreamer backend Only)
 ![Equalizer](https://raw.githubusercontent.com/Zakhrov/WebPhonon/master/screens/equalizer.png)
 * Volume amplifier (can blow your speakers out!)
-
+![interface](https://raw.githubusercontent.com/Zakhrov/WebPhonon/master/screens/full_interface.png)
 
 ## Runtime Dependencies: 
 Qt4, Phonon, kdelibs4 (linux only)
@@ -38,11 +39,3 @@ http://sourceforge.net/projects/webphonon/
 * cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 * make
 * execute using ./WebPhonon or run sudo make install for systemwide install
-
-Screen Shots:
-----------------
-## Main Interface
-![interface](https://raw.githubusercontent.com/Zakhrov/WebPhonon/master/screens/full_interface.png)
-
-## Database Manager
-![database](https://raw.githubusercontent.com/Zakhrov/WebPhonon/master/screens/db_manager.png)
