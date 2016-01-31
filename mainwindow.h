@@ -7,13 +7,13 @@
 #include <QSettings>
 //#include <phonon/phonon>
 #ifdef Q_OS_LINUX
-#include <phonon/MediaObject>
-#include <phonon/AudioOutput>
-#include <phonon/VideoWidget>
-#include <phonon/BackendCapabilities>
-#include <phonon/Effect>
-#include <phonon/ObjectDescription>
-#include <phonon/EffectWidget>
+#include <KDE/Phonon/MediaObject>
+#include <KDE/Phonon/AudioOutput>
+#include <KDE/Phonon/VideoWidget>
+#include <KDE/Phonon/BackendCapabilities>
+#include <KDE/Phonon/Effect>
+#include <KDE/Phonon/ObjectDescription>
+#include <KDE/Phonon/EffectWidget>
 #include "widget.h"
 #else
 #include <Phonon/MediaObject>
