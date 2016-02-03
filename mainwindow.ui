@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>672</width>
-    <height>293</height>
+    <height>294</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -170,7 +170,7 @@
      <x>0</x>
      <y>0</y>
      <width>672</width>
-     <height>22</height>
+     <height>27</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -501,6 +501,9 @@
   <action name="actionOpen_Visualizer">
    <property name="text">
     <string>Open Visualizer</string>
+   </property>
+   <property name="shortcut">
+    <string>V</string>
    </property>
   </action>
  </widget>

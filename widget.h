@@ -3,11 +3,11 @@
 
 #include <QWidget>
 #ifdef Q_OS_LINUX
-#include <phonon/Effect>
-#include <phonon/MediaObject>
-#include <phonon/AudioOutput>
-#include <phonon/EffectParameter>
-#include <phonon/BackendCapabilities>
+#include <KDE/Phonon/Effect>
+#include <KDE/Phonon/MediaObject>
+#include <KDE/Phonon/AudioOutput>
+#include <KDE/Phonon/EffectParameter>
+#include <KDE/Phonon/BackendCapabilities>
 #else
 #include <Phonon/Effect>
 #include <Phonon/MediaObject>
