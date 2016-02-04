@@ -46,7 +46,7 @@ endif(NOT WIN32)
 #SET(WebPhonon_HEADERS mainwindow.h dialog.h backenddialog.h helpdialog.h dbmainwindow.h dropwidget.h aboutdialog.h addmoviedialog.h tablelistdialog.h addtvdialog.h addmusicdialog.h addmvdialog.h visualizer.h winwidget.h)
 #SET(WebPhonon_FORMS mainwindow.ui dialog.ui backenddialog.ui helpdialog.ui dbmainwindow.ui aboutdialog.ui addmoviedialog.ui tablelistdialog.ui addtvdialog.ui addmusicdialog.ui addmvdialog.ui winwidget.ui)
 
-
+SET(WebPhonon_DOC WebPhonon.1)
 SET(WebPhonon_RESOURCES Icons.qrc)
 SET(WebPhonon_SPLASH WebPhonon-Master-text2.png)
 SET(WebPhonon_DB DB.sql)
@@ -59,13 +59,17 @@ QT4_ADD_RESOURCES(WebPhonon_RESOURCES_RCC ${WebPhonon_RESOURCES})
 
 #kde4_add_app_icon(WebPhononSources "icons/hi*-apps-WebPhonon.png")
 
+
+
 add_executable(WebPhonon ${WebPhonon_SOURCES} ${WebPhonon_HEADERS_MOC} ${WebPhonon_FORMS_HEADERS} ${WebPhonon_RESOURCES_RCC})
 if(NOT WIN32)
 target_link_libraries(WebPhonon ${QT_LIBRARIES} ${QT_QTCORE_LIBRARY} ${QT_QTNETWORK_LIBRARY} ${QT_QTSQL_LIBRARY} ${QT_QTGUI_LIBRARY} ${KDE4_KDEUI_LIBS} ${PHONON_LIBS} ${KDE4_PHONON_LIBS} ${KDE4_KDECORE_LIBS} ${QT_QTOPENGL_LIBRARY} ${OPENGL_gl_LIBRARY})
+
 SET(CMAKE_INSTALL_RPATH "$ORIGIN/../lib:$ORIGIN/")
 install(TARGETS WebPhonon RUNTIME DESTINATION bin)
 INSTALL(FILES ${WebPhonon_SPLASH} DESTINATION share/WebPhonon/splash)
 INSTALL(FILES ${WebPhonon_DB} DESTINATION share/WebPhonon/db)
+INSTALL(FILES ${WebPhonon_DOC} DESTINATION share/man/man1)
 set(CPACK_PACKAGE_VERSION ${WebPhonon_VERSION_MAJOR}.${WebPhonon_VERSION_MINOR})
 set(CPACK_GENERATOR "RPM;DEB")
 set(CPACK_PACKAGE_NAME "WebPhonon")
