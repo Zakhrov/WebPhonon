@@ -47,7 +47,7 @@ MainWindow::MainWindow(QWidget *parent) :
 #else
     eqwidget = new WinWidget(this);
 #endif
-    }
+
 
     ui->gridLayout_3->addWidget(eqwidget);
     eqwidget->hide();
