@@ -6,9 +6,12 @@ Widget::Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget)
 {
-    ui->setupUi(this);
+
 
     effectDescriptions =Phonon::BackendCapabilities::availableAudioEffects();
+    if(effectDescriptions.size()>0)
+    {
+    ui->setupUi(this);
 #ifdef Q_OS_LINUX
     //effectDescription = effectDescriptions.at(3);
     Phonon::EffectDescription eqdesc=effectDescriptions.at(0);
@@ -76,8 +79,13 @@ Widget::Widget(QWidget *parent) :
 
 
     }
-
-
+}
+else
+    {
+        QLabel *messagelabel=new QLabel(this);
+        messagelabel->setText("No effects found :(");
+        messagelabel->show();
+    }
 }
 
 Widget::~Widget()
