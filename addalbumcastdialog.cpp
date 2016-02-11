@@ -32,6 +32,9 @@ void AddAlbumCastDialog::on_pushButton_clicked()
     artist_id = model2->data(model2->index(ui->comboBox_2->currentIndex(),0)).toInt();
     album_id = model1->data(model1->index(ui->comboBox->currentIndex(),0)).toInt();
     query=new QSqlQuery(db);
+    if(db.driverName()=="QSQLITE")
+        query->prepare("INSERT INTO `album_cast` (`album_id`, `artist_id`, `role`) VALUES (:album_id, :artist_id, :role);");
+    else
     query->prepare("INSERT INTO `webphonon`.`album_cast` (`album_id`, `artist_id`, `role`) VALUES (:album_id, :artist_id, :role);");
     query->bindValue(":album_id",album_id);
     query->bindValue(":artist_id",artist_id);

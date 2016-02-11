@@ -5,6 +5,7 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QMessageBox>
+#include <QSqlError>
 namespace Ui {
 class AddAlbumDialog;
 }

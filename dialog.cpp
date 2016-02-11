@@ -46,6 +46,8 @@ void Dialog::on_comboBox_activated(const QString &arg1)
         dbtype="QMYSQL";
     else if(arg1=="Microsoft SQL Server (ODBC)")
         dbtype="QODBC";
+    else if(arg1=="SQLite")
+        dbtype="QSQLITE";
     else
         dbtype="QMYSQL";
     custdbSettings.setValue("dbtype",dbtype);

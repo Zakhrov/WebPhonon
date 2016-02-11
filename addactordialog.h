@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QSqlDatabase>
 #include <QSqlQuery>
+#include <QSqlError>
 namespace Ui {
 class AddActorDialog;
 }

@@ -39,6 +39,11 @@
          <string>Microsoft SQL Server (ODBC)</string>
         </property>
        </item>
+       <item>
+        <property name="text">
+         <string>SQLite</string>
+        </property>
+       </item>
       </widget>
      </item>
     </layout>

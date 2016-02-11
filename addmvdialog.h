@@ -6,6 +6,7 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
+#include <QSqlError>
 namespace Ui {
 class AddMVDialog;
 }

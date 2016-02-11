@@ -5,7 +5,7 @@
 #include <QSettings>
 #include <QSqlDatabase>
 #include <QSqlQuery>
-
+#include <QSqlError>
 namespace Ui {
 class AddMovieDialog;
 }

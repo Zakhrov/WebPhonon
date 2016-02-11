@@ -32,6 +32,9 @@ void AddMusicAlbumDialog::on_pushButton_clicked()
     album_id = model1->data(model1->index(ui->comboBox->currentIndex(),0)).toInt();
     db.open();
     query=new QSqlQuery(db);
+    if(db.driverName()=="QSQLITE")
+        query->prepare("INSERT INTO `music_album` (`album_id`, `music_id`,`track`) VALUES (:album_id, :music_id, :track);");
+    else
     query->prepare("INSERT INTO `webphonon`.`music_album` (`album_id`, `music_id`,`track`) VALUES (:album_id, :music_id, :track);");
     query->bindValue(":album_id",album_id);
     query->bindValue(":music_id",music_id);

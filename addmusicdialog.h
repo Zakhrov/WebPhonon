@@ -5,6 +5,7 @@
 #include <QFileDialog>
 #include <QSqlDatabase>
 #include <QSqlQuery>
+#include <QSqlError>
 namespace Ui {
 class AddMusicDialog;
 }

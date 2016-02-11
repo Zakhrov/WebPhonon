@@ -6,6 +6,7 @@
 #include <QSqlQuery>
 #include <QSqlQueryModel>
 #include <QMessageBox>
+#include <QSqlError>
 namespace Ui {
 class AddMovieCastDialog;
 }

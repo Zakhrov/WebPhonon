@@ -30,6 +30,9 @@ void AddMusicDialog::on_pushButton_2_clicked()
     db=QSqlDatabase::database("PlayConn");
     db.open();
     query=new QSqlQuery(db);
+    if(db.driverName()=="QSQLITE")
+        query->prepare("INSERT INTO `music` (`url`, `title`, `genre`, `language`) VALUES (:url, :title, :genre, :language);");
+    else
     query->prepare("INSERT INTO `webphonon`.`music` (`url`, `title`, `genre`, `language`) VALUES (:url, :title, :genre, :language);");
     query->bindValue(":url",url);
     query->bindValue(":title",title);

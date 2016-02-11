@@ -34,6 +34,9 @@ void AddMVDialog::on_pushButton_2_clicked()
     music_id=model->data(model->index(ui->comboBox->currentIndex(),0)).toInt();
     db.open();
     query=new QSqlQuery(db);
+    if(db.driverName()=="QSQLITE")
+        query->prepare("INSERT INTO `music_videos` (`url`, `music_id`) VALUES (:url, :music_id);");
+    else
     query->prepare("INSERT INTO `webphonon`.`music_videos` (`url`, `music_id`) VALUES (:url, :music_id);");
     query->bindValue(":url",url);
     query->bindValue(":muic_id",music_id);

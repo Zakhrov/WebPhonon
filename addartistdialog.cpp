@@ -20,6 +20,9 @@ void AddArtistDialog::on_pushButton_clicked()
     db=QSqlDatabase::database("PlayConn");
     db.open();
     query=new QSqlQuery(db);
+    if(db.driverName()=="QSQLITE")
+        query->prepare("INSERT INTO `artist` (`name`) VALUES (:name);");
+    else
     query->prepare("INSERT INTO `webphonon`.`artist` (`name`) VALUES (:name);");
     query->bindValue(":name",artist);
     if(query->exec())
@@ -28,7 +31,7 @@ void AddArtistDialog::on_pushButton_clicked()
     }
     else
     {
-        msg.setText("Artist not added");
+        msg.setText("Artist not added"+query->lastError().text());
     }
     msg.exec();
     //db.close();

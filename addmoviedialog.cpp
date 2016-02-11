@@ -2,6 +2,7 @@
 #include "ui_addmoviedialog.h"
 #include <QMessageBox>
 #include <QFileDialog>
+#include <QSqlError>
 AddMovieDialog::AddMovieDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AddMovieDialog)
@@ -46,6 +47,9 @@ void AddMovieDialog::on_pushButton_clicked()
 
         QSqlQuery *query=new QSqlQuery(db);
         //query.prepare("insert into movies(url, title, language, studio, rating, genre, year) values(:url, :title, :language, :studio, :rating, :genre, :year");
+        if(db.driverName()=="QSQLITE")
+            query->prepare("INSERT INTO `movies` (`url`, `title`, `language`, `studio`, `rating`, `genre`, `year`) VALUES (:url, :title, :language, :studio, :rating, :genre, :year);");
+        else
         query->prepare("INSERT INTO `webphonon`.`movies` (`url`, `title`, `language`, `studio`, `rating`, `genre`, `year`) VALUES (:url, :title, :language, :studio, :rating, :genre, :year);");
         query->bindValue(":url",url);
         query->bindValue(":title",title);
@@ -62,7 +66,7 @@ void AddMovieDialog::on_pushButton_clicked()
         }
         else
         {
-            msg.setText("Movie Not Added");
+            msg.setText("Movie Not Added"+query->lastError().text());
             msg.exec();
 
         }

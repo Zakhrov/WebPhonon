@@ -21,6 +21,9 @@ void AddAlbumDialog::on_pushButton_clicked()
     db=QSqlDatabase::database("PlayConn");
     db.open();
     query=new QSqlQuery(db);
+    if(db.driverName()=="QSQLITE")
+        query->prepare("INSERT INTO `album` (`album_name`,`record_label`) VALUES (:name,:label);");
+    else
     query->prepare("INSERT INTO `webphonon`.`album` (`album_name`,`record_label`) VALUES (:name,:label);");
     query->bindValue(":name",album);
     query->bindValue(":label",record_label);
@@ -30,7 +33,7 @@ void AddAlbumDialog::on_pushButton_clicked()
     }
     else
     {
-        msg.setText("Album not added");
+        msg.setText("Album not added"+query->lastError().text());
     }
     msg.exec();
     //db.close();

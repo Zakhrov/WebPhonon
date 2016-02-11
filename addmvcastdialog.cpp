@@ -30,6 +30,9 @@ void AddMVCastDialog::on_pushButton_clicked()
     mv_id = model1->data(model1->index(ui->comboBox->currentIndex(),0)).toInt();
     db.open();
     query=new QSqlQuery(db);
+    if(db.driverName()=="QSQLITE")
+        query->prepare("INSERT INTO `music_video_cast` (`music_video_id`, `actor_id`) VALUES (:mv_id, :actor_id);");
+    else
     query->prepare("INSERT INTO `webphonon`.`music_video_cast` (`music_video_id`, `actor_id`) VALUES (:mv_id, :actor_id);");
     query->bindValue(":mv_id",mv_id);
     query->bindValue(":actor_id",actor_id);

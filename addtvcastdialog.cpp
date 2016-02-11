@@ -33,6 +33,9 @@ void AddTVCastDialog::on_pushButton_clicked()
     tv_id = model1->data(model1->index(ui->comboBox->currentIndex(),0)).toInt();
     db.open();
     query=new QSqlQuery(db);
+    if(db.driverName()=="QSQLITE")
+        query->prepare("INSERT INTO `tv_cast` (`tv_id`, `actor_id`, `charecter_name`, `role`) VALUES (:tv_id, :actor_id, :charecter_name, :role);");
+    else
     query->prepare("INSERT INTO `webphonon`.`tv_cast` (`tv_id`, `actor_id`, `charecter_name`, `role`) VALUES (:tv_id, :actor_id, :charecter_name, :role);");
     query->bindValue(":tv_id",tv_id);
     query->bindValue(":actor_id",actor_id);

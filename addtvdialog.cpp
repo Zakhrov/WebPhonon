@@ -34,6 +34,9 @@ void AddTVDialog::on_pushButton_2_clicked()
     db=QSqlDatabase::database("PlayConn");
     db.open();
     cmd=new QSqlQuery(db);
+    if(db.driverName()=="QSQLITE")
+        cmd->prepare("INSERT INTO `tv` (`url`, `title`, `season`, `episode`, `ep_title`, `language`, `genre`) VALUES (:url, :title, :season, :episode, :ep_title, :language, :genre);");
+    else
     cmd->prepare("INSERT INTO `webphonon`.`tv` (`url`, `title`, `season`, `episode`, `ep_title`, `language`, `genre`) VALUES (:url, :title, :season, :episode, :ep_title, :language, :genre);");
     cmd->bindValue(":url",url);
     cmd->bindValue(":title",title);
@@ -50,7 +53,7 @@ void AddTVDialog::on_pushButton_2_clicked()
     }
     else
     {
-        msg.setText("TV Show Not Added");
+        msg.setText("TV Show Not Added"+cmd->lastError().text());
         msg.exec();
 
     }

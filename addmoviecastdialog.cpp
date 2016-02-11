@@ -33,6 +33,9 @@ void AddMovieCastDialog::on_pushButton_clicked()
     actor_id = model2->data(model2->index(ui->comboBox_2->currentIndex(),0)).toInt();
     movie_id = model1->data(model1->index(ui->comboBox->currentIndex(),0)).toInt();
     query=new QSqlQuery(db);
+    if(db.driverName()=="QSQLITE")
+        query->prepare("INSERT INTO `movie_cast` (`movie_id`, `actor_id`, `charecter_name`, `role`) VALUES (:movie_id, :actor_id, :charecter_name, :role);");
+    else
     query->prepare("INSERT INTO `webphonon`.`movie_cast` (`movie_id`, `actor_id`, `charecter_name`, `role`) VALUES (:movie_id, :actor_id, :charecter_name, :role);");
     query->bindValue(":movie_id",movie_id);
     query->bindValue(":actor_id",actor_id);
