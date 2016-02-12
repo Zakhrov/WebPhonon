@@ -1,6 +1,6 @@
 #include "dialog.h"
 #include "ui_dialog.h"
-
+#include <QMessageBox>
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Dialog)
@@ -30,7 +30,9 @@ void Dialog::on_pushButton_clicked()
     custdbSettings.setValue("username",uname);
     custdbSettings.setValue("password",passwd);
     custdbSettings.setValue("database",dbname);
-
+    QMessageBox msg;
+    msg.setText("Database settings saved. Restart WebPhonon for changes to take effect");
+    msg.exec();
     this->close();
 }
 
@@ -48,8 +50,11 @@ void Dialog::on_comboBox_activated(const QString &arg1)
         dbtype="QODBC";
     else if(arg1=="SQLite")
         dbtype="QSQLITE";
+    else if(arg1=="PostgreSQL")
+        dbtype="QPSQL";
     else
         dbtype="QMYSQL";
+
     custdbSettings.setValue("dbtype",dbtype);
 
 }

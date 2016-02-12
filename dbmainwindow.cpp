@@ -25,8 +25,24 @@ DBMainWindow::~DBMainWindow()
 
 void DBMainWindow::on_actionConnect_triggered()
 {
+        QString dbinstructions;
+        dbinstructions="MySQL: \n";
+                dbinstructions.append("Use either the mysql command or the MySQL Workbench to import the DB.sql");
+                dbinstructions.append(" file from /usr/share/WebPhonon/db on Linux");
+                dbinstructions.append(" or from C:/Program Files(x86)/WebPhonon/bin on Windows");
+                dbinstructions.append("Once the database is sucessfully imported you can use your MySQL connection parameters to connect to the database \n");
+                dbinstructions.append("SQLite: \n");
+                dbinstructions.append("Copy webphonon.sqlite3 file from /usr/share/WebPhonon/db on Linux");
+                dbinstructions.append(" or from C:/Program Files(x86)/WebPhonon/bin on Windows");
+                dbinstructions.append("to a directory owned/writeable by the current user,");
+                dbinstructions.append(" then use the path as the database name in the database dialog \n");
+                dbinstructions.append("PostgreSQL: \n");
+                dbinstructions.append("Either use the posgresql console or pgadmin to import the WebPhonon.sql");
+                dbinstructions.append(" file from /usr/share/WebPhonon/db on Linux");
+                dbinstructions.append(" or from C:/Program Files(x86)/WebPhonon/bin on Windows");
+                dbinstructions.append("Once the database is sucessfully imported, you can use your PostgreSQL connection parameters to connect to the database");
         QMessageBox msg;
-        msg.setText("Import the DB.sql file from ../share/WebPhonon/db on Linux or from C:/Program Files(x86)/WebPhonon/bin on Linux");
+        msg.setText(dbinstructions);
         msg.exec();
 
 }

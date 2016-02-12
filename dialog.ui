@@ -44,6 +44,11 @@
          <string>SQLite</string>
         </property>
        </item>
+       <item>
+        <property name="text">
+         <string>PostgreSQL</string>
+        </property>
+       </item>
       </widget>
      </item>
     </layout>
