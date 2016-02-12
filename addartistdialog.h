@@ -3,7 +3,8 @@
 
 #include <QDialog>
 #include <QSqlDatabase>
-#include <QSqlQuery>
+#include <QSqlTableModel>
+#include <QSqlRecord>
 #include <QSqlError>
 namespace Ui {
 class AddArtistDialog;
@@ -26,7 +27,7 @@ private:
     Ui::AddArtistDialog *ui;
     QString artist;
     QSqlDatabase db;
-    QSqlQuery *query;
+    QSqlTableModel *model;
 };
 
 #endif // ADDARTISTDIALOG_H

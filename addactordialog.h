@@ -3,7 +3,8 @@
 
 #include <QDialog>
 #include <QSqlDatabase>
-#include <QSqlQuery>
+#include <QSqlTableModel>
+#include <QSqlRecord>
 #include <QSqlError>
 namespace Ui {
 class AddActorDialog;
@@ -26,7 +27,7 @@ private:
     Ui::AddActorDialog *ui;
     QString actor;
     QSqlDatabase db;
-    QSqlQuery *query;
+    QSqlTableModel *model;
 };
 
 #endif // ADDACTORDIALOG_H

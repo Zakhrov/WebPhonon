@@ -6,6 +6,8 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlError>
+#include <QSqlTableModel>
+#include <QSqlRecord>
 namespace Ui {
 class AddMovieDialog;
 }
@@ -29,6 +31,7 @@ private:
     Ui::AddMovieDialog *ui;
     QSettings settings;
     QSqlDatabase db;
+    QSqlTableModel *model;
     QString url,title,language,rating,genre,year,studio;
 
 

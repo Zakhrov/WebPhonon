@@ -7,8 +7,6 @@ AddAlbumCastDialog::AddAlbumCastDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     db=QSqlDatabase::database("PlayConn");
-    db.close();
-    db.open();
     model1=new QSqlQueryModel(this);
     model1->setQuery("select album_id, album_name from album",db);
     model2=new QSqlQueryModel(this);
@@ -31,25 +29,33 @@ void AddAlbumCastDialog::on_pushButton_clicked()
 
     artist_id = model2->data(model2->index(ui->comboBox_2->currentIndex(),0)).toInt();
     album_id = model1->data(model1->index(ui->comboBox->currentIndex(),0)).toInt();
-    query=new QSqlQuery(db);
-    if(db.driverName()=="QSQLITE")
-        query->prepare("INSERT INTO `album_cast` (`album_id`, `artist_id`, `role`) VALUES (:album_id, :artist_id, :role);");
-    else
-    query->prepare("INSERT INTO `webphonon`.`album_cast` (`album_id`, `artist_id`, `role`) VALUES (:album_id, :artist_id, :role);");
-    query->bindValue(":album_id",album_id);
-    query->bindValue(":artist_id",artist_id);
-    query->bindValue(":role",role);
-    if(query->exec())
+    model=new QSqlTableModel(this,db);
+    model->setTable("album_cast");
+    model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+    QSqlRecord record=model->record();
+    record.remove(0);
+    record.setValue("artist_id",QVariant(artist_id));
+    record.setValue("album_id",QVariant(album_id));
+    record.setValue("role",QVariant(role));
+    if(model->insertRecord(-1,record))
     {
-        msg.setText("Album Artist and Role Added");
+        if(model->submitAll())
+        {
+        msg.setText("Album Cast Added");
+
+        }
+        else
+        {
+            msg.setText(model->lastError().text());
+
+        }
+
     }
     else
     {
-        msg.setText("Error"+query->lastError().text());
+        msg.setText(model->lastError().text());
     }
     msg.exec();
-    //db.close();
-
 
 }
 

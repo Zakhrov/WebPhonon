@@ -31,28 +31,34 @@ void AddTVCastDialog::on_pushButton_clicked()
     role=ui->lineEdit_2->text();
     actor_id = model2->data(model2->index(ui->comboBox_2->currentIndex(),0)).toInt();
     tv_id = model1->data(model1->index(ui->comboBox->currentIndex(),0)).toInt();
-    db.open();
-    query=new QSqlQuery(db);
-    if(db.driverName()=="QSQLITE")
-        query->prepare("INSERT INTO `tv_cast` (`tv_id`, `actor_id`, `charecter_name`, `role`) VALUES (:tv_id, :actor_id, :charecter_name, :role);");
-    else
-    query->prepare("INSERT INTO `webphonon`.`tv_cast` (`tv_id`, `actor_id`, `charecter_name`, `role`) VALUES (:tv_id, :actor_id, :charecter_name, :role);");
-    query->bindValue(":tv_id",tv_id);
-    query->bindValue(":actor_id",actor_id);
-    query->bindValue(":charecter_name",charecter);
-    query->bindValue(":role",role);
-    if(query->exec())
+    model=new QSqlTableModel(this,db);
+    model->setTable("tv_cast");
+    model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+    QSqlRecord record=model->record();
+    record.remove(0);
+    record.setValue("charecter_name",QVariant(charecter));
+    record.setValue("role",QVariant(role));
+    record.setValue("actor_id",QVariant(actor_id));
+    record.setValue("tv_id",QVariant(tv_id));
+    if(model->insertRecord(-1,record))
     {
-        msg.setText("TV Charecter and Role Added");
+        if(model->submitAll())
+        {
+        msg.setText("Movie Added");
+
+        }
+        else
+        {
+            msg.setText(model->lastError().text());
+
+        }
+
     }
     else
     {
-        msg.setText("Error"+query->lastError().text());
+        msg.setText(model->lastError().text());
     }
     msg.exec();
-    //db.close();
-    //this->close();
-
 
 }
 

@@ -4,7 +4,8 @@
 #include <QDialog>
 #include <QFileDialog>
 #include <QSqlDatabase>
-#include <QSqlQuery>
+#include <QSqlTableModel>
+#include <QSqlRecord>
 #include <QSqlQueryModel>
 #include <QSqlError>
 namespace Ui {
@@ -29,8 +30,8 @@ private slots:
 private:
     Ui::AddMVDialog *ui;
     QSqlDatabase db;
-    QSqlQuery *query;
-    QSqlQueryModel *model;
+    QSqlTableModel *model;
+    QSqlQueryModel *model1;
     QString url;
     int music_id;
 };

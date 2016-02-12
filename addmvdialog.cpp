@@ -1,17 +1,18 @@
 #include "addmvdialog.h"
 #include "ui_addmvdialog.h"
 #include <QMessageBox>
-#include <QSqlError>
+
 AddMVDialog::AddMVDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AddMVDialog)
 {
     ui->setupUi(this);
     db=QSqlDatabase::database("PlayConn");
+    db.close();
     db.open();
-    model=new QSqlQueryModel(this);
-    model->setQuery("select music_id, title from music",db);
-    ui->comboBox->setModel(model);
+    model1=new QSqlQueryModel(this);
+    model1->setQuery("select music_id, title from music",db);
+    ui->comboBox->setModel(model1);
     ui->comboBox->setModelColumn(1);
 }
 
@@ -31,29 +32,33 @@ void AddMVDialog::on_pushButton_2_clicked()
 
     QMessageBox msg;
     url=ui->lineEdit->text();
-    music_id=model->data(model->index(ui->comboBox->currentIndex(),0)).toInt();
-    db.open();
-    query=new QSqlQuery(db);
-    if(db.driverName()=="QSQLITE")
-        query->prepare("INSERT INTO `music_videos` (`url`, `music_id`) VALUES (:url, :music_id);");
-    else
-    query->prepare("INSERT INTO `webphonon`.`music_videos` (`url`, `music_id`) VALUES (:url, :music_id);");
-    query->bindValue(":url",url);
-    query->bindValue(":muic_id",music_id);
-    if(query->exec())
+    music_id=model1->data(model1->index(ui->comboBox->currentIndex(),0)).toInt();
+    model=new QSqlTableModel(this,db);
+    model->setTable("music_videos");
+    model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+    QSqlRecord record=model->record();
+    record.remove(0);
+    record.setValue("url",QVariant(url));
+    record.setValue("music_id",QVariant(music_id));
+    if(model->insertRecord(-1,record))
     {
-        msg.setText("Music Video Added ");
+        if(model->submitAll())
+        {
+        msg.setText("Music Video Added");
+
+        }
+        else
+        {
+            msg.setText(model->lastError().text());
+
+        }
 
     }
     else
     {
-        msg.setText("Music Video not added "+query->lastError().text());
+        msg.setText(model->lastError().text());
     }
     msg.exec();
-    //db.close();
-    //this->close();
-
-
 
 
 

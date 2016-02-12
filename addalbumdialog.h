@@ -3,7 +3,8 @@
 
 #include <QDialog>
 #include <QSqlDatabase>
-#include <QSqlQuery>
+#include <QSqlTableModel>
+#include <QSqlRecord>
 #include <QMessageBox>
 #include <QSqlError>
 namespace Ui {
@@ -27,7 +28,7 @@ private:
     Ui::AddAlbumDialog *ui;
     QString album,record_label;
     QSqlDatabase db;
-    QSqlQuery *query;
+    QSqlTableModel *model;
 };
 
 #endif // ADDALBUMDIALOG_H

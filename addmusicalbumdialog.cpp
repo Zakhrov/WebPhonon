@@ -7,7 +7,6 @@ AddMusicAlbumDialog::AddMusicAlbumDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     db=QSqlDatabase::database("PlayConn");
-    db.open();
     model1=new QSqlQueryModel(this);
     model1->setQuery("select album_id, album_name from album",db);
     model2=new QSqlQueryModel(this);
@@ -30,26 +29,33 @@ void AddMusicAlbumDialog::on_pushButton_clicked()
     int track_number=ui->lineEdit->text().toInt();
     music_id = model2->data(model2->index(ui->comboBox_2->currentIndex(),0)).toInt();
     album_id = model1->data(model1->index(ui->comboBox->currentIndex(),0)).toInt();
-    db.open();
-    query=new QSqlQuery(db);
-    if(db.driverName()=="QSQLITE")
-        query->prepare("INSERT INTO `music_album` (`album_id`, `music_id`,`track`) VALUES (:album_id, :music_id, :track);");
-    else
-    query->prepare("INSERT INTO `webphonon`.`music_album` (`album_id`, `music_id`,`track`) VALUES (:album_id, :music_id, :track);");
-    query->bindValue(":album_id",album_id);
-    query->bindValue(":music_id",music_id);
-    query->bindValue(":track",track_number);
-    if(query->exec())
+    model=new QSqlTableModel(this,db);
+    model->setTable("music_album");
+    model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+    QSqlRecord record=model->record();
+    record.remove(0);
+    record.setValue("track",QVariant(track_number));
+    record.setValue("music_id",QVariant(music_id));
+    record.setValue("album_id",QVariant(album_id));
+    if(model->insertRecord(-1,record))
     {
+        if(model->submitAll())
+        {
         msg.setText("Song Linked to Album");
+
+        }
+        else
+        {
+            msg.setText(model->lastError().text());
+
+        }
+
     }
     else
     {
-        msg.setText("Error"+query->lastError().text());
+        msg.setText(model->lastError().text());
     }
     msg.exec();
-    //db.close();
-    //this->close();
 }
 
 void AddMusicAlbumDialog::on_pushButton_2_clicked()

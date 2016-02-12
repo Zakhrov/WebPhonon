@@ -4,7 +4,8 @@
 #include <QDialog>
 #include <QMessageBox>
 #include <QSqlDatabase>
-#include <QSqlQuery>
+#include <QSqlTableModel>
+#include <QSqlRecord>
 #include <QSqlQueryModel>
 #include <QSqlError>
 namespace Ui {
@@ -27,7 +28,7 @@ private slots:
 private:
     Ui::AddAlbumCastDialog *ui;
     QSqlDatabase db;
-    QSqlQuery *query;
+    QSqlTableModel *model;
     QSqlQueryModel *model1;
     QSqlQueryModel *model2;
     QString role;

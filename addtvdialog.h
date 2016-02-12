@@ -3,7 +3,8 @@
 
 #include <QDialog>
 #include <QSqlDatabase>
-#include <QSqlQuery>
+#include <QSqlTableModel>
+#include <QSqlRecord>
 #include <QSqlError>
 namespace Ui {
 class AddTVDialog;
@@ -28,7 +29,7 @@ private:
     Ui::AddTVDialog *ui;
     QString url,title,language,season,genre,episode,episode_title;
     QSqlDatabase db;
-    QSqlQuery *cmd;
+    QSqlTableModel *model;
 
 };
 

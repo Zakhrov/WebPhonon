@@ -19,24 +19,31 @@ void AddActorDialog::on_pushButton_clicked()
     QMessageBox msg;
     actor=ui->lineEdit->text();
     db=QSqlDatabase::database("PlayConn");
-    db.open();
-    query=new QSqlQuery(db);
-    if(db.driverName()=="QSQLITE")
-        query->prepare("INSERT INTO actor(`name`) VALUES (:name);");
-    else
-    query->prepare("INSERT INTO `webphonon`.`actor` (`name`) VALUES (:name);");
-    query->bindValue(":name",actor);
-    if(query->exec())
+    model=new QSqlTableModel(this,db);
+    model->setTable("actor");
+    model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+    QSqlRecord record=model->record();
+    record.remove(0);
+    record.setValue("name",QVariant(actor));
+    if(model->insertRecord(-1,record))
     {
+        if(model->submitAll())
+        {
         msg.setText("Actor Added");
+
+        }
+        else
+        {
+            msg.setText(model->lastError().text());
+
+        }
+
     }
     else
     {
-        msg.setText("Actor not added"+query->lastError().text());
+        msg.setText(model->lastError().text());
     }
     msg.exec();
-    //db.close();
-
 
 
 }

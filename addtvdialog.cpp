@@ -32,35 +32,37 @@ void AddTVDialog::on_pushButton_2_clicked()
     language=ui->lineEdit_6->text();
     genre=ui->lineEdit_7->text();
     db=QSqlDatabase::database("PlayConn");
-    db.open();
-    cmd=new QSqlQuery(db);
-    if(db.driverName()=="QSQLITE")
-        cmd->prepare("INSERT INTO `tv` (`url`, `title`, `season`, `episode`, `ep_title`, `language`, `genre`) VALUES (:url, :title, :season, :episode, :ep_title, :language, :genre);");
-    else
-    cmd->prepare("INSERT INTO `webphonon`.`tv` (`url`, `title`, `season`, `episode`, `ep_title`, `language`, `genre`) VALUES (:url, :title, :season, :episode, :ep_title, :language, :genre);");
-    cmd->bindValue(":url",url);
-    cmd->bindValue(":title",title);
-    cmd->bindValue(":season",season);
-    cmd->bindValue(":episode",episode);
-    cmd->bindValue(":ep_title",episode_title);
-    cmd->bindValue(":language",language);
-    cmd->bindValue(":genre",genre);
-    if(cmd->exec())
+    model=new QSqlTableModel(this,db);
+    model->setTable("tv");
+    model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+    QSqlRecord record=model->record();
+    record.remove(0);
+    record.setValue("url",QVariant(url));
+    record.setValue("title",QVariant(title));
+    record.setValue("language",QVariant(language));
+    record.setValue("season",QVariant(season));
+    record.setValue("episode",QVariant(episode));
+    record.setValue("genre",QVariant(genre));
+    record.setValue("ep_title",QVariant(episode_title));
+    if(model->insertRecord(-1,record))
     {
+        if(model->submitAll())
+        {
         msg.setText("TV Show Added");
-        msg.exec();
+
+        }
+        else
+        {
+            msg.setText(model->lastError().text());
+
+        }
 
     }
     else
     {
-        msg.setText("TV Show Not Added"+cmd->lastError().text());
-        msg.exec();
-
+        msg.setText(model->lastError().text());
     }
-    //db.close();
-    //this->close();
-
-
+    msg.exec();
 
 }
 

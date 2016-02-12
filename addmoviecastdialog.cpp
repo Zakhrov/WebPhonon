@@ -7,8 +7,6 @@ AddMovieCastDialog::AddMovieCastDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     db=QSqlDatabase::database("PlayConn");
-    db.close();
-    db.open();
     model1=new QSqlQueryModel(this);
     model1->setQuery("select movies_id, title from movies",db);
     model2=new QSqlQueryModel(this);
@@ -32,25 +30,34 @@ void AddMovieCastDialog::on_pushButton_clicked()
     role=ui->lineEdit_2->text();
     actor_id = model2->data(model2->index(ui->comboBox_2->currentIndex(),0)).toInt();
     movie_id = model1->data(model1->index(ui->comboBox->currentIndex(),0)).toInt();
-    query=new QSqlQuery(db);
-    if(db.driverName()=="QSQLITE")
-        query->prepare("INSERT INTO `movie_cast` (`movie_id`, `actor_id`, `charecter_name`, `role`) VALUES (:movie_id, :actor_id, :charecter_name, :role);");
-    else
-    query->prepare("INSERT INTO `webphonon`.`movie_cast` (`movie_id`, `actor_id`, `charecter_name`, `role`) VALUES (:movie_id, :actor_id, :charecter_name, :role);");
-    query->bindValue(":movie_id",movie_id);
-    query->bindValue(":actor_id",actor_id);
-    query->bindValue(":charecter_name",charecter);
-    query->bindValue(":role",role);
-    if(query->exec())
+    model=new QSqlTableModel(this,db);
+    model->setTable("movie_cast");
+    model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+    QSqlRecord record=model->record();
+    record.remove(0);
+    record.setValue("movie_id",QVariant(movie_id));
+    record.setValue("actor_id",QVariant(actor_id));
+    record.setValue("charecter_name",QVariant(charecter));
+    record.setValue("role",QVariant(role));
+    if(model->insertRecord(-1,record))
     {
-        msg.setText("Movie Charecter and Role Added");
+        if(model->submitAll())
+        {
+        msg.setText("Movie Cast Added");
+
+        }
+        else
+        {
+            msg.setText(model->lastError().text());
+
+        }
+
     }
     else
     {
-        msg.setText("Error"+query->lastError().text());
+        msg.setText(model->lastError().text());
     }
     msg.exec();
-    //db.close();
 
 
 }

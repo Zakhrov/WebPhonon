@@ -36,45 +36,37 @@ void AddMovieDialog::on_pushButton_clicked()
     genre=ui->lineEdit_6->text();
     year=ui->lineEdit_7->text();
     db=QSqlDatabase::database("PlayConn");
-//    db.setConnectOptions();
-//    db.setHostName(host);
-//    db.setDatabaseName(database);
-//    db.setUserName(uname);
-//    db.setPassword(passwd);
-    db.open();
-
-
-
-        QSqlQuery *query=new QSqlQuery(db);
-        //query.prepare("insert into movies(url, title, language, studio, rating, genre, year) values(:url, :title, :language, :studio, :rating, :genre, :year");
-        if(db.driverName()=="QSQLITE")
-            query->prepare("INSERT INTO `movies` (`url`, `title`, `language`, `studio`, `rating`, `genre`, `year`) VALUES (:url, :title, :language, :studio, :rating, :genre, :year);");
-        else
-        query->prepare("INSERT INTO `webphonon`.`movies` (`url`, `title`, `language`, `studio`, `rating`, `genre`, `year`) VALUES (:url, :title, :language, :studio, :rating, :genre, :year);");
-        query->bindValue(":url",url);
-        query->bindValue(":title",title);
-        query->bindValue(":language",language);
-        query->bindValue(":studio",studio);
-        query->bindValue(":rating",rating);
-        query->bindValue(":genre",genre);
-        query->bindValue(":year",year);
-        if(query->exec())
+    model=new QSqlTableModel(this,db);
+    model->setTable("movies");
+    model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+    QSqlRecord record=model->record();
+    record.remove(0);
+    record.setValue("url",QVariant(url));
+    record.setValue("title",QVariant(title));
+    record.setValue("language",QVariant(language));
+    record.setValue("studio",QVariant(studio));
+    record.setValue("rating",QVariant(rating));
+    record.setValue("genre",QVariant(genre));
+    record.setValue("year",QVariant(year));
+    if(model->insertRecord(-1,record))
+    {
+        if(model->submitAll())
         {
-            msg.setText("Movie Added");
-            msg.exec();
+        msg.setText("Movie Added");
 
         }
         else
         {
-            msg.setText("Movie Not Added"+query->lastError().text());
-            msg.exec();
+            msg.setText(model->lastError().text());
 
         }
-        //db.close();
 
-
-
-
+    }
+    else
+    {
+        msg.setText(model->lastError().text());
+    }
+    msg.exec();
 
 }
 

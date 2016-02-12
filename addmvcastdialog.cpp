@@ -28,25 +28,32 @@ void AddMVCastDialog::on_pushButton_clicked()
     QMessageBox msg;
     actor_id = model2->data(model2->index(ui->comboBox_2->currentIndex(),0)).toInt();
     mv_id = model1->data(model1->index(ui->comboBox->currentIndex(),0)).toInt();
-    db.open();
-    query=new QSqlQuery(db);
-    if(db.driverName()=="QSQLITE")
-        query->prepare("INSERT INTO `music_video_cast` (`music_video_id`, `actor_id`) VALUES (:mv_id, :actor_id);");
-    else
-    query->prepare("INSERT INTO `webphonon`.`music_video_cast` (`music_video_id`, `actor_id`) VALUES (:mv_id, :actor_id);");
-    query->bindValue(":mv_id",mv_id);
-    query->bindValue(":actor_id",actor_id);
-    if(query->exec())
+    model=new QSqlTableModel(this,db);
+    model->setTable("music_video_cast");
+    model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+    QSqlRecord record=model->record();
+    record.remove(0);
+    record.setValue("music_video_id",QVariant(mv_id));
+    record.setValue("actor_id",QVariant(actor_id));
+    if(model->insertRecord(-1,record))
     {
-        msg.setText("Actor linked to Music Video");
+        if(model->submitAll())
+        {
+        msg.setText("Music Video Cast Added");
+
+        }
+        else
+        {
+            msg.setText(model->lastError().text());
+
+        }
+
     }
     else
     {
-        msg.setText("Error"+query->lastError().text());
+        msg.setText(model->lastError().text());
     }
     msg.exec();
-    //db.close();
-    //this->close();
 }
 
 void AddMVCastDialog::on_pushButton_2_clicked()

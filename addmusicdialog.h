@@ -4,7 +4,8 @@
 #include <QDialog>
 #include <QFileDialog>
 #include <QSqlDatabase>
-#include <QSqlQuery>
+#include <QSqlTableModel>
+#include <QSqlRecord>
 #include <QSqlError>
 namespace Ui {
 class AddMusicDialog;
@@ -29,7 +30,7 @@ private:
     Ui::AddMusicDialog *ui;
     QString url,title,language,genre;
     QSqlDatabase db;
-    QSqlQuery *query;
+    QSqlTableModel *model;
 };
 
 #endif // ADDMUSICDIALOG_H

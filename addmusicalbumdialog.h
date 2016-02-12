@@ -3,7 +3,8 @@
 
 #include <QDialog>
 #include <QSqlDatabase>
-#include <QSqlQuery>
+#include <QSqlTableModel>
+#include <QSqlRecord>
 #include <QSqlError>
 #include <QSqlQueryModel>
 #include <QMessageBox>
@@ -27,7 +28,7 @@ private slots:
 private:
     Ui::AddMusicAlbumDialog *ui;
     QSqlDatabase db;
-    QSqlQuery *query;
+    QSqlTableModel *model;
     QSqlQueryModel *model1;
     QSqlQueryModel *model2;
     QString charecter,role;
