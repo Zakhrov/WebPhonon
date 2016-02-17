@@ -12,6 +12,8 @@ DBMainWindow::DBMainWindow(QWidget *parent) :
     ui->setupUi(this);
     db=QSqlDatabase::database("PlayConn");
     TabModel=new QSqlRelationalTableModel(this,db);
+    ui->tableView->horizontalHeader()->setMovable(true);
+    ui->tableView->verticalHeader()->setMovable(true);
 
 
 

@@ -122,7 +122,7 @@
      <x>0</x>
      <y>0</y>
      <width>1282</width>
-     <height>22</height>
+     <height>27</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuDatabase">
@@ -279,6 +279,9 @@
   <action name="actionDelete_Selected_Item">
    <property name="text">
     <string>Delete Selected Item</string>
+   </property>
+   <property name="shortcut">
+    <string>Del</string>
    </property>
   </action>
  </widget>

@@ -16,7 +16,7 @@ AddMusicDialog::~AddMusicDialog()
 
 void AddMusicDialog::on_pushButton_clicked()
 {
-    url=QFileDialog::getOpenFileName(this,"Browse");
+    url=QFileDialog::getOpenFileName(this,"Choose File",QDir::currentPath(),tr("Songs (*.wav *.mp3 *.m4a *.flac *.ogg *.wma)"));
     ui->lineEdit->setText(url);
 }
 

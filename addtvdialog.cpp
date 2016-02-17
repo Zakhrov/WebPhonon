@@ -16,7 +16,7 @@ AddTVDialog::~AddTVDialog()
 
 void AddTVDialog::on_pushButton_clicked()
 {
-    url=QFileDialog::getOpenFileName(this,"Choose file");
+    url=QFileDialog::getOpenFileName(this,"Choose File",QDir::currentPath(),tr("Videos (*.avi *.mp4 *.mpg *.mkv *.m4v *.ogv *.wmv)"));
     ui->lineEdit->setText(url);
 }
 
