@@ -61,6 +61,7 @@ int main(int argc, char *argv[])
     img.load("WebPhonon-Master-text2.png");
     else
     img.load(":/splash/splashscreen.jpg");
+    a.setStyle("Cleanlooks");
 #endif
     QSettings defaultSettings;
     if(!defaultSettings.contains("server"))
