@@ -33,5 +33,9 @@
     </qresource>
     <qresource prefix="/splash">
         <file>WebPhonon-Master-text2.png</file>
+        <file>splashscreen.jpg</file>
+    </qresource>
+    <qresource prefix="/texture">
+        <file>texture.jpg</file>
     </qresource>
 </RCC>
