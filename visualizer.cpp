@@ -160,8 +160,13 @@ void Visualizer::dropEvent(QDropEvent *event)
 
 void Visualizer::animate()
 {
+#ifdef Q_OS_LINUX
     xRot+=0.4f;
     yRot-=4.0f;
+#else
+    xRot+=0.2f;
+    yRot-=0.2f;
+#endif
    // zRot-=4.0f;
     updateGL();
 }
@@ -175,7 +180,7 @@ void Visualizer::loadGLTexture()
         if(!b.load(":/splash/WebPhonon-Master-text2.png","PNG"))
         qDebug() <<"Image not loaded";
 #else
-      if(!b.load( ":/splash/WebPhonon-Master-text2.png","PNG" ))
+      if(!b.load( ":/texture/texture.jpg","JPEG" ))
       qDebug() <<"Image not loaded";
 #endif
       t = QGLWidget::convertToGLFormat( b );
