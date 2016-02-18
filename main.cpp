@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
     if(QFile::exists("WebPhonon-Master-text2.png"))
     img.load("WebPhonon-Master-text2.png");
     else
-    img.load(":/splash/WebPhonon-Master-text2.png");
+    img.load(":/splash/splashscreen.jpg");
 #endif
     QSettings defaultSettings;
     if(!defaultSettings.contains("server"))
