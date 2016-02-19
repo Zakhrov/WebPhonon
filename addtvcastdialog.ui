@@ -13,18 +13,38 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="Icons.qrc">
+    <normaloff>:/Icons/WebPhonon_win.ico</normaloff>:/Icons/WebPhonon_win.ico</iconset>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
       <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <family>AR CHRISTY</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
        <property name="text">
         <string>TV Show</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="comboBox"/>
+      <widget class="QComboBox" name="comboBox">
+       <property name="font">
+        <font>
+         <family>AR CHRISTY</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: &quot;white&quot;</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
@@ -32,13 +52,29 @@
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
       <widget class="QLabel" name="label_2">
+       <property name="font">
+        <font>
+         <family>AR CHRISTY</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
        <property name="text">
         <string>Actor</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="comboBox_2"/>
+      <widget class="QComboBox" name="comboBox_2">
+       <property name="font">
+        <font>
+         <family>AR CHRISTY</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: &quot;white&quot;</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
@@ -46,13 +82,29 @@
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <widget class="QLabel" name="label_3">
+       <property name="font">
+        <font>
+         <family>AR CHRISTY</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
        <property name="text">
         <string>Character</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit"/>
+      <widget class="QLineEdit" name="lineEdit">
+       <property name="font">
+        <font>
+         <family>AR ESSENCE</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: &quot;white&quot;</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
@@ -60,13 +112,29 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QLabel" name="label_4">
+       <property name="font">
+        <font>
+         <family>AR CHRISTY</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
        <property name="text">
         <string>Role</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_2"/>
+      <widget class="QLineEdit" name="lineEdit_2">
+       <property name="font">
+        <font>
+         <family>AR ESSENCE</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: &quot;white&quot;</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
@@ -74,6 +142,15 @@
     <layout class="QHBoxLayout" name="horizontalLayout_5">
      <item>
       <widget class="QPushButton" name="pushButton">
+       <property name="font">
+        <font>
+         <family>AR CHRISTY</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: &quot;white&quot;</string>
+       </property>
        <property name="text">
         <string>OK</string>
        </property>
@@ -81,6 +158,15 @@
      </item>
      <item>
       <widget class="QPushButton" name="pushButton_2">
+       <property name="font">
+        <font>
+         <family>AR CHRISTY</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: &quot;white&quot;</string>
+       </property>
        <property name="text">
         <string>Cancel</string>
        </property>
@@ -90,6 +176,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="Icons.qrc"/>
+ </resources>
  <connections/>
 </ui>
