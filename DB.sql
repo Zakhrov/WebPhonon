@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `webphonon` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `webphonon`;
--- MySQL dump 10.15  Distrib 10.0.21-MariaDB, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.28, for Linux (x86_64)
 --
 -- Host: localhost    Database: webphonon
 -- ------------------------------------------------------
--- Server version	10.0.21-MariaDB
+-- Server version	5.6.28
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -98,7 +98,7 @@ CREATE TABLE `movie_cast` (
   KEY `fk_movie_cast_2_idx` (`actor_id`),
   CONSTRAINT `fk_movie_cast_1` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`movies_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_movie_cast_2` FOREIGN KEY (`actor_id`) REFERENCES `actor` (`actor_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -112,14 +112,14 @@ CREATE TABLE `movies` (
   `movies_id` int(11) NOT NULL AUTO_INCREMENT,
   `url` varchar(255) DEFAULT NULL,
   `title` varchar(45) DEFAULT NULL,
-  `language` varchar(45) DEFAULT NULL,
   `studio` varchar(45) DEFAULT NULL,
+  `language` varchar(45) DEFAULT NULL,
   `rating` varchar(45) DEFAULT NULL,
   `genre` varchar(45) DEFAULT NULL,
   `year` int(11) DEFAULT NULL,
   PRIMARY KEY (`movies_id`),
   UNIQUE KEY `url_UNIQUE` (`url`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -198,6 +198,20 @@ CREATE TABLE `music_videos` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Temporary view structure for view `music_view`
+--
+
+DROP TABLE IF EXISTS `music_view`;
+/*!50001 DROP VIEW IF EXISTS `music_view`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `music_view` AS SELECT 
+ 1 AS `music_video_cast_id`,
+ 1 AS `music_id`,
+ 1 AS `actor_id`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `tv`
 --
 
@@ -215,7 +229,7 @@ CREATE TABLE `tv` (
   `genre` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`tv_id`),
   UNIQUE KEY `url_UNIQUE` (`url`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -238,6 +252,24 @@ CREATE TABLE `tv_cast` (
   CONSTRAINT `fk_tv_cast_2` FOREIGN KEY (`actor_id`) REFERENCES `actor` (`actor_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Final view structure for view `music_view`
+--
+
+/*!50001 DROP VIEW IF EXISTS `music_view`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `music_view` AS select `music_video_cast`.`music_video_cast_id` AS `music_video_cast_id`,`music_videos`.`music_id` AS `music_id`,`music_video_cast`.`actor_id` AS `actor_id` from (`music_video_cast` join `music_videos`) where (`music_videos`.`mv_id` = `music_video_cast`.`music_video_id`) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -248,4 +280,4 @@ CREATE TABLE `tv_cast` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-01-30  0:51:57
+-- Dump completed on 2016-02-19 14:43:17
