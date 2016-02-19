@@ -409,7 +409,7 @@ void MainWindow::on_actionFrom_Database_triggered()
     MyDB.close();
     if(med->state()!=Phonon::PlayingState)
     {
-        if(!sources.isEmpty())
+        if(!sources.isEmpty()&&index<=sources.size())
         {
             med->setCurrentSource(sources.at(index));
         this->on_actionPlay_triggered();

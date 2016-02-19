@@ -12,7 +12,11 @@ TableListDialog::TableListDialog(QWidget *parent) :
 
     db=QSqlDatabase::database("PlayConn");
     if(db.open())
-    ui->comboBox->addItems(db.tables());
+    //ui->comboBox->addItems(db.tables());
+    ui->comboBox->addItem("movies");
+    ui->comboBox->addItem("tv");
+    ui->comboBox->addItem("music_videos");
+    ui->comboBox->addItem("music");
     tabname="movies";
     db.close();
 

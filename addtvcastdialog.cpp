@@ -45,7 +45,7 @@ void AddTVCastDialog::on_pushButton_clicked()
     {
         if(model->submitAll())
         {
-        msg.setText("Movie Added");
+        msg.setText("Tv Cast Added");
 
         }
         else
