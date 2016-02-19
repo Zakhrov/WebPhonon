@@ -31,8 +31,8 @@ void AddMovieDialog::on_pushButton_clicked()
 //    dbtype=settings.value("dbtype").toString();
     url=ui->lineEdit->text();
     title=ui->lineEdit_2->text();
-    language=ui->lineEdit_3->text();
-    studio=ui->lineEdit_4->text();
+    studio=ui->lineEdit_3->text();
+    language=ui->lineEdit_4->text();
     rating=ui->lineEdit_5->text();
     genre=ui->lineEdit_6->text();
     year=ui->lineEdit_7->text();
