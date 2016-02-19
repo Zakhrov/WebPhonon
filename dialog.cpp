@@ -11,6 +11,7 @@ Dialog::Dialog(QWidget *parent) :
     ui->lineEdit_2->setText(custdbSettings.value("database").toString());
     ui->lineEdit_3->setText(custdbSettings.value("username").toString());
     ui->lineEdit_4->setText(custdbSettings.value("password").toString());
+    ui->pushButton_3->hide();
 
 }
 
@@ -50,7 +51,10 @@ void Dialog::on_comboBox_activated(const QString &arg1)
     else if(arg1=="Microsoft SQL Server (ODBC)")
         dbtype="QODBC";
     else if(arg1=="SQLite")
+    {
         dbtype="QSQLITE";
+        ui->pushButton_3->show();
+    }
     else if(arg1=="PostgreSQL")
         dbtype="QPSQL";
     else
@@ -58,4 +62,10 @@ void Dialog::on_comboBox_activated(const QString &arg1)
 
     custdbSettings.setValue("dbtype",dbtype);
 
+}
+
+void Dialog::on_pushButton_3_clicked()
+{
+    QString dbfname=QFileDialog::getOpenFileName(this,"Open Database File",QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation),tr("Databses (*.sqlite3)"));
+    ui->lineEdit_2->setText(dbfname);
 }
