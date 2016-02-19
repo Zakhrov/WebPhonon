@@ -6,6 +6,7 @@ AddTVCastDialog::AddTVCastDialog(QWidget *parent) :
     ui(new Ui::AddTVCastDialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Add Actors to TV Shows");
     db=QSqlDatabase::database("PlayConn");
     db.open();
     model1=new QSqlQueryModel(this);

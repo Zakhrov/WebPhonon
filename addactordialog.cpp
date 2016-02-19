@@ -6,6 +6,7 @@ AddActorDialog::AddActorDialog(QWidget *parent) :
     ui(new Ui::AddActorDialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Add Actor");
 
 }
 

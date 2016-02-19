@@ -1,6 +1,6 @@
 #ifndef ABOUTDIALOG_H
 #define ABOUTDIALOG_H
-
+#include "creditsdialog.h"
 #include <QDialog>
 
 namespace Ui {
@@ -22,6 +22,7 @@ private slots:
 
 private:
     Ui::AboutDialog *ui;
+    CreditsDialog *cdialog;
 };
 
 #endif // ABOUTDIALOG_H

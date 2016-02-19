@@ -7,6 +7,7 @@ AddMusicDialog::AddMusicDialog(QWidget *parent) :
     ui(new Ui::AddMusicDialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Add Songs");
 }
 
 AddMusicDialog::~AddMusicDialog()

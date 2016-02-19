@@ -6,6 +6,7 @@ AddMusicAlbumDialog::AddMusicAlbumDialog(QWidget *parent) :
     ui(new Ui::AddMusicAlbumDialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Add Songs to Albums");
     db=QSqlDatabase::database("PlayConn");
     model1=new QSqlQueryModel(this);
     model1->setQuery("select album_id, album_name from album",db);

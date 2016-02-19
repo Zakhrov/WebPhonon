@@ -6,6 +6,7 @@ AddMovieCastDialog::AddMovieCastDialog(QWidget *parent) :
     ui(new Ui::AddMovieCastDialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Add Actors to Movies");
     db=QSqlDatabase::database("PlayConn");
     model1=new QSqlQueryModel(this);
     model1->setQuery("select movies_id, title from movies",db);

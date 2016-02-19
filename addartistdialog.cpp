@@ -6,6 +6,7 @@ AddArtistDialog::AddArtistDialog(QWidget *parent) :
     ui(new Ui::AddArtistDialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Add Artists");
 }
 
 AddArtistDialog::~AddArtistDialog()

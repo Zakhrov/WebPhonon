@@ -35,7 +35,8 @@ SOURCES += main.cpp\
     addalbumdialog.cpp \
     addalbumcastdialog.cpp \
     addmvcastdialog.cpp \
-    addmusicalbumdialog.cpp
+    addmusicalbumdialog.cpp \
+    creditsdialog.cpp
 win32 { SOURCES-=widget.cpp }
 
 win32 {HEADERS += winwidget.h }
@@ -62,7 +63,8 @@ HEADERS  += mainwindow.h \
     addalbumdialog.h \
     addalbumcastdialog.h \
     addmvcastdialog.h \
-    addmusicalbumdialog.h
+    addmusicalbumdialog.h \
+    creditsdialog.h
 win32 { HEADERS -= widget.h }
 
 win32 { FORMS += winwidget.ui }
@@ -86,7 +88,8 @@ FORMS    += mainwindow.ui \
     addalbumdialog.ui \
     addalbumcastdialog.ui \
     addmvcastdialog.ui \
-    addmusicalbumdialog.ui
+    addmusicalbumdialog.ui \
+    creditsdialog.ui
 win32 { FORMS -= widget.ui }
 
 RESOURCES += \

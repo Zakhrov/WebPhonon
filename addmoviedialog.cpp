@@ -8,6 +8,7 @@ AddMovieDialog::AddMovieDialog(QWidget *parent) :
     ui(new Ui::AddMovieDialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Add Movies");
 
 
 }

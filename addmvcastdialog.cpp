@@ -6,6 +6,7 @@ AddMVCastDialog::AddMVCastDialog(QWidget *parent) :
     ui(new Ui::AddMVCastDialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Add Actors to Music Videos");
     db=QSqlDatabase::database("PlayConn");
     db.open();
     model1=new QSqlQueryModel(this);

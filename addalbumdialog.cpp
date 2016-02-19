@@ -6,6 +6,7 @@ AddAlbumDialog::AddAlbumDialog(QWidget *parent) :
     ui(new Ui::AddAlbumDialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Add Album");
 }
 
 AddAlbumDialog::~AddAlbumDialog()

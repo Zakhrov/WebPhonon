@@ -7,6 +7,7 @@ AddMVDialog::AddMVDialog(QWidget *parent) :
     ui(new Ui::AddMVDialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Add Music Videos");
     db=QSqlDatabase::database("PlayConn");
     db.close();
     db.open();

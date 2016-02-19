@@ -38,4 +38,7 @@
     <qresource prefix="/texture">
         <file>texture.jpg</file>
     </qresource>
+    <qresource prefix="/profiles">
+        <file>AMD_Logo11.jpg</file>
+    </qresource>
 </RCC>

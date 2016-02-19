@@ -13,6 +13,8 @@ AboutDialog::AboutDialog(QWidget *parent) :
     ui->label_3->setText(QApplication::applicationVersion());
     //ui->label_4->setText(QApplication::organizationName());
     //ui->label_5->setText(QApplication::organizationDomain());
+    cdialog=new CreditsDialog(this);
+    cdialog->setWindowTitle("Credits");
 
 }
 
@@ -28,7 +30,9 @@ void AboutDialog::on_pushButton_clicked()
 
 void AboutDialog::on_pushButton_2_clicked()
 {
-    QMessageBox Authors;
-    Authors.setText("Lead Developer: Aaron Dominick \n Developers: Neha A, Aishwarya P");
-    Authors.exec();
+//    QMessageBox Authors;
+//    Authors.setText("Lead Developer: Aaron Dominick \n Developers: Neha A, Aishwarya P");
+//    Authors.exec();
+    cdialog->show();
+
 }

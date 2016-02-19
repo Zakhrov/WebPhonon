@@ -7,6 +7,7 @@ AddTVDialog::AddTVDialog(QWidget *parent) :
     ui(new Ui::AddTVDialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Add TV Shows");
 }
 
 AddTVDialog::~AddTVDialog()
