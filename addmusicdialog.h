@@ -7,6 +7,7 @@
 #include <QSqlTableModel>
 #include <QSqlRecord>
 #include <QSqlError>
+#include <QDesktopServices>
 namespace Ui {
 class AddMusicDialog;
 }

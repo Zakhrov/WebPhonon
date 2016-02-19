@@ -8,6 +8,7 @@
 #include <QSqlError>
 #include <QSqlTableModel>
 #include <QSqlRecord>
+#include <QDesktopServices>
 namespace Ui {
 class AddMovieDialog;
 }

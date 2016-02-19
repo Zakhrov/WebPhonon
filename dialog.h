@@ -3,7 +3,8 @@
 
 #include <QDialog>
 #include <QSettings>
-
+#include <QFileDialog>
+#include <QDesktopServices>
 namespace Ui {
 class Dialog;
 }
@@ -23,6 +24,8 @@ private slots:
     void on_pushButton_2_clicked();
 
     void on_comboBox_activated(const QString &arg1);
+
+    void on_pushButton_3_clicked();
 
 private:
     Ui::Dialog *ui;
