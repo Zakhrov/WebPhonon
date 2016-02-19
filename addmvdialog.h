@@ -8,6 +8,7 @@
 #include <QSqlRecord>
 #include <QSqlQueryModel>
 #include <QSqlError>
+#include <QDesktopServices>
 namespace Ui {
 class AddMVDialog;
 }

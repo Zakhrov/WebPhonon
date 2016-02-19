@@ -78,6 +78,6 @@ void AddMovieDialog::on_pushButton_2_clicked()
 
 void AddMovieDialog::on_pushButton_3_clicked()
 {
-    url=QFileDialog::getOpenFileName(this,"Choose File",QDir::currentPath(),tr("Videos (*.avi *.mp4 *.mpg *.mkv *.m4v *.ogv *.wmv)"));
+    url=QFileDialog::getOpenFileName(this,"Choose File",QDesktopServices::storageLocation(QDesktopServices::MoviesLocation),tr("Videos (*.avi *.mp4 *.mpg *.mkv *.m4v *.ogv *.wmv)"));
     ui->lineEdit->setText(url);
 }
