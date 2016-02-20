@@ -2,7 +2,7 @@
 #define CREDITSDIALOG_H
 
 #include <QDialog>
-
+#include <QPixmap>
 namespace Ui {
 class CreditsDialog;
 }
@@ -20,6 +20,7 @@ private slots:
 
 private:
     Ui::CreditsDialog *ui;
+    QPixmap LeadImg,ADevImg1,ADevImg2;
 };
 
 #endif // CREDITSDIALOG_H

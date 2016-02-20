@@ -17,6 +17,7 @@
         <file>server-database.png</file>
         <file>WebPhononIcon.png</file>
         <file>edit-clear-list.png</file>
+        <file>WebPhonon_win.ico</file>
     </qresource>
     <qresource prefix="/help">
         <file>helpimages/menu.png</file>
@@ -40,5 +41,7 @@
     </qresource>
     <qresource prefix="/profiles">
         <file>AMD_Logo11.jpg</file>
+        <file>Neha_Profile.png</file>
+        <file>Aish_Profile.png</file>
     </qresource>
 </RCC>

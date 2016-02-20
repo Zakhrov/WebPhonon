@@ -7,8 +7,12 @@ AboutDialog::AboutDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     QPixmap img,simg;
+#ifdef Q_OS_LINUX
     img.load(":/Icons/WebPhononIcon.png");
-    simg=img.scaled(128,128);
+#else
+    img.load(":/Icons/WebPhonon_win.ico");
+#endif
+    simg=img.scaled(256,256);
     ui->label->setPixmap(simg);
     ui->label_3->setText(QApplication::applicationVersion());
     //ui->label_4->setText(QApplication::organizationName());
