@@ -59,8 +59,6 @@ int main(int argc, char *argv[])
 #else
     if(QFile::exists("WebPhonon-Master-text2.png"))
     img.load("WebPhonon-Master-text2.png");
-    else
-    img.load(":/splash/splashscreen.jpg");
     a.setStyle("Cleanlooks");
 #endif
     QSettings defaultSettings;

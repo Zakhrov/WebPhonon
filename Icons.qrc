@@ -34,14 +34,11 @@
     </qresource>
     <qresource prefix="/splash">
         <file>WebPhonon-Master-text2.png</file>
-        <file>splashscreen.jpg</file>
     </qresource>
     <qresource prefix="/texture">
         <file>texture.jpg</file>
     </qresource>
     <qresource prefix="/profiles">
         <file>AMD_Logo11.jpg</file>
-        <file>Neha_Profile.png</file>
-        <file>Aish_Profile.png</file>
     </qresource>
 </RCC>
